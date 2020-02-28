@@ -280,13 +280,12 @@ body
 
 
 /*
-
 BEGIN: Moving the drawer to the right
 ====================================
 cf: https://stackoverflow.com/a/32539822/1200070
-
 */
 
+/* ORIGINAL 
 .mdl-layout__drawer-button, .mdl-layout__drawer{
     left: initial;
     right: 0;
@@ -299,9 +298,9 @@ cf: https://stackoverflow.com/a/32539822/1200070
 .mdl-layout__header-row {
     padding-left: 10px;
 }
+*/
 
 /*
-
 END: Moving the drawer to the right
 ====================================
 */

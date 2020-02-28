@@ -3,9 +3,9 @@ import config from '../config';
 import UndoStack from './UndoStack';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import {GET_TRANSLATIONS_ENDPOINT, GET_NEXT_TRANSLATIONS_ENDPOINT} from '../zeeguuRequests';
-import {POST_TRANSLATION_SUGGESTION} from '../zeeguuRequests';
-import {HTML_ID_ALTERMENU} from "./AlterMenu";
+import { GET_TRANSLATIONS_ENDPOINT, GET_NEXT_TRANSLATIONS_ENDPOINT } from '../zeeguuRequests';
+import { POST_TRANSLATION_SUGGESTION } from '../zeeguuRequests';
+import { HTML_ID_ALTERMENU } from "./AlterMenu";
 
 
 const USER_EVENT_TRANSLATE = 'TRANSLATE TEXT';
@@ -55,7 +55,7 @@ export default class Translator {
         let callback = (data) => this._setTranslations(zeeguuTag, data);
         // Launch Zeeguu request to fill translation options.
         ZeeguuRequests.post(GET_TRANSLATIONS_ENDPOINT + '/' + this.from_language + '/' + this.to_language,
-            {word: text, context: context, url: url, title: title}, callback);
+            { word: text, context: context, url: url, title: title }, callback);
 
         UserActivityLogger.log_article_interaction(USER_EVENT_TRANSLATE, text);
     }
@@ -90,7 +90,7 @@ export default class Translator {
         }
         // Launch Zeeguu request to fill translation options.
         ZeeguuRequests.post(GET_NEXT_TRANSLATIONS_ENDPOINT + '/' + this.from_language + '/' + this.to_language,
-            {word: text, context: context, url: url, title: title, numberOfResults: 1}, callback);
+            { word: text, context: context, url: url, title: title, numberOfResults: 1 }, callback);
 
         UserActivityLogger.log_article_interaction(USER_EVENT_TRANSLATE, text);
     }
@@ -125,8 +125,10 @@ export default class Translator {
         }
         // Launch Zeeguu request to fill translation options.
         ZeeguuRequests.post(GET_NEXT_TRANSLATIONS_ENDPOINT + '/' + this.from_language + '/' + this.to_language,
-            {word: text, context: context, url: url, title: title, service: serviceName, numberOfResults: -1,
-                currentTranslation: previousTranslation}, callback);
+            {
+                word: text, context: context, url: url, title: title, service: serviceName, numberOfResults: -1,
+                currentTranslation: previousTranslation
+            }, callback);
 
         UserActivityLogger.log_article_interaction(USER_EVENT_TRANSLATE, text);
     }
@@ -152,9 +154,9 @@ export default class Translator {
 
         // Launch Zeeguu request to supply translation suggestion.
         ZeeguuRequests.post(POST_TRANSLATION_SUGGESTION + '/' + this.from_language + '/' + this.to_language,
-            {word: word, context: context, url: url, title: title, translation: translation});
+            { word: word, context: context, url: url, title: title, translation: translation });
 
-        UserActivityLogger.log_article_interaction(USER_EVENT_SEND_SUGGESTION, word, {translation: translation});
+        UserActivityLogger.log_article_interaction(USER_EVENT_SEND_SUGGESTION, word, { translation: translation });
     }
 
     /**
@@ -210,7 +212,6 @@ export default class Translator {
 
     _setTopTranslation(zeeguuTag, translations) {
         var tran = zeeguuTag.children[0];
-
         tran.setAttribute(config.HTML_ATTRIBUTE_CHOSEN, translations[0].translation); // default chosen translation is 0
         tran.setAttribute(config.HTML_ATTRIBUTE_SUGGESTION, '');
         if (this.from_language == "en" && this.to_language == "en") {

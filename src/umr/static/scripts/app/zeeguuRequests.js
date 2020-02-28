@@ -1,7 +1,8 @@
 import $ from 'jquery';
-import {readCookie} from './cookieWorks';
+import { readCookie } from './cookieWorks';
 
-const ZEEGUU_SERVER = 'https://zeeguu.unibe.ch/api';
+//'https://zeeguu.unibe.ch/api';
+const ZEEGUU_SERVER = 'https://api.zeeguu.org';
 const ZEEGUU_SESSION = 'sessionID';
 
 /** Get a list of recommended feeds. */

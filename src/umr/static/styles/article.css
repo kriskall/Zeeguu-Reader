@@ -23,6 +23,18 @@ zeeguu.loading {
     display: inline-block;
 }
 
+/*  zeeguu tag hover changes color, translated word hover no underline or color*/
+
+zeeguu:hover {
+    background-color: #e8f8ff;
+    border-bottom: 1px dashed #6ec7e6;;
+}
+
+.origtrans:hover {
+    background-color:white !important;
+    border: none;
+}
+
 /* the translation - above the origin word
    the font is thin until the user contributes or selects an alternative
    highlights the fact that we are not sure of the translation ...
@@ -48,6 +60,7 @@ zeeguu tran {
     max-width: 24em;
     font-weight: 300;
     color: #4f4f4f;
+    text-transform: lowercase;
 }
 
 /*
@@ -76,7 +89,7 @@ zeeguu tran moreAlternatives, zeeguu tran singleAlternative {
 }
 
 zeeguu tran moreAlternatives {
-    color: green;
+    color: #6ec7e6;;
 }
 
 zeeguu tran singleAlternative {
@@ -272,7 +285,6 @@ a:hover {
 
 .questionnaire-content {
     text-align: center;
-
 }
 
 #main_article_content {

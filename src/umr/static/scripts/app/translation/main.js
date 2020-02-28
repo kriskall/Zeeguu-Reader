@@ -9,11 +9,11 @@ import AlterMenu from './AlterMenu'
 import Speaker from './Speaker';
 import Starer from './Starer';
 import UserActivityLogger from '../UserActivityLogger';
-import {readCookie} from '../cookieWorks';
-import {addParagraphs, filterShit, wrapWordsInZeeguuTags} from './textProcessing';
-import {get_article_id} from './article_id.js'
+import { readCookie } from '../cookieWorks';
+import { addParagraphs, filterShit, wrapWordsInZeeguuTags } from './textProcessing';
+import { get_article_id } from './article_id.js'
 
-import {GET_USER_ARTICLE_INFO} from '../zeeguuRequests';
+import { GET_USER_ARTICLE_INFO } from '../zeeguuRequests';
 import ZeeguuRequests from "../zeeguuRequests";
 
 import '../../../styles/mdl/material.min.js';
@@ -85,7 +85,7 @@ function getArticleInfoAndInitElementsRequiringIt(article_id) {
 
     let TO_LANGUAGE = readCookie("native_lang");
 
-    ZeeguuRequests.get(GET_USER_ARTICLE_INFO, {article_id: article_id}, function (article_info) {
+    ZeeguuRequests.get(GET_USER_ARTICLE_INFO, { article_id: article_id }, function (article_info) {
 
         FROM_LANGUAGE = article_info.language;
 

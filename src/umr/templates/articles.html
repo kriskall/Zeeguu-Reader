@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <HTML>
+
 <HEAD>
     <TITLE>Zeeguu Reader</TITLE>
     <META name="viewport" content="width=device-width, initial-scale=1">
@@ -7,19 +8,19 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'UA-89557275-2');
+        gtag('config', 'UA-89557275-2');
     </script>
 
     <script> var noAvatarURL = "{{url_for('reader_blueprint.static',filename='images/noAvatar.png')}}";</script>
 
     <!-- Include the subscription package. -->
     <link rel="stylesheet" type="text/css"
-          href="{{ url_for('reader_blueprint.static',filename='scripts/dist/css/subscription-0.9.354.css') }}">
-    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.354.js') }}"></script>
+        href="{{ url_for('reader_blueprint.static',filename='scripts/dist/css/subscription-0.9.353.css') }}">
+    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
 </HEAD>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
     <header class="mdl-layout__header mdl-layout__header--transparent">
@@ -32,67 +33,68 @@
             "
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-            <a id="inbox_tab" href="#inbox" class="mdl-layout__tab"><i class="material-icons inbox-icon">inbox</i></a>
+            <a id="inbox_tab" href="#inbox" class="mdl-layout__tab">
+                Articles</a>
 
             <a id="cohort_tab" href="#cohort" class="mdl-layout__tab">
-                <i class="material-icons inbox-icon">people</i></a>
+                Classroom</a>
 
             <a id="starred_tab" href="#starred" class="mdl-layout__tab">
-                <i class="material-icons " style="color:lightgray">star</i>
-                <i class="material-icons " style="color:lightgray">watch_later</i>
-                <i class="material-icons " style="color:lightgray">thumb_up</i></a>
+                History</a>
         </div>
     </header>
-    <div class="mdl-layout__drawer">
+    <div class="mdl-layout__drawer mdl-color--amber-A700">
         <nav class="mdl-navigation">
             <div class="options">
 
 
-                <br/><br/><br/>
+                <br /><br /><br />
 
 
                 <span class="mdl-layout-title">
-		My Interests
-	</span>
-                <br/>
+                    My Interests
+                </span>
+                <br />
 
 
                 <!-- List of content currently subscribed to. -->
-                <span class="mdl-chip mdl-chip--deletable mdl-color--indigo mdl-color-text--white tour">
-				<span class="mdl-chip__text">Languages</span>
-				<button type="button" class="mdl-chip__action show-language-subscriber"><i
-                        class="material-icons md-light">add_circle</i></button>
-			</span>
+
+                <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
+                    <span class="mdl-chip__text">Languages</span>
+                    <button type="button" class="mdl-chip__action show-language-subscriber"><i
+                            class="material-icons mdl-color-text--amber">add_circle</i></button>
+                </span>
                 <div id="languagesList"></div>
 
                 <div style="font-size: xx-small">&nbsp;</div>
 
-                <span class="mdl-chip mdl-chip--deletable mdl-color--indigo mdl-color-text--white tour">
-                <span class="mdl-chip__text">Topics</span>
-                <button type="button" class="mdl-chip__action show-topic-subscriber"><i class="material-icons md-light">add_circle</i></button>
-            </span>
+                <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
+                    <span class="mdl-chip__text">Topics</span>
+                    <button type="button" class="mdl-chip__action show-topic-subscriber"><i
+                            class="material-icons mdl-color-text--amber">add_circle</i></button>
+                </span>
                 <div id="searchesList"></div>
                 <div id="topicsList">
                     <div id="any_topic" style="display:none;">&nbsp;&nbsp;&nbsp;&nbsp;<i style="color:gray">Showing all
-                        topics...</i></div>
+                            topics...</i></div>
                 </div>
 
                 <div style="font-size: xx-small">&nbsp;</div>
 
-                <span class="mdl-chip mdl-chip--deletable mdl-color--indigo mdl-color-text--white tour">
-                <span class="mdl-chip__text">Non-Interests</span>
-                <button type="button" class="mdl-chip__action show-filter-subscriber"><i
-                        class="material-icons md-light">add_circle</i></button>
-            </span>
+                <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
+                    <span class="mdl-chip__text">Non-Interests</span>
+                    <button type="button" class="mdl-chip__action show-filter-subscriber"><i
+                            class="material-icons mdl-color-text--amber">add_circle</i></button>
+                </span>
                 <div id="searchesFilterList"></div>
                 <div id="topicsFilterList"></div>
 
                 <div style="font-size: xx-small">&nbsp;</div>
 
-                <br/>
+                <br />
                 <span class="mdl-layout-title">
-		Search
-	</span>
+                    Search
+                </span>
 
 
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
@@ -116,14 +118,14 @@
                 <ul id="searchNotification" class="searchNotification"></ul>
                 <!-- List of articles -->
                 <ul id="articleLinkList" class="articleLinkList"></ul>
-                <BR/>
+                <BR />
                 <div id="emptyArticleListImage" class="emptyPage">
                     <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-                         alt="Not subscribed to any feeds..."/>
+                        alt="Not subscribed to any feeds..." />
                 </div>
                 <div class="loader">
                     <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
-                         alt="Loading..."/>
+                        alt="Loading..." />
                 </div>
                 <div id="toastmessage" class="mdl-js-snackbar mdl-snackbar">
                     <div class="mdl-snackbar__text"></div>
@@ -136,7 +138,7 @@
                 <ul id="starredArticleList" class="articleLinkList"></ul>
                 <div id="emptyStarredArticleListImage" class="emptyPage">
                     <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-                         alt="Not subscribed to any feeds..."/>
+                        alt="Not subscribed to any feeds..." />
                 </div>
             </div>
         </section>
@@ -145,10 +147,8 @@
                 <ul id="cohortArticleList" class="articleLinkList"></ul>
                 <div id="emptyCohortArticleListImage" class="emptyPage">
                     <p>There are no articles in your class</p>
-                    <img
-                        class="sadEleph"
-                        src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-                        alt="Not subscribed to any feeds..."/>
+                    <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
+                        alt="Not subscribed to any feeds..." />
                 </div>
             </div>
         </section>
@@ -206,7 +206,7 @@
                 </div>
                 <div class="articleLinkTitle headerElement">
                     {% raw %}{{ articleLinkTitle }}{% endraw %}
-                    <span class="wordCount"> ({% raw %}{{ wordCount }}{% endraw %} words)</span>
+                    <span class="wordCount"> ({% raw %}{{ wordCount }}{% endraw %}  words)</span>
                 </div>
                 <div class="articleLinkDifficulty headerElement">
                     <span class="articleLinkDifficultyText"
@@ -256,8 +256,8 @@
     <div class="articleLinkSpacer"></div>
 </script>
 
-   <!-- Template for a cohort article link. -->
-  <script id="cohort-articleLink-template" type="text/template">
+<!-- Template for a cohort article link. -->
+<script id="cohort-articleLink-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
         articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
         <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
@@ -286,7 +286,7 @@
     </li>
     <div class="articleLinkSpacer"></div>
   </script>
-      
+
 
 <script id="search-notification-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry search-notification-box">
@@ -305,4 +305,5 @@
 <!-- Dialog windows for adding a source, topic and filter. -->
 {% include 'addSourceDialog.html' %}
 {% include 'addTopicDialog.html' %}
+
 </HTML>
