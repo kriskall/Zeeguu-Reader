@@ -27,10 +27,17 @@
     </script>
 
     <!-- Include the subscription package. -->
+    <!--CSS for header NEW-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader.css') }}"
+      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-header.css') }}"
+    />
+    <!--CSS for list NEW-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-list.css') }}"
     />
     <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
   </head>
