@@ -1,0 +1,66 @@
+
+.select-article, h1 {
+font-family: Montserrat;
+font-weight: 100;
+font-size: 40px;
+line-height: 49px;
+letter-spacing: 2px;
+display: flex;
+align-items: center;
+text-align: center;
+margin: auto;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+
+.welcome_personal, p {
+font-family: Montserrat;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: space-around;
+margin: auto;
+}
+
+.all__tabs {
+display:flex;
+min-width: 100%;
+align-items: center;
+text-align: center;
+margin-top: auto;
+margin-bottom: auto;
+margin-left: auto;
+margin-right: auto;
+justify-content: center;
+}
+
+.mdl-layout__tab {
+font-family: Montserrat;
+font-size: 16px;
+line-height: 20px;
+}
+
+.row__bar {
+    margin: 0px;
+    padding: 40px;
+}
+
+.bar {
+width: 36px;
+height: 0px;
+border: 1px solid #ACACAC;
+transform: rotate(-90deg);
+}
+
+.mdl-layout__tab, a {
+text-decoration: none;
+color: black;
+}
+
+.mdl-layout__tab:hover, a:hover {
+color: #FFBB54;
+}
