@@ -265,24 +265,23 @@
         articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
         <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
             <div class="articleLinkHeader">
-                <div class="articleLinkImage headerElement">
-                    <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
-                </div>
                 <div class="articleLinkTitle headerElement">
                     {% raw %}{{ articleLinkTitle }}{% endraw %}
-                    <span class="wordCount"> ({% raw %}{{ wordCount }}{% endraw %}  words)</span>
                 </div>
                 <div class="articleLinkDifficulty headerElement">
-                    <span class="articleLinkDifficultyText"
+                    <span class="difficulty-level articleLinkDifficultyText"
                           style="background: {% raw %}{{articleDifficultyColor}}{% endraw %}"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
-                    <span class="linkLanguageIcon flag-icon flag-icon-{% raw %}{{ articleLinkLanguage }}{% endraw %}"></span>
+                     <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
                 </div>
             </div>
             <div class="articleLinkSummary">
-                <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
                 {% raw %}{{articleSummary}}{% endraw %}
             </div>
             <div class="articleTopics">
+              <div class="articleLinkImage">
+                <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
+            </div>
+                <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
                 {% raw %}{{articleTopics}}{% endraw %}
             </div>
         </a>
