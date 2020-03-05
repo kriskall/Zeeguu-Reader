@@ -46,6 +46,14 @@
       href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-list.css') }}"
     />
     <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
+
+    <!-- Include the translation package. -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('reader_blueprint.static',filename='scripts/dist/css/translation-0.9.353.css') }}"
+    />-->
+    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
   </head>
   <div
     class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs"
@@ -62,26 +70,34 @@
         <div class="mdl-layout-spacer"></div>
         "
       </div>
-      <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
-      <p class="welcome_personal">Welcome,</p>
-      <h1 class="select-article">Select an Article</h1>
-      <div class="all__tabs">
-      <div class="row__tab">
-        <a id="inbox_tab" href="#inbox" class="mdl-layout__tab"> Articles</a>
-        </div>
-        <div class="row__bar">
-        <div class="bar"></div>
-        </div>
-        <div class="row__tab">
-        <a id="cohort_tab" href="#cohort" class="mdl-layout__tab"> Bookmarks</a>
-        </div>
-        <div class="row__bar">
-        <div class="bar"></div>
-        </div>
-        <div class="row__tab">
-        <a id="starred_tab" href="#starred" class="mdl-layout__tab">
-          Classroom</a
-        ></div>
+      <div
+        class="mdl-layout__tab-bar mdl-js-ripple-effect"
+        class="select-article"
+      >
+        <p class="welcome_personal">Welcome,</p>
+        <h1 class="select-article">Select an Article</h1>
+        <div class="all__tabs">
+          <div class="row__tab">
+            <a id="inbox_tab" href="#inbox" class="mdl-layout__tab">
+              Articles</a
+            >
+          </div>
+          <div class="row__bar">
+            <div class="bar"></div>
+          </div>
+          <div class="row__tab">
+            <a id="cohort_tab" href="#cohort" class="mdl-layout__tab">
+              Bookmarks</a
+            >
+          </div>
+          <div class="row__bar">
+            <div class="bar"></div>
+          </div>
+          <div class="row__tab">
+            <a id="starred_tab" href="#starred" class="mdl-layout__tab">
+              Classroom</a
+            >
+          </div>
         </div>
       </div>
     </header>
@@ -272,6 +288,9 @@
     </span>
   </script>
 
+  <!-- Sorting buttons-->
+  <div class="levelButton">Level</div>
+
   <!-- Template for an article link. -->
   <script id="articleLink-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
@@ -287,9 +306,17 @@
                      <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
                 </div>
             </div>
+            <div class="articleLinkTranslation">
+              {% raw %}{{articleLinkTitle}}{% endraw %}
+              <p class="title translatable">
+                <span id="articleTitle"></span>
+            </p>
+          </div>
+            <!--Article Summary
             <div class="articleLinkSummary">
                 {% raw %}{{articleSummary}}{% endraw %}
             </div>
+          -->
             <div class="articleTopics">
               <div class="articleLinkImage">
                 <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
