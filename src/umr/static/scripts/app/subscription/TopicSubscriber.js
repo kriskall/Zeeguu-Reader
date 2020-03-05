@@ -36,6 +36,7 @@ export default class TopicSubscriber {
      * Uses the sweetalert library.
      */
     open() {
+        console.log('hi'); 
 
         take_keyboard_focus_away_from_article_list();
 
