@@ -45,7 +45,7 @@ export default class TopicSubscriber {
     if (blockOfTopics.style.display === "none") {
       blockOfTopics.style.display = "block";
       //this.load();
-      this.addTextOfTopics();
+      this.load();
     } else {
       blockOfTopics.style.display = "none";
     }
@@ -85,6 +85,16 @@ export default class TopicSubscriber {
     console.log("3");
     let template = $(HTML_ID_FEED_TEMPLATE).html();
     for (let i = 0; i < data.length; i++) {
+        let feedOption = $(Mustache.render(template,data[i]));
+        $('.tagsOfTopics').html(feedOption);
+       
+        
+       
+        console.log("5");
+    }
+ 
+    /*
+    for (let i = 0; i < data.length; i++) {
       let feedOption = $(Mustache.render(template, data[i]));
       let subscribeButton = $(feedOption.find(HTML_CLASS_SUBSCRIBE_BUTTON));
 
@@ -105,6 +115,6 @@ export default class TopicSubscriber {
       });
       $(HTML_ID_ADD_FEED_LIST).append(feedOption);
       console.log("4");
-    }
+    }*/
   }
 }
