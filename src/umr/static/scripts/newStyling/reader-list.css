@@ -90,3 +90,7 @@ body {
 .difficulty-level {
   margin-left: 123px;
 }
+
+#topicsList {
+  display: none;
+}
