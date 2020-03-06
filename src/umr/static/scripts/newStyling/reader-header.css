@@ -25,6 +25,7 @@ p {
   text-align: center;
   justify-content: space-around;
   margin: auto;
+  margin-top: 50px;
 }
 
 .all__tabs {

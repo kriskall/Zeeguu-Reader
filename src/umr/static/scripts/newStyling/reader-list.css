@@ -28,13 +28,15 @@ body {
 .articleLinkTitle {
   font-size: 20px;
   color: black;
+  padding-right: 250px;
 }
 .articleLinkTranslation {
   font-size: 16px;
   color: #6d6d6d;
-  max-width: 44em;
+  max-width: 54em;
   line-height: 1.5em;
   margin-top: 7px;
+  padding-right: 250px;
 }
 /* 
 .articleLinkSummary{
@@ -56,7 +58,7 @@ body {
 }
 
 .articleLinkDifficulty {
-  width: 3em;
+  width: 10em;
   float: right;
 }
 
@@ -93,4 +95,11 @@ body {
 
 #topicsList {
   display: none;
+}
+
+.singleTopicTag {
+  border: solid #ffbb54;
+  border-radius: 20px;
+  padding: 4px 26px;
+  font-size: 16;
 }

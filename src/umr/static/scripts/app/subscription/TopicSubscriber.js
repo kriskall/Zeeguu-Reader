@@ -44,18 +44,11 @@ export default class TopicSubscriber {
     var blockOfTopics = document.querySelector(".tagsOfTopics");
     if (blockOfTopics.style.display === "none") {
       blockOfTopics.style.display = "block";
-      //this.load();
-      this.load();
     } else {
       blockOfTopics.style.display = "none";
     }
   }
 
-  addTextOfTopics() {
-    var topicsList = document.getElementById("listOfTopicstoChoose");
-    topicsList.innerHTML = this.load();
-    document.querySelector("#listOfTopicstoChoose").appendChild(topicsList);
-  }
   /**
    * Call Zeeguu and requests available topics.
    */
@@ -85,14 +78,11 @@ export default class TopicSubscriber {
     console.log("3");
     let template = $(HTML_ID_FEED_TEMPLATE).html();
     for (let i = 0; i < data.length; i++) {
-        let feedOption = $(Mustache.render(template,data[i]));
-        $('.tagsOfTopics').html(feedOption);
-       
-        
-       
-        console.log("5");
+      let feedOption = $(Mustache.render(template, data[i]));
+      $(".tagsOfTopics").append(feedOption);
+      console.log("4");
     }
- 
+
     /*
     for (let i = 0; i < data.length; i++) {
       let feedOption = $(Mustache.render(template, data[i]));
