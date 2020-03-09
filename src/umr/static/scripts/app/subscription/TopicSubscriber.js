@@ -69,19 +69,32 @@ export default class TopicSubscriber {
     $(HTML_ID_ADD_FEED_LIST).empty();
   }
 
+  makeTopicsClickable() {
+    var topics = document.querySelectorAll('.mdl-chip__action.interests');
+    topics.forEach(function (topic) {
+      $(topic).click(function () {
+        if ($(topic).hasClass('clicked')) {
+          $(this).removeClass('clicked');
+        }
+        else {
+          $(this).addClass('clicked');
+        }
+      });
+    })
+  }
+
   /**
    * Fills the dialog's list with all the addable topics.
    * Callback function for zeeguu.
    * @param {Object[]} data - A list of topics the user can subscribe to.
    */
   _loadFeedOptions(data) {
-    console.log("3");
     let template = $(HTML_ID_FEED_TEMPLATE).html();
     for (let i = 0; i < data.length; i++) {
       let feedOption = $(Mustache.render(template, data[i]));
       $(".tagsOfTopics").append(feedOption);
-      console.log("4");
     }
+    this.makeTopicsClickable();
 
     /*
     for (let i = 0; i < data.length; i++) {

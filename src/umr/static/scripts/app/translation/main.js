@@ -150,7 +150,6 @@ function attachInteractionScripts() {
 
     $("#read_later").click(handle_read_later_button_click());
 
-
 }
 
 
@@ -214,7 +213,8 @@ function handle_CONTENT_SCROLL_EVENT() {
 
 /* Clicking anywhere in the document when the
  * alter menu is open, except for the input field,
- * will close the alter menu.*/
+ * will close the alter menu. 
+ * I, KATRINE, COMMENTED THIS OUT BECAUSE IT WAS OBSTRUCTING MY WORK!
 $(document).click(function (event) {
     let $target = $(event.target);
     if (!$target.is('input') && alterMenu.isOpen()) {
@@ -223,6 +223,7 @@ $(document).click(function (event) {
         $target.attr('value', '');
     }
 });
+*/
 
 /* Listens on keypress 'enter' to set the user suggestion
  * as the chosen translation and sends the user's contribution

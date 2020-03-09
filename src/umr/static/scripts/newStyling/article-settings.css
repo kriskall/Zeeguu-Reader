@@ -100,6 +100,24 @@ button {
 .material-icons {
   display: none;
 }
+
+/*** INTERESTS / NON-INTERESTS ******/
+
+.addableTitle {
+  font-family: Montserrat;
+  font-size: 16px;
+}
+
+.mdl-chip__action.interests {
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.mdl-chip__action.interests.clicked {
+  background-color: white; 
+  color: #ffbb54;
+}
+
 /*** SWEEET ALERT ******/
 body.stop-scrolling {
   height: 100%;

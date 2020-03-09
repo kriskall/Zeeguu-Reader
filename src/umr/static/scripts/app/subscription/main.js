@@ -143,9 +143,6 @@ $(document).ready(function () {
             let input = $(searchExecuted).val();
             $(searchExecuted).val('');
 
-            let layout = document.querySelector('.mdl-layout');
-            layout.MaterialLayout.toggleDrawer();
-
             articleList.search(input);
             showSearchNotification(input)
         }
@@ -207,9 +204,9 @@ function scrollToView(elem) {
 
     var offset = elem.offset().top;
     if (!elem.is(":visible")) {
-        elem.css({"visibility": "hidden"}).show();
+        elem.css({ "visibility": "hidden" }).show();
         var offset = elem.offset().top;
-        elem.css({"visibility": "", "display": ""});
+        elem.css({ "visibility": "", "display": "" });
     }
 
     var visible_area_start = $(window).scrollTop();
