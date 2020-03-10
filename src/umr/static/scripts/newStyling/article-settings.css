@@ -36,15 +36,16 @@ button {
 
 #search-expandable {
   all: unset;
-  border: solid #ffbb54;
-  border-radius: 13px;
+  border: 2px solid #ffbb54;
+  border-radius: 15px;
   padding: 2px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 8px;
+  padding-right: 5px;
   font-family: Montserrat;
   font-weight: 100;
   font-size: 14px;
   width: 280px;
+  height: 22px;
 }
 
 .widthOfColumn {
@@ -74,27 +75,49 @@ button {
 .sortingCategories {
   float: right;
   display: flex;
-  width: 10em;
+  margin-top: -5px;
+  width: 12em;
   text-align: center;
 }
 
-.levelSorting {
-  margin-left: 64px;
-  text-align: center;
+.wordsSorting {
+  padding-left: 24px;
+  padding-right: 92px;
 }
+
 .triangle {
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 20px solid #dbd8d8;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 15px solid #dbd8d8;
+
 }
 
-.levelLable,
-.wordLable {
+#triangleWords.clicked {
+  border-top: 15px solid #ffbb54;
+}
+
+#triangleLevel.clicked {
+  border-top: 15px solid #ffbb54;
+}
+
+.levelLabel,
+.wordLabel {
   text-align: center;
   font-family: Montserrat;
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.wordLabel {
+  margin-left: -10px;
+  margin-bottom: 2px;
+}
+
+.levelLabel {
+  margin-left: -5px;
+  margin-bottom: 2px;
 }
 
 .material-icons {

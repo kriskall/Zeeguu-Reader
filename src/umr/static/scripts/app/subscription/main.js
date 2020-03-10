@@ -137,12 +137,51 @@ $(document).ready(function () {
         topicFilterSubscriber.open();
     });
 
+    var countWords = 0;
+    $('.wordsSorting').click(function () {
+        countWords++;
+        if (countWords == 1) {
+            var elem = $('#articleLinkList').find('li').sort(sortLowToHighWords);
+            $('#articleLinkList').append(elem);
+            $('#triangleWords').addClass('clicked');
+            console.log("sort low to high");
+        } else if (countWords == 2) {
+            var elem = $('#articleLinkList').find('li').sort(sortHighToLowWords);
+            $('#articleLinkList').append(elem);
+            console.log("sort high to low");
+        } else if (countWords == 3) {
+            location.reload();
+            $('#triangleWords').removeClass('clicked');
+            console.log("reload words");
+            countWords = 0;
+        }
+    });
+
+    var countLevel = 0;
+    $('.levelSorting').click(function () {
+        countLevel++;
+        if (countLevel == 1) {
+            var elem = $('#articleLinkList').find('li').sort(sortLowToHighLevel);
+            $('#articleLinkList').append(elem);
+            $('#triangleLevel').addClass('clicked');
+            console.log("sort level low to high");
+        } else if (countLevel == 2) {
+            var elem = $('#articleLinkList').find('li').sort(sortHighToLowLevel);
+            $('#articleLinkList').append(elem);
+            console.log("sort level high to low");
+        } else if (countLevel == 3) {
+            location.reload();
+            $('#triangleLevel').removeClass('clicked');
+            console.log("reload level");
+            countLevel = 0;
+        }
+    });
+
     let searchExecuted = document.querySelector('#search-expandable');
     $(searchExecuted).keyup(function (event) {
         if (event.keyCode === 13) {
             let input = $(searchExecuted).val();
             $(searchExecuted).val('');
-
             articleList.search(input);
             showSearchNotification(input)
         }
@@ -155,6 +194,43 @@ $(document).ready(function () {
     set_keyboard_focus_to_article_list();
 
 });
+
+function sortLowToHighWords(a, b) {
+    var aInt = getIntegerWords(a.className);
+    var bInt = getIntegerWords(b.className);
+    return aInt < bInt ? -1 : 1;
+}
+
+function sortLowToHighLevel(a, b) {
+    var aInt = getIntegerLevel(a.className);
+    var bInt = getIntegerLevel(b.className);
+    return aInt < bInt ? -1 : 1;
+}
+
+function sortHighToLowWords(a, b) {
+    var aInt = getIntegerWords(a.className);
+    var bInt = getIntegerWords(b.className);
+    return aInt > bInt ? -1 : 1;
+}
+function sortHighToLowLevel(a, b) {
+    var aInt = getIntegerLevel(a.className);
+    var bInt = getIntegerLevel(b.className);
+    return aInt > bInt ? -1 : 1;
+}
+
+function getIntegerWords(classNameList) {
+    var int = 0;
+    var classList = classNameList.split(/\s+/);
+    int = parseInt(classList[0]);
+    return int;
+}
+
+function getIntegerLevel(classNameList) {
+    var int = 0;
+    var classList = classNameList.split(/\s+/);
+    int = parseFloat(classList[1]);
+    return int;
+}
 
 /* Called when no image could be loaded as an article avatar. */
 function noAvatar(image) {
