@@ -42,10 +42,10 @@ export default class TopicSubscriber {
 
   showBlockOfTopics() {
     var blockOfTopics = document.querySelector(".tagsOfTopics");
-    if (blockOfTopics.style.display === "none") {
-      blockOfTopics.style.display = "block";
-    } else {
+    if (blockOfTopics.style.display === "block") {
       blockOfTopics.style.display = "none";
+    } else {
+      blockOfTopics.style.display = "block";
     }
   }
 
