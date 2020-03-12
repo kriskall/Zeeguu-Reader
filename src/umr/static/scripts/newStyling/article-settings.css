@@ -91,7 +91,6 @@ button {
   border-left: 9px solid transparent;
   border-right: 9px solid transparent;
   border-top: 15px solid #dbd8d8;
-
 }
 
 #triangleWords.clicked {
@@ -120,6 +119,10 @@ button {
   margin-bottom: 2px;
 }
 
+.flip {
+  transform: rotate(-180deg);
+}
+
 .material-icons {
   display: none;
 }
@@ -137,7 +140,7 @@ button {
 }
 
 .mdl-chip__action.interests.clicked {
-  background-color: white; 
+  background-color: white;
   color: #ffbb54;
 }
 
