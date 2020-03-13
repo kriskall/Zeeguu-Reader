@@ -6,3 +6,4 @@ from .umr_blueprint import reader_blueprint
 from .articles import get_articles_page
 from .article import get_article
 from .bookmarksreader import get_bookmarks_page
+from .classroomreader import get_classroom_page
