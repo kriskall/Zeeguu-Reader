@@ -23,6 +23,9 @@ zeeguu.loading {
 /* keeps the translation and origin together */
 .origtrans {
   display: inline-block;
+  position: sticky;
+  margin: 0;
+  line-height: 29px;
 }
 
 /*  zeeguu tag hover changes color, translated word hover no underline or color*/
@@ -47,11 +50,9 @@ zeeguu tran {
 
   margin-top: -9px;
   margin-bottom: 0;
-  position: absolute;
+  position: sticky;
 
-  padding: 3px;
-  padding-left: 0.3em;
-  padding-right: 0.2em;
+  padding: 2px;
 
   border-radius: 0.3em 0.3em 0.3em 0.3em;
   background-clip: padding-box;
@@ -64,6 +65,7 @@ zeeguu tran {
   font-weight: 300;
   color: #4f4f4f;
   text-transform: lowercase;
+  text-align: center;
 }
 
 /*
@@ -267,6 +269,12 @@ h4 {
 h5,
 h6 {
   font-size: 0.7em;
+}
+
+.seperator {
+  border-radius: 5px;
+  border: 1px solid #ffbb54;
+  background-color: #ffbb54;
 }
 
 #source {
