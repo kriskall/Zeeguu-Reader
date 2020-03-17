@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <!--This is a test-push for the Kristin Reader-->
-
   <head>
     <title>Zeeguu Reader</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -240,11 +238,7 @@
                 alt="Loading..."
               />
             </div>
-            <div id="toastmessage" class="mdl-js-snackbar mdl-snackbar">
-              <div class="mdl-snackbar__text"></div>
-              <button class="mdl-snackbar__action" type="button"></button>
-            </div>
-          </div>
+         
         </section>
         <section class="mdl-layout__tab-panel" id="starred">
           <div class="page-content">
@@ -330,17 +324,12 @@
                      <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
                 </div>
             </div>
-            <div class="articleLinkTranslation">
-              {% raw %}{{articleLinkTitle}}{% endraw %}
-              <p class="title translatable">
-                <span id="articleTitle"></span>
-            </p>
-          </div>
-            <!--Article Summary
+           
+          
             <div class="articleLinkSummary">
                 {% raw %}{{articleSummary}}{% endraw %}
             </div>
-          -->
+          
             <div class="articleTopics">
               <div class="articleLinkImage">
                 <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
@@ -354,66 +343,6 @@
     <div class="articleLinkSpacer"></div>
   </script>
 
-  <!-- Template for a starred article link. -->
-  <script id="starred-articleLink-template" type="text/template">
-    <li class="articleLinkEntry" articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
-
-        <div class="articleLinkHeader">
-
-
-            <a class="fadeoutOnClick articleLinkTitle headerElement"
-               href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
-
-
-                {% raw %}{{ articleLinkTitle }}{% endraw %}
-
-                <br/>
-                <i style="display:{% raw %}{{ articleLinkDisplayStar }}{% endraw %}"
-                   class="material-icons star">star</i>
-                <i style="display:{% raw %}{{ articleLinkDisplayLike }}{% endraw %}" class="material-icons star">thumb_up</i>
-
-
-            </a>
-
-
-            <div class="starredFlag headerElement">
-                <span class="flag-icon flag-icon-{% raw %}{{ articleLinkLanguage }}{% endraw %} headerElement"></span>
-            </div>
-        </div>
-    </li>
-    <div class="articleLinkSpacer"></div>
-  </script>
-
-  <!-- Template for a cohort article link. -->
-  <script id="cohort-articleLink-template" type="text/template">
-    <li class="fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
-        articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
-        <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
-            <div class="articleLinkHeader">
-                <!-- <div class="articleLinkImage headerElement">
-                    <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
-                </div> -->
-                <div class="articleLinkTitle headerElement">
-                    {% raw %}{{ articleLinkTitle }}{% endraw %}
-                    <span class="wordCount"> ({% raw %}{{ wordCount }}{% endraw %} words)</span>
-                </div>
-                <div class="articleLinkDifficulty headerElement">
-                    <span class="articleLinkDifficultyText"
-                          style="background: {% raw %}{{articleDifficultyColor}}{% endraw %}"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
-                    <span class="linkLanguageIcon flag-icon flag-icon-{% raw %}{{ articleLinkLanguage }}{% endraw %}"></span>
-                </div>
-            </div>
-            <div class="articleLinkSummary">
-                <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
-                {% raw %}{{articleSummary}}{% endraw %}
-            </div>
-            <div class="articleTopics">
-                {% raw %}{{articleTopics}}{% endraw %}
-            </div>
-        </a>
-    </li>
-    <div class="articleLinkSpacer"></div>
-  </script>
 
   <script id="search-notification-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry search-notification-box">
