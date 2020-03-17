@@ -1,60 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zeeguu Reader</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+  {% extends 'articleHeader.html' %}
+  {% block header %}
 
-      gtag("config", "UA-89557275-2");
-    </script>
-
-    <script>
-      var noAvatarURL =
-        "{{url_for('reader_blueprint.static',filename='images/noAvatar.png')}}";
-    </script>
-
-    <!-- Include the subscription package. -->
-
-    <!--FONT LINK-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <!--CSS for header NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-header.css') }}"
-    />
-    <!--CSS for list NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-list.css') }}"
-    />
-
-    <!--CSS for article-settings NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/article-settings.css') }}"
-    />
-
-    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
-
-    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
-  </head>
   <div
     class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs"
   >
@@ -96,7 +43,8 @@
           <div class="row__tab">
             <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
               Classroom</a
-            >
+            > 
+
           </div>
         </div>
       </div>
@@ -357,7 +305,9 @@
     </li>
     <div class="articleLinkSpacer"></div>
   </script>
+  {% endblock %}
 
   <!-- Dialog windows for adding a source, topic and filter. -->
   {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+ 
 </html>
