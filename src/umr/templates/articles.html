@@ -2,21 +2,55 @@
   {% extends 'articleHeader.html' %}
   {% block header %}
 
+
   <div
     class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs"
   >
-    <header class="mdl-layout__header mdl-layout__header--transparent">
-      <div class="mdl-layout__header-row">
-        <a
-          href="/whatnext"
-          id="return_home"
-          class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon"
-        >
-          <i class="material-icons">home_back</i>
-        </a>
-        <div class="mdl-layout-spacer"></div>
-        "
+  <nav class="sidenav">
+    <img
+    class="zeeguuLogo"
+    src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+    alt="Zeeguu Logo - The Elephant"
+  />
+
+    <div class="dropdown">
+      <button class="dropbtn">| Articles <span id="arrow"></span></button>
+      <div class="dropdown-content">
+        <a href="/read">| All</a>
+        <a href="/read/bookmarks" >| Bookmarks</a>
+        <a href="/read/classroom">| Classroom</a>
       </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">| Words <span id="arrow"></span></button>
+      <div class="dropdown-content">
+        <a href="/bookmarks">| History</a>
+        <a href="/starred_bookmarks">| Starred</a>
+        <a href="/learned_bookmarks">| Learned</a>
+        <a href="/top_bookmarks">| Top</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">| Exercises <span id="arrow"></span></button>
+      <div class="dropdown-content">
+        <a href="#">| Easy</a>
+        <a href="#">| Regular</a>
+        <a href="#">| Ambitious</a>
+      </div>
+    </div>
+
+    <div class="generalNavLinks">
+      <div class="nav-generalbtn">
+        <a class="generalLinks" href="#">Get in touch</a>
+      </div>
+      <div class="nav-generalbtn">
+        <a class="generalLinks" href="#">Sign Out</a>
+      </div>
+    </div>
+  </nav> 
+
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+ 
       <div
         class="mdl-layout__tab-bar mdl-js-ripple-effect"
         class="select-article"
