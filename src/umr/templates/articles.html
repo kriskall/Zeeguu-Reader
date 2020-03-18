@@ -40,12 +40,33 @@
     </div>
 
     <div class="generalNavLinks">
+
+      <div class="settingsbtn">
+        <a class="settingsLink"> 
+          <img
+          class="settingsImg"
+          src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
+          alt="Click here for general settings"
+        />
+        </a>
+      </div>
+      <div class="settingsbtn">
+        <a class="settingsLink"> 
+          <img
+          class="settingsImg"
+          src="{{ url_for('reader_blueprint.static',filename='images/languageSwitch.svg') }}"
+          alt="Click here for general settings"
+        />
+        </a>
+      </div>
+
       <div class="nav-generalbtn">
         <a class="generalLinks" href="#">Get in touch</a>
       </div>
       <div class="nav-generalbtn">
         <a class="generalLinks" href="#">Sign Out</a>
       </div>
+
     </div>
   </nav> 
 
