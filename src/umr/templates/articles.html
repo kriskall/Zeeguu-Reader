@@ -169,7 +169,10 @@
     </div>
   </div>
   <div class="widthOfColumn">
-    <div class="tagsOfTopics"></div>
+    <div class="tagsOfInterests">
+      <button class='closeTagsOfInterests'>X</button>
+      <button class='addInterestButton'>Add + </button>
+    </div>
   </div>
   <div class="widthOfColumn">
     <main class="mdl-layout__content">
@@ -221,7 +224,7 @@
 <script id="subscription-template-source" type="text/template">
        <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
+    	<a class="mdl-chip__action">
     		<i class="material-icons">cancel</i>
     	</a>
     </span>
@@ -231,27 +234,34 @@
 <script id="subscription-template-topic" type="text/template">
        <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
+    	<a class="mdl-chip__action">
     		<i class="material-icons">cancel</i>
     	</a>
     </span>
   </script>
 
-<!-- Template for subscribed search items -->
+
+<!-- Template for subscribed search items MODIFIED-->
 <script id="subscription-template-search" type="text/template">
-       <span searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ search }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
+  <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <a class="mdl-list__item-secondary-action topic">
+        <button 
+        type="button"
+        class="mdl-chip__action interests custom"
+        >
+        <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
+        </button>
+    </a>
+  </div>
+</script>
+
 
 <!-- Template for subscribed language items -->
 <script id="subscription-template-language" type="text/template">
        <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
+    	<a class="mdl-chip__action">
     		<i class="material-icons">cancel</i>
     	</a>
     </span>
