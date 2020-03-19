@@ -36,15 +36,16 @@ button {
 
 #search-expandable {
   all: unset;
-  border: solid #ffbb54;
-  border-radius: 13px;
+  border: 2px solid #ffbb54;
+  border-radius: 15px;
   padding: 2px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 8px;
+  padding-right: 5px;
   font-family: Montserrat;
   font-weight: 100;
   font-size: 14px;
   width: 280px;
+  height: 22px;
 }
 
 .widthOfColumn {
@@ -55,13 +56,14 @@ button {
   margin-top: 20px;
 }
 
-.tagsOfTopics {
+.tagsOfInterests {
   background: #fff4e2;
   border-radius: 3px;
   display: none;
   width: 100%;
   padding: 50px 0;
   text-align: center;
+  padding-bottom: 2%;
 }
 
 .mdl-dialog__content {
@@ -74,32 +76,111 @@ button {
 .sortingCategories {
   float: right;
   display: flex;
-  width: 10em;
+  margin-top: -5px;
+  width: 12em;
   text-align: center;
 }
 
-.levelSorting {
-  margin-left: 64px;
-  text-align: center;
+.wordsSorting {
+  padding-left: 24px;
+  padding-right: 92px;
 }
+
 .triangle {
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 20px solid #dbd8d8;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 15px solid #dbd8d8;
 }
 
-.levelLable,
-.wordLable {
+#triangleWords.clicked {
+  border-top: 15px solid #ffbb54;
+}
+
+#triangleLevel.clicked {
+  border-top: 15px solid #ffbb54;
+}
+
+.levelLabel,
+.wordLabel {
   text-align: center;
   font-family: Montserrat;
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.wordLabel {
+  margin-left: -10px;
+  margin-bottom: 2px;
+}
+
+.levelLabel {
+  margin-left: -5px;
+  margin-bottom: 2px;
+}
+
+.flip {
+  transform: rotate(-180deg);
 }
 
 .material-icons {
   display: none;
 }
+
+/*** INTERESTS / NON-INTERESTS ******/
+
+.addableTitle {
+  font-family: Montserrat;
+  font-size: 16px;
+}
+
+.mdl-chip__action.interests {
+  margin-bottom: 4px;
+  margin-top: 4px;
+  background-color:  #ffbb54;
+  color: white;
+}
+
+.mdl-chip__action.interests.unsubscribed {
+  background-color: white;
+  color: #ffbb54;
+}
+
+.addInterestButton {
+  box-shadow: none;
+  all: unset;
+  border:1px solid #ffbb54;
+  border-radius: 17px;
+  padding: 5px 27px;
+  background-color: #ffffff; 
+  color: #ffbb54;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 400;
+  text-align: center;
+  min-width: 50px;
+  margin-top: 10px;
+  margin-left: 84%;
+}
+
+.closeTagsOfInterests {
+  box-shadow: none;
+    all: unset;
+    border: 1px solid #ffbb54;
+    border-radius: 10px;
+    /* padding: 0px 0px; */
+    background-color: #ffffff;
+    color: #ffbb54;
+    font-size: 15px;
+    font-family: Montserrat;
+    font-weight: 400;
+    text-align: center;
+    min-width: 18px;
+    margin-top: 7px;
+    margin-left: 96%;
+}
+
 /*** SWEEET ALERT ******/
 body.stop-scrolling {
   height: 100%;
@@ -123,7 +204,7 @@ body.stop-scrolling {
 
 .sweet-alert {
   background-color: white;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Montserrat;
   width: 478px;
   padding: 17px;
   border-radius: 5px;
@@ -150,9 +231,11 @@ body.stop-scrolling {
   color: #575757;
   font-size: 30px;
   text-align: center;
+  font-family: Montserrat;
   font-weight: 600;
   text-transform: none;
   position: relative;
+
   margin: 25px 0;
   padding: 0;
   line-height: 40px;
@@ -323,10 +406,10 @@ body.stop-scrolling {
     inset 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 .sweet-alert button:hover {
-  background-color: #7ecff4;
+  background-color: #ffbb52;;
 }
 .sweet-alert button:active {
-  background-color: #5dc2f1;
+  background-color: #ffbb54;;
 }
 .sweet-alert button.cancel {
   background-color: #c1c1c1;

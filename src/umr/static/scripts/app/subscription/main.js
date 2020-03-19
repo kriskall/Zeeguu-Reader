@@ -50,13 +50,14 @@ let topicFilterSubscriber = new TopicFilterSubscriber(
 let languageSubscriptionList = new LanguageSubscriptionList();
 let languageSubscriber = new LanguageSubscriber(languageSubscriptionList);
 
-document.addEventListener(config.EVENT_SUBSCRIPTION, function() {
+
+document.addEventListener(config.EVENT_SUBSCRIPTION, function () {
   articleList.clear();
   articleList.load();
   $(HTML_ID_SEARCH_NOTIFICATION).empty();
 });
 
-document.addEventListener(config.EVENT_LOADING, function() {
+document.addEventListener(config.EVENT_LOADING, function () {
   articleList.clear();
   articleList.showLoader();
 });
@@ -79,7 +80,8 @@ export function article_list_has_focus() {
 
 function prepare_tab_interaction(tab_name) {
   //this is designed for the cohort, inbox, and starred tabs on the home of the reader
-  $("#" + tab_name + "_tab").click(function(e) {
+
+  $("#" + tab_name + "_tab").click(function (e) {
     localStorage.setItem("activeTab", tab_name);
   });
 }
@@ -100,11 +102,12 @@ function activate_last_used_tab_if_available() {
 
 /* When the document has finished loading,
  * bind all necessary listeners. */
-$(document).ready(function() {
+$(document).ready(function () {
   starredArticleList.load();
   cohortArticleList.load();
   topicSubscriptionList.load();
-  topicSubscriber.load();
+  topicSubscriber.loadAvailable();
+  topicSubscriber.loadSubscribed();
   topicFilterSubscriptionList.load();
   topicFilterSubscriber.load();
   searchSubscriptionList.load();
@@ -122,37 +125,92 @@ $(document).ready(function() {
   let showAddLanguageDialog = document.querySelector(
     ".show-language-subscriber"
   );
-  $(showAddLanguageDialog).click(function() {
+
+  $(showAddLanguageDialog).click(function () {
     languageSubscriber.open();
   });
 
   let showAddFeedDialogButton = document.querySelector(
     ".show-source-subscriber"
   );
-  $(showAddFeedDialogButton).click(function() {
+
+  $(showAddFeedDialogButton).click(function () {
     sourceSubscriber.open();
   });
 
   let showAddTopicDialogButton = document.querySelector(
     ".show-topic-subscriber"
   );
-  $(showAddTopicDialogButton).click(function() {
+
+  $(showAddTopicDialogButton).click(function () {
     topicSubscriber.open();
   });
 
   let showAddFilterDialogButton = document.querySelector(
     ".show-filter-subscriber"
   );
-  $(showAddFilterDialogButton).click(function() {
+
+  $(showAddFilterDialogButton).click(function () {
     topicFilterSubscriber.open();
   });
 
+  var countWords = 0;
+  $(".wordsSorting").click(function () {
+    countWords++;
+    if (countWords == 1) {
+      var elem = $("#articleLinkList")
+        .find("li")
+        .sort(sortLowToHighWords);
+      $("#articleLinkList").append(elem);
+      $("#triangleWords").addClass("flip");
+      $("#triangleWords").addClass("clicked");
+      console.log("sort low to high");
+    } else if (countWords == 2) {
+      var elem = $("#articleLinkList")
+        .find("li")
+        .sort(sortHighToLowWords);
+      $("#articleLinkList").append(elem);
+      $("#triangleWords").removeClass("flip");
+      console.log("sort high to low");
+    } else if (countWords == 3) {
+      location.reload();
+      $("#triangleWords").removeClass("clicked");
+      console.log("reload words");
+      countWords = 0;
+    }
+  });
+
+  var countLevel = 0;
+  $(".levelSorting").click(function () {
+    countLevel++;
+    if (countLevel == 1) {
+      var elem = $("#articleLinkList")
+        .find("li")
+        .sort(sortLowToHighLevel);
+      $("#articleLinkList").append(elem);
+      $("#triangleLevel").addClass("clicked");
+      console.log("sort level low to high");
+    } else if (countLevel == 2) {
+      $("#triangleLevel").addClass("flip");
+      var elem = $("#articleLinkList")
+        .find("li")
+        .sort(sortHighToLowLevel);
+      $("#articleLinkList").append(elem);
+      console.log("sort level high to low");
+    } else if (countLevel == 3) {
+      location.reload();
+      $("#triangleLevel").removeClass("clicked");
+      $("#triangleLevel").removeClass("flip");
+      console.log("reload level");
+      countLevel = 0;
+    }
+  });
+
   let searchExecuted = document.querySelector("#search-expandable");
-  $(searchExecuted).keyup(function(event) {
+  $(searchExecuted).keyup(function (event) {
     if (event.keyCode === 13) {
       let input = $(searchExecuted).val();
       $(searchExecuted).val("");
-
       articleList.search(input);
       showSearchNotification(input);
     }
@@ -164,6 +222,43 @@ $(document).ready(function() {
   // keyboard navigation
   set_keyboard_focus_to_article_list();
 });
+
+function sortLowToHighWords(a, b) {
+  var aInt = getIntegerWords(a.className);
+  var bInt = getIntegerWords(b.className);
+  return aInt < bInt ? -1 : 1;
+}
+
+function sortLowToHighLevel(a, b) {
+  var aInt = getIntegerLevel(a.className);
+  var bInt = getIntegerLevel(b.className);
+  return aInt < bInt ? -1 : 1;
+}
+
+function sortHighToLowWords(a, b) {
+  var aInt = getIntegerWords(a.className);
+  var bInt = getIntegerWords(b.className);
+  return aInt > bInt ? -1 : 1;
+}
+function sortHighToLowLevel(a, b) {
+  var aInt = getIntegerLevel(a.className);
+  var bInt = getIntegerLevel(b.className);
+  return aInt > bInt ? -1 : 1;
+}
+
+function getIntegerWords(classNameList) {
+  var int = 0;
+  var classList = classNameList.split(/\s+/);
+  int = parseInt(classList[0]);
+  return int;
+}
+
+function getIntegerLevel(classNameList) {
+  var int = 0;
+  var classList = classNameList.split(/\s+/);
+  int = parseFloat(classList[1]);
+  return int;
+}
 
 /* Called when no image could be loaded as an article avatar. */
 function noAvatar(image) {
@@ -184,14 +279,15 @@ function showSearchNotification(input) {
   let searchNotificationBox = document.querySelector(
     ".search-notification-box"
   );
-  $(searchNotificationBox).click(function() {
+
+  $(searchNotificationBox).click(function () {
     articleList.clear();
     articleList.load();
     $(HTML_ID_SEARCH_NOTIFICATION).empty();
   });
 }
 
-$(document).keydown(function(event) {
+$(document).keydown(function (event) {
   if (article_list_has_focus()) {
     let highlighted_element = $("#articleLinkList").children(
       ".highlightedArticle"
@@ -268,7 +364,8 @@ function _select_next_article(highlighted_element, direction_forward) {
 }
 
 export function reload_articles_on_drawer_close() {
-  $(".mdl-layout__obfuscator").click(function() {
+
+  $('.subscribeButton').click(function () {
     document.dispatchEvent(new CustomEvent(config.EVENT_SUBSCRIPTION));
     set_keyboard_focus_to_article_list();
   });

@@ -141,13 +141,6 @@ function attachInteractionScripts() {
   ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function(button_id) {
     $(button_id).click(difficulty_feedback_handler);
   });
-
-  let feedback_button_handler = handle_article_feedback_button();
-  ARTICLE_FEEDBACK_BUTTON_IDS.forEach(function(button_id) {
-    $(button_id).click(feedback_button_handler);
-  });
-
-  $("#read_later").click(handle_read_later_button_click());
 }
 
 function log_user_leaves_article() {
@@ -204,7 +197,8 @@ function handle_CONTENT_SCROLL_EVENT() {
 
 /* Clicking anywhere in the document when the
  * alter menu is open, except for the input field,
- * will close the alter menu.
+ * will close the alter menu. 
+ * I, KATRINE, COMMENTED THIS OUT BECAUSE IT WAS OBSTRUCTING MY WORK!
 $(document).click(function (event) {
     let $target = $(event.target);
     if (!$target.is('input') && alterMenu.isOpen()) {
@@ -212,7 +206,8 @@ $(document).click(function (event) {
     } else if ($target.is('input') && $target.val() === config.TEXT_SUGGESTION) {
         $target.attr('value', '');
     }
-});*/
+});
+*/
 
 /* Listens on keypress 'enter' to set the user suggestion
  * as the chosen translation and sends the user's contribution
