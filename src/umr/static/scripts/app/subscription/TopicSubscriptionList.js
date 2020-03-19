@@ -5,11 +5,11 @@ import Notifier from '../Notifier';
 import 'loggly-jslogger';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import {GET_SUBSCRIBED_TOPICS} from '../zeeguuRequests';
-import {SUBSCRIBE_TOPIC_ENDPOINT} from '../zeeguuRequests';
-import {UNSUBSCRIBE_TOPIC_ENDPOINT} from '../zeeguuRequests';
+import { GET_SUBSCRIBED_TOPICS } from '../zeeguuRequests';
+import { SUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests';
+import { UNSUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests';
 import ArticleList from "./ArticleList";
-import {reload_articles_on_drawer_close} from './main.js';
+import { reload_articles_on_drawer_close } from './main.js';
 
 
 const HTML_ID_SUBSCRIPTION_LIST = '#topicsList';
@@ -83,22 +83,19 @@ export default class TopicSubscriptionList {
     _addSubscription(topic) {
         if (this.topicList.has(topic.id))
             return;
-
-        let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
-        let subscription = $(Mustache.render(template, topic));
-        let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
-        let _unfollow = this._unfollow.bind(this);
-        removeButton.click(function (topic) {
-            return function () {
-                _unfollow(topic);
-            };
-        }(topic));
-        $(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
+        //let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
+        //let subscription = $(Mustache.render(template, topic));
+        //let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
+        //let _unfollow = this._unfollow.bind(this);
+        //removeButton.click(function (topic) {
+        //    return function () {
+        //        _unfollow(topic);
+        //    };
+        //}(topic));
+        //$(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
 
         this.topicList.set(topic.id, topic);
         this.show_no_topic_message_if_necessary();
-
-
     }
 
     show_no_topic_message_if_necessary() {
@@ -115,13 +112,11 @@ export default class TopicSubscriptionList {
      * @param {Object} topic - Data of the particular topic to subscribe to.
      */
     follow(topic) {
-
         UserActivityLogger.log(USER_EVENT_FOLLOWED_FEED, topic.id, topic);
         this._addSubscription(topic);
         this._loading();
         let callback = ((data) => this._onTopicFollowed(topic, data)).bind(this);
-
-        ZeeguuRequests.post(SUBSCRIBE_TOPIC_ENDPOINT, {topic_id: topic.id}, callback);
+        ZeeguuRequests.post(SUBSCRIBE_TOPIC_ENDPOINT, { topic_id: topic.id }, callback);
     }
 
     /**
@@ -150,7 +145,7 @@ export default class TopicSubscriptionList {
         this._remove(topic);
         this._loading();
         let callback = ((data) => this._onTopicUnfollowed(topic, data)).bind(this);
-        ZeeguuRequests.post(UNSUBSCRIBE_TOPIC_ENDPOINT, {topic_id: topic.id}, callback);
+        ZeeguuRequests.post(UNSUBSCRIBE_TOPIC_ENDPOINT, { topic_id: topic.id }, callback);
     }
 
     /**
