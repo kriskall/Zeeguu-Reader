@@ -166,25 +166,42 @@ zeeguu tran[chosen]:after {
   content: attr(chosen);
 }
 
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  align-self: stretch;
+  align-items: center;
+  height: 64px;
+  margin: 30px;
+}
+
+.tool {
+  width: 70px;
+  background-color: #ffbb54;
+  border: 1px solid #ffbb54;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.main-tools {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
 #back_button {
-  left: -2.5em;
 }
 
 #read_later_link {
-  left: -2.5em;
-}
-
-.reader_toolbar_button {
-  color: white;
 }
 
 #toggle_undo {
-  right: 1em;
-  color: rgba(0, 0, 0, 0.26);
 }
 
 #toggle_copy {
-  right: 0.5em;
 }
 
 #toggle_star {
@@ -277,6 +294,10 @@ h6 {
   background-color: #ffbb54;
 }
 
+.articleDetails {
+  display: flex;
+}
+
 #source {
   font-size: 16px;
   font-weight: 600;
@@ -287,7 +308,7 @@ h6 {
   text-align: left;
   color: grey;
   font-style: italic;
-  font-size: 13px;
+  font-size: 10px;
   line-height: 20px;
 }
 
@@ -297,6 +318,20 @@ a {
 
 a:hover {
   color: #505050;
+}
+
+.bookmark_button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: none;
+  background-color: transparent;
+}
+
+.bookmark_icon {
+  width: 40px;
+  height: 40px;
 }
 
 .page-content,

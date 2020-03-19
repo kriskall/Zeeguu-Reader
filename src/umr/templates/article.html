@@ -51,19 +51,15 @@
     <!-- Top bar -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header mdl-layout__header--transparent">
-        {% include "question__problems_with_article.html" %}
+        <!-- {% include "question__problems_with_article.html" %} -->
 
-        <div
-          id="header_row"
-          style="visibility:hidden"
-          class="mdl-layout__header-row"
-        >
-          <a
+        <div id="header_row" class="toolbar">
+          <!-- <a
             id="back_button"
             {#
             href="{{ url_for('reader_blueprint.articles') }}"
             #}
-            class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon reader_toolbar_button"
+            class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon "
           >
             <i class="material-icons">arrow_back</i>
           </a>
@@ -76,9 +72,7 @@
             id="read_later_link"
             href="{{ url_for('reader_blueprint.articles') }}"
           >
-            <i id="read_later" class="material-icons reader_toolbar_button"
-              >watch_later</i
-            >
+            <i id="read_later" class="material-icons">watch_later</i>
           </a>
 
           <div class="mdl-tooltip" data-mdl-for="read_later_link">
@@ -86,27 +80,36 @@
           </div>
 
           <div class="mdl-layout-spacer"></div>
-          <button
-            id="toggle_undo"
-            class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon "
-          >
-            <i class="material-icons">undo</i>
-          </button>
 
-          <button
-            id="toggle_copy"
-            class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon mdl-button--disabled "
-          >
-            <i class="material-icons">content_copy</i>
-          </button>
+        -->
 
-          <button
-            id="toggle_star"
-            class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon "
-          >
-            <i id="star_border" class="material-icons star">star_border</i>
-            <i id="star_fill" class="material-icons star off">star</i>
-          </button>
+          <div class="main-tools">
+            <div>
+              <button id="toggle_undo" class="tool">
+                <img
+                  src="{{ url_for('reader_blueprint.static',filename='images/SVGs/undo.svg') }}"
+                  alt="undo a translation"
+                />
+              </button>
+            </div>
+
+            <button
+              class="tool"
+              id="toggle_copy"
+              class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon mdl-button--disabled "
+            >
+              <i class="material-icons">content_copy</i>
+            </button>
+
+            <button
+              class="tool"
+              id="toggle_star"
+              class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon "
+            >
+              <i id="star_border" class="material-icons star">star_border</i>
+              <i id="star_fill" class="material-icons star off">star</i>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -124,12 +127,22 @@
               <p class="title translatable">
                 <span id="articleTitle"></span>
               </p>
+
               <hr class="seperator" />
-              <p id="articleInfo">
-                <span id="articleURL"></span>
-                <a href="" id="source">source<br /></a>
-                <span id="authors"></span>
-              </p>
+              <div class="articleDetails">
+                <button class="bookmark_button">
+                  <img
+                    class="bookmark_icon"
+                    src="{{ url_for('reader_blueprint.static',filename='images/SVGs/bookmark-yellow.svg') }}"
+                    alt="bookmark this article"
+                  />
+                </button>
+                <p id="articleInfo">
+                  <span id="articleURL"></span>
+                  <a href="" id="source">source<br /></a>
+                  <span id="authors"></span>
+                </p>
+              </div>
               <div id="articleContent" class="translatable"></div>
               <br />
             </div>
