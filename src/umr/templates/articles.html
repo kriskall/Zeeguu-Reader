@@ -231,11 +231,7 @@
             <ul id="articleLinkList" class="articleLinkList"></ul>
             <br />
             <div id="emptyArticleListImage" class="emptyPage">
-              <img
-                class="sadEleph"
-                src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-                alt="Not subscribed to any feeds..."
-              />
+              <p> No articles</p>
             </div>
             <div class="loader">
               <img
@@ -258,19 +254,7 @@
             </div>
           </div>
         </section>
-        <section class="mdl-layout__tab-panel" id="cohort">
-          <div class="page-content">
-            <ul id="cohortArticleList" class="articleLinkList"></ul>
-            <div id="emptyCohortArticleListImage" class="emptyPage">
-              <p>There are no articles in your class</p>
-              <img
-                class="sadEleph"
-                src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-                alt="Not subscribed to any feeds..."
-              />
-            </div>
-          </div>
-        </section>
+      
       </main>
     </div>
   </div>
