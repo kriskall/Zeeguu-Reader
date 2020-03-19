@@ -5,7 +5,7 @@ body {
 }
 
 /***********The article list style************/
-#articleLinkList {
+.articleLinkList {
   list-style-type: none;
   list-style-position: inside;
   padding: 0;
@@ -18,7 +18,7 @@ body {
   flex-direction: column;
 }
 
-#articleLinkList a {
+.articleLinkList a {
   text-decoration: none;
   font-family: Montserrat;
   color: black;
@@ -30,7 +30,7 @@ body {
   color: black;
   padding-right: 250px;
 }
-.articleLinkTranslation {
+.articleLinkSummary {
   font-size: 16px;
   color: #6d6d6d;
   max-width: 54em;

@@ -50,6 +50,7 @@ let topicFilterSubscriber = new TopicFilterSubscriber(
 let languageSubscriptionList = new LanguageSubscriptionList();
 let languageSubscriber = new LanguageSubscriber(languageSubscriptionList);
 
+
 document.addEventListener(config.EVENT_SUBSCRIPTION, function () {
   articleList.clear();
   articleList.load();
@@ -79,6 +80,7 @@ export function article_list_has_focus() {
 
 function prepare_tab_interaction(tab_name) {
   //this is designed for the cohort, inbox, and starred tabs on the home of the reader
+
   $("#" + tab_name + "_tab").click(function (e) {
     localStorage.setItem("activeTab", tab_name);
   });
@@ -123,6 +125,7 @@ $(document).ready(function () {
   let showAddLanguageDialog = document.querySelector(
     ".show-language-subscriber"
   );
+
   $(showAddLanguageDialog).click(function () {
     languageSubscriber.open();
   });
@@ -130,6 +133,7 @@ $(document).ready(function () {
   let showAddFeedDialogButton = document.querySelector(
     ".show-source-subscriber"
   );
+
   $(showAddFeedDialogButton).click(function () {
     sourceSubscriber.open();
   });
@@ -137,6 +141,7 @@ $(document).ready(function () {
   let showAddTopicDialogButton = document.querySelector(
     ".show-topic-subscriber"
   );
+
   $(showAddTopicDialogButton).click(function () {
     topicSubscriber.open();
   });
@@ -144,6 +149,7 @@ $(document).ready(function () {
   let showAddFilterDialogButton = document.querySelector(
     ".show-filter-subscriber"
   );
+
   $(showAddFilterDialogButton).click(function () {
     topicFilterSubscriber.open();
   });
@@ -273,6 +279,7 @@ function showSearchNotification(input) {
   let searchNotificationBox = document.querySelector(
     ".search-notification-box"
   );
+
   $(searchNotificationBox).click(function () {
     articleList.clear();
     articleList.load();
@@ -357,9 +364,9 @@ function _select_next_article(highlighted_element, direction_forward) {
 }
 
 export function reload_articles_on_drawer_close() {
+
   $('.subscribeButton').click(function () {
     document.dispatchEvent(new CustomEvent(config.EVENT_SUBSCRIPTION));
     set_keyboard_focus_to_article_list();
   });
 }
-

@@ -281,17 +281,12 @@
                     <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
                 </div>
             </div>
-            <div class="articleLinkTranslation">
-              {% raw %}{{articleLinkTitle}}{% endraw %}
-              <p class="title translatable">
-                <span id="articleTitle"></span>
-            </p>
-          </div>
-            <!--Article Summary
+           
+          
             <div class="articleLinkSummary">
                 {% raw %}{{articleSummary}}{% endraw %}
             </div>
-          -->
+          
             <div class="articleTopics">
               <div class="articleLinkImage">
                 <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
@@ -379,6 +374,8 @@
     </li>
     <div class="articleLinkSpacer"></div>
   </script>
+  {% endblock %}
+
 
 <!-- Dialog windows for adding a source, topic and filter. -->
 {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
