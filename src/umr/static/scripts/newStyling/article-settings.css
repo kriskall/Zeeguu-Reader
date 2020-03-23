@@ -17,35 +17,35 @@
 .mdl-chip__action {
   box-shadow: none;
   all: unset;
-  border-radius: 17px;
-  padding: 5px 27px;
+  border-radius: 1.0625em;
+  padding: 0.3125em 1.6875em;
   background-color: #ffbb54;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 1em;
   font-family: Montserrat;
   font-weight: 400;
   text-align: center;
-  min-width: 100px;
+  min-width: 6.25em;
 }
 
 .interestButton,
 button {
-  margin-right: 10px;
+  margin-right: 0.625em;
   width: 100%;
 }
 
 #search-expandable {
   all: unset;
-  border: 2px solid #ffbb54;
-  border-radius: 15px;
-  padding: 2px;
-  padding-left: 8px;
+  border: 0.125em solid #ffbb54;
+  border-radius: 0.9375em;
+  padding: 0.125em;
+  padding-left: 0.5em;
   padding-right: 5px;
   font-family: Montserrat;
   font-weight: 100;
-  font-size: 14px;
-  width: 280px;
-  height: 22px;
+  font-size: 0.875em;
+  width: 17.5em;
+  height: 1.375em;
 }
 
 .widthOfColumn {
@@ -53,15 +53,15 @@ button {
   flex: 1;
   justify-content: center;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 1.25em;
 }
 
 .tagsOfInterests {
   background: #fff4e2;
-  border-radius: 3px;
+  border-radius: 0.1875em;
   display: none;
   width: 100%;
-  padding: 50px 0;
+  padding: 3.125em 0;
   text-align: center;
   padding-bottom: 2%;
 }
@@ -76,22 +76,22 @@ button {
 .sortingCategories {
   float: right;
   display: flex;
-  margin-top: -5px;
+  margin-top:-0.3125em;
   width: 12em;
   text-align: center;
 }
 
 .wordsSorting {
-  padding-left: 24px;
-  padding-right: 92px;
+  padding-left: 1.5em;
+  padding-right: 5.75em;
 }
 
 .triangle {
   width: 0;
   height: 0;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-top: 15px solid #dbd8d8;
+  border-left: 0.5625em solid transparent;
+  border-right: 0.5625em solid transparent;
+  border-top: 0.9375em solid #dbd8d8;
 }
 
 #triangleWords.clicked {
@@ -111,13 +111,13 @@ button {
 }
 
 .wordLabel {
-  margin-left: -10px;
-  margin-bottom: 2px;
+  margin-left: -0.625em;
+  margin-bottom: 0.125em;
 }
 
 .levelLabel {
-  margin-left: -5px;
-  margin-bottom: 2px;
+  margin-left: -0.3125em;
+  margin-bottom: 0.125em;
 }
 
 .flip {
@@ -132,13 +132,13 @@ button {
 
 .addableTitle {
   font-family: Montserrat;
-  font-size: 16px;
+  font-size: 1em;
 }
 
 .mdl-chip__action.interests {
-  margin-bottom: 4px;
-  margin-top: 4px;
-  background-color:  #ffbb54;
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+  background-color: #ffbb54;
   color: white;
 }
 
@@ -150,35 +150,34 @@ button {
 .addInterestButton {
   box-shadow: none;
   all: unset;
-  border:1px solid #ffbb54;
-  border-radius: 17px;
-  padding: 5px 27px;
-  background-color: #ffffff; 
+  border: 0.0625em solid #ffbb54;
+  border-radius: 1.0625em;
+  padding: 0.3125em 1.6875em;
+  background-color: #ffffff;
   color: #ffbb54;
-  font-size: 16px;
+  font-size: 1em;
   font-family: Montserrat;
   font-weight: 400;
   text-align: center;
-  min-width: 50px;
-  margin-top: 10px;
+  min-width: 3.125em;
+  margin-top: 0.625em;
   margin-left: 84%;
 }
 
 .closeTagsOfInterests {
   box-shadow: none;
-    all: unset;
-    border: 1px solid #ffbb54;
-    border-radius: 10px;
-    /* padding: 0px 0px; */
-    background-color: #ffffff;
-    color: #ffbb54;
-    font-size: 15px;
-    font-family: Montserrat;
-    font-weight: 400;
-    text-align: center;
-    min-width: 18px;
-    margin-top: 7px;
-    margin-left: 96%;
+  all: unset;
+  border: 0.0625em solid #ffbb54;
+  border-radius: 0.625em;
+  background-color: #ffffff;
+  color: #ffbb54;
+  font-size: 0.9375em;
+  font-family: Montserrat;
+  font-weight: 400;
+  text-align: center;
+  min-width: 1.125em;
+  margin-top: 0.4375em;
+  margin-left: 96%;
 }
 
 /*** SWEEET ALERT ******/
