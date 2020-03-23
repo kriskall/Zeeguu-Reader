@@ -3,18 +3,23 @@ import Mustache from 'mustache';
 import swal from 'sweetalert';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import {GET_AVAILABLE_TOPICS} from '../zeeguuRequests';
-import {take_keyboard_focus_away_from_article_list} from './main.js';
+import { GET_AVAILABLE_TOPICS, GET_SUBSCRIBED_FILTERS } from '../zeeguuRequests';
 
-const HTML_ID_DIALOG_TEMPLATE = '#add-filter-dialog-template';
-const HTML_ID_ADD_FEED_LIST = '#addableFilterList';
-const HTML_ID_FEED_TEMPLATE = '#topicAddable-template';
-const HTML_CLASS_SUBSCRIBE_BUTTON = ".subscribeButton";
-const HTML_CLASS_FEED_ICON = '.feedIcon';
+const HTML_ID_FEED_TEMPLATE = '#noninterest-template';
 const USER_EVENT_OPENED_FEEDSUBSCRIBER = 'OPEN FILTERSUBSCRIBER';
+const NONINTERESTS = ".show-filter-subscriber";
+const INTERESTS = ".show-topic-subscriber";
+const ALL_NONINTERESTS = ".tagsOfNonInterests";
+const NONINTEREST_CSS = ".noninterest";
+const SUBSCRIBED = "subscribed"
+const ADD_CUSTOM_NONINTEREST = ".addNonInterestButton";
+const CUSTOM_NONINTEREST_BUTTON = "noninterests custom";
+const CLOSE_BUTTON = ".closeTagsOfNonInterests";
+
 let self;
+
 /**
- * Allows the user to add topic subscriptions.
+ * Allows the user to add and remove non-interest subscriptions.
  */
 export default class TopicFilterSubscriber {
 
@@ -29,93 +34,156 @@ export default class TopicFilterSubscriber {
         self = this;
     }
 
-    follow(input){
+    follow(input) {
         this.searchFilterSubscriptionList.follow(input)
     }
 
     /**
-     * Open the dialog window containing the list of topics.
-     * Uses the sweetalert library.
+     * Open the dialog window containing the list of avaible and subscribed non-interests.
      */
     open() {
-
-        take_keyboard_focus_away_from_article_list();
-
         UserActivityLogger.log(USER_EVENT_OPENED_FEEDSUBSCRIBER);
-        let template = $(HTML_ID_DIALOG_TEMPLATE).html();
-        swal({
-            title: 'Not Interesting',
-            text: template,
-            html: true,
-            allowOutsideClick: true,
-            showCancelButton: true,
-            showConfirmButton: false,
-            cancelButtonText: 'Close',
-        });
+        document.querySelector(ALL_NONINTERESTS).style.display = "block";
+        document.querySelector(INTERESTS).disabled = true;
+        this._makeCloseable();
+        this._addNonInteres();
+    }
 
-        let addCustomFilter = document.querySelector('.addCustomFilter');
-        $(addCustomFilter).click(function () {
+    /**
+     * Calls the two functions of the class that requests the available and subscribed non-interests.
+     */
+    load() {
+        this.loadAvailable();
+        this.loadSubscribed();
+    }
+
+    /**
+     * Call Zeeguu and requests available non-interests.
+     * Uses {@link ZeeguuRequests}.
+     */
+    loadAvailable() {
+        ZeeguuRequests.get(
+            GET_AVAILABLE_TOPICS,
+            {},
+            this._loadAvailableNonInterests.bind(this)
+        );
+    }
+
+    /**
+    * Call Zeeguu and requests subscribed non-interests.
+    * Uses {@link ZeeguuRequests}.
+    */
+    loadSubscribed() {
+        ZeeguuRequests.get(
+            GET_SUBSCRIBED_FILTERS,
+            {},
+            this._loadSubscribedNonInterests.bind(this),
+        );
+    }
+
+    /**
+     * Fills the dialog's list with all the subscribed non-interests.
+     * Callback function for zeeguu.
+     * @param {Object[]} data - A list of topics the user has added as a non-interest.
+     */
+    _loadSubscribedNonInterests(data) {
+        let template = $(HTML_ID_FEED_TEMPLATE).html();
+        let custom = document.getElementsByClassName(CUSTOM_NONINTEREST_BUTTON);
+        $(custom).removeClass(SUBSCRIBED);
+        for (let i = 0; i < data.length; i++) {
+            let feedOption = $(Mustache.render(template, data[i]));
+            let nonInterest = $(feedOption.find(NONINTEREST_CSS));
+            $(nonInterest).addClass(SUBSCRIBED);
+            nonInterest.click(
+                (function (data, feedOption, topicFilterSubscriptionList) {
+                    return function () {
+                        if ($(nonInterest).hasClass(SUBSCRIBED)) {
+                            topicFilterSubscriptionList._unfollow(data);
+                            $(nonInterest).removeClass(SUBSCRIBED);
+                            console.log("unsubscribed non-interest");
+                        }
+                        else {
+                            topicFilterSubscriptionList.follow(data);
+                            $(nonInterest).addClass(SUBSCRIBED);
+                            console.log("subscribed non-interest");
+                        }
+                    }
+                })(data[i], feedOption, this.topicFilterSubscriptionList)
+            );
+            this._appendNonInerest(template, feedOption);
+        }
+    }
+
+    /**
+     * Fills the dialog's list with all the available non-interests.
+     * Callback function for zeeguu.
+     * @param {Object[]} data - A list of topics the user can add as a non-interest.
+     */
+    _loadAvailableNonInterests(data) {
+        let template = $(HTML_ID_FEED_TEMPLATE).html();
+        for (let i = 0; i < data.length; i++) {
+            let feedOption = $(Mustache.render(template, data[i]));
+            let nonInterest = $(feedOption.find(NONINTEREST_CSS));
+            nonInterest.click(
+                (function (data, feedOption, topicFilterSubscriptionList) {
+                    return function () {
+                        if ($(nonInterest).hasClass(SUBSCRIBED)) {
+                            topicFilterSubscriptionList._unfollow(data);
+                            $(nonInterest).removeClass(SUBSCRIBED);
+                            console.log("unsubscribed non-interest");
+                        } else {
+                            topicFilterSubscriptionList.follow(data);
+                            $(nonInterest).addClass(SUBSCRIBED);
+                            console.log("subscribed non-interest");
+                        }
+                    };
+                })(data[i], feedOption, this.topicFilterSubscriptionList)
+            );
+            this._appendNonInerest(template, feedOption);
+        }
+    }
+
+    _appendNonInerest(template, feedOption) {
+        $(ALL_NONINTERESTS).append(feedOption);
+    }
+
+    _addNonInteres() {
+        let addCustomNonInterest = document.querySelector(ADD_CUSTOM_NONINTEREST);
+        $(addCustomNonInterest).click(function () {
             swal.close();
-            setTimeout(function() {
+            setTimeout(function () {
                 swal({
-                    title: 'Filter out content',
+                    title: 'Add a non-interst!',
                     type: 'input',
-                    inputPlaceholder: "Filter keywords",
+                    inputPlaceholder: "non-interest",
                     allowOutsideClick: true,
-                    showCancelButton: true,
                     showConfirmButton: true,
-                    confirmButtonText: 'Add own filter!',
+                    showCancelButton: true,
+                    confirmButtonColor: "#ffbb54",
+                    confirmButtonText: 'Add',
                     cancelButtonText: 'Close',
-                }, function(input) {
+                }, function (input) {
                     if (input === "" || input === false) {
                         return false
                     }
                     self.searchFilterSubscriptionList.follow(input);
-                })}, 150);
+                })
+            }, 150);
+        });
+    }
+
+    _makeCloseable() {
+        let closeNonInterests = document.querySelector(NONINTERESTS);
+        $(closeNonInterests).click(function () {
+            document.querySelector(ALL_NONINTERESTS).style.display = "none";
+            location.reload();
         });
 
-        this.load();
+        let closeNonInterestsButton = document.querySelector(CLOSE_BUTTON);
+        $(closeNonInterestsButton).click(function () {
+            document.querySelector(ALL_NONINTERESTS).style.display = "none";
+            location.reload();
+        });
     }
 
-    /**
-     * Call Zeeguu and requests available topics.
-     * Uses {@link ZeeguuRequests}.
-     */
-    load() {
-        ZeeguuRequests.get(GET_AVAILABLE_TOPICS, {}, this._loadFeedOptions.bind(this));
-    }
-
-    /**
-     * Clear the list of topic options.
-     */
-    clear() {
-        $(HTML_ID_ADD_FEED_LIST).empty();
-    }
-
-    /**
-     * Fills the dialog's list with all the addable topics.
-     * Callback function for zeeguu.
-     * @param {Object[]} data - A list of topics the user can subscribe to.
-     */
-    _loadFeedOptions(data) {
-        let template = $(HTML_ID_FEED_TEMPLATE).html();
-        for (let i = 0; i < data.length; i++) {
-            let feedOption = $(Mustache.render(template, data[i]));
-            let subscribeButton = $(feedOption.find(HTML_CLASS_SUBSCRIBE_BUTTON));
-
-            subscribeButton.click(
-                function (data, feedOption, topicFilterSubscriptionList) {
-                    return function() {
-                        topicFilterSubscriptionList.follow(data);
-                        $(feedOption).fadeOut();
-                    };
-            }(data[i], feedOption, this.topicFilterSubscriptionList));
-
-            let feedIcon = $(feedOption.find(HTML_CLASS_FEED_ICON));
-            feedIcon.on( "error", function () {
-                $(this).unbind("error").attr("src", "static/images/noAvatar.png");
-            });
-            $(HTML_ID_ADD_FEED_LIST).append(feedOption);
-        }
-    }
 };

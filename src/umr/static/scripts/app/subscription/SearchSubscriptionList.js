@@ -94,10 +94,6 @@ export default class SearchSubscriptionList {
             };
         }(search));
 
-
-
-        //$(subscription).addClass("mdl-chip__action interests");
-        //.addClass("addableTitle").removeClass("mdl-chip__text");
         $(ALL_INTERESTS).append(subscription);
         this.searchList.set(search.id, search);
     }
@@ -181,6 +177,5 @@ export default class SearchSubscriptionList {
      * Fire event to show loader while subscribing / unsubscribing
      */
     _loading() {
-        // document.dispatchEvent(new CustomEvent(config.EVENT_LOADING));
     }
 };

@@ -16,6 +16,7 @@ const HTML_ID_SUBSCRIPTION_TEMPLATE = '#subscription-template-search';
 const HTML_CLASS_REMOVE_BUTTON = '.removeButton';
 const USER_EVENT_FOLLOWED_FEED = 'FOLLOW SEARCH FILTER';
 const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW SEARCH FILTER';
+const ALL_NONINTERESTS = ".tagsOfNonInterests";
 
 /* Setup remote logging. */
 let logger = new LogglyTracker();
@@ -80,17 +81,19 @@ export default class SearchFilterSubscriptionList {
     _addSubscription(search) {
         if (this.searchFilterSubscriptionList.has(search.id))
             return;
-
         let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
         let subscription = $(Mustache.render(template, search));
-        let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
+
+        let removeButton = $(subscription.find(".mdl-chip__action.interests.custom"));
         let _unfollow = this._unfollow.bind(this);
         removeButton.click(function (search) {
             return function () {
                 _unfollow(search);
+                $(removeButton).fadeOut();
+                console.log("removed")
             };
         }(search));
-        $(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
+        $(ALL_NONINTERESTS).append(subscription);
         this.searchFilterSubscriptionList.set(search.id, search);
     }
 

@@ -59,7 +59,7 @@ document.addEventListener(config.EVENT_SUBSCRIPTION, function () {
 
 document.addEventListener(config.EVENT_LOADING, function () {
   articleList.clear();
-  articleList.showLoader();
+  //articleList.showLoader();
 });
 
 var interacting_with_the_main_article_list;
@@ -106,8 +106,7 @@ $(document).ready(function () {
   starredArticleList.load();
   cohortArticleList.load();
   topicSubscriptionList.load();
-  topicSubscriber.loadAvailable();
-  topicSubscriber.loadSubscribed();
+  topicSubscriber.load();
   topicFilterSubscriptionList.load();
   topicFilterSubscriber.load();
   searchSubscriptionList.load();
@@ -143,7 +142,10 @@ $(document).ready(function () {
   );
 
   $(showAddTopicDialogButton).click(function () {
+
+
     topicSubscriber.open();
+
   });
 
   let showAddFilterDialogButton = document.querySelector(

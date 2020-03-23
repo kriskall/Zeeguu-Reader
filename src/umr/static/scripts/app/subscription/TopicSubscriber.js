@@ -1,24 +1,26 @@
 import $ from "jquery";
 import Mustache from "mustache";
-import config from "../config";
 import swal from "sweetalert";
 import UserActivityLogger from "../UserActivityLogger";
 import ZeeguuRequests from "../zeeguuRequests";
 import { GET_AVAILABLE_TOPICS, GET_SUBSCRIBED_TOPICS } from "../zeeguuRequests";
-import { take_keyboard_focus_away_from_article_list } from "./main.js";
 
-const HTML_ID_ADD_FEED_LIST = "#addableTopicList";
 const HTML_ID_FEED_TEMPLATE = "#topicAddable-template";
 const USER_EVENT_OPENED_FEEDSUBSCRIBER = "OPEN TOPICSUBSCRIBER";
+const INTERESTS = ".show-topic-subscriber";
+const NON_INTERESTS = ".show-filter-subscriber";
+const ALL_INTERESTS = ".tagsOfInterests";
 const UNSUBSCRIBED_CLASS = "unsubscribed"
 const INTEREST_BUTTON = ".mdl-chip__action.interests";
 const INTEREST_BUTTON_HTML = "mdl-chip__action interests";
 const CUSTOM_INTEREST_BUTTON = "mdl-chip__action interests custom";
-const ALL_INTERESTS = ".tagsOfInterests";
+const ADD_CUSTOM_INTEREST = ".addInterestButton";
+const CLOSE_BUTTON = ".closeTagsOfInterests";
+
 let self;
 
 /**
- * Allows the user to add topic subscriptions.
+ * Allows the user to add and remove subscriptions.
  */
 export default class TopicSubscriber {
   /**
@@ -33,45 +35,28 @@ export default class TopicSubscriber {
   }
 
   /**
-   * Open the dialog window containing the list of topics.
-   * Uses the sweetalert library.
+   * Open the dialog window containing the list of avaible and subscribed interests.
    */
   open() {
     UserActivityLogger.log(USER_EVENT_OPENED_FEEDSUBSCRIBER);
-    this.showBlockOfInterests();
+    document.querySelector(ALL_INTERESTS).style.display = "block";
+    document.querySelector(NON_INTERESTS).disabled = true;
+    this._makeCloseable();
+    this._addInterest();
+  }
 
-    let addCustomInterest = document.querySelector('.addInterestButton');
-    $(addCustomInterest).click(function () {
-      swal.close();
-      setTimeout(function () {
-        swal({
-          title: 'Add a personal interst!',
-          type: 'input',
-          inputPlaceholder: "interest",
-          allowOutsideClick: true,
-          showConfirmButton: true,
-          showCancelButton: true,
-          confirmButtonColor: "#ffbb54",
-          confirmButtonText: 'Add',
-          cancelButtonText: 'Close',
-        }, function (input) {
-          if (input === "" || input === false) {
-            return false
-          }
-          self.searchSubscriptionList.follow(input);
-        })
-      }, 150);
-    });
 
-    let closeInterestsButton = document.querySelector('.closeTagsOfInterests');
-    $(closeInterestsButton).click(function () {
-      var blockOfTopics = document.querySelector(ALL_INTERESTS);
-      blockOfTopics.style.display = "none";
-    });
+  /**
+   * Calls the two functions of the class that requests the available and subscribed interests.
+   */
+  load() {
+    this.loadAvailable();
+    this.loadSubscribed();
   }
 
   /**
-   * Call Zeeguu and requests available topics.
+   * Call Zeeguu and requests available interests.
+   * Uses {@link ZeeguuRequests}.
    */
   loadAvailable() {
     ZeeguuRequests.get(
@@ -82,7 +67,8 @@ export default class TopicSubscriber {
   }
 
   /**
-  * Call Zeeguu and requests subscribed topics.
+  * Call Zeeguu and requests subscribed interests.
+  * Uses {@link ZeeguuRequests}.
   */
   loadSubscribed() {
     ZeeguuRequests.get(
@@ -93,25 +79,7 @@ export default class TopicSubscriber {
   }
 
   /**
-   * Clear the list of feed options.
-   */
-  clear() {
-    $(HTML_ID_ADD_FEED_LIST).empty();
-  }
-
-
-
-  showBlockOfInterests() {
-    var blockOfTopics = document.querySelector(ALL_INTERESTS);
-    if (blockOfTopics.style.display === "block") {
-      blockOfTopics.style.display = "none";
-    } else {
-      blockOfTopics.style.display = "block";
-    }
-  }
-
-  /**
-   * Fills the dialog's list with all the subscribed topics.
+   * Fills the dialog's list with all the subscribed interests.
    * Click to subscribe or unsubscribe.
    * Callback function for zeeguu.
    * @param {Object[]} data - A list of topics the user have subscribe to.
@@ -122,18 +90,18 @@ export default class TopicSubscriber {
     this._removeUnsubscribedClassNameFromCustom(template);
     for (let i = 0; i < data.length; i++) {
       let feedOption = $(Mustache.render(template, data[i]));
-      let topic = $(feedOption.find(INTEREST_BUTTON));
-      topic.click(
+      let interest = $(feedOption.find(INTEREST_BUTTON));
+      interest.click(
         (function (data, feedOption, topicSubscriptionList) {
           return function () {
-            if ($(topic).hasClass(UNSUBSCRIBED_CLASS)) {
+            if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
               topicSubscriptionList.follow(data);
-              $(topic).removeClass(UNSUBSCRIBED_CLASS);
+              $(interest).removeClass(UNSUBSCRIBED_CLASS);
               console.log("subscribed");
             }
             else {
               topicSubscriptionList._unfollow(data);
-              $(topic).addClass(UNSUBSCRIBED_CLASS);
+              $(interest).addClass(UNSUBSCRIBED_CLASS);
               console.log("unsubscribed");
             }
           }
@@ -141,13 +109,11 @@ export default class TopicSubscriber {
       );
       this._appendInterest(template, feedOption);
     }
-    this._appendAddButton(template);
+
   }
 
-
-
   /**
-   * Fills the dialog's list with all the unsubscribed topics.
+   * Fills the dialog's list with all the available interests.
    * Click to subscribe or unsubscribe
    * Callback function for zeeguu.
    * @param {Object[]} data - A list of topics the user can subscribe to.
@@ -156,17 +122,17 @@ export default class TopicSubscriber {
     let template = $(HTML_ID_FEED_TEMPLATE).html();
     for (let i = 0; i < data.length; i++) {
       let feedOption = $(Mustache.render(template, data[i]));
-      let topic = $(feedOption.find(INTEREST_BUTTON));
-      topic.click(
+      let interest = $(feedOption.find(INTEREST_BUTTON));
+      interest.click(
         (function (data, feedOption, topicSubscriptionList) {
           return function () {
-            if ($(topic).hasClass(UNSUBSCRIBED_CLASS)) {
+            if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
               topicSubscriptionList.follow(data);
-              $(topic).removeClass(UNSUBSCRIBED_CLASS);
+              $(interest).removeClass(UNSUBSCRIBED_CLASS);
               console.log("subscribed");
             } else {
               topicSubscriptionList._unfollow(data);
-              $(topic).addClass(UNSUBSCRIBED_CLASS);
+              $(interest).addClass(UNSUBSCRIBED_CLASS);
               console.log("unsubscribed");
             }
           };
@@ -189,37 +155,47 @@ export default class TopicSubscriber {
   _appendInterest(template, feedOption) {
     $(ALL_INTERESTS).append(feedOption);
   }
+
+  _addInterest() {
+    let addCustomInterest = document.querySelector(ADD_CUSTOM_INTEREST);
+    $(addCustomInterest).click(function () {
+      swal.close();
+      setTimeout(function () {
+        swal({
+          title: 'Add a personal interst!',
+          type: 'input',
+          inputPlaceholder: "interest",
+          allowOutsideClick: true,
+          showConfirmButton: true,
+          showCancelButton: true,
+          confirmButtonColor: "#ffbb54",
+          confirmButtonText: 'Add',
+          cancelButtonText: 'Close',
+        }, function (input) {
+          if (input === "" || input === false) {
+            return false
+          }
+          self.searchSubscriptionList.follow(input);
+        })
+      }, 150);
+    });
+  }
+
+  _makeCloseable() {
+    let closeInterests = document.querySelector(INTERESTS);
+    $(closeInterests).click(function () {
+      document.querySelector(ALL_INTERESTS).style.display = "none";
+      location.reload();
+    });
+
+    let closeInterestsButton = document.querySelector(CLOSE_BUTTON);
+    $(closeInterestsButton).click(function () {
+      document.querySelector(ALL_INTERESTS).style.display = "none";
+      location.reload();
+    });
+  }
+
 }
 
 
 
-/*
-
- if ($(topic).hasClass("custom") && !$(topic).hasClass(UNSUBSCRIBED_CLASS)) {
-    searchSubscriptionList._unfollow(data);
-    console.log("removed");
-  }
-
-    for (let i = 0; i < data.length; i++) {
-      let feedOption = $(Mustache.render(template, data[i]));
-      let subscribeButton = $(feedOption.find(HTML_CLASS_SUBSCRIBE_BUTTON));
-
-      subscribeButton.click(
-        (function(data, feedOption, topicSubscriptionList) {
-          return function() {
-            topicSubscriptionList.follow(data);
-            $(feedOption).fadeOut();
-          };
-        })(data[i], feedOption, this.topicSubscriptionList)
-      );
-
-      let feedIcon = $(feedOption.find(HTML_CLASS_FEED_ICON));
-      feedIcon.on("error", function() {
-        $(this)
-          .unbind("error")
-          .attr("src", "static/images/noAvatar.png");
-      });
-      $(HTML_ID_ADD_FEED_LIST).append(feedOption);
-      console.log("4");
-    }
-*/
