@@ -140,7 +140,7 @@ content:'˄';
     position: relative;
   }
   .sidenav .dropdown   {float: left;}
-  .mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs {margin-left: 0;}
+  .main-container {margin-left: 0;}
 }
 
 @media screen and (max-width: 400px) {
@@ -150,7 +150,7 @@ content:'˄';
   }
 }
 
-.mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs{
+.main-container
   margin-left: 200px;
   padding: 1px 16px;
   height: 1000px;

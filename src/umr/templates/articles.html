@@ -4,9 +4,46 @@
 
 
   <div
-    class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs"
+    class="main-container"
   >
-  <nav class="sidenav">
+
+
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+
+      <div
+        class="mdl-layout__tab-bar mdl-js-ripple-effect"
+        class="select-article"
+      >
+        <p class="welcome_personal">Welcome,</p>
+        <h1 class="select-article">Select an Article</h1>
+        <div class="all__tabs">
+          <div class="row__tab">
+            <a id="inbox_tab" href="/read" class="mdl-layout__tab">
+              Articles</a
+            >
+          </div>
+          <div class="row__bar">
+            <div class="bar"></div>
+          </div>
+          <div class="row__tab">
+            <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
+              Bookmarks</a
+            >
+          </div>
+          <div class="row__bar">
+            <div class="bar"></div>
+          </div>
+          <div class="row__tab">
+            <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
+              Classroom</a
+            >
+
+          </div>
+        </div>
+      </div>
+    </header>
+
+      <nav class="sidenav">
     <img
     class="zeeguuLogo"
     src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
@@ -69,41 +106,6 @@
 
     </div>
   </nav>
-
-    <header class="mdl-layout__header mdl-layout__header--transparent">
-
-      <div
-        class="mdl-layout__tab-bar mdl-js-ripple-effect"
-        class="select-article"
-      >
-        <p class="welcome_personal">Welcome,</p>
-        <h1 class="select-article">Select an Article</h1>
-        <div class="all__tabs">
-          <div class="row__tab">
-            <a id="inbox_tab" href="/read" class="mdl-layout__tab">
-              Articles</a
-            >
-          </div>
-          <div class="row__bar">
-            <div class="bar"></div>
-          </div>
-          <div class="row__tab">
-            <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
-              Bookmarks</a
-            >
-          </div>
-          <div class="row__bar">
-            <div class="bar"></div>
-          </div>
-          <div class="row__tab">
-            <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
-              Classroom</a
-            >
-
-          </div>
-        </div>
-      </div>
-    </header>
     <div class="widthOfColumn">
       <div class="mdl-layout__drawer mdl-color--amber-A700">
         <nav class="mdl-navigation">
