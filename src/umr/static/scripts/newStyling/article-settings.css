@@ -146,25 +146,27 @@ button {
   font-size: 16px;
 }
 
-.buttonNI {
+.interests {
   box-shadow: none;
   all: unset;
   border-radius: 17px;
   padding: 5px 27px;
-  background-color: #ffbb54;
-  color: #ffffff;
   font-size: 16px;
   font-family: Montserrat;
   font-weight: 400;
   text-align: center;
   min-width: 100px;
-}
-
-.mdl-chip__action.interests {
+  margin-bottom: 4px;
+  margin-top: 4px;
   margin-bottom: 4px;
   margin-top: 4px;
   background-color:  #ffbb54;
   color: white;
+}
+
+.interests.unsubscribed {
+  background-color: white;
+  color: #ffbb54;
 }
 
 .noninterest {
@@ -179,11 +181,6 @@ button {
   min-width: 100px;
   margin-bottom: 4px;
   margin-top: 4px;
-  background-color: white;
-  color: #ffbb54;
-}
-
-.mdl-chip__action.interests.unsubscribed {
   background-color: white;
   color: #ffbb54;
 }

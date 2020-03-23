@@ -84,7 +84,7 @@ export default class SearchFilterSubscriptionList {
         let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
         let subscription = $(Mustache.render(template, search));
 
-        let removeButton = $(subscription.find(".mdl-chip__action.interests.custom"));
+        let removeButton = $(subscription.find(".interests.custom"));
         let _unfollow = this._unfollow.bind(this);
         removeButton.click(function (search) {
             return function () {

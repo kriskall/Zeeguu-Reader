@@ -11,9 +11,9 @@ const INTERESTS = ".show-topic-subscriber";
 const NON_INTERESTS = ".show-filter-subscriber";
 const ALL_INTERESTS = ".tagsOfInterests";
 const UNSUBSCRIBED_CLASS = "unsubscribed"
-const INTEREST_BUTTON = ".mdl-chip__action.interests";
-const INTEREST_BUTTON_HTML = "mdl-chip__action interests";
-const CUSTOM_INTEREST_BUTTON = "mdl-chip__action interests custom";
+const INTEREST_BUTTON = ".interests";
+const INTEREST_BUTTON_HTML = "interests";
+const CUSTOM_INTEREST_BUTTON = "interests custom";
 const ADD_CUSTOM_INTEREST = ".addInterestButton";
 const CLOSE_BUTTON = ".closeTagsOfInterests";
 
