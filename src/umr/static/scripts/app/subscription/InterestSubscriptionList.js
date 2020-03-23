@@ -6,7 +6,7 @@ import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
 import { GET_SUBSCRIBED_TOPICS } from '../zeeguuRequests';
 import { SUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests';
-import { UNSUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests'; import ArticleList from "./ArticleList";
+import { UNSUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests';
 import { reload_articles_on_drawer_close } from './main.js';
 
 
@@ -27,7 +27,7 @@ logger.push({
  * Shows a list of all subscribed topics, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class TopicSubscriptionList {
+export default class InterestSubscriptionList {
     /**
      * Initialise an empty {@link Map} of topics.
      */

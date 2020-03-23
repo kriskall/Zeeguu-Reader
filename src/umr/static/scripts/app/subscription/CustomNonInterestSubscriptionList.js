@@ -30,12 +30,12 @@ logger.push({
  * Shows a list of all subscribed searches, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class SearchFilterSubscriptionList {
+export default class CustomNonInterestSubscriptionList {
     /**
      * Initialise an empty {@link Map} of searches.
      */
     constructor() {
-        this.searchFilterSubscriptionList = new Map();
+        this.customNonInterestSubscriptionList = new Map();
     }
 
     /**
@@ -79,7 +79,7 @@ export default class SearchFilterSubscriptionList {
      * @param {Object} search - Data of the particular search to add to the list.
      */
     _addSubscription(search) {
-        if (this.searchFilterSubscriptionList.has(search.id))
+        if (this.customNonInterestSubscriptionList.has(search.id))
             return;
         let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
         let subscription = $(Mustache.render(template, search));
@@ -94,7 +94,7 @@ export default class SearchFilterSubscriptionList {
             };
         }(search));
         $(ALL_NONINTERESTS).append(subscription);
-        this.searchFilterSubscriptionList.set(search.id, search);
+        this.customNonInterestSubscriptionList.set(search.id, search);
     }
 
     /**
@@ -162,7 +162,7 @@ export default class SearchFilterSubscriptionList {
      * @param {Object} search - Data of the particular search to remove from the list.
      */
     _remove(search) {
-        if (!this.searchFilterSubscriptionList.delete(search.id)) { console.log("Error: search not in search list."); }
+        if (!this.customNonInterestSubscriptionList.delete(search.id)) { console.log("Error: search not in search list."); }
         $('span[searchRemovableID="' + search.id + '"]').fadeOut();
     }
 

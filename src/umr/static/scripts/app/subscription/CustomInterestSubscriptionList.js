@@ -13,7 +13,6 @@ import { reload_articles_on_drawer_close } from "./main.js";
 //const HTML_ID_FEED_TEMPLATE = "#topicAddable-template";
 const HTML_ID_SUBSCRIPTION_LIST = '#searchesList';
 const HTML_ID_SUBSCRIPTION_TEMPLATE = '#subscription-template-search';
-const HTML_CLASS_REMOVE_BUTTON = '.removeButton';
 const USER_EVENT_FOLLOWED_FEED = 'FOLLOW SEARCH';
 const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW SEARCH';
 const ALL_INTERESTS = ".tagsOfInterests";
@@ -30,7 +29,7 @@ logger.push({
  * Shows a list of all subscribed searches, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class SearchSubscriptionList {
+export default class CustomInterestSubscriptionList {
     /**
      * Initialise an empty {@link Map} of searchs.
      */

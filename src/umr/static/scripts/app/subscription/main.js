@@ -5,12 +5,12 @@ import StarredArticleList from "./StarredArticleList";
 import SourceSubscriptionList from "./SourceSubscriptionList.js";
 import CohortArticleList from "./CohortArticleList";
 import SourceSubscriber from "./SourceSubscriber.js";
-import TopicSubscriber from "./TopicSubscriber.js";
-import TopicSubscriptionList from "./TopicSubscriptionList.js";
-import TopicFilterSubscriptionList from "./TopicFilterSubscriptionList";
-import TopicFilterSubscriber from "./TopicFilterSubscriber";
-import SearchFilterSubscriptionList from "./SearchFilterSubscriptionList";
-import SearchSubscriptionList from "./SearchSubscriptionList";
+import InterestSubscriber from "./InterestSubscriber.js";
+import InterestSubscriptionList from "./InterestSubscriptionList.js";
+import NonInterestSubscriptionList from "./NonInterestSubscriptionList";
+import NonInterestSubscriber from "./NonInterestSubscriber";
+import CustomNonInterestSubscriptionList from "./CustomNonInterestSubscriptionList";
+import CustomInterestSubscriptionList from "./CustomInterestSubscriptionList";
 import LanguageSubscriptionList from "./LanguageSubscriptionList";
 import LanguageSubscriber from "./LanguageSubscriber";
 import config from "../config";
@@ -35,17 +35,17 @@ let articleList = new ArticleList(sourceSubscriptionList);
 let sourceSubscriber = new SourceSubscriber(sourceSubscriptionList);
 let starredArticleList = new StarredArticleList();
 let cohortArticleList = new CohortArticleList();
-let topicSubscriptionList = new TopicSubscriptionList();
-let topicFilterSubscriptionList = new TopicFilterSubscriptionList();
-let searchSubscriptionList = new SearchSubscriptionList();
-let searchFilterSubscriptionList = new SearchFilterSubscriptionList();
-let topicSubscriber = new TopicSubscriber(
-  topicSubscriptionList,
-  searchSubscriptionList
+let interestSubscriptionList = new InterestSubscriptionList();
+let nonInterestSubscriptionList = new NonInterestSubscriptionList();
+let customInterestSubscriptionList = new CustomInterestSubscriptionList();
+let customNonInterestSubscriptionList = new CustomNonInterestSubscriptionList();
+let interestSubscriber = new InterestSubscriber(
+  interestSubscriptionList,
+  customInterestSubscriptionList
 );
-let topicFilterSubscriber = new TopicFilterSubscriber(
-  topicFilterSubscriptionList,
-  searchFilterSubscriptionList
+let nonInterestSubscriber = new NonInterestSubscriber(
+  nonInterestSubscriptionList,
+  customNonInterestSubscriptionList
 );
 let languageSubscriptionList = new LanguageSubscriptionList();
 let languageSubscriber = new LanguageSubscriber(languageSubscriptionList);
@@ -105,12 +105,12 @@ function activate_last_used_tab_if_available() {
 $(document).ready(function () {
   starredArticleList.load();
   cohortArticleList.load();
-  topicSubscriptionList.load();
-  topicSubscriber.load();
-  topicFilterSubscriptionList.load();
-  topicFilterSubscriber.load();
-  searchSubscriptionList.load();
-  searchFilterSubscriptionList.load();
+  interestSubscriptionList.load();
+  interestSubscriber.load();
+  nonInterestSubscriptionList.load();
+  nonInterestSubscriber.load();
+  customInterestSubscriptionList.load();
+  customNonInterestSubscriptionList.load();
   languageSubscriptionList.load();
   languageSubscriber.load();
   sourceSubscriptionList.load();
@@ -142,10 +142,7 @@ $(document).ready(function () {
   );
 
   $(showAddTopicDialogButton).click(function () {
-
-
-    topicSubscriber.open();
-
+    interestSubscriber.open();
   });
 
   let showAddFilterDialogButton = document.querySelector(
@@ -153,7 +150,7 @@ $(document).ready(function () {
   );
 
   $(showAddFilterDialogButton).click(function () {
-    topicFilterSubscriber.open();
+    nonInterestSubscriber.open();
   });
 
   var countWords = 0;

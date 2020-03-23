@@ -25,12 +25,12 @@ logger.push({
  * Shows a list of all subscribed topics, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class TopicFilterSubscriptionList {
+export default class NonInterestSubscriptionList {
     /**
      * Initialise an empty {@link Map} of topics.
      */
     constructor() {
-        this.topicFilterSubscriptionList = new Map();
+        this.nonInterestSubscriptionList = new Map();
     }
 
     /**
@@ -74,7 +74,7 @@ export default class TopicFilterSubscriptionList {
      * @param {Object} topic - Data of the particular topic to add to the list.
      */
     _addSubscription(topic) {
-        if (this.topicFilterSubscriptionList.has(topic.id))
+        if (this.nonInterestSubscriptionList.has(topic.id))
             return;
         /** 
         let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
@@ -89,7 +89,7 @@ export default class TopicFilterSubscriptionList {
         //$(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
         $(HTML_ID_NO_TOPIC_SELECTED).hide();
         */
-        this.topicFilterSubscriptionList.set(topic.id, topic);
+        this.nonInterestSubscriptionList.set(topic.id, topic);
         //$("tagsOfNonInterests").append(topic);
     }
 
@@ -157,7 +157,7 @@ export default class TopicFilterSubscriptionList {
      * @param {Object} topic - Data of the particular topic to remove from the list.
      */
     _remove(topic) {
-        if (!this.topicFilterSubscriptionList.delete(topic.id)) { console.log("Error: topic not in topic list."); }
+        if (!this.nonInterestSubscriptionList.delete(topic.id)) { console.log("Error: topic not in topic list."); }
         $('span[searchRemovableID="' + topic.id + '"]').fadeOut();
     }
 

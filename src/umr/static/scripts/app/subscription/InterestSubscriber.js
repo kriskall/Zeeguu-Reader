@@ -22,15 +22,15 @@ let self;
 /**
  * Allows the user to add and remove subscriptions.
  */
-export default class TopicSubscriber {
+export default class InterestSubscriber {
   /**
-   * Link the {@link TopicSubscriptionList} with this instance so we can update it on change.
-   * @param topicSubscriptionList
-   * @param searchSubscriptionList
+   * Link the {@link InterestSubscriptionList} with this instance so we can update it on change.
+   * @param interestSubscriptionList
+   * @param customInterestSubscriptionList
    */
-  constructor(topicSubscriptionList, searchSubscriptionList) {
-    this.topicSubscriptionList = topicSubscriptionList;
-    this.searchSubscriptionList = searchSubscriptionList;
+  constructor(interestSubscriptionList, customInterestSubscriptionList) {
+    this.interestSubscriptionList = interestSubscriptionList;
+    this.customInterestSubscriptionList = customInterestSubscriptionList;
     self = this;
   }
 
@@ -92,20 +92,20 @@ export default class TopicSubscriber {
       let feedOption = $(Mustache.render(template, data[i]));
       let interest = $(feedOption.find(INTEREST_BUTTON));
       interest.click(
-        (function (data, feedOption, topicSubscriptionList) {
+        (function (data, feedOption, interestSubscriptionList) {
           return function () {
             if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
-              topicSubscriptionList.follow(data);
+              interestSubscriptionList.follow(data);
               $(interest).removeClass(UNSUBSCRIBED_CLASS);
               console.log("subscribed");
             }
             else {
-              topicSubscriptionList._unfollow(data);
+              interestSubscriptionList._unfollow(data);
               $(interest).addClass(UNSUBSCRIBED_CLASS);
               console.log("unsubscribed");
             }
           }
-        })(data[i], feedOption, this.topicSubscriptionList)
+        })(data[i], feedOption, this.interestSubscriptionList)
       );
       this._appendInterest(template, feedOption);
     }
@@ -124,19 +124,19 @@ export default class TopicSubscriber {
       let feedOption = $(Mustache.render(template, data[i]));
       let interest = $(feedOption.find(INTEREST_BUTTON));
       interest.click(
-        (function (data, feedOption, topicSubscriptionList) {
+        (function (data, feedOption, interestSubscriptionList) {
           return function () {
             if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
-              topicSubscriptionList.follow(data);
+              interestSubscriptionList.follow(data);
               $(interest).removeClass(UNSUBSCRIBED_CLASS);
               console.log("subscribed");
             } else {
-              topicSubscriptionList._unfollow(data);
+              interestSubscriptionList._unfollow(data);
               $(interest).addClass(UNSUBSCRIBED_CLASS);
               console.log("unsubscribed");
             }
           };
-        })(data[i], feedOption, this.topicSubscriptionList)
+        })(data[i], feedOption, this.interestSubscriptionList)
       );
       this._appendInterest(template, feedOption);
     }
@@ -175,7 +175,7 @@ export default class TopicSubscriber {
           if (input === "" || input === false) {
             return false
           }
-          self.searchSubscriptionList.follow(input);
+          self.customInterestSubscriptionList.follow(input);
         })
       }, 150);
     });

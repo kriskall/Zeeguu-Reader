@@ -21,21 +21,21 @@ let self;
 /**
  * Allows the user to add and remove non-interest subscriptions.
  */
-export default class TopicFilterSubscriber {
+export default class NonInterestSubscriber {
 
     /**
-     * Link the {@link TopicFilterSubscriptionList} with this instance so we can update it on change.
-     * @param topicFilterSubscriptionList
-     * @param searchFilterSubscriptionList
+     * Link the {@link NonInterestSubscriptionList} with this instance so we can update it on change.
+     * @param nonInterestSubscriptionList
+     * @param customNonInterestSubscriptionList
      */
-    constructor(topicFilterSubscriptionList, searchFilterSubscriptionList) {
-        this.topicFilterSubscriptionList = topicFilterSubscriptionList;
-        this.searchFilterSubscriptionList = searchFilterSubscriptionList;
+    constructor(nonInterestSubscriptionList, customNonInterestSubscriptionList) {
+        this.nonInterestSubscriptionList = nonInterestSubscriptionList;
+        this.customNonInterestSubscriptionList = customNonInterestSubscriptionList;
         self = this;
     }
 
     follow(input) {
-        this.searchFilterSubscriptionList.follow(input)
+        this.customNonInterestSubscriptionList.follow(input)
     }
 
     /**
@@ -95,20 +95,20 @@ export default class TopicFilterSubscriber {
             let nonInterest = $(feedOption.find(NONINTEREST_CSS));
             $(nonInterest).addClass(SUBSCRIBED);
             nonInterest.click(
-                (function (data, feedOption, topicFilterSubscriptionList) {
+                (function (data, feedOption, nonInterestSubscriptionList) {
                     return function () {
                         if ($(nonInterest).hasClass(SUBSCRIBED)) {
-                            topicFilterSubscriptionList._unfollow(data);
+                            nonInterestSubscriptionList._unfollow(data);
                             $(nonInterest).removeClass(SUBSCRIBED);
                             console.log("unsubscribed non-interest");
                         }
                         else {
-                            topicFilterSubscriptionList.follow(data);
+                            nonInterestSubscriptionList.follow(data);
                             $(nonInterest).addClass(SUBSCRIBED);
                             console.log("subscribed non-interest");
                         }
                     }
-                })(data[i], feedOption, this.topicFilterSubscriptionList)
+                })(data[i], feedOption, this.nonInterestSubscriptionList)
             );
             this._appendNonInerest(template, feedOption);
         }
@@ -125,19 +125,19 @@ export default class TopicFilterSubscriber {
             let feedOption = $(Mustache.render(template, data[i]));
             let nonInterest = $(feedOption.find(NONINTEREST_CSS));
             nonInterest.click(
-                (function (data, feedOption, topicFilterSubscriptionList) {
+                (function (data, feedOption, nonInterestSubscriptionList) {
                     return function () {
                         if ($(nonInterest).hasClass(SUBSCRIBED)) {
-                            topicFilterSubscriptionList._unfollow(data);
+                            nonInterestSubscriptionList._unfollow(data);
                             $(nonInterest).removeClass(SUBSCRIBED);
                             console.log("unsubscribed non-interest");
                         } else {
-                            topicFilterSubscriptionList.follow(data);
+                            nonInterestSubscriptionList.follow(data);
                             $(nonInterest).addClass(SUBSCRIBED);
                             console.log("subscribed non-interest");
                         }
                     };
-                })(data[i], feedOption, this.topicFilterSubscriptionList)
+                })(data[i], feedOption, this.nonInterestSubscriptionList)
             );
             this._appendNonInerest(template, feedOption);
         }
@@ -166,7 +166,7 @@ export default class TopicFilterSubscriber {
                     if (input === "" || input === false) {
                         return false
                     }
-                    self.searchFilterSubscriptionList.follow(input);
+                    self.customNonInterestSubscriptionList.follow(input);
                 })
             }, 150);
         });
