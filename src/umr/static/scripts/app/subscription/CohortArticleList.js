@@ -2,7 +2,7 @@ import $ from "jquery";
 import Mustache from "mustache";
 import config from "../config";
 import moment from 'moment';
-import {difficultyToColorMapping} from './DifficultyColors'
+import { difficultyToColorMapping } from './DifficultyColors'
 import UserActivityLogger from "../UserActivityLogger";
 import ZeeguuRequests from "../zeeguuRequests";
 import { GET_COHORT_ARTICLES } from "../zeeguuRequests";
@@ -14,7 +14,7 @@ const HTML_CLASS_CLEAR = ".clear";
 const USER_EVENT_CLICKED_ARTICLE = "OPEN COHORT ARTICLE";
 
 /**
- * Retrieves and renders a list of cohort articles.
+ * Retrieves and renders a list of cohort articles..
  */
 export default class CohortArticleList {
   /**
@@ -58,15 +58,15 @@ export default class CohortArticleList {
         articleIcon: articleLink.feed_image_url,
         articleTopics: topicsText,
         wordCount: articleLink.metrics.word_count,
-        alreadyOpenedClass: articleLink.opened?ALREADY_OPENED_ARTICLE_CLASS:""
-    };
+        alreadyOpenedClass: articleLink.opened ? ALREADY_OPENED_ARTICLE_CLASS : ""
+      };
 
       let element = Mustache.render(template, templateAttributes);
 
       $(HTML_ID_COHORT_ARTICLE_LIST).append(element);
     }
 
-    $(config.HTML_CLASS_ARTICLELINK_FADEOUT).one("click", function(event) {
+    $(config.HTML_CLASS_ARTICLELINK_FADEOUT).one("click", function (event) {
       if (!event.isPropagationStopped()) {
         event.stopPropagation();
 
@@ -80,7 +80,7 @@ export default class CohortArticleList {
               opacity: 0.25
             },
             200,
-            function() {
+            function () {
               // Animation complete.
               $(config.HTML_CLASS_PAGECONTENT).fadeOut();
             }
