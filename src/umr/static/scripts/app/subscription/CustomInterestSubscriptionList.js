@@ -5,36 +5,36 @@ import Notifier from '../Notifier';
 import 'loggly-jslogger';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import {GET_FILTERED_SEARCHES} from '../zeeguuRequests';
-import {FILTER_SEARCH_ENDPOINT} from '../zeeguuRequests';
-import {UNFILTER_SEARCH_ENDPOINT} from '../zeeguuRequests';
-import {reload_articles_on_drawer_close} from "./main";
+import { GET_SUBSCRIBED_SEARCHES } from '../zeeguuRequests';
+import { SUBSCRIBE_SEARCH_ENDPOINT } from '../zeeguuRequests';
+import { UNSUBSCRIBE_SEARCH_ENDPOINT } from '../zeeguuRequests';
+import { reload_articles_on_drawer_close } from "./main.js";
 
-
-const HTML_ID_SUBSCRIPTION_LIST = '#searchesFilterList';
+//const HTML_ID_FEED_TEMPLATE = "#topicAddable-template";
+const HTML_ID_SUBSCRIPTION_LIST = '#searchesList';
 const HTML_ID_SUBSCRIPTION_TEMPLATE = '#subscription-template-search';
-const HTML_CLASS_REMOVE_BUTTON = '.removeButton';
-const USER_EVENT_FOLLOWED_FEED = 'FOLLOW SEARCH FILTER';
-const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW SEARCH FILTER';
+const USER_EVENT_FOLLOWED_FEED = 'FOLLOW SEARCH';
+const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW SEARCH';
+const ALL_INTERESTS = ".tagsOfInterests";
 
 /* Setup remote logging. */
 let logger = new LogglyTracker();
 logger.push({
     'logglyKey': config.LOGGLY_TOKEN,
-    'sendConsoleErrors' : true,
-    'tag' : 'SearchFilterSubscriptionList'
+    'sendConsoleErrors': true,
+    'tag': 'SearchSubscriptionList'
 });
 
 /**
  * Shows a list of all subscribed searches, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class SearchFilterSubscriptionList {
+export default class CustomInterestSubscriptionList {
     /**
-     * Initialise an empty {@link Map} of searches.
+     * Initialise an empty {@link Map} of searchs.
      */
     constructor() {
-        this.searchFilterSubscriptionList = new Map();
+        this.searchList = new Map();
     }
 
     /**
@@ -42,7 +42,7 @@ export default class SearchFilterSubscriptionList {
      *  Uses {@link ZeeguuRequests}.
      */
     load() {
-        ZeeguuRequests.get(GET_FILTERED_SEARCHES, {}, this._loadSubscriptions.bind(this));
+        ZeeguuRequests.get(GET_SUBSCRIBED_SEARCHES, {}, this._loadSubscriptions.bind(this));
     };
 
     /**
@@ -78,20 +78,23 @@ export default class SearchFilterSubscriptionList {
      * @param {Object} search - Data of the particular search to add to the list.
      */
     _addSubscription(search) {
-        if (this.searchFilterSubscriptionList.has(search.id))
+        if (this.searchList.has(search.id))
             return;
-
         let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
         let subscription = $(Mustache.render(template, search));
-        let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
+
+        let remove = $(subscription.find(".interests.custom"));
         let _unfollow = this._unfollow.bind(this);
-        removeButton.click(function(search) {
+        remove.click(function (search) {
             return function () {
                 _unfollow(search);
+                $(remove).fadeOut();
+                console.log("removed")
             };
         }(search));
-        $(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
-        this.searchFilterSubscriptionList.set(search.id, search);
+
+        $(ALL_INTERESTS).append(subscription);
+        this.searchList.set(search.id, search);
     }
 
     /**
@@ -102,8 +105,8 @@ export default class SearchFilterSubscriptionList {
     follow(search_terms) {
         UserActivityLogger.log(USER_EVENT_FOLLOWED_FEED, search_terms);
         this._loading();
-        let callback = ((data) => this._onSearchFilterFollowed(search_terms, data)).bind(this);
-        ZeeguuRequests.get(FILTER_SEARCH_ENDPOINT + "/" + search_terms , {}, callback);
+        let callback = ((data) => this._onSearchFollowed(search_terms, data)).bind(this);
+        ZeeguuRequests.get(SUBSCRIBE_SEARCH_ENDPOINT + "/" + search_terms, {}, callback);
     }
 
     /**
@@ -113,9 +116,8 @@ export default class SearchFilterSubscriptionList {
      * @param {Object} search_terms - Data of the particular search that has been subscribed to.
      * @param {string} reply - Reply from the server.
      */
-    _onSearchFilterFollowed(search_terms, reply) {
+    _onSearchFollowed(search_terms, reply) {
         if (reply != null) {
-            UserActivityLogger.log(USER_EVENT_FOLLOWED_FEED, reply.id, search_terms);
             this._addSubscription(reply);
             this._changed();
         } else {
@@ -133,8 +135,8 @@ export default class SearchFilterSubscriptionList {
         UserActivityLogger.log(USER_EVENT_UNFOLLOWED_FEED, search.id, search);
         this._remove(search);
         this._loading();
-        let callback = ((data) => this._onSearchFilterUnfollowed(search, data)).bind(this);
-        ZeeguuRequests.post(UNFILTER_SEARCH_ENDPOINT, {search_id: search.id}, callback);
+        let callback = ((data) => this._onSearchUnfollowed(search, data)).bind(this);
+        ZeeguuRequests.post(UNSUBSCRIBE_SEARCH_ENDPOINT, { search_id: search.id }, callback);
     }
 
     /**
@@ -144,7 +146,7 @@ export default class SearchFilterSubscriptionList {
      * @param {Object} search - Data of the particular search to that has been unfollowed.
      * @param {string} reply - Server reply.
      */
-    _onSearchFilterUnfollowed(search, reply) {
+    _onSearchUnfollowed(search, reply) {
         if (reply === "OK") {
             this._changed();
         } else {
@@ -159,7 +161,7 @@ export default class SearchFilterSubscriptionList {
      * @param {Object} search - Data of the particular search to remove from the list.
      */
     _remove(search) {
-        if (!this.searchFilterSubscriptionList.delete(search.id))  { console.log("Error: search not in search list."); }
+        if (!this.searchList.delete(search.id)) { console.log("Error: search not in search list."); }
         $('span[searchRemovableID="' + search.id + '"]').fadeOut();
     }
 
@@ -172,7 +174,6 @@ export default class SearchFilterSubscriptionList {
 
     /**
      * Fire event to show loader while subscribing / unsubscribing
-     * Not doing anything anymore because we're not reloading anymore
      */
     _loading() {
     }

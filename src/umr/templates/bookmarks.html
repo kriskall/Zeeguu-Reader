@@ -1,63 +1,6 @@
 {% extends 'articleHeader.html' %}
 {% block header %}
-
-
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-  <nav class="sidenav">
-    <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
-      alt="Zeeguu Logo - The Elephant" />
-
-    <div class="dropdown">
-      <button class="dropbtn">| Articles <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="/read">| All</a>
-        <a href="/read/bookmarks">| Bookmarks</a>
-        <a href="/read/classroom">| Classroom</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">| Words <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="/bookmarks">| History</a>
-        <a href="/starred_bookmarks">| Starred</a>
-        <a href="/learned_bookmarks">| Learned</a>
-        <a href="/top_bookmarks">| Top</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">| Exercises <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="#">| Easy</a>
-        <a href="#">| Regular</a>
-        <a href="#">| Ambitious</a>
-      </div>
-    </div>
-
-    <div class="generalNavLinks">
-
-      <div class="settingsbtn">
-        <a class="settingsLink">
-          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
-            alt="Click here for general settings" />
-        </a>
-      </div>
-      <div class="settingsbtn">
-        <a class="settingsLink">
-          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/languageSwitch.svg') }}"
-            alt="Click here for general settings" />
-        </a>
-      </div>
-
-      <div class="nav-generalbtn">
-        <a class="generalLinks" href="#">Get in touch</a>
-      </div>
-      <div class="nav-generalbtn">
-        <a class="generalLinks" href="#">Sign Out</a>
-      </div>
-
-    </div>
-  </nav>
-
   <header class="mdl-layout__header mdl-layout__header--transparent">
 
     <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
@@ -81,7 +24,6 @@
         <div class="row__tab">
           <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
             Classroom</a>
-
         </div>
       </div>
     </div>
@@ -167,28 +109,19 @@
         <!-- Sorting buttons-->
         <div class="sortingCategories">
           <div class="wordsSorting">
-            <div class="wordLabel">words</div>
-            <div id="triangleWords" class="triangle"></div>
+            <div class="levelLable">Words</div>
+            <div class="triangle"></div>
           </div>
           <div class="levelSorting">
-            <div class="levelLabel">level</div>
-            <div id="triangleLevel" class="triangle"></div>
+            <div class="wordLable">Level</div>
+            <div class="triangle"></div>
           </div>
         </div>
       </nav>
     </div>
   </div>
   <div class="widthOfColumn">
-    <div class="tagsOfInterests">
-      <button class='closeTagsOfInterests'>X</button>
-      <button class='addInterestButton'>Add + </button>
-    </div>
-  </div>
-  <div class="widthOfColumn">
-    <div class="tagsOfNonInterests">
-      <button class='closeTagsOfNonInterests'>X</button>
-      <button class='addNonInterestButton'>Add + </button>
-    </div>
+    <div class="tagsOfTopics"></div>
   </div>
   <div class="widthOfColumn">
     <main class="mdl-layout__content">
@@ -199,38 +132,23 @@
           <!-- List of articles -->
           <ul id="articleLinkList" class="articleLinkList"></ul>
           <br />
-          <!--
           <div id="emptyArticleListImage" class="emptyPage">
-           <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
+            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
               alt="Not subscribed to any feeds..." />
           </div>
           <div class="loader">
             <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
               alt="Loading..." />
-          </div>-->
-
+          </div>
+        </div>
       </section>
       <section class="mdl-layout__tab-panel" id="starred">
         <div class="page-content">
           <ul id="starredArticleList" class="articleLinkList"></ul>
-          <!-- 
           <div id="emptyStarredArticleListImage" class="emptyPage">
             <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
               alt="Not subscribed to any feeds..." />
           </div>
-          -->
-        </div>
-      </section>
-      <section class="mdl-layout__tab-panel" id="cohort">
-        <div class="page-content">
-          <ul id="cohortArticleList" class="articleLinkList"></ul>
-          <!-- 
-          <div id="emptyCohortArticleListImage" class="emptyPage">
-            <p>There are no articles in your class</p>
-            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-              alt="Not subscribed to any feeds..." />
-          </div>
-          -->
         </div>
       </section>
     </main>
@@ -257,22 +175,15 @@
     </span>
   </script>
 
-<!-- Template for subscribed search items MODIFIED-->
+<!-- Template for subscribed search items -->
 <script id="subscription-template-search" type="text/template">
-  <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
-      <a class="mdl-list__item-secondary-action topic">
-        <button
-        type="button"
-        class="interests custom"
-        >
-        <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
-        </button>
-    </a>
-  </div>
-</script>
-
-
+       <span searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+    	<span class="mdl-chip__text">{% raw %}{{ search }}{% endraw %}</span>
+    	<a class="mdl-chip__action removeButton">
+    		<i class="material-icons">cancel</i>
+    	</a>
+    </span>
+  </script>
 
 <!-- Template for subscribed language items -->
 <script id="subscription-template-language" type="text/template">
@@ -284,35 +195,42 @@
     </span>
   </script>
 
-<!-- Template for an article link. -->
-<script id="articleLink-template" type="text/template">
-  <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
-      articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
-      <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
+
+
+<script id="starred-articleLink-template" type="text/template">
+      <li class="articleLinkEntry" articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
+        <a 
+          href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}"> 
           <div class="articleLinkHeader">
-              <div class="articleLinkTitle headerElement">
-                  {% raw %}{{ articleLinkTitle }}{% endraw %}
-              </div>
-              <div class="articleLinkDifficulty headerElement">
-                  <span class="difficulty-level articleLinkDifficultyText"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
-                  <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
-              </div>
+            {% raw %}{{ articleLinkTitle }}{% endraw %}
+            <div class="articleLinkDifficulty headerElement">
+              <span class="difficulty-level articleLinkDifficultyText"
+                            > {% raw %}{{articleDifficulty}}{% endraw %} </span>
+              <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
+            </div>       
           </div>
           <div class="articleLinkSummary">
-              {% raw %}{{articleSummary}}{% endraw %}
+            {% raw %}{{articleSummary}}{% endraw %}
           </div>
           <div class="articleTopics">
             <div class="articleLinkImage">
               <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
-          </div>
-              <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
-              <span class="singleTopicTag">
+            </div>
+            <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
+            <span class="singleTopicTag">
               {% raw %}{{articleTopics}}{% endraw %}</span>
           </div>
-      </a>
-  </li>
-  <div class="articleLinkSpacer"></div>
-</script>
+           <!-- STAR AND THE LIKE BUTTON DISPLAAYED
+                    <i style="display:{% raw %}{{ articleLinkDisplayStar }}{% endraw %}"
+                      class="material-icons star">star</i>
+                    <i style="display:{% raw %}{{ articleLinkDisplayLike }}{% endraw %}" class="material-icons star">thumb_up</i>
+                  -->
+        </a>
+      </li>
+      <div class="articleLinkSpacer"></div>
+  
+    </script>
+
 
 
 
@@ -330,7 +248,6 @@
     <div class="articleLinkSpacer"></div>
   </script>
 {% endblock %}
-
 <!-- Dialog windows for adding a source, topic and filter. -->
 {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
 

@@ -40,6 +40,23 @@ export default class StarredArticleList {
         let template = $(HTML_ID_STARRED_ARTICLELINK_TEMPLATE).html();
         for (let i = articleLinks.length - 1; i >= 0; i--) {
             let articleLink = articleLinks[i];
+            let difficulty = Math.round(parseFloat(articleLink.metrics.difficulty) * 100) / 10;
+            let topicsText = articleLink.topics.trim().replace(/(^|\s+)/g, "$1#");
+            if (topicsText == "#") topicsText = "";
+
+            // In case we don't have an articleLink url let's point to a fancy letter
+            // that matches the initials of the author
+
+            var articleIconURL;
+            if (articleLink.icon_name) {
+                articleIconURL = "/read/static/images/news-icons/" + articleLink.icon_name;
+            } else {
+                let authorsInitial = articleLink.authors[0].toLowerCase();
+                articleIconURL = "https://img.icons8.com/dusk/2x/" + authorsInitial + ".png";
+            }
+
+         
+            
 
             let templateAttributes = {
                 articleLinkID: articleLink.id,
@@ -47,7 +64,14 @@ export default class StarredArticleList {
                 articleLinkLanguage: articleLink.language,
                 articleLinkURL: articleLink.url,
                 articleLinkDisplayStar: articleLink.starred ? "inline" : "none",
-                articleLinkDisplayLike: articleLink.liked ? "inline" : "none"
+                articleLinkDisplayLike: articleLink.liked ? "inline" : "none",
+                articleIcon: articleIconURL,
+                articleDifficulty: difficulty,
+                articleTopics: topicsText,
+                articleSummary: $('<p>' + articleLink.summary + '</p>').text(),
+                wordCount: articleLink.metrics.word_count
+              
+
             };
 
             let element = Mustache.render(template, templateAttributes);
