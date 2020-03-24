@@ -26,17 +26,18 @@ body {
 }
 
 .articleLinkTitle {
-  font-size: 20px;
+  font-size: 1.0416666666666667em;
   color: black;
-  padding-right: 250px;
+  padding-right: 13.020833333333334em;
 }
+
 .articleLinkSummary {
-  font-size: 16px;
+  font-size: 0.8333333333333334em;
   color: #6d6d6d;
   max-width: 54em;
   line-height: 1.5em;
-  margin-top: 7px;
-  padding-right: 250px;
+  margin-top: 0.36458333333333337em;
+  padding-right: 13.020833333333334em;
 }
 /* 
 .articleLinkSummary{
@@ -49,8 +50,8 @@ body {
 
 .articleLinkEntry {
   border-left: solid #ffbb54;
-  margin-top: 31px;
-  padding-left: 13px;
+  margin-top: 1.9375em;
+  padding-left: 0.8125em;
 }
 
 .headerElement {
@@ -76,9 +77,9 @@ body {
 }
 .feedIcon {
   background-color: white;
-  width: 32px;
-  height: 32px;
-  margin-right: 19px;
+  width: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  margin-right: 0.9895833333333334em;
 }
 
 .articleTopics {
@@ -87,11 +88,11 @@ body {
 }
 
 .publishingTime {
-  margin-right: 15px;
+  margin-right: 0.78125em;
 }
 
 .difficulty-level {
-  margin-left: 123px;
+  margin-left: 6.40625em;
 }
 
 #topicsList {
@@ -100,7 +101,7 @@ body {
 
 .singleTopicTag {
   border: solid #ffbb54;
-  border-radius: 20px;
-  padding: 4px 26px;
-  font-size: 16;
+  border-radius: 1.0416666666666667em;
+  padding: 0.20833333333333334em 1.3541666666666667em;
+  font-size: 0.8333333333333334em;
 }

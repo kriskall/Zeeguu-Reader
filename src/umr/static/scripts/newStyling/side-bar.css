@@ -1,18 +1,18 @@
 /* Fixed sidenav, full height */
 .sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #FFD047;
-    overflow-x: hidden;
-    padding-top: 20px;
-    font-family: Montserrat;
-    margin:auto; 
-    padding:0; 
-    overflow:auto;
+  height: 100%;
+  width: 12.5em;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #FFD047;
+  overflow-x: hidden;
+  padding-top: 1.25em;
+  font-family: Montserrat;
+  margin: auto;
+  padding: 0;
+  overflow: auto;
   }
 
   .zeeguuLogo {
@@ -20,15 +20,15 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    top: 54px;
+    top: 3.375em;
   }
 
 
   .dropbtn {
     background-color: #FFBB54;
     color: white;
-    padding: 16px;
-    font-size: 20px;
+    padding: 1em;
+    font-size: 1.25em;
     border: none;
     margin: unset;
     width: 100%;
@@ -38,13 +38,13 @@
 }
 .generalNavLinks{
   position: absolute;
-  bottom: 10px;
-  width:100%;
+  bottom: 0.625em;
+  width: 100%;
 }
 
 .settingsbtn{
-  width: 48.68px;
-  height: 48px;
+  width: 3em;
+  height: 3em;
   border-radius: 50%;
   background: #FFBB54;
   position: relative;
@@ -58,23 +58,23 @@
 
 .nav-generalbtn{
   position: relative;
-  width: 130px;
-  height: 30px;
+  width: 8.125em;
+  height: 1.875em;
   background: #FFFFFF;
-  border-radius: 20px;
+  border-radius: 1.25em;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin-bottom: 13px;
-  padding-top: 8px;
+  margin-bottom: 0.8125em;
+  padding-top: 0.5em;
 }
 
 .generalLinks{
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 1em;
+  line-height: 1.25em;
   text-align: center;
   color: #FFBB54;
 
@@ -102,17 +102,17 @@
 .dropdown-content {
   display: none;
   background-color: #FFFFFF;
-  min-width: 160px;
+  min-width: 10em;
   z-index: 1;
 }
 
 .dropdown-content a {
   color: #FFBB54;
-  padding: 12px 16px;
+  padding: 0.75em 1em;
   text-decoration: none;
   display: block;
   font-family: Montserrat;
-  font-size: 20px;
+  font-size: 1.25em;
 }
 
 .dropdown-content  a:hover {
@@ -140,7 +140,7 @@ content:'˄';
     position: relative;
   }
   .sidenav .dropdown   {float: left;}
-  .mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs {margin-left: 0;}
+  .main-container {margin-left: 0;}
 }
 
 @media screen and (max-width: 400px) {
@@ -150,8 +150,3 @@ content:'˄';
   }
 }
 
-.mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs{
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
-}

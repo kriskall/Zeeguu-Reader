@@ -160,7 +160,16 @@ $(document).ready(function () {
       var elem = $("#articleLinkList")
         .find("li")
         .sort(sortLowToHighWords);
+      var bookmarkElem = $("#starredArticleList")
+        .find("li")
+        .sort(sortLowToHighWords);
+      var classroomElem = $("#cohortArticleList")
+        .find("li")
+        .sort(sortLowToHighWords);
+
       $("#articleLinkList").append(elem);
+      $("#starredArticleList").append(bookmarkElem);
+      $("#cohortArticleList").append(classroomElem);
       $("#triangleWords").addClass("flip");
       $("#triangleWords").addClass("clicked");
       console.log("sort low to high");
@@ -168,7 +177,17 @@ $(document).ready(function () {
       var elem = $("#articleLinkList")
         .find("li")
         .sort(sortHighToLowWords);
+      var bookmarkElem = $("#starredArticleList")
+        .find("li")
+        .sort(sortHighToLowWords);
+      var classroomElem = $("#cohortArticleList")
+        .find("li")
+        .sort(sortHighToLowWords);
+
+
       $("#articleLinkList").append(elem);
+      $("#starredArticleList").append(bookmarkElem);
+      $("#cohortArticleList").append(classroomElem);
       $("#triangleWords").removeClass("flip");
       console.log("sort high to low");
     } else if (countWords == 3) {
@@ -186,7 +205,16 @@ $(document).ready(function () {
       var elem = $("#articleLinkList")
         .find("li")
         .sort(sortLowToHighLevel);
+      var bookmarkElem = $("#starredArticleList")
+        .find("li")
+        .sort(sortLowToHighLevel);
+      var classroomElem = $("#cohortArticleList")
+        .find("li")
+        .sort(sortLowToHighLevel);
+
       $("#articleLinkList").append(elem);
+      $("#starredArticleList").append(bookmarkElem);
+      $("#cohortArticleList").append(classroomElem);
       $("#triangleLevel").addClass("clicked");
       console.log("sort level low to high");
     } else if (countLevel == 2) {
@@ -194,7 +222,16 @@ $(document).ready(function () {
       var elem = $("#articleLinkList")
         .find("li")
         .sort(sortHighToLowLevel);
+      var bookmarkElem = $("#starredArticleList")
+        .find("li")
+        .sort(sortHighToLowLevel);
+      var classroomElem = $("#cohortArticleList")
+        .find("li")
+        .sort(sortHighToLowLevel);
+        
       $("#articleLinkList").append(elem);
+      $("#starredArticleList").append(bookmarkElem);
+      $("#cohortArticleList").append(classroomElem);
       console.log("sort level high to low");
     } else if (countLevel == 3) {
       location.reload();
