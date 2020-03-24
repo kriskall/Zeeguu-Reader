@@ -51,54 +51,88 @@
               <div id="triangleLevel" class="triangle"></div>
             </div>
           </div>
-        </nav>
-      </div>
-    </div>
-    <div class="widthOfColumn">
-      <div class="tagsOfTopics"></div>
-    </div>
-    <div class="widthOfColumn">
-      <main class="mdl-layout__content">
-        <section class="mdl-layout__tab-panel is-active" id="inbox">
-          <div class="page-content">
-            <!-- Search notification -->
-            <ul id="searchNotification" class="searchNotification"></ul>
-            <!-- List of articles -->
-            <ul id="articleLinkList" class="articleLinkList"></ul>
-            <br />
-            <div id="emptyArticleListImage" class="emptyPage">
-              <img
-                class="sadEleph"
-                src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-                alt="Not subscribed to any feeds..."
-              />
-            </div>
-            <div class="loader">
-              <img
-                class="eleph"
-                src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
-                alt="Loading..."
-              />
-            </div>
+          <div class="levelSorting">
+            <div class="wordLable">Level</div>
+            <div class="triangle"></div>
           </div>
-        </section>
-        <section class="mdl-layout__tab-panel" id="starred">
-          <div class="page-content">
-            <ul id="starredArticleList" class="articleLinkList"></ul>
-            <div id="emptyStarredArticleListImage" class="emptyPage">
-              <img
-                class="sadEleph"
-                src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-                alt="Not subscribed to any feeds..."
-              />
-            </div>
-          </div>
-        </section>
-      </main>
+        </div>
+      </nav>
     </div>
   </div>
+  <div class="widthOfColumn">
+    <div class="tagsOfTopics"></div>
+  </div>
+  <div class="widthOfColumn">
+    <main class="mdl-layout__content">
+      <section class="mdl-layout__tab-panel is-active" id="inbox">
+        <div class="page-content">
+          <!-- Search notification -->
+          <ul id="searchNotification" class="searchNotification"></ul>
+          <!-- List of articles -->
+          <ul id="articleLinkList" class="articleLinkList"></ul>
+          <br />
+          <div id="emptyArticleListImage" class="emptyPage">
+            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
+              alt="Not subscribed to any feeds..." />
+          </div>
+          <div class="loader">
+            <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
+              alt="Loading..." />
+          </div>
+        </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="starred">
+        <div class="page-content">
+          <ul id="starredArticleList" class="articleLinkList"></ul>
+          <div id="emptyStarredArticleListImage" class="emptyPage">
+            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
+              alt="Not subscribed to any feeds..." />
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
 
+<!-- Template for subscribed source items -->
+<script id="subscription-template-source" type="text/template">
+       <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
+    	<a class="mdl-chip__action removeButton">
+    		<i class="material-icons">cancel</i>
+    	</a>
+    </span>
+  </script>
 
+<!-- Template for subscribed topic items -->
+<script id="subscription-template-topic" type="text/template">
+       <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
+    	<a class="mdl-chip__action removeButton">
+    		<i class="material-icons">cancel</i>
+    	</a>
+    </span>
+  </script>
+
+<!-- Template for subscribed search items -->
+<script id="subscription-template-search" type="text/template">
+       <span searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+    	<span class="mdl-chip__text">{% raw %}{{ search }}{% endraw %}</span>
+    	<a class="mdl-chip__action removeButton">
+    		<i class="material-icons">cancel</i>
+    	</a>
+    </span>
+  </script>
+
+<!-- Template for subscribed language items -->
+<script id="subscription-template-language" type="text/template">
+       <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+    	<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
+    	<a class="mdl-chip__action removeButton">
+    		<i class="material-icons">cancel</i>
+    	</a>
+    </span>
+  </script>
 
     <script id="starred-articleLink-template" type="text/template">
       <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}" articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
@@ -136,7 +170,7 @@
 
 
 
-  <script id="search-notification-template" type="text/template">
+<script id="search-notification-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry search-notification-box">
         <div class="articleLinkHeader">
             <div class="searchText headerElement">
@@ -149,7 +183,8 @@
     </li>
     <div class="articleLinkSpacer"></div>
   </script>
-  {% endblock %}
-  <!-- Dialog windows for adding a source, topic and filter. -->
-  {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+{% endblock %}
+<!-- Dialog windows for adding a source, topic and filter. -->
+{% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+
 </html>

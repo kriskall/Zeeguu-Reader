@@ -40,7 +40,7 @@
   </div>
 </script>
 
-<!-- Template for feed items MODIFIED -->
+<!-- Template for feed items interests MODIFIED -->
 <script id="topicAddable-template" type="text/template">
   <div addableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
@@ -48,7 +48,23 @@
       <a class="mdl-list__item-secondary-action topic">
       <button 
           type="button"
-          class="mdl-chip__action interests"
+          class="interests"
+          >
+        <span class="addableTitle">{% raw %}{{ title }}{% endraw %}</span>
+        </button>
+    </a>
+  </div>
+</script>
+
+<!-- Template for feed items non-interest MODIFIED -->
+<script id="noninterest-template" type="text/template">
+  <div addableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <!-- <img src="{% raw %}{{ image_url }}{% endraw %}" class="feedIcon mdl-list__item-avatar"/> -->
+      <a class="mdl-list__item-secondary-action topic">
+      <button 
+          type="button"
+          class="noninterest"
           >
         <span class="addableTitle">{% raw %}{{ title }}{% endraw %}</span>
         </button>

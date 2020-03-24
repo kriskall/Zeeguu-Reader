@@ -66,6 +66,17 @@ button {
   padding-bottom: 2%;
 }
 
+.tagsOfNonInterests {
+  background: #fff4e2;
+  border-radius: 3px;
+  display: none;
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+
 .mdl-dialog__content {
   display: block;
   background-color: black;
@@ -135,16 +146,48 @@ button {
   font-size: 1em;
 }
 
-.mdl-chip__action.interests {
+.interests {
+  box-shadow: none;
+  all: unset;
+  border-radius: 17px;
+  padding: 5px 27px;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 400;
+  text-align: center;
+  min-width: 100px;
   margin-bottom: 0.25em;
   margin-top: 0.25em;
-  background-color: #ffbb54;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  background-color:  #ffbb54;
   color: white;
 }
 
-.mdl-chip__action.interests.unsubscribed {
+.interests.unsubscribed {
   background-color: white;
   color: #ffbb54;
+}
+
+.noninterest {
+  box-shadow: none;
+  all: unset;
+  border-radius: 17px;
+  padding: 5px 27px;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 400;
+  text-align: center;
+  min-width: 100px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  background-color: white;
+  color: #ffbb54;
+}
+
+.noninterest.subscribed {
+  background-color:  #ffbb54; 
+  color: white;
 }
 
 .addInterestButton {
@@ -164,6 +207,23 @@ button {
   margin-left: 84%;
 }
 
+.addNonInterestButton {
+  box-shadow: none;
+  all: unset;
+  border:1px solid #ffbb54;
+  border-radius: 17px;
+  padding: 5px 27px;
+  background-color: #ffffff; 
+  color: #ffbb54;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 400;
+  text-align: center;
+  min-width: 50px;
+  margin-top: 10px;
+  margin-left: 84%;
+}
+
 .closeTagsOfInterests {
   box-shadow: none;
   all: unset;
@@ -178,6 +238,23 @@ button {
   min-width: 1.125em;
   margin-top: 0.4375em;
   margin-left: 96%;
+}
+
+.closeTagsOfNonInterests {
+  box-shadow: none;
+    all: unset;
+    border: 1px solid #ffbb54;
+    border-radius: 10px;
+    /* padding: 0px 0px; */
+    background-color: #ffffff;
+    color: #ffbb54;
+    font-size: 15px;
+    font-family: Montserrat;
+    font-weight: 400;
+    text-align: center;
+    min-width: 18px;
+    margin-top: 7px;
+    margin-left: 96%;
 }
 
 /*** SWEEET ALERT ******/

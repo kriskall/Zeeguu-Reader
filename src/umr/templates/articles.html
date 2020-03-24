@@ -1,6 +1,6 @@
+{% extends 'articleHeader.html' %}
+{% block header %}
 
-  {% extends 'articleHeader.html' %}
-  {% block header %}
 
 
   <div
@@ -50,11 +50,12 @@
     alt="Zeeguu Logo - The Elephant"
   />
 
+
     <div class="dropdown">
       <button class="dropbtn">| Articles <span id="arrow"></span></button>
       <div class="dropdown-content">
         <a href="/read">| All</a>
-        <a href="/read/bookmarks" >| Bookmarks</a>
+        <a href="/read/bookmarks">| Bookmarks</a>
         <a href="/read/classroom">| Classroom</a>
       </div>
     </div>
@@ -80,20 +81,14 @@
 
       <div class="settingsbtn">
         <a class="settingsLink">
-          <img
-          class="settingsImg"
-          src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
-          alt="Click here for general settings"
-        />
+          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
+            alt="Click here for general settings" />
         </a>
       </div>
       <div class="settingsbtn">
         <a class="settingsLink">
-          <img
-          class="settingsImg"
-          src="{{ url_for('reader_blueprint.static',filename='images/languageSwitch.svg') }}"
-          alt="Click here for general settings"
-        />
+          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/languageSwitch.svg') }}"
+            alt="Click here for general settings" />
         </a>
       </div>
 
@@ -112,13 +107,14 @@
           <div class="options">
             <br /><br /><br />
 
-            <!----  <span class="mdl-layout-title">
+
+          <!----  <span class="mdl-layout-title">
             My Interests
           </span>
           <br /> -->
 
-            <!-- List of content currently subscribed to. -->
-            <!--
+          <!-- List of content currently subscribed to. -->
+          <!--
           <span
             class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour"
           >
@@ -133,96 +129,77 @@
           <div id="languagesList"></div>
 
           <div style="font-size: xx-small">&nbsp;</div> -->
-            <div class="interestButton">
-              <span
-                class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour"
-              >
-                <button
-                  type="button"
-                  class="mdl-chip__action show-topic-subscriber"
-                >
-                  <span class="mdl-chip__text">Interests</span>
-                  <!--  <i class="material-icons mdl-color-text--amber">add_circle</i>-->
-                </button>
-              </span>
+          <div class="interestButton">
+            <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
+              <button type="button" class="mdl-chip__action show-topic-subscriber">
+                <span class="mdl-chip__text">Interests</span>
+                <!--  <i class="material-icons mdl-color-text--amber">add_circle</i>-->
+              </button>
+            </span>
+          </div>
+
+          <div id="searchesList"></div>
+          <div id="topicsList">
+            <div id="any_topic" style="display:none;">
+              &nbsp;&nbsp;&nbsp;&nbsp;<i style="color:gray">Showing all Interests...</i>
             </div>
+          </div>
 
-            <div id="searchesList"></div>
-            <div id="topicsList">
-              <div id="any_topic" style="display:none;">
-                &nbsp;&nbsp;&nbsp;&nbsp;<i style="color:gray"
-                  >Showing all Interests...</i
-                >
-              </div>
-            </div>
+          <div style="font-size: xx-small">&nbsp;</div>
+          <div class="interestButton">
+            <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
+              <button type="button" class="mdl-chip__action show-filter-subscriber">
+                <span class="mdl-chip__text">
+                  <nobr>Non-Interests</nobr>
+                </span>
+                <!-- <i class="material-icons mdl-color-text--amber">add_circle</i>-->
+              </button>
+            </span>
+          </div>
+          <div id="searchesFilterList"></div>
+          <div id="topicsFilterList"></div>
 
-            <div style="font-size: xx-small">&nbsp;</div>
-            <div class="interestButton">
-              <span
-                class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour"
-              >
-                <button
-                  type="button"
-                  class="mdl-chip__action show-filter-subscriber"
-                >
-                  <span class="mdl-chip__text"><nobr>Non-Interests</nobr></span>
-                  <!-- <i class="material-icons mdl-color-text--amber">add_circle</i>-->
-                </button>
-              </span>
-            </div>
-            <div id="searchesFilterList"></div>
-            <div id="topicsFilterList"></div>
+          <div style="font-size: xx-small">&nbsp;</div>
 
-            <div style="font-size: xx-small">&nbsp;</div>
-
-            <br />
-            <!--- <span class="mdl-layout-title">
+          <br />
+          <!--- <span class="mdl-layout-title">
             Search
           </span>-->
-            <div class="seachField">
-              <div
-                class="mdl-textfield mdl-js-textfield mdl-textfield--expandable"
-              >
-                <label
-                  class="mdl-button mdl-js-button mdl-button--icon"
-                  for="search-expandable"
-                >
-                  <!---   <i class="material-icons">search</i>-->
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                  <input
-                    class="mdl-textfield__input"
-                    type="text"
-                    id="search-expandable"
-                    placeholder="Search all articles"
-                  />
-                  <!--<label class="mdl-textfield__label" for="search-expandable"
+          <div class="seachField">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+              <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
+                <!---   <i class="material-icons">search</i>-->
+              </label>
+              <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" id="search-expandable"
+                  placeholder="Search all articles" />
+                <!--<label class="mdl-textfield__label" for="search-expandable"
                 >Search...</label
               >-->
-                </div>
               </div>
             </div>
           </div>
-          <!-- Sorting buttons-->
-          <div class="sortingCategories">
-            <div class="wordsSorting">
-              <div class="wordLabel">words</div>
-              <div id="triangleWords" class="triangle"></div>
-            </div>
-            <div class="levelSorting">
-              <div class="levelLabel">level</div>
-              <div id="triangleLevel" class="triangle"></div>
-            </div>
+        </div>
+        <!-- Sorting buttons-->
+        <div class="sortingCategories">
+          <div class="wordsSorting">
+            <div class="wordLabel">words</div>
+            <div id="triangleWords" class="triangle"></div>
           </div>
-        </nav>
-      </div>
+          <div class="levelSorting">
+            <div class="levelLabel">level</div>
+            <div id="triangleLevel" class="triangle"></div>
+          </div>
+        </div>
+      </nav>
     </div>
-    <div class="widthOfColumn">
-      <div class="tagsOfInterests">
-        <button class='closeTagsOfInterests'>X</button>
-        <button class='addInterestButton'>Add + </button>
-      </div>
+  </div>
+  <div class="widthOfColumn">
+    <div class="tagsOfInterests">
+      <button class='closeTagsOfInterests'>X</button>
+      <button class='addInterestButton'>Add + </button>
     </div>
+
     <div class="widthOfColumn">
       <main class="mdl-layout__content">
         <section class="mdl-layout__tab-panel is-active" id="inbox">
@@ -242,27 +219,19 @@
                 alt="Loading..."
               />
             </div>
-
-        </section>
-        <section class="mdl-layout__tab-panel" id="starred">
-          <div class="page-content">
-            <ul id="starredArticleList" class="articleLinkList"></ul>
-            <div id="emptyStarredArticleListImage" class="emptyPage">
-              <img
-                class="sadEleph"
-                src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-                alt="Not subscribed to any feeds..."
-              />
-            </div>
-          </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="starred">
+        <div class="page-content">
+          <ul id="starredArticleList" class="articleLinkList"></ul>
         </section>
       
       </main>
     </div>
   </div>
+</div>
 
-  <!-- Template for subscribed source items -->
-  <script id="subscription-template-source" type="text/template">
+<!-- Template for subscribed source items -->
+<script id="subscription-template-source" type="text/template">
        <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
     	<a class="mdl-chip__action removeButton">
@@ -271,8 +240,8 @@
     </span>
   </script>
 
-  <!-- Template for subscribed topic items -->
-  <script id="subscription-template-topic" type="text/template">
+<!-- Template for subscribed topic items -->
+<script id="subscription-template-topic" type="text/template">
        <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
     	<a class="mdl-chip__action removeButton">
@@ -281,14 +250,14 @@
     </span>
   </script>
 
-  <!-- Template for subscribed search items MODIFIED-->
+<!-- Template for subscribed search items MODIFIED-->
 <script id="subscription-template-search" type="text/template">
   <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
       <a class="mdl-list__item-secondary-action topic">
         <button
         type="button"
-        class="mdl-chip__action interests custom"
+        class="interests custom"
         >
         <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
         </button>
@@ -297,8 +266,9 @@
 </script>
 
 
-  <!-- Template for subscribed language items -->
-  <script id="subscription-template-language" type="text/template">
+
+<!-- Template for subscribed language items -->
+<script id="subscription-template-language" type="text/template">
        <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
     	<a class="mdl-chip__action removeButton">
@@ -339,7 +309,7 @@
 
 
 
-  <script id="search-notification-template" type="text/template">
+<script id="search-notification-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry search-notification-box">
         <div class="articleLinkHeader">
             <div class="searchText headerElement">
@@ -352,9 +322,9 @@
     </li>
     <div class="articleLinkSpacer"></div>
   </script>
-  {% endblock %}
+{% endblock %}
 
-  <!-- Dialog windows for adding a source, topic and filter. -->
-  {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+<!-- Dialog windows for adding a source, topic and filter. -->
+{% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
 
 </html>
