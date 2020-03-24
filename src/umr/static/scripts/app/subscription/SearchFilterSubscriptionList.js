@@ -5,10 +5,10 @@ import Notifier from '../Notifier';
 import 'loggly-jslogger';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import { GET_FILTERED_SEARCHES } from '../zeeguuRequests';
-import { FILTER_SEARCH_ENDPOINT } from '../zeeguuRequests';
-import { UNFILTER_SEARCH_ENDPOINT } from '../zeeguuRequests';
-import { reload_articles_on_drawer_close } from "./main";
+import {GET_FILTERED_SEARCHES} from '../zeeguuRequests';
+import {FILTER_SEARCH_ENDPOINT} from '../zeeguuRequests';
+import {UNFILTER_SEARCH_ENDPOINT} from '../zeeguuRequests';
+import {reload_articles_on_drawer_close} from "./main";
 
 
 const HTML_ID_SUBSCRIPTION_LIST = '#searchesFilterList';
@@ -21,8 +21,8 @@ const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW SEARCH FILTER';
 let logger = new LogglyTracker();
 logger.push({
     'logglyKey': config.LOGGLY_TOKEN,
-    'sendConsoleErrors': true,
-    'tag': 'SearchFilterSubscriptionList'
+    'sendConsoleErrors' : true,
+    'tag' : 'SearchFilterSubscriptionList'
 });
 
 /**
@@ -85,7 +85,7 @@ export default class SearchFilterSubscriptionList {
         let subscription = $(Mustache.render(template, search));
         let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
         let _unfollow = this._unfollow.bind(this);
-        removeButton.click(function (search) {
+        removeButton.click(function(search) {
             return function () {
                 _unfollow(search);
             };
@@ -103,7 +103,7 @@ export default class SearchFilterSubscriptionList {
         UserActivityLogger.log(USER_EVENT_FOLLOWED_FEED, search_terms);
         this._loading();
         let callback = ((data) => this._onSearchFilterFollowed(search_terms, data)).bind(this);
-        ZeeguuRequests.get(FILTER_SEARCH_ENDPOINT + "/" + search_terms, {}, callback);
+        ZeeguuRequests.get(FILTER_SEARCH_ENDPOINT + "/" + search_terms , {}, callback);
     }
 
     /**
@@ -134,7 +134,7 @@ export default class SearchFilterSubscriptionList {
         this._remove(search);
         this._loading();
         let callback = ((data) => this._onSearchFilterUnfollowed(search, data)).bind(this);
-        ZeeguuRequests.post(UNFILTER_SEARCH_ENDPOINT, { search_id: search.id }, callback);
+        ZeeguuRequests.post(UNFILTER_SEARCH_ENDPOINT, {search_id: search.id}, callback);
     }
 
     /**
@@ -159,7 +159,7 @@ export default class SearchFilterSubscriptionList {
      * @param {Object} search - Data of the particular search to remove from the list.
      */
     _remove(search) {
-        if (!this.searchFilterSubscriptionList.delete(search.id)) { console.log("Error: search not in search list."); }
+        if (!this.searchFilterSubscriptionList.delete(search.id))  { console.log("Error: search not in search list."); }
         $('span[searchRemovableID="' + search.id + '"]').fadeOut();
     }
 

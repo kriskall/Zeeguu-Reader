@@ -5,25 +5,24 @@ import Notifier from '../Notifier';
 import 'loggly-jslogger';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import { GET_SUBSCRIBED_SEARCHES } from '../zeeguuRequests';
-import { SUBSCRIBE_SEARCH_ENDPOINT } from '../zeeguuRequests';
-import { UNSUBSCRIBE_SEARCH_ENDPOINT } from '../zeeguuRequests';
-import { reload_articles_on_drawer_close } from "./main.js";
+import {GET_SUBSCRIBED_SEARCHES} from '../zeeguuRequests';
+import {SUBSCRIBE_SEARCH_ENDPOINT} from '../zeeguuRequests';
+import {UNSUBSCRIBE_SEARCH_ENDPOINT} from '../zeeguuRequests';
+import {reload_articles_on_drawer_close} from "./main.js";
 
-//const HTML_ID_FEED_TEMPLATE = "#topicAddable-template";
+
 const HTML_ID_SUBSCRIPTION_LIST = '#searchesList';
 const HTML_ID_SUBSCRIPTION_TEMPLATE = '#subscription-template-search';
 const HTML_CLASS_REMOVE_BUTTON = '.removeButton';
 const USER_EVENT_FOLLOWED_FEED = 'FOLLOW SEARCH';
 const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW SEARCH';
-const ALL_INTERESTS = ".tagsOfInterests";
 
 /* Setup remote logging. */
 let logger = new LogglyTracker();
 logger.push({
     'logglyKey': config.LOGGLY_TOKEN,
-    'sendConsoleErrors': true,
-    'tag': 'SearchSubscriptionList'
+    'sendConsoleErrors' : true,
+    'tag' : 'SearchSubscriptionList'
 });
 
 /**
@@ -81,24 +80,17 @@ export default class SearchSubscriptionList {
     _addSubscription(search) {
         if (this.searchList.has(search.id))
             return;
+
         let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
         let subscription = $(Mustache.render(template, search));
-
-        let remove = $(subscription.find(".mdl-chip__action.interests.custom"));
+        let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
         let _unfollow = this._unfollow.bind(this);
-        remove.click(function (search) {
+        removeButton.click(function(search) {
             return function () {
                 _unfollow(search);
-                $(remove).fadeOut();
-                console.log("removed")
             };
         }(search));
-
-
-
-        //$(subscription).addClass("mdl-chip__action interests");
-        //.addClass("addableTitle").removeClass("mdl-chip__text");
-        $(ALL_INTERESTS).append(subscription);
+        $(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
         this.searchList.set(search.id, search);
     }
 
@@ -111,7 +103,7 @@ export default class SearchSubscriptionList {
         UserActivityLogger.log(USER_EVENT_FOLLOWED_FEED, search_terms);
         this._loading();
         let callback = ((data) => this._onSearchFollowed(search_terms, data)).bind(this);
-        ZeeguuRequests.get(SUBSCRIBE_SEARCH_ENDPOINT + "/" + search_terms, {}, callback);
+        ZeeguuRequests.get(SUBSCRIBE_SEARCH_ENDPOINT + "/" + search_terms , {}, callback);
     }
 
     /**
@@ -141,7 +133,7 @@ export default class SearchSubscriptionList {
         this._remove(search);
         this._loading();
         let callback = ((data) => this._onSearchUnfollowed(search, data)).bind(this);
-        ZeeguuRequests.post(UNSUBSCRIBE_SEARCH_ENDPOINT, { search_id: search.id }, callback);
+        ZeeguuRequests.post(UNSUBSCRIBE_SEARCH_ENDPOINT, {search_id: search.id}, callback);
     }
 
     /**
@@ -166,7 +158,7 @@ export default class SearchSubscriptionList {
      * @param {Object} search - Data of the particular search to remove from the list.
      */
     _remove(search) {
-        if (!this.searchList.delete(search.id)) { console.log("Error: search not in search list."); }
+        if (!this.searchList.delete(search.id))  { console.log("Error: search not in search list."); }
         $('span[searchRemovableID="' + search.id + '"]').fadeOut();
     }
 
