@@ -97,7 +97,7 @@ export default class InterestSubscriber {
             if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
               interestSubscriptionList.follow(data);
               $(interest).removeClass(UNSUBSCRIBED_CLASS);
-              console.log("subscribed");
+              //console.log("subscribed");
             }
             else {
               interestSubscriptionList._unfollow(data);
