@@ -31,7 +31,7 @@ import '../../../styles/sweetalert.css';
 
 
 /* Script that binds listeners to html events, such that the
- * correct object is called to handle it. */
+ * correct object is called to handle it.. */
 let sourceSubscriptionList = new SourceSubscriptionList();
 let articleList = new ArticleList(sourceSubscriptionList);
 let sourceSubscriber = new SourceSubscriber(sourceSubscriptionList);
@@ -207,9 +207,9 @@ function scrollToView(elem) {
 
     var offset = elem.offset().top;
     if (!elem.is(":visible")) {
-        elem.css({"visibility": "hidden"}).show();
+        elem.css({ "visibility": "hidden" }).show();
         var offset = elem.offset().top;
-        elem.css({"visibility": "", "display": ""});
+        elem.css({ "visibility": "", "display": "" });
     }
 
     var visible_area_start = $(window).scrollTop();
