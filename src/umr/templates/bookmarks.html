@@ -1,59 +1,45 @@
+{% extends 'articleHeader.html' %}
+{% block header %}
+<div class="main-container">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
 
-  {% extends 'articleHeader.html' %}
-  {% block header %}
-  <div
-    class="main-container"
-  >
-    <header class="mdl-layout__header mdl-layout__header--transparent">
-
-      <div
-        class="mdl-layout__tab-bar mdl-js-ripple-effect"
-        class="select-article"
-      >
-        <p class="welcome_personal">Welcome,</p>
-        <h1 class="select-article">Select an Article</h1>
-        <div class="all__tabs">
-          <div class="row__tab">
-            <a id="inbox_tab" href="/read" class="mdl-layout__tab">
-              Articles</a
-            >
-          </div>
-          <div class="row__bar">
-            <div class="bar"></div>
-          </div>
-          <div class="row__tab">
-            <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
-              Bookmarks</a
-            >
-          </div>
-          <div class="row__bar">
-            <div class="bar"></div>
-          </div>
-          <div class="row__tab">
-            <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
-              Classroom</a
-            >
-          </div>
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
+      <p class="welcome_personal">Welcome,</p>
+      <h1 class="select-article">Select an Article</h1>
+      <div class="all__tabs">
+        <div class="row__tab">
+          <a id="inbox_tab" href="/read" class="mdl-layout__tab">
+            Articles</a>
+        </div>
+        <div class="row__bar">
+          <div class="bar"></div>
+        </div>
+        <div class="row__tab">
+          <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
+            Bookmarks</a>
+        </div>
+        <div class="row__bar">
+          <div class="bar"></div>
+        </div>
+        <div class="row__tab">
+          <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
+            Classroom</a>
         </div>
       </div>
-    </header>
-    <div class="widthOfColumn">
-      <div class="mdl-layout__drawer mdl-color--amber-A700">
-        <nav class="mdl-navigation">
-          <!-- Sorting buttons-->
-          <div class="sortingCategories">
-            <div class="wordsSorting">
-              <div class="wordLabel">words</div>
-              <div id="triangleWords" class="triangle"></div>
-            </div>
-            <div class="levelSorting">
-              <div class="levelLabel">level</div>
-              <div id="triangleLevel" class="triangle"></div>
-            </div>
+    </div>
+  </header>
+  <div class="widthOfColumn">
+    <div class="mdl-layout__drawer mdl-color--amber-A700">
+      <nav class="mdl-navigation">
+        <!-- Sorting buttons-->
+        <div class="sortingCategories">
+          <div class="wordsSorting">
+            <div class="wordLabel">words</div>
+            <div id="triangleWords" class="triangle"></div>
           </div>
           <div class="levelSorting">
-            <div class="wordLable">Level</div>
-            <div class="triangle"></div>
+            <div class="levelLabel">level</div>
+            <div id="triangleLevel" class="triangle"></div>
           </div>
         </div>
       </nav>
@@ -94,57 +80,19 @@
   </div>
 </div>
 
-<!-- Template for subscribed source items -->
-<script id="subscription-template-source" type="text/template">
-       <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
 
-<!-- Template for subscribed topic items -->
-<script id="subscription-template-topic" type="text/template">
-       <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
 
-<!-- Template for subscribed search items -->
-<script id="subscription-template-search" type="text/template">
-       <span searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ search }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
-
-<!-- Template for subscribed language items -->
-<script id="subscription-template-language" type="text/template">
-       <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
-
-    <script id="starred-articleLink-template" type="text/template">
+<script id="starred-articleLink-template" type="text/template">
       <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}" articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
-        <a 
-          href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}"> 
+        <a
+          href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
           <div class="articleLinkHeader">
             {% raw %}{{ articleLinkTitle }}{% endraw %}
             <div class="articleLinkDifficulty headerElement">
               <span class="difficulty-level articleLinkDifficultyText"
                             > {% raw %}{{articleDifficulty}}{% endraw %} </span>
               <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
-            </div>       
+            </div>
           </div>
           <div class="articleLinkSummary">
             {% raw %}{{articleSummary}}{% endraw %}
@@ -164,7 +112,7 @@
         </a>
       </li>
       <div class="articleLinkSpacer"></div>
-  
+
     </script>
 
 
