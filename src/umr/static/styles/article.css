@@ -1,43 +1,38 @@
 * {
-  -webkit-backface-visibility: hidden;
-  -webkit-tap-highlight-color: transparent;
-  font-family: Montserrat;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.layout__content {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  background-color: white;
-  overflow-y: overlay;
+.mdl-layout__content {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #f2f2f2;
+    overflow-y: overlay;
 }
 
-/*
 .is-casting-shadow {
-  box-shadow: 0em 0em 1em lightgray !important;
-} */
+    box-shadow: 0em 0em 1em lightgray !important;
+}
 
 zeeguu.loading {
-  animation: fadein 1s 0s infinite linear alternate;
+    animation: fadein 1s 0s infinite linear alternate;
 }
 
 /* keeps the translation and origin together */
 .origtrans {
-  display: inline-block;
-  position: sticky;
-  margin: 0;
-  line-height: 29px;
+    display: inline-block;
 }
 
 /*  zeeguu tag hover changes color, translated word hover no underline or color*/
 
 zeeguu:hover {
-  color: #ffbb54;
-  border-bottom: 1px dashed #ffbb54;
+    background-color: #e8f8ff;
+    border-bottom: 1px dashed #6ec7e6;;
 }
 
 .origtrans:hover {
-  background-color: white !important;
-  border: none;
+    background-color:white !important;
+    border: none;
 }
 
 /* the translation - above the origin word
@@ -46,26 +41,26 @@ zeeguu:hover {
    */
 
 zeeguu tran {
-  display: block;
+    display: block;
 
-  margin-top: -9px;
-  margin-bottom: 0;
-  position: sticky;
+    margin-top: 6px;
+    margin-bottom: -2px;
 
-  padding: 2px;
+    padding: 3px;
+    padding-left: 0.3em;
+    padding-right: 0.2em;
 
-  border-radius: 0.3em 0.3em 0.3em 0.3em;
-  background-clip: padding-box;
+    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    background-clip: padding-box;
 
-  background-color: #ffe086;
+    background-color: #e8f8ff;
 
-  font-size: medium;
-  line-height: 1em;
-  max-width: 24em;
-  font-weight: 300;
-  color: #4f4f4f;
-  text-transform: lowercase;
-  text-align: center;
+    font-size: medium;
+    line-height: 1em;
+    max-width: 24em;
+    font-weight: 300;
+    color: #4f4f4f;
+    text-transform: lowercase;
 }
 
 /*
@@ -75,38 +70,40 @@ zeeguu tran {
     uploads a new translation
 */
 zeeguu orig {
-  border-bottom: 1px dashed #ffbb54;
-  width: 100%;
-  color: #ffbb54;
+
+    border-bottom: 1px dashed #6ec7e6;;
+    width: 100%;
+
 }
+
 
 /* when there are multiple translations, we mark this with a little
 green downwards pointing triangle; we used to mark also single alternatives
  but for now there's no marking for them */
 
-zeeguu tran moreAlternatives,
-zeeguu tran singleAlternative {
-  font-size: xx-small;
-  float: right;
-  width: 1.5em;
-  text-align: right;
+zeeguu tran moreAlternatives, zeeguu tran singleAlternative {
+    font-size: xx-small;
+    float: right;
+    width: 1.5em;
+    text-align: right;
 }
 
 zeeguu tran moreAlternatives {
-  color: #ffe086;
+    color: #6ec7e6;;
 }
 
 zeeguu tran singleAlternative {
-  color: #ffe086;
+    color: #6ec7e6;
 }
 
 zeeguu tran moreAlternatives:after {
-  content: "▼";
-  color: white;
+    content: " ▼";
 }
 
 zeeguu tran singleAlternative:after {
+    content: "";
 }
+
 
 /* once the user has
  - selected an alternative we change
@@ -118,29 +115,26 @@ zeeguu tran singleAlternative:after {
   these classes currently show a mini
   animation
  */
-.handSelected,
-.handContributed {
-  color: #ffe086;
-  width: 1.5em;
-  text-align: right;
+.handSelected, .handContributed {
+    color: cornflowerblue;
+    width: 1.5em;
+    text-align: right;
 }
 
-.handSelected:after,
-.handContributed:after {
-  visibility: hidden;
-  opacity: 0.1;
-  transition: visibility 0s 2s, opacity 2s linear;
+.handSelected:after, .handContributed:after {
+    visibility: hidden;
+    opacity: 0.1;
+    transition: visibility 0s 2s, opacity 2s linear;
 }
 
 .handSelected:after {
-  content: " ✓";
-  color: white;
+    content: " ✓";
 }
 
 .handContributed:after {
-  content: "  :)";
-  color: white;
+    content: "  :)";
 }
+
 
 /* When an alternative is selected or a translation is uploaded
 we highlight this by changing the style of both the translation
@@ -151,251 +145,197 @@ classes for the origin... because at some point we were considering
 distinguishing between the two types of contribution... eventually
 that made the UI too heavy ... */
 
-.selectedAlternative,
-.contributedAlternativeTran {
-  font-weight: 500;
-  color: black;
+.selectedAlternative, .contributedAlternativeTran {
+    font-weight: 500;
+    color: black;
 }
 
-.selectedAlternativeOrig,
-.contributedAlternativeOrig {
-  border-bottom: 1px solid #ffbb54;
+.selectedAlternativeOrig, .contributedAlternativeOrig {
+    border-bottom: 1px solid #6ec7e6;;
 }
+
+
 
 zeeguu tran[chosen]:after {
-  content: attr(chosen);
-}
-
-.toolbar {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  align-self: stretch;
-  align-items: center;
-  height: 64px;
-  margin: 30px;
-}
-
-.tool {
-  width: 70px;
-  background-color: #ffbb54;
-  border: 1px solid #ffbb54;
-  border-radius: 10px;
-  margin: 10px;
-}
-
-.main-tools {
-  display: flex;
-  justify-content: flex-end;
-  margin-left: auto;
+    content: attr(chosen);
 }
 
 #back_button {
+    left: -2.5em;
 }
 
 #read_later_link {
+    left: -2.5em;
+}
+
+.reader_toolbar_button {
+    color: lightgray;
 }
 
 #toggle_undo {
+    right: 1em;
+    color: rgba(0, 0, 0, .26);
 }
 
 #toggle_copy {
+    right: 0.5em;
 }
 
 #toggle_star {
-  color: rgba(0, 0, 0, 0.26);
+    color: rgba(0, 0, 0, .26);
 }
 
 .feedback_question {
-  font-weight: bold;
-  padding-bottom: 1em;
-  font-size: large;
+    font-weight: bold;
+    padding-bottom: 1em;
+    font-size: large;
 }
 
-#question_reasons_not_to_finish,
-#question_difficulty_for_finished_article {
-  padding: 16px;
-  text-align: left;
-  font-size: small;
+#question_reasons_not_to_finish, #question_difficulty_for_finished_article {
+    padding: 16px;
+    text-align: left;
+    font-size: small;
 }
 
 #altermenu {
-  display: none;
-  z-index: 1;
-  color: white;
-  text-align: center;
-  padding: 0px;
-  background: #ffe086;
-  border-radius: 2px;
+    display: none;
+    z-index: 1;
+    color: #000000;
+    text-align: center;
+    padding: 0px;
+    background: #eaf2ff;
+    border-radius: 2px;
+    box-shadow: 0px -14px 39px 0px rgba(0, 0, 0, 0.2);
 }
 
 #altermenu .mdl-button {
-  width: 100%;
-  height: 100%;
-  display: block;
-  text-transform: none;
-  white-space: normal;
-  border-bottom: 1px solid white;
-  text-align: left;
-  line-height: 1em;
-  padding-top: 8px;
-  padding-bottom: 8px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-transform: none;
+    white-space: normal;
+    border-bottom: 1px solid lightgray;
+    text-align: left;
+    line-height: 1em;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 #altermenu * {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .mdl-textfield__input {
-  color: grey;
-  text-align: center;
+    color: grey;
+    text-align: center;
 }
 
 .mdl-layout__header,
 .mdl-layout__drawer-button {
-  color: black;
+    color: black;
 }
 
 .mdl-js-snackbar {
-  border-radius: 3em 3em 3em 3em;
-  bottom: 2em;
+    border-radius: 3em 3em 3em 3em;
+    bottom: 2em;
 }
 
 p.title {
-  font-size: 27px;
-  font-weight: bold;
-  line-height: 1.7em;
-  text-align: left;
+    font-size: 2.2em;
+    font-weight: bold;
+    line-height: 1.7em;
 }
 
 p {
-  font-size: 1.3em;
-  line-height: 3em;
-  padding: 0.2em;
+    font-size: 1.3em;
+    line-height: 1.7em;
+    padding: 0.2em;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-size: 1.4em;
+h1, h2, h3, h4 {
+    font-size: 1.4em;
 }
 
-h5,
-h6 {
-  font-size: 0.7em;
-}
-
-.seperator {
-  border-radius: 5px;
-  border: 1px solid #ffbb54;
-  background-color: #ffbb54;
-}
-
-.articleDetails {
-  display: flex;
-}
-
-#source {
-  font-size: 16px;
-  font-weight: 600;
+h5, h6 {
+    font-size: 0.7em;
 }
 
 #articleInfo {
-  font-size: 1em;
-  text-align: left;
-  color: grey;
-  font-style: italic;
-  font-size: 10px;
-  line-height: 20px;
+    font-size: 1em;
+    text-align: right;
+    color: grey;
+    font-style: italic;
 }
 
 a {
-  color: grey;
+    color: grey;
 }
 
 a:hover {
-  color: #505050;
+    color: #505050;
 }
 
-.bookmark_button {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-  background: none;
-  background-color: transparent;
-}
-
-.bookmark_icon {
-  width: 40px;
-  height: 40px;
-}
-
-.page-content,
-.questionnaire-content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  text-align: justify;
-  padding-top: 3em;
+.page-content, .questionnaire-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: justify;
+    padding-top: 3em;
 }
 
 .questionnaire-content {
-  text-align: center;
+    text-align: center;
 }
 
 #main_article_content {
-  margin-bottom: 2em;
+    margin-bottom: 2em;
 }
 
-.page-content-container,
-#bottom_feedback_div {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 60em;
-  background-color: white;
-  border-radius: 0.3em;
+.page-content-container, #bottom_feedback_div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 60em;
+    background-color: white;
+    border-radius: 0.3em;
+    box-shadow: 0em 0em 2em lightgray;
 }
 
 #like_button {
-  text-align: center;
-  padding-bottom: 3em;
+    text-align: center;
+    padding-bottom: 3em;
 }
 
 #toggle_like:hover {
-  background-color: none;
-  cursor: pointer;
+    background-color: none;
+    cursor: pointer;
 }
 
 #toggle_like:not(.mdl-button--disabled) {
-  background-color: #ffe086;
+    background-color: #A3D6F5;
 }
 
 .material-icons.star.off {
-  display: none;
+    display: none;
 }
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
                                      supported by Chrome and Opera */
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @keyframes fadein {
-  0% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
 }

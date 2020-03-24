@@ -1,319 +1,291 @@
-{% extends 'articleHeader.html' %}
-{% block header %}
+<!DOCTYPE html>
+<HTML>
 
+<HEAD>
+    <TITLE>Zeeguu Reader</TITLE>
+    <META name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-89557275-2');
+    </script>
+
+    <script> var noAvatarURL = "{{url_for('reader_blueprint.static',filename='images/noAvatar.png')}}";</script>
+
+    <!-- Include the subscription package. -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('reader_blueprint.static',filename='scripts/dist/css/subscription-0.9.353.css') }}">
+    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
+</HEAD>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-  <nav class="sidenav">
-    <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
-      alt="Zeeguu Logo - The Elephant" />
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
 
-    <div class="dropdown">
-      <button class="dropbtn">| Articles <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="/read">| All</a>
-        <a href="/read/bookmarks">| Bookmarks</a>
-        <a href="/read/classroom">| Classroom</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">| Words <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="/bookmarks">| History</a>
-        <a href="/starred_bookmarks">| Starred</a>
-        <a href="/learned_bookmarks">| Learned</a>
-        <a href="/top_bookmarks">| Top</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">| Exercises <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="#">| Easy</a>
-        <a href="#">| Regular</a>
-        <a href="#">| Ambitious</a>
-      </div>
-    </div>
-
-    <div class="generalNavLinks">
-
-      <div class="settingsbtn">
-        <a class="settingsLink">
-          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
-            alt="Click here for general settings" />
-        </a>
-      </div>
-      <div class="settingsbtn">
-        <a class="settingsLink">
-          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/languageSwitch.svg') }}"
-            alt="Click here for general settings" />
-        </a>
-      </div>
-
-      <div class="nav-generalbtn">
-        <a class="generalLinks" href="#">Get in touch</a>
-      </div>
-      <div class="nav-generalbtn">
-        <a class="generalLinks" href="#">Sign Out</a>
-      </div>
-
-    </div>
-  </nav>
-
-  <header class="mdl-layout__header mdl-layout__header--transparent">
-
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
-      <p class="welcome_personal">Welcome,</p>
-      <h1 class="select-article">Select an Article</h1>
-      <div class="all__tabs">
-        <div class="row__tab">
-          <a id="inbox_tab" href="/read" class="mdl-layout__tab">
-            Articles</a>
+            <a href="/whatnext" id="return_home" class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon">
+                <i class="material-icons">home_back</i>
+            </a>
+            <div class="mdl-layout-spacer"></div>
+            "
         </div>
-        <div class="row__bar">
-          <div class="bar"></div>
-        </div>
-        <div class="row__tab">
-          <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
-            Bookmarks</a>
-        </div>
-        <div class="row__bar">
-          <div class="bar"></div>
-        </div>
-        <div class="row__tab">
-          <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
-            Classroom</a>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a id="inbox_tab" href="#inbox" class="mdl-layout__tab">
+                Articles</a>
 
+            <a id="cohort_tab" href="#cohort" class="mdl-layout__tab">
+                Bookmarks</a>
+
+            <a id="starred_tab" href="#starred" class="mdl-layout__tab">
+                Classroom</a>
         </div>
-      </div>
-    </div>
-  </header>
-  <div class="widthOfColumn">
+    </header>
     <div class="mdl-layout__drawer mdl-color--amber-A700">
-      <nav class="mdl-navigation">
-        <div class="options">
-          <br /><br /><br />
+        <nav class="mdl-navigation">
+            <div class="options">
 
-          <!----  <span class="mdl-layout-title">
-            My Interests
-          </span>
-          <br /> -->
 
-          <!-- List of content currently subscribed to. -->
-          <!--
-          <span
-            class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour"
-          >
-            <span class="mdl-chip__text">Languages</span>
-            <button
-              type="button"
-              class="mdl-chip__action show-language-subscriber"
-            >
-              <i class="material-icons mdl-color-text--amber">add_circle</i>
-            </button>
-          </span>
-          <div id="languagesList"></div>
+                <br /><br /><br />
 
-          <div style="font-size: xx-small">&nbsp;</div> -->
-          <div class="interestButton">
-            <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
-              <button type="button" class="mdl-chip__action show-topic-subscriber">
-                <span class="mdl-chip__text">Interests</span>
-                <!--  <i class="material-icons mdl-color-text--amber">add_circle</i>-->
-              </button>
-            </span>
-          </div>
 
-          <div id="searchesList"></div>
-          <div id="topicsList">
-            <div id="any_topic" style="display:none;">
-              &nbsp;&nbsp;&nbsp;&nbsp;<i style="color:gray">Showing all Interests...</i>
-            </div>
-          </div>
-
-          <div style="font-size: xx-small">&nbsp;</div>
-          <div class="interestButton">
-            <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
-              <button type="button" class="mdl-chip__action show-filter-subscriber">
-                <span class="mdl-chip__text">
-                  <nobr>Non-Interests</nobr>
+                <span class="mdl-layout-title">
+                    My Interests
                 </span>
-                <!-- <i class="material-icons mdl-color-text--amber">add_circle</i>-->
-              </button>
-            </span>
-          </div>
-          <div id="searchesFilterList"></div>
-          <div id="topicsFilterList"></div>
+                <br />
 
-          <div style="font-size: xx-small">&nbsp;</div>
 
-          <br />
-          <!--- <span class="mdl-layout-title">
-            Search
-          </span>-->
-          <div class="seachField">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-              <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
-                <!---   <i class="material-icons">search</i>-->
-              </label>
-              <div class="mdl-textfield__expandable-holder">
-                <input class="mdl-textfield__input" type="text" id="search-expandable"
-                  placeholder="Search all articles" />
-                <!--<label class="mdl-textfield__label" for="search-expandable"
-                >Search...</label
-              >-->
-              </div>
+                <!-- List of content currently subscribed to. -->
+
+                <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
+                    <span class="mdl-chip__text">Languages</span>
+                    <button type="button" class="mdl-chip__action show-language-subscriber"><i
+                            class="material-icons mdl-color-text--amber">add_circle</i></button>
+                </span>
+                <div id="languagesList"></div>
+
+                <div style="font-size: xx-small">&nbsp;</div>
+
+                <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
+                    <span class="mdl-chip__text">Topics</span>
+                    <button type="button" class="mdl-chip__action show-topic-subscriber"><i
+                            class="material-icons mdl-color-text--amber">add_circle</i></button>
+                </span>
+                <div id="searchesList"></div>
+                <div id="topicsList">
+                    <div id="any_topic" style="display:none;">&nbsp;&nbsp;&nbsp;&nbsp;<i style="color:gray">Showing all
+                            topics...</i></div>
+                </div>
+
+                <div style="font-size: xx-small">&nbsp;</div>
+
+                <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
+                    <span class="mdl-chip__text">Non-Interests</span>
+                    <button type="button" class="mdl-chip__action show-filter-subscriber"><i
+                            class="material-icons mdl-color-text--amber">add_circle</i></button>
+                </span>
+                <div id="searchesFilterList"></div>
+                <div id="topicsFilterList"></div>
+
+                <div style="font-size: xx-small">&nbsp;</div>
+
+                <br />
+                <span class="mdl-layout-title">
+                    Search
+                </span>
+
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" id="search-expandable">
+                        <label class="mdl-textfield__label" for="search-expandable">Search...</label>
+                    </div>
+                </div>
+
+
             </div>
-          </div>
-        </div>
-        <!-- Sorting buttons-->
-        <div class="sortingCategories">
-          <div class="wordsSorting">
-            <div class="wordLabel">words</div>
-            <div id="triangleWords" class="triangle"></div>
-          </div>
-          <div class="levelSorting">
-            <div class="levelLabel">level</div>
-            <div id="triangleLevel" class="triangle"></div>
-          </div>
-        </div>
-      </nav>
+        </nav>
     </div>
-  </div>
-  <div class="widthOfColumn">
-    <div class="tagsOfInterests">
-      <button class='closeTagsOfInterests'>X</button>
-      <button class='addInterestButton'>Add + </button>
-    </div>
-  </div>
-  <div class="widthOfColumn">
-    <div class="tagsOfNonInterests">
-      <button class='closeTagsOfNonInterests'>X</button>
-      <button class='addNonInterestButton'>Add + </button>
-    </div>
-  </div>
-  <div class="widthOfColumn">
     <main class="mdl-layout__content">
-      <section class="mdl-layout__tab-panel is-active" id="inbox">
-        <div class="page-content">
-          <!-- Search notification -->
-          <ul id="searchNotification" class="searchNotification"></ul>
-          <!-- List of articles -->
-          <ul id="articleLinkList" class="articleLinkList"></ul>
-          <br />
-          <!--
-          <div id="emptyArticleListImage" class="emptyPage">
-           <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-              alt="Not subscribed to any feeds..." />
-          </div>
-          <div class="loader">
-            <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
-              alt="Loading..." />
-          </div>-->
-
-      </section>
-      <section class="mdl-layout__tab-panel" id="starred">
-        <div class="page-content">
-          <ul id="starredArticleList" class="articleLinkList"></ul>
-          <!-- 
-          <div id="emptyStarredArticleListImage" class="emptyPage">
-            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-              alt="Not subscribed to any feeds..." />
-          </div>
-          -->
-        </div>
-      </section>
-      <section class="mdl-layout__tab-panel" id="cohort">
-        <div class="page-content">
-          <ul id="cohortArticleList" class="articleLinkList"></ul>
-          <!-- 
-          <div id="emptyCohortArticleListImage" class="emptyPage">
-            <p>There are no articles in your class</p>
-            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-              alt="Not subscribed to any feeds..." />
-          </div>
-          -->
-        </div>
-      </section>
+        <section class="mdl-layout__tab-panel is-active" id="inbox">
+            <div class="page-content">
+                <!-- Search notification -->
+                <ul id="searchNotification" class="searchNotification"></ul>
+                <!-- List of articles -->
+                <ul id="articleLinkList" class="articleLinkList"></ul>
+                <BR />
+                <div id="emptyArticleListImage" class="emptyPage">
+                    <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
+                        alt="Not subscribed to any feeds..." />
+                </div>
+                <div class="loader">
+                    <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
+                        alt="Loading..." />
+                </div>
+                <div id="toastmessage" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+            </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="starred">
+            <div class="page-content">
+                <ul id="starredArticleList" class="articleLinkList"></ul>
+                <div id="emptyStarredArticleListImage" class="emptyPage">
+                    <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
+                        alt="Not subscribed to any feeds..." />
+                </div>
+            </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="cohort">
+            <div class="page-content">
+                <ul id="cohortArticleList" class="articleLinkList"></ul>
+                <div id="emptyCohortArticleListImage" class="emptyPage">
+                    <p>There are no articles in your class</p>
+                    <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
+                        alt="Not subscribed to any feeds..." />
+                </div>
+            </div>
+        </section>
     </main>
-  </div>
 </div>
 
 <!-- Template for subscribed source items -->
 <script id="subscription-template-source" type="text/template">
-       <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
+    <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+		<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
+		<a class="mdl-chip__action removeButton">
+			<i class="material-icons">cancel</i>
+		</a>
+	</span>
+</script>
 
 <!-- Template for subscribed topic items -->
 <script id="subscription-template-topic" type="text/template">
-       <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
-
-<!-- Template for subscribed search items MODIFIED-->
-<script id="subscription-template-search" type="text/template">
-  <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
-      <a class="mdl-list__item-secondary-action topic">
-        <button
-        type="button"
-        class="interests custom"
-        >
-        <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
-        </button>
-    </a>
-  </div>
+    <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+		<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
+		<a class="mdl-chip__action removeButton">
+			<i class="material-icons">cancel</i>
+		</a>
+	</span>
 </script>
 
-
+<!-- Template for subscribed search items -->
+<script id="subscription-template-search" type="text/template">
+    <span searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+		<span class="mdl-chip__text">{% raw %}{{ search }}{% endraw %}</span>
+		<a class="mdl-chip__action removeButton">
+			<i class="material-icons">cancel</i>
+		</a>
+	</span>
+</script>
 
 <!-- Template for subscribed language items -->
 <script id="subscription-template-language" type="text/template">
-       <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
+    <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+		<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
+		<a class="mdl-chip__action removeButton">
+			<i class="material-icons">cancel</i>
+		</a>
+	</span>
+</script>
 
 <!-- Template for an article link. -->
 <script id="articleLink-template" type="text/template">
-  <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
-      articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
-      <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
-          <div class="articleLinkHeader">
-              <div class="articleLinkTitle headerElement">
-                  {% raw %}{{ articleLinkTitle }}{% endraw %}
-              </div>
-              <div class="articleLinkDifficulty headerElement">
-                  <span class="difficulty-level articleLinkDifficultyText"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
-                  <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
-              </div>
-          </div>
-          <div class="articleLinkSummary">
-              {% raw %}{{articleSummary}}{% endraw %}
-          </div>
-          <div class="articleTopics">
-            <div class="articleLinkImage">
-              <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
-          </div>
-              <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
-              <span class="singleTopicTag">
-              {% raw %}{{articleTopics}}{% endraw %}</span>
-          </div>
-      </a>
-  </li>
-  <div class="articleLinkSpacer"></div>
+    <li class="fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
+        articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
+        <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
+            <div class="articleLinkHeader">
+                <div class="articleLinkImage headerElement">
+                    <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
+                </div>
+                <div class="articleLinkTitle headerElement">
+                    {% raw %}{{ articleLinkTitle }}{% endraw %}
+                    <span class="wordCount"> ({% raw %}{{ wordCount }}{% endraw %}  words)</span>
+                </div>
+                <div class="articleLinkDifficulty headerElement">
+                    <span class="articleLinkDifficultyText"
+                          style="background: {% raw %}{{articleDifficultyColor}}{% endraw %}"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
+                    <span class="linkLanguageIcon flag-icon flag-icon-{% raw %}{{ articleLinkLanguage }}{% endraw %}"></span>
+                </div>
+            </div>
+            <div class="articleLinkSummary">
+                <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
+                {% raw %}{{articleSummary}}{% endraw %}
+            </div>
+            <div class="articleTopics">
+                {% raw %}{{articleTopics}}{% endraw %}
+            </div>
+        </a>
+    </li>
+    <div class="articleLinkSpacer"></div>
 </script>
 
+<!-- Template for a starred article link. -->
+<script id="starred-articleLink-template" type="text/template">
+    <li class="articleLinkEntry" articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
+
+        <div class="articleLinkHeader">
+
+
+            <a class="fadeoutOnClick articleLinkTitle headerElement"
+               href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
+
+
+                {% raw %}{{ articleLinkTitle }}{% endraw %}
+
+                <br/>
+                <i style="display:{% raw %}{{ articleLinkDisplayStar }}{% endraw %}"
+                   class="material-icons star">star</i>
+                <i style="display:{% raw %}{{ articleLinkDisplayLike }}{% endraw %}" class="material-icons star">thumb_up</i>
+
+
+            </a>
+
+
+            <div class="starredFlag headerElement">
+                <span class="flag-icon flag-icon-{% raw %}{{ articleLinkLanguage }}{% endraw %} headerElement"></span>
+            </div>
+        </div>
+    </li>
+    <div class="articleLinkSpacer"></div>
+</script>
+
+<!-- Template for a cohort article link. -->
+<script id="cohort-articleLink-template" type="text/template">
+    <li class="fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
+        articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
+        <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
+            <div class="articleLinkHeader">
+                <!-- <div class="articleLinkImage headerElement">
+                    <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
+                </div> -->
+                <div class="articleLinkTitle headerElement">
+                    {% raw %}{{ articleLinkTitle }}{% endraw %}
+                    <span class="wordCount"> ({% raw %}{{ wordCount }}{% endraw %} words)</span>
+                </div>
+                <div class="articleLinkDifficulty headerElement">
+                    <span class="articleLinkDifficultyText"
+                          style="background: {% raw %}{{articleDifficultyColor}}{% endraw %}"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
+                    <span class="linkLanguageIcon flag-icon flag-icon-{% raw %}{{ articleLinkLanguage }}{% endraw %}"></span>
+                </div>
+            </div>
+            <div class="articleLinkSummary">
+                <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
+                {% raw %}{{articleSummary}}{% endraw %}
+            </div>
+            <div class="articleTopics">
+                {% raw %}{{articleTopics}}{% endraw %}
+            </div>
+        </a>
+    </li>
+    <div class="articleLinkSpacer"></div>
+  </script>
 
 
 <script id="search-notification-template" type="text/template">
@@ -328,10 +300,10 @@
         </div>
     </li>
     <div class="articleLinkSpacer"></div>
-  </script>
-{% endblock %}
+</script>
 
 <!-- Dialog windows for adding a source, topic and filter. -->
-{% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+{% include 'addSourceDialog.html' %}
+{% include 'addTopicDialog.html' %}
 
-</html>
+</HTML>

@@ -1,15 +1,20 @@
 import $ from 'jquery'
+import Mustache from 'mustache';
 import config from '../config';
 import Notifier from '../Notifier';
 import 'loggly-jslogger';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import { GET_SUBSCRIBED_FILTERS } from '../zeeguuRequests';
-import { SUBSCRIBE_FILTER_ENDPOINT } from '../zeeguuRequests';
-import { UNSUBSCRIBE_FILTER_ENDPOINT } from '../zeeguuRequests';
-import { reload_articles_on_drawer_close } from "./main.js";
+import {GET_SUBSCRIBED_FILTERS} from '../zeeguuRequests';
+import {SUBSCRIBE_FILTER_ENDPOINT} from '../zeeguuRequests';
+import {UNSUBSCRIBE_FILTER_ENDPOINT} from '../zeeguuRequests';
+import {reload_articles_on_drawer_close} from "./main.js";
+
 
 const HTML_ID_SUBSCRIPTION_LIST = '#topicsFilterList';
+const HTML_ID_NO_TOPIC_SELECTED = '#any_topic';
+const HTML_ID_SUBSCRIPTION_TEMPLATE = '#subscription-template-topic';
+const HTML_CLASS_REMOVE_BUTTON = '.removeButton';
 const USER_EVENT_FOLLOWED_FEED = 'FILTER TOPIC';
 const USER_EVENT_UNFOLLOWED_FEED = 'UNFILTER TOPIC';
 
@@ -17,20 +22,20 @@ const USER_EVENT_UNFOLLOWED_FEED = 'UNFILTER TOPIC';
 let logger = new LogglyTracker();
 logger.push({
     'logglyKey': config.LOGGLY_TOKEN,
-    'sendConsoleErrors': true,
-    'tag': 'TopicFilterSubscriptionList'
+    'sendConsoleErrors' : true,
+    'tag' : 'TopicFilterSubscriptionList'
 });
 
 /**
  * Shows a list of all subscribed topics, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class NonInterestSubscriptionList {
+export default class TopicFilterSubscriptionList {
     /**
      * Initialise an empty {@link Map} of topics.
      */
     constructor() {
-        this.nonInterestSubscriptionList = new Map();
+        this.topicFilterSubscriptionList = new Map();
     }
 
     /**
@@ -74,23 +79,21 @@ export default class NonInterestSubscriptionList {
      * @param {Object} topic - Data of the particular topic to add to the list.
      */
     _addSubscription(topic) {
-        if (this.nonInterestSubscriptionList.has(topic.id))
+        if (this.topicFilterSubscriptionList.has(topic.id))
             return;
-        /** 
+
         let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
         let subscription = $(Mustache.render(template, topic));
         let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
         let _unfollow = this._unfollow.bind(this);
-        removeButton.click(function (topic) {
+        removeButton.click(function(topic) {
             return function () {
                 _unfollow(topic);
             };
         }(topic));
-        //$(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
+        $(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
         $(HTML_ID_NO_TOPIC_SELECTED).hide();
-        */
-        this.nonInterestSubscriptionList.set(topic.id, topic);
-        //$("tagsOfNonInterests").append(topic);
+        this.topicFilterSubscriptionList.set(topic.id, topic);
     }
 
     /**
@@ -103,7 +106,7 @@ export default class NonInterestSubscriptionList {
         this._addSubscription(topic);
         this._loading();
         let callback = ((data) => this._onTopicFilterFollowed(topic, data)).bind(this);
-        ZeeguuRequests.post(SUBSCRIBE_FILTER_ENDPOINT, { filter_id: topic.id }, callback);
+        ZeeguuRequests.post(SUBSCRIBE_FILTER_ENDPOINT, {filter_id: topic.id}, callback);
     }
 
     /**
@@ -132,7 +135,7 @@ export default class NonInterestSubscriptionList {
         this._remove(topic);
         this._loading();
         let callback = ((data) => this._onTopicFilterUnfollowed(topic, data)).bind(this);
-        ZeeguuRequests.post(UNSUBSCRIBE_FILTER_ENDPOINT, { topic_id: topic.id }, callback);
+        ZeeguuRequests.post(UNSUBSCRIBE_FILTER_ENDPOINT, {topic_id: topic.id}, callback);
     }
 
     /**
@@ -157,8 +160,8 @@ export default class NonInterestSubscriptionList {
      * @param {Object} topic - Data of the particular topic to remove from the list.
      */
     _remove(topic) {
-        if (!this.nonInterestSubscriptionList.delete(topic.id)) { console.log("Error: topic not in topic list."); }
-        $('span[searchRemovableID="' + topic.id + '"]').fadeOut();
+        if (!this.topicFilterSubscriptionList.delete(topic.id))  { console.log("Error: topic not in topic list."); }
+        $('span[topicRemovableID="' + topic.id + '"]').fadeOut();
     }
 
     /**
@@ -173,5 +176,6 @@ export default class NonInterestSubscriptionList {
      * Not doing anything anymore because we're not reloading anymore
      */
     _loading() {
+
     }
 };

@@ -1,17 +1,21 @@
 import $ from 'jquery'
+import Mustache from 'mustache';
 import config from '../config';
 import Notifier from '../Notifier';
 import 'loggly-jslogger';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import { GET_SUBSCRIBED_TOPICS } from '../zeeguuRequests';
-import { SUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests';
-import { UNSUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests';
-import { reload_articles_on_drawer_close } from './main.js';
+import {GET_SUBSCRIBED_TOPICS} from '../zeeguuRequests';
+import {SUBSCRIBE_TOPIC_ENDPOINT} from '../zeeguuRequests';
+import {UNSUBSCRIBE_TOPIC_ENDPOINT} from '../zeeguuRequests';
+import ArticleList from "./ArticleList";
+import {reload_articles_on_drawer_close} from './main.js';
 
 
 const HTML_ID_SUBSCRIPTION_LIST = '#topicsList';
 const HTML_ID_NO_TOPIC_SELECTED = '#any_topic';
+const HTML_ID_SUBSCRIPTION_TEMPLATE = '#subscription-template-topic';
+const HTML_CLASS_REMOVE_BUTTON = '.removeButton';
 const USER_EVENT_FOLLOWED_FEED = 'FOLLOW FEED';
 const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW FEED';
 
@@ -27,7 +31,7 @@ logger.push({
  * Shows a list of all subscribed topics, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class InterestSubscriptionList {
+export default class TopicSubscriptionList {
     /**
      * Initialise an empty {@link Map} of topics.
      */
@@ -79,19 +83,22 @@ export default class InterestSubscriptionList {
     _addSubscription(topic) {
         if (this.topicList.has(topic.id))
             return;
-        //let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
-        //let subscription = $(Mustache.render(template, topic));
-        //let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
-        //let _unfollow = this._unfollow.bind(this);
-        //removeButton.click(function (topic) {
-        //    return function () {
-        //        _unfollow(topic);
-        //    };
-        //}(topic));
-        //$(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
+
+        let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
+        let subscription = $(Mustache.render(template, topic));
+        let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
+        let _unfollow = this._unfollow.bind(this);
+        removeButton.click(function (topic) {
+            return function () {
+                _unfollow(topic);
+            };
+        }(topic));
+        $(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
 
         this.topicList.set(topic.id, topic);
         this.show_no_topic_message_if_necessary();
+
+
     }
 
     show_no_topic_message_if_necessary() {
@@ -108,11 +115,13 @@ export default class InterestSubscriptionList {
      * @param {Object} topic - Data of the particular topic to subscribe to.
      */
     follow(topic) {
+
         UserActivityLogger.log(USER_EVENT_FOLLOWED_FEED, topic.id, topic);
         this._addSubscription(topic);
         this._loading();
         let callback = ((data) => this._onTopicFollowed(topic, data)).bind(this);
-        ZeeguuRequests.post(SUBSCRIBE_TOPIC_ENDPOINT, { topic_id: topic.id }, callback);
+
+        ZeeguuRequests.post(SUBSCRIBE_TOPIC_ENDPOINT, {topic_id: topic.id}, callback);
     }
 
     /**
@@ -141,7 +150,7 @@ export default class InterestSubscriptionList {
         this._remove(topic);
         this._loading();
         let callback = ((data) => this._onTopicUnfollowed(topic, data)).bind(this);
-        ZeeguuRequests.post(UNSUBSCRIBE_TOPIC_ENDPOINT, { topic_id: topic.id }, callback);
+        ZeeguuRequests.post(UNSUBSCRIBE_TOPIC_ENDPOINT, {topic_id: topic.id}, callback);
     }
 
     /**
@@ -185,6 +194,5 @@ export default class InterestSubscriptionList {
      * Not doing anything anymore because we're not reloading anymore
      */
     _loading() {
-
     }
 };
