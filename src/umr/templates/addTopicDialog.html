@@ -1,5 +1,4 @@
-<link rel="stylesheet" type="text/css"
-  href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/article-settings.css') }}" />
+<LINK rel="stylesheet" href= "{{ url_for('reader_blueprint.static',filename='styles/flag-icon/flag-icon.css') }}" type= "text/css">
 
 <!-- Template for the topic dialog -->
 <script id="add-topic-dialog-template" type="text/template">
@@ -40,34 +39,15 @@
   </div>
 </script>
 
-<!-- Template for feed items interests MODIFIED -->
+<!-- Template for feed items -->
 <script id="topicAddable-template" type="text/template">
   <div addableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
-      <!-- <img src="{% raw %}{{ image_url }}{% endraw %}" class="feedIcon mdl-list__item-avatar"/> -->
-      <a class="mdl-list__item-secondary-action topic">
-      <button 
-          type="button"
-          class="interests"
-          >
-        <span class="addableTitle">{% raw %}{{ title }}{% endraw %}</span>
-        </button>
-    </a>
-  </div>
-</script>
-
-<!-- Template for feed items non-interest MODIFIED -->
-<script id="noninterest-template" type="text/template">
-  <div addableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
-      <!-- <img src="{% raw %}{{ image_url }}{% endraw %}" class="feedIcon mdl-list__item-avatar"/> -->
-      <a class="mdl-list__item-secondary-action topic">
-      <button 
-          type="button"
-          class="noninterest"
-          >
-        <span class="addableTitle">{% raw %}{{ title }}{% endraw %}</span>
-        </button>
+      <img src="{% raw %}{{ image_url }}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
+      <span class="addableTitle">{% raw %}{{ title }}{% endraw %}</span>
+    </span>
+    <a class="mdl-list__item-secondary-action subscribeButton">
+      <i class="material-icons ">add_circle</i>
     </a>
   </div>
 </script>
