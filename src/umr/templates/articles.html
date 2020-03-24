@@ -3,52 +3,41 @@
 
 
 
-  <div
-    class="main-container"
-  >
+<div class="main-container">
 
 
-    <header class="mdl-layout__header mdl-layout__header--transparent">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
 
-      <div
-        class="mdl-layout__tab-bar mdl-js-ripple-effect"
-        class="select-article"
-      >
-        <p class="welcome_personal">Welcome,</p>
-        <h1 class="select-article">Select an Article</h1>
-        <div class="all__tabs">
-          <div class="row__tab">
-            <a id="inbox_tab" href="/read" class="mdl-layout__tab">
-              Articles</a
-            >
-          </div>
-          <div class="row__bar">
-            <div class="bar"></div>
-          </div>
-          <div class="row__tab">
-            <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
-              Bookmarks</a
-            >
-          </div>
-          <div class="row__bar">
-            <div class="bar"></div>
-          </div>
-          <div class="row__tab">
-            <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
-              Classroom</a
-            >
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
+      <p class="welcome_personal">Welcome,</p>
+      <h1 class="select-article">Select an Article</h1>
+      <div class="all__tabs">
+        <div class="row__tab">
+          <a id="inbox_tab" href="/read" class="mdl-layout__tab">
+            Articles</a>
+        </div>
+        <div class="row__bar">
+          <div class="bar"></div>
+        </div>
+        <div class="row__tab">
+          <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
+            Bookmarks</a>
+        </div>
+        <div class="row__bar">
+          <div class="bar"></div>
+        </div>
+        <div class="row__tab">
+          <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
+            Classroom</a>
 
-          </div>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-      <nav class="sidenav">
-    <img
-    class="zeeguuLogo"
-    src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
-    alt="Zeeguu Logo - The Elephant"
-  />
+  <nav class="sidenav">
+    <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+      alt="Zeeguu Logo - The Elephant" />
 
 
     <div class="dropdown">
@@ -101,11 +90,11 @@
 
     </div>
   </nav>
-    <div class="widthOfColumn">
-      <div class="mdl-layout__drawer mdl-color--amber-A700">
-        <nav class="mdl-navigation">
-          <div class="options">
-            <br /><br /><br />
+  <div class="widthOfColumn">
+    <div class="mdl-layout__drawer mdl-color--amber-A700">
+      <nav class="mdl-navigation">
+        <div class="options">
+          <br /><br /><br />
 
 
           <!----  <span class="mdl-layout-title">
@@ -199,7 +188,12 @@
       <button class='closeTagsOfInterests'>X</button>
       <button class='addInterestButton'>Add + </button>
     </div>
-
+    <div class="widthOfColumn">
+      <div class="tagsOfNonInterests">
+        <button class='closeTagsOfNonInterests'>X</button>
+        <button class='addNonInterestButton'>Add + </button>
+      </div>
+    </div>
     <div class="widthOfColumn">
       <main class="mdl-layout__content">
         <section class="mdl-layout__tab-panel is-active" id="inbox">
@@ -213,18 +207,15 @@
               <p> No articles</p>
             </div>
             <div class="loader">
-              <img
-                class="eleph"
-                src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
-                alt="Loading..."
-              />
+              <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
+                alt="Loading..." />
             </div>
-      </section>
-      <section class="mdl-layout__tab-panel" id="starred">
-        <div class="page-content">
-          <ul id="starredArticleList" class="articleLinkList"></ul>
         </section>
-      
+        <section class="mdl-layout__tab-panel" id="starred">
+          <div class="page-content">
+            <ul id="starredArticleList" class="articleLinkList"></ul>
+        </section>
+
       </main>
     </div>
   </div>
