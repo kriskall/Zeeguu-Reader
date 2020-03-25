@@ -321,17 +321,32 @@ a:hover {
 }
 
 .bookmark_button {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   border: none;
   background: none;
   background-color: transparent;
 }
 
-.bookmark_icon {
-  width: 40px;
-  height: 40px;
+.bookmark_icon_done {
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.bookmark_icon_done.off {
+  display: hidden;
+}
+
+.bookmark_icon_undone {
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.bookmark_icon_undone.off {
+  display: hidden;
 }
 
 .page-content,
