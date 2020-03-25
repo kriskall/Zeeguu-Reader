@@ -50,6 +50,7 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0.5em;
 }
 
 .settingsImg{
@@ -87,7 +88,7 @@
   position: relative;
   display: block;
   bottom: 25%;
-  top: 20%;
+  top: 16%;
 }
 
 .dropbtn span{
@@ -112,7 +113,7 @@
   text-decoration: none;
   display: block;
   font-family: Montserrat;
-  font-size: 1.25em;
+  font-size: 1.15em;
 }
 
 .dropdown-content  a:hover {
