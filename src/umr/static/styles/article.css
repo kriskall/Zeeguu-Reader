@@ -175,13 +175,14 @@ zeeguu tran[chosen]:after {
   align-self: stretch;
   align-items: center;
   height: 64px;
-  margin: 30px;
+  margin: 15px;
 }
 
 .tool {
-  width: 70px;
-  background-color: #ffbb54;
-  border: 1px solid #ffbb54;
+  width: 55px;
+  height: 55px;
+  background-color: #FFE086;
+  border: 1px solid #FFE086;
   border-radius: 10px;
   margin: 10px;
 }
@@ -192,17 +193,39 @@ zeeguu tran[chosen]:after {
   margin-left: auto;
 }
 
+#toggle_translate {
+
+}
+
+#toggle_translate.selected {
+  background-color:  #ffbb54;
+}
+
+#toggle_listen {
+}
+
+#toggle_listen.selected  {
+  background-color:  #ffbb54;
+}
+
+#toggle_undo {
+}
+
+#toggle_undo.selected {
+  background-color:  #ffbb54;
+}
+
+
+
 #back_button {
 }
 
 #read_later_link {
 }
 
-#toggle_undo {
-}
-
 #toggle_copy {
 }
+
 
 #toggle_star {
   color: rgba(0, 0, 0, 0.26);
