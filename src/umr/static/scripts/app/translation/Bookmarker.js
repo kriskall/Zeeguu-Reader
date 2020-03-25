@@ -12,7 +12,7 @@ const OFF = "off"; // Here's one of the issues: how does it connect to css?
 const HTML_ID_BOOKMARKBUTTON = "#bookmark_button";
 
 const HTML_BOOKMARK_DONE = "#bookmark_button>.bookmark_icon_done";
-const HTML_BOOKMARK_UNDONE = "#toggle_star>#bookmark_icon_undone";
+const HTML_BOOKMARK_UNDONE = "#toggle_star>.bookmark_icon_undone";
 
 /**
  * Implements the functionality for starring an article, together with
@@ -84,7 +84,7 @@ export default class Bookmarker {
   _toggleIcon() {
     $(HTML_ID_BOOKMARKBUTTON)
       .children()
-      .each(function() {
+      .each(function () {
         $(this).toggleClass(OFF);
         // K: here is where I think it all fucks up -->
         // it's a material library call and we wanna do somthing like addClass

@@ -323,7 +323,7 @@ a:hover {
 .bookmark_button {
   width: 30px;
   height: 30px;
-  padding: 0;
+  margin-right: 1.5em;
   border: none;
   background: none;
   background-color: transparent;
@@ -336,7 +336,7 @@ a:hover {
 }
 
 .bookmark_icon_done.off {
-  display: hidden;
+  display: none;
 }
 
 .bookmark_icon_undone {
@@ -346,7 +346,7 @@ a:hover {
 }
 
 .bookmark_icon_undone.off {
-  display: hidden;
+  display: none;
 }
 
 .page-content,
