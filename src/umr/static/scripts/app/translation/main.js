@@ -7,7 +7,7 @@ import config from "../config";
 import Translator from "./Translator";
 import AlterMenu from "./AlterMenu";
 import Speaker from "./Speaker";
-import Starer from "./Starer";
+//import Starer from "./Starer";
 import UserActivityLogger from "../UserActivityLogger";
 import { readCookie } from "../cookieWorks";
 import {
@@ -25,8 +25,8 @@ import "../../../styles/mdl/material.min.css";
 import "../../../styles/article.css";
 import "../../../styles/material-icons.css";
 
-const USER_EVENT_ENABLE_COPY = "ENABLE COPY";
-const USER_EVENT_DISABLE_COPY = "DISABLE COPY";
+//const USER_EVENT_ENABLE_COPY = "ENABLE COPY";
+//const USER_EVENT_DISABLE_COPY = "DISABLE COPY";
 const USER_EVENT_CHANGE_ORIENTATION = "CHANGE ORIENTATION";
 const USER_EVENT_LIKE_ARTICLE = "LIKE ARTICLE";
 const USER_EVENT_UNLIKE_ARTICLE = "UNLIKE ARTICLE";
@@ -38,10 +38,10 @@ const USER_EVENT_ARTICLE_LOST_FOCUS = "ARTICLE LOST FOCUS";
 const USER_EVENT_SCROLL = "SCROLL";
 const USER_EVENT_FEEDBACK = "USER FEEDBACK";
 
-const HTML_ID_TOGGLE_COPY = "#toggle_copy";
+//const HTML_ID_TOGGLE_COPY = "#toggle_copy";
 const HTML_ID_TOGGLE_LIKE = "#toggle_like";
 const HTML_ID_TOGGLE_UNDO = "#toggle_undo";
-const HTML_ID_TOGGLE_STAR = "#toggle_star";
+//const HTML_ID_TOGGLE_STAR = "#toggle_star";
 const HTML_ID_TOGGLE_TRANSLATE = "#toggle_translate";
 const HTML_ID_TOGGLE_LISTEN = "#toggle_listen";
 const HTML_ID_ARTICLE_VOCABULARY_LINK = "#bookmarks_for_article_link";
@@ -49,7 +49,7 @@ const CLASS_MDL_BUTTON_DISABLED = "mdl-button--disabled";
 const CLASS_NOSELECT = "noselect";
 const ENTER_KEY = 13;
 
-var starer;
+//var starer;
 const speaker = new Speaker();
 
 let translator;
@@ -103,8 +103,10 @@ function getArticleInfoAndInitElementsRequiringIt(article_id) {
       attachInteractionScripts();
 
       make_article_elements_visible();
+
     }.bind(this)
   );
+
 }
 
 function attachInteractionScripts() {
@@ -117,7 +119,7 @@ function attachInteractionScripts() {
 
   /* When the copy toggle is switched on,
    * copying is enabled and translation gets disabled and vice-versa. */
-  $(HTML_ID_TOGGLE_COPY).click(handle_TOGGLE_COPY_click);
+  // $(HTML_ID_TOGGLE_COPY).click(handle_TOGGLE_COPY_click);
 
   /* When the like button is clicked, set its background color. */
   $(HTML_ID_TOGGLE_LIKE).click(handle_TOGGLE_LIKE_click);
@@ -133,11 +135,11 @@ function attachInteractionScripts() {
   $(HTML_ID_TOGGLE_TRANSLATE).click(handle_TOGGLE_TRANSLATE_click);
 
 
-  /* Toggle listener for star button. */
+  /* Toggle listener for star button. 
   $(HTML_ID_TOGGLE_STAR).click(function () {
     starer.toggle();
   });
-
+  */
 
   $(HTML_ID_ARTICLE_VOCABULARY_LINK).click(function () {
     UserActivityLogger.log_article_interaction(
@@ -163,6 +165,7 @@ function log_user_leaves_article() {
 function handle_TOGGLE_LISTEN_click() {
   if ($(this).hasClass("selected")) {
     $(this).removeClass("selected");
+    $(HTML_ID_TOGGLE_TRANSLATE).addClass("selected");
   } else {
     $(HTML_ID_TOGGLE_UNDO).removeClass("selected");
     $(HTML_ID_TOGGLE_TRANSLATE).removeClass("selected");
@@ -171,13 +174,10 @@ function handle_TOGGLE_LISTEN_click() {
 }
 
 function handle_TOGGLE_TRANSLATE_click() {
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected");
-  } else {
-    $(HTML_ID_TOGGLE_UNDO).removeClass("selected");
-    $(HTML_ID_TOGGLE_LISTEN).removeClass("selected");
-    $(this).addClass("selected");
-  }
+  $(HTML_ID_TOGGLE_UNDO).removeClass("selected");
+  $(HTML_ID_TOGGLE_LISTEN).removeClass("selected");
+  $(this).addClass("selected");
+
 }
 
 function handle_TOGGLE_UNDO_click() {
@@ -196,7 +196,7 @@ function handle_TOGGLE_UNDO_click() {
   attachZeeguuTagListeners();
 }
 
-
+/**
 function handle_TOGGLE_COPY_click() {
   // Selection is disabled -> enable it.
   if ($(this).hasClass(CLASS_MDL_BUTTON_DISABLED)) {
@@ -207,8 +207,7 @@ function handle_TOGGLE_COPY_click() {
     UserActivityLogger.log_article_interaction(USER_EVENT_DISABLE_COPY);
   }
 }
-
-
+*/
 
 function handle_TOGGLE_LIKE_click() {
   $(this).toggleClass(CLASS_MDL_BUTTON_DISABLED);
@@ -302,25 +301,29 @@ $(window).on("blur", function () {
   UserActivityLogger.log_article_interaction(USER_EVENT_ARTICLE_LOST_FOCUS);
 });
 
-/* Disable selection. */
+
+
 function disableToggleCopy() {
   $("p").each(function () {
     $(this).addClass(CLASS_NOSELECT);
   });
-  $(HTML_ID_TOGGLE_COPY).addClass(CLASS_MDL_BUTTON_DISABLED);
+  //$(HTML_ID_TOGGLE_COPY).addClass(CLASS_MDL_BUTTON_DISABLED);
 }
 
-/* Enable selection. */
+/* Enable selection. 
 function enableToggleCopy() {
   $("p").each(function () {
     $(this).removeClass(CLASS_NOSELECT);
   });
   $(HTML_ID_TOGGLE_COPY).removeClass(CLASS_MDL_BUTTON_DISABLED);
 }
+*/
 
+/*
 function isToggledCopy() {
   return !$(HTML_ID_TOGGLE_COPY).hasClass(CLASS_MDL_BUTTON_DISABLED);
 }
+*/
 
 function handle_difficulty_feebdack_button() {
   // Returns the handler with the article_id already bound
@@ -357,6 +360,7 @@ function handle_article_feedback_button() {
   return upload_feedback_answer;
 }
 
+/*
 function handle_read_later_button_click() {
   function set_starred(event) {
     UserActivityLogger.log_article_interaction(
@@ -369,6 +373,7 @@ function handle_read_later_button_click() {
 
   return set_starred;
 }
+*/
 
 function handle_back_button() {
   $("#header_row").hide();
@@ -395,7 +400,7 @@ function load_article_info_in_page(article_info) {
   text = addParagraphs(text);
   $("#articleContent").html(text);
 
-  starer = new Starer(article_info.starred);
+  //starer = new Starer(article_info.starred);
 
   // LIKED
   if (!article_info.liked) {
@@ -422,46 +427,56 @@ function attachZeeguuTagListeners() {
   /* When a translatable word has been clicked,
    * either try to translate it, speak it, or open an alternative
    * translation window.  */
-  $(config.HTML_ZEEGUUTAG).click(function (event) {
-    if (isToggledCopy()) return;
-    if (alterMenu.isOpen()) return;
 
-    let $target = $(event.target);
-    if (
-      $target.is(config.HTML_ZEEGUUTAG) &&
-      !translator.isTranslated($target)
-    ) {
-      // A non-translated word is clicked, so we translate it.
-      translator.getTopTranslation(this);
-      // NOTE: To fall back to the previous version uncomment the following line
-      // and comment the above line.
-      // translator.translate(this);
-    } else if ($target.is(config.HTML_ORIGINAL)) {
-      // Original text is clicked, so we pronounce it using the speaker.
+
+
+  $(config.HTML_ZEEGUUTAG).click(function (event) {
+    if (alterMenu.isOpen()) return;
+    // If listen is selected we pronounce it using the speaker
+    if ($(HTML_ID_TOGGLE_LISTEN).hasClass("selected")) {
+      let $target = $(event.target);
       speaker.speak($target.text(), FROM_LANGUAGE);
-    } else if ($target.is(config.HTML_TRANSLATED)) {
-      // Translated text is clicked, so we open the alterMenu to allow for suggestions.
-      let getAllTranslations =
-        $target.attr(config.HTML_ATTRIBUTE_POSSIBLY_MORE_TRANSLATIONS) === "";
-      if (getAllTranslations) {
-        let currentService = $target.attr(
-          config.HTML_ATTRIBUTE_SERVICENAME_TRANSLATION + "0"
-        );
-        let currentTranslation = $target.attr(
-          config.HTML_ATTRIBUTE_TRANSLATION + "0"
-        );
-        // Fetch the rest of the translations. Passing the alterMenu variable to automatically
-        // build and show the alterMenu via the callback once the next translations are fetched.
-        translator.getNextTranslations(
-          this,
-          currentService,
-          currentTranslation,
-          alterMenu,
-          $target
-        );
-      } else {
-        alterMenu.build($target);
+    } else {
+      let $target = $(event.target);
+      if (
+        $target.is(config.HTML_ZEEGUUTAG) &&
+        !translator.isTranslated($target)
+      ) {
+        // A non-translated word is clicked, so we translate it.
+        translator.getTopTranslation(this);
+        // NOTE: To fall back to the previous version uncomment the following line
+        // and comment the above line.
+        // translator.translate(this);
+      } else if ($target.is(config.HTML_TRANSLATED)) {
+        // Translated text is clicked, so we open the alterMenu to allow for suggestions.
+        let getAllTranslations =
+          $target.attr(config.HTML_ATTRIBUTE_POSSIBLY_MORE_TRANSLATIONS) === "";
+        if (getAllTranslations) {
+          let currentService = $target.attr(
+            config.HTML_ATTRIBUTE_SERVICENAME_TRANSLATION + "0"
+          );
+          let currentTranslation = $target.attr(
+            config.HTML_ATTRIBUTE_TRANSLATION + "0"
+          );
+          // Fetch the rest of the translations. Passing the alterMenu variable to automatically
+          // build and show the alterMenu via the callback once the next translations are fetched.
+          translator.getNextTranslations(
+            this,
+            currentService,
+            currentTranslation,
+            alterMenu,
+            $target
+          );
+        } else {
+          alterMenu.build($target);
+        }
       }
+
+
     }
+
   });
+
+
+
 }

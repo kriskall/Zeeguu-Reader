@@ -38,8 +38,8 @@
   </div>
 
   <!-- Top bar -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-layout__header--transparent">
+  <div class="articleLayout">
+    <header class="articleHeader">
       <!-- {% include "question__problems_with_article.html" %} -->
 
       <div id="header_row" class="toolbar">
@@ -77,28 +77,31 @@
             <button class="tool" id="toggle_translate">
               <img src="{{ url_for('reader_blueprint.static',filename='images/SVGs/translate.svg') }}"
                 alt="click and translate" />
+              <span class="tooltiptext">click and translate</span>
             </button>
             <button class="tool" id="toggle_listen">
               <img src="{{ url_for('reader_blueprint.static',filename='images/SVGs/sound.svg') }}"
                 alt="click and listen" />
+              <span class="tooltiptext">click and listen</span>
             </button>
             <button class="tool" id="toggle_undo">
               <img src="{{ url_for('reader_blueprint.static',filename='images/SVGs/undo.svg') }}"
                 alt="undo a translation" />
+              <span class="tooltiptext">undo translation</span>
             </button>
           </div>
 
-
+          <!-- 
           <button class="tool" id="toggle_copy"
             class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon mdl-button--disabled ">
             <i class="material-icons">content_copy</i>
           </button>
-
+    
           <button class="tool" id="toggle_star" class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon ">
             <i id="star_border" class="material-icons star">star_border</i>
             <i id="star_fill" class="material-icons star off">star</i>
           </button>
-          <!-- -->
+          -->
 
         </div>
       </div>
