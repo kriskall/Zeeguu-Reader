@@ -207,12 +207,16 @@ zeeguu tran[chosen]:after {
   border: 1px solid #FFE086;
   border-radius: 10px;
   margin: 10px;
+  padding: 1px
 }
 
 .main-tools {
   display: flex;
   justify-content: flex-end;
   margin-left: auto;
+}
+.click_translate{
+  width: 100%;
 }
 
 #toggle_translate:hover {

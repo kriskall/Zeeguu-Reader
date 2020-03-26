@@ -75,12 +75,13 @@
         <div class="main-tools">
           <div>
             <button class="tool" id="toggle_translate">
-              <img src="{{ url_for('reader_blueprint.static',filename='images/SVGs/translate.svg') }}"
+              <img class="click_translate"
+                src="{{ url_for('reader_blueprint.static',filename='images/SVGs/translate.svg') }}"
                 alt="click and translate" />
               <span class="tooltiptext">click and translate</span>
             </button>
             <button class="tool" id="toggle_listen">
-              <img src="{{ url_for('reader_blueprint.static',filename='images/SVGs/sound.svg') }}"
+              <img class="click_listen" src=" {{ url_for('reader_blueprint.static',filename='images/SVGs/sound.svg') }}"
                 alt="click and listen" />
               <span class="tooltiptext">click and listen</span>
             </button>
