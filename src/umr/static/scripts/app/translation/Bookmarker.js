@@ -12,7 +12,7 @@ const OFF = "off"; // Here's one of the issues: how does it connect to css?
 const HTML_ID_BOOKMARKBUTTON = "#bookmark_button";
 
 const HTML_BOOKMARK_DONE = "#bookmark_button>.bookmark_icon_done";
-const HTML_BOOKMARK_UNDONE = "#toggle_star>.bookmark_icon_undone";
+const HTML_BOOKMARK_UNDONE = "#bookmark_button>.bookmark_icon_undone";
 
 /**
  * Implements the functionality for starring an article, together with
@@ -23,6 +23,7 @@ export default class Bookmarker {
    * Initializes the state of the starer (default is false).
    */
   constructor(state = false) {
+    console.log(state);
     this.setState(state);
   }
 
@@ -33,11 +34,13 @@ export default class Bookmarker {
   setState(state) {
     this.on = state;
     if (this.on) {
-      $(HTML_BOOKMARK_DONE).hide();
-      $(HTML_BOOKMARK_UNDONE).show();
-    } else {
+      console.log("1");
       $(HTML_BOOKMARK_UNDONE).hide();
       $(HTML_BOOKMARK_DONE).show();
+    } else {
+      console.log("2");
+      $(HTML_BOOKMARK_DONE).hide();
+      $(HTML_BOOKMARK_UNDONE).show();
     }
   }
 
