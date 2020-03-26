@@ -77,7 +77,7 @@ const ARTICLE_DIFFICULTY_BUTTON_IDS = [
 
 /* When the document has finished loading,
  * bind all necessary listeners. */
-$(document).ready(function () {
+$(document).ready(function() {
   getArticleInfoAndInitElementsRequiringIt(get_article_id());
 
   UserActivityLogger.log_article_interaction(USER_EVENT_OPENED_ARTICLE);
@@ -89,7 +89,7 @@ function getArticleInfoAndInitElementsRequiringIt(article_id) {
   ZeeguuRequests.get(
     GET_USER_ARTICLE_INFO,
     { article_id: article_id },
-    function (article_info) {
+    function(article_info) {
       FROM_LANGUAGE = article_info.language;
 
       translator = new Translator(FROM_LANGUAGE, TO_LANGUAGE);
@@ -124,11 +124,11 @@ function attachInteractionScripts() {
   $(HTML_ID_TOGGLE_LIKE).click(handle_TOGGLE_LIKE_click);
 
   /* Toggle listener for star button. */
-  $(HTML_ID_TOOGLE_BOOKMARK).click(function () {
+  $(HTML_ID_TOOGLE_BOOKMARK).click(function() {
     bookmarker.toggle();
   });
 
-  $(HTML_ID_ARTICLE_VOCABULARY_LINK).click(function () {
+  $(HTML_ID_ARTICLE_VOCABULARY_LINK).click(function() {
     UserActivityLogger.log_article_interaction(
       USER_EVENT_OPEN_VOCABULARY_FOR_ARTICLE
     );
@@ -139,7 +139,7 @@ function attachInteractionScripts() {
   $("#back_button").click(handle_back_button);
 
   let difficulty_feedback_handler = handle_difficulty_feebdack_button();
-  ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function (button_id) {
+  ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function(button_id) {
     $(button_id).click(difficulty_feedback_handler);
   });
 }
@@ -213,7 +213,7 @@ $(document).click(function (event) {
 /* Listens on keypress 'enter' to set the user suggestion
  * as the chosen translation and sends the user's contribution
  * to Zeeguu. */
-$(document).keypress(function (event) {
+$(document).keypress(function(event) {
   let $target = $(event.target);
   if ($target.is("input") && event.which === ENTER_KEY) {
     let $zeeguu = $target.closest(config.HTML_ZEEGUUTAG);
@@ -248,22 +248,22 @@ $(document).keypress(function (event) {
 
 /* Every time the screen orientation changes,
  * the alter menu will be closed. */
-$(window).on("orientationchange", function () {
+$(window).on("orientationchange", function() {
   alterMenu.close();
   UserActivityLogger.log_article_interaction(USER_EVENT_CHANGE_ORIENTATION);
 });
 
-$(window).on("focus", function () {
+$(window).on("focus", function() {
   UserActivityLogger.log_article_interaction(USER_EVENT_ARTICLE_FOCUS);
 });
 
-$(window).on("blur", function () {
+$(window).on("blur", function() {
   UserActivityLogger.log_article_interaction(USER_EVENT_ARTICLE_LOST_FOCUS);
 });
 
 /* Disable selection. */
 function disableToggleCopy() {
-  $("p").each(function () {
+  $("p").each(function() {
     $(this).addClass(CLASS_NOSELECT);
   });
   $(HTML_ID_TOGGLE_COPY).addClass(CLASS_MDL_BUTTON_DISABLED);
@@ -271,7 +271,7 @@ function disableToggleCopy() {
 
 /* Enable selection. */
 function enableToggleCopy() {
-  $("p").each(function () {
+  $("p").each(function() {
     $(this).removeClass(CLASS_NOSELECT);
   });
   $(HTML_ID_TOGGLE_COPY).removeClass(CLASS_MDL_BUTTON_DISABLED);
@@ -285,7 +285,7 @@ function handle_difficulty_feebdack_button() {
   // Returns the handler with the article_id already bound
 
   function difficulty_feedback_button_clicked_partial(event) {
-    ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function (button_id) {
+    ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function(button_id) {
       $(button_id).css("background", "");
     });
 
@@ -381,7 +381,7 @@ function attachZeeguuTagListeners() {
   /* When a translatable word has been clicked,
    * either try to translate it, speak it, or open an alternative
    * translation window.  */
-  $(config.HTML_ZEEGUUTAG).click(function (event) {
+  $(config.HTML_ZEEGUUTAG).click(function(event) {
     if (isToggledCopy()) return;
     if (alterMenu.isOpen()) return;
 

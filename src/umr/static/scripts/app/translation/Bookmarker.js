@@ -33,11 +33,11 @@ export default class Bookmarker {
   setState(state) {
     this.on = state;
     if (this.on) {
-      $(HTML_BOOKMARK_DONE).removeClass(OFF);
-      $(HTML_BOOKMARK_UNDONE).addClass(OFF);
+      $(HTML_BOOKMARK_DONE).hide();
+      $(HTML_BOOKMARK_UNDONE).show();
     } else {
-      $(HTML_BOOKMARK_DONE).addClass(OFF);
-      $(HTML_BOOKMARK_UNDONE).removeClass(OFF);
+      $(HTML_BOOKMARK_UNDONE).hide();
+      $(HTML_BOOKMARK_DONE).show();
     }
   }
 
@@ -75,19 +75,23 @@ export default class Bookmarker {
    * Toggles the internal state of this class between true and false.
    */
   _toggleState() {
-    this.on = this.on ? false : true;
+    if (this.on) {
+      return "true";
+    } else {
+      return "false";
+    }
   }
 
   /**
    * Toggles the icon of the star by adding or removing a class representing OFF.
    */
   _toggleIcon() {
+    console.log("here");
     $(HTML_ID_BOOKMARKBUTTON)
       .children()
-      .each(function () {
-        $(this).toggleClass(OFF);
-        // K: here is where I think it all fucks up -->
-        // it's a material library call and we wanna do somthing like addClass
-      });
+      .each(function() {
+        $(this).toggle();
+      }); // K: here is where I think it all fucks up -->
+    // it's a material library call and we wanna do somthing like addClass
   }
 }
