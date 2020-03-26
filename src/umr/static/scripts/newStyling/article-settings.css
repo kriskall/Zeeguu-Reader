@@ -279,6 +279,25 @@ button {
   }
 } 
 
+@media screen and (max-width: 600px) {
+  
+  .options{
+    display:none; 
+  }
+
+  .wordsSorting{
+    padding-left: 1.5em;
+    padding-right: 0.75em;
+  }
+
+}
+
+@media screen and (max-width: 390px) {
+
+.sortingCategories{
+  width: 5em;
+}
+}
 
 
 /*** SWEEET ALERT ******/
