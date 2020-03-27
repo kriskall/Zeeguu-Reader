@@ -7,7 +7,7 @@ import config from "../config";
 import Translator from "./Translator";
 import AlterMenu from "./AlterMenu";
 import Speaker from "./Speaker";
-import Starer from "./Starer";
+import Bookmarker from "./Bookmarker";
 import UserActivityLogger from "../UserActivityLogger";
 import { readCookie } from "../cookieWorks";
 import {
@@ -42,12 +42,13 @@ const HTML_ID_TOGGLE_COPY = "#toggle_copy";
 const HTML_ID_TOGGLE_UNDO = "#toggle_undo";
 const HTML_ID_TOGGLE_LIKE = "#toggle_like";
 const HTML_ID_TOGGLE_STAR = "#toggle_star";
+const HTML_ID_TOOGLE_BOOKMARK = "#bookmark_button";
 const HTML_ID_ARTICLE_VOCABULARY_LINK = "#bookmarks_for_article_link";
 const CLASS_MDL_BUTTON_DISABLED = "mdl-button--disabled";
 const CLASS_NOSELECT = "noselect";
 const ENTER_KEY = 13;
 
-var starer;
+var bookmarker;
 const speaker = new Speaker();
 
 let translator;
@@ -123,8 +124,8 @@ function attachInteractionScripts() {
   $(HTML_ID_TOGGLE_LIKE).click(handle_TOGGLE_LIKE_click);
 
   /* Toggle listener for star button. */
-  $(HTML_ID_TOGGLE_STAR).click(function() {
-    starer.toggle();
+  $(HTML_ID_TOOGLE_BOOKMARK).click(function() {
+    bookmarker.toggle();
   });
 
   $(HTML_ID_ARTICLE_VOCABULARY_LINK).click(function() {
@@ -321,8 +322,8 @@ function handle_read_later_button_click() {
       USER_EVENT_FEEDBACK,
       event.target.id
     );
-    starer.setState(false);
-    starer.toggle();
+    bookmarker.setState(false);
+    bookmarker.toggle();
   }
 
   return set_starred;
@@ -353,7 +354,7 @@ function load_article_info_in_page(article_info) {
   text = addParagraphs(text);
   $("#articleContent").html(text);
 
-  starer = new Starer(article_info.starred);
+  bookmarker = new Bookmarker(article_info.starred);
 
   // LIKED
   if (!article_info.liked) {
