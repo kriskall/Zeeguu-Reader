@@ -1,75 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {% if request.path == '/read/' %}
-    <title>Zeeguu-Articles</title>
-    {% elif  request.path == '/read/bookmarks' %}
-    <title>Zeeguu-Bookmarks</title>
-    {% elif  request.path == '/read/classroom' %}
-    <title> Zeeguu-Classroom </title>
-    {% endif %}
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  {% if request.path == '/read/' %}
+  <title>Zeeguu-Articles</title>
+  {% elif  request.path == '/read/bookmarks' %}
+  <title>Zeeguu-Bookmarks</title>
+  {% elif  request.path == '/read/classroom' %}
+  <title> Zeeguu-Classroom </title>
+  {% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      gtag("config", "UA-89557275-2");
-    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-    <script>
-      var noAvatarURL =
-        "{{url_for('reader_blueprint.static',filename='images/noAvatar.png')}}";
-    </script>
+    gtag("config", "UA-89557275-2");
+  </script>
 
-    <!-- Include the subscription package. -->
+  <script>
+    var noAvatarURL =
+      "{{url_for('reader_blueprint.static',filename='images/noAvatar.png')}}";
+  </script>
 
-    <!--FONT LINK-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <!--CSS for header NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-header.css') }}"
-    />
+  <!-- Include the subscription package. -->
 
-    <!--CSS for side-bar NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/side-bar.css') }}"
-    />
-    <!--CSS for list NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-list.css') }}"
-    />
+  <!--FONT LINK-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400&display=swap" rel="stylesheet" />
 
-    <!--CSS for article-settings NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/article-settings.css') }}"
-    />
 
-    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
+  <!--CSS for header NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-header.css') }}" />
 
-    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
-  </head>
+  <!--CSS for side-bar NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/side-bar.css') }}" />
+  <!--CSS for list NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-list.css') }}" />
 
-  
+  <!--CSS for article-settings NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/article-settings.css') }}" />
+
+  <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
+
+  <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
+</head>
+
+
 
 {% block header %}
 {% endblock %}

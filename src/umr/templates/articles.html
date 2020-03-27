@@ -41,28 +41,28 @@
 
 
     <div class="dropdown">
-      <button class="dropbtn">| Articles <span id="arrow"></span></button>
+      <button class="dropbtn" href="/read">| Articles <span id="arrow"></span></button>
       <div class="dropdown-content">
-        <a href="/read">| All</a>
-        <a href="/read/bookmarks">| Bookmarks</a>
-        <a href="/read/classroom">| Classroom</a>
+        <!-- <a href="/read">| All</a> -->
+        <a href="/read/bookmarks"> | Bookmarks</a>
+        <a href="/read/classroom"> | Classroom</a>
       </div>
     </div>
     <div class="dropdown">
       <button class="dropbtn">| Words <span id="arrow"></span></button>
       <div class="dropdown-content">
-        <a href="/bookmarks">| History</a>
-        <a href="/starred_bookmarks">| Starred</a>
-        <a href="/learned_bookmarks">| Learned</a>
-        <a href="/top_bookmarks">| Top</a>
+        <a href="/bookmarks"> | History</a>
+        <a href="/starred_bookmarks"> | Starred</a>
+        <a href="/learned_bookmarks"> | Learned</a>
+        <a href="/top_bookmarks"> | Top</a>
       </div>
     </div>
     <div class="dropdown">
       <button class="dropbtn">| Exercises <span id="arrow"></span></button>
       <div class="dropdown-content">
-        <a href="#">| Easy</a>
-        <a href="#">| Regular</a>
-        <a href="#">| Ambitious</a>
+        <a href="#"> | Easy</a>
+        <a href="#"> | Regular</a>
+        <a href="#"> | Ambitious</a>
       </div>
     </div>
 
@@ -85,7 +85,7 @@
       -->
 
       <div class="nav-generalbtn">
-        <a class="generalLinks" href="#">Get in touch</a>
+        <a class="generalLinks" href="mailto:zeeguu.team@gmail.com">Get in touch</a>
       </div>
       <div class="nav-generalbtn">
         <a class="generalLinks" href="{{ url_for('account.logout') }}">Sign Out</a>
