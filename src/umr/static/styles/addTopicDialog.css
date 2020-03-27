@@ -1,35 +1,32 @@
 #addableTopicList {
-  display:block;
+  display: block;
   height: 35vh;
 }
 
 #addableFilterList {
-  display:block;
+  display: block;
   height: 35vh;
 }
 
 #addableLanguageList {
-  display:block;
+  display: block;
   height: 35vh;
 }
 
 @keyframes move_up {
-  0%
-  {
+  0% {
     top: 0;
   }
-  80%
-  {
-    top:-0.5em;
+  80% {
+    top: -0.5em;
   }
-  100%
-  {
-    top:-0.3em;
+  100% {
+    top: -0.3em;
   }
 }
 
 .addableTitle {
-  display:block;
+  display: block;
   max-width: 20em;
   text-overflow: ellipsis;
   overflow: hidden;

@@ -10,12 +10,13 @@ const USER_EVENT_OPENED_FEEDSUBSCRIBER = "OPEN TOPICSUBSCRIBER";
 const INTERESTS = ".show-topic-subscriber";
 const NON_INTERESTS = ".show-filter-subscriber";
 const ALL_INTERESTS = ".tagsOfInterests";
-const UNSUBSCRIBED_CLASS = "unsubscribed"
+const UNSUBSCRIBED_CLASS = "unsubscribed";
 const INTEREST_BUTTON = ".interests";
 const INTEREST_BUTTON_HTML = "interests";
 const CUSTOM_INTEREST_BUTTON = "interests custom";
 const ADD_CUSTOM_INTEREST = ".addInterestButton";
 const CLOSE_BUTTON = ".closeTagsOfInterests";
+const INNERTAGS = ".innerTags";
 
 let self;
 
@@ -45,7 +46,6 @@ export default class InterestSubscriber {
     this._addInterest();
   }
 
-
   /**
    * Calls the two functions of the class that requests the available and subscribed interests.
    */
@@ -67,14 +67,14 @@ export default class InterestSubscriber {
   }
 
   /**
-  * Call Zeeguu and requests subscribed interests.
-  * Uses {@link ZeeguuRequests}.
-  */
+   * Call Zeeguu and requests subscribed interests.
+   * Uses {@link ZeeguuRequests}.
+   */
   loadSubscribed() {
     ZeeguuRequests.get(
       GET_SUBSCRIBED_TOPICS,
       {},
-      this._loadSubscribedInterests.bind(this),
+      this._loadSubscribedInterests.bind(this)
     );
   }
 
@@ -92,24 +92,22 @@ export default class InterestSubscriber {
       let feedOption = $(Mustache.render(template, data[i]));
       let interest = $(feedOption.find(INTEREST_BUTTON));
       interest.click(
-        (function (data, feedOption, interestSubscriptionList) {
-          return function () {
+        (function(data, feedOption, interestSubscriptionList) {
+          return function() {
             if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
               interestSubscriptionList.follow(data);
               $(interest).removeClass(UNSUBSCRIBED_CLASS);
               //console.log("subscribed");
-            }
-            else {
+            } else {
               interestSubscriptionList._unfollow(data);
               $(interest).addClass(UNSUBSCRIBED_CLASS);
               console.log("unsubscribed");
             }
-          }
+          };
         })(data[i], feedOption, this.interestSubscriptionList)
       );
       this._appendInterest(template, feedOption);
     }
-
   }
 
   /**
@@ -124,8 +122,8 @@ export default class InterestSubscriber {
       let feedOption = $(Mustache.render(template, data[i]));
       let interest = $(feedOption.find(INTEREST_BUTTON));
       interest.click(
-        (function (data, feedOption, interestSubscriptionList) {
-          return function () {
+        (function(data, feedOption, interestSubscriptionList) {
+          return function() {
             if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
               interestSubscriptionList.follow(data);
               $(interest).removeClass(UNSUBSCRIBED_CLASS);
@@ -158,44 +156,43 @@ export default class InterestSubscriber {
 
   _addInterest() {
     let addCustomInterest = document.querySelector(ADD_CUSTOM_INTEREST);
-    $(addCustomInterest).click(function () {
+    $(addCustomInterest).click(function() {
       swal.close();
-      setTimeout(function () {
-        swal({
-          title: 'Add a personal interst!',
-          type: 'input',
-          inputPlaceholder: "interest",
-          allowOutsideClick: true,
-          showConfirmButton: true,
-          showCancelButton: true,
-          confirmButtonColor: "#ffbb54",
-          confirmButtonText: 'Add',
-          cancelButtonText: 'Close',
-        }, function (input) {
-          if (input === "" || input === false) {
-            return false
+      setTimeout(function() {
+        swal(
+          {
+            title: "Add a personal interst!",
+            type: "input",
+            inputPlaceholder: "interest",
+            allowOutsideClick: true,
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonColor: "#ffbb54",
+            confirmButtonText: "Add",
+            cancelButtonText: "Close"
+          },
+          function(input) {
+            if (input === "" || input === false) {
+              return false;
+            }
+            self.customInterestSubscriptionList.follow(input);
           }
-          self.customInterestSubscriptionList.follow(input);
-        })
+        );
       }, 150);
     });
   }
 
   _makeCloseable() {
     let closeInterests = document.querySelector(INTERESTS);
-    $(closeInterests).click(function () {
+    $(closeInterests).click(function() {
       document.querySelector(ALL_INTERESTS).style.display = "none";
       location.reload();
     });
 
     let closeInterestsButton = document.querySelector(CLOSE_BUTTON);
-    $(closeInterestsButton).click(function () {
+    $(closeInterestsButton).click(function() {
       document.querySelector(ALL_INTERESTS).style.display = "none";
       location.reload();
     });
   }
-
 }
-
-
-
