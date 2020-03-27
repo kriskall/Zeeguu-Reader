@@ -137,10 +137,10 @@ function attachInteractionScripts() {
 
 
   /* Toggle listener for star button. */
-  $(HTML_ID_TOOGLE_BOOKMARK).click(function() {
+  $(HTML_ID_TOOGLE_BOOKMARK).click(function () {
     bookmarker.toggle();
   });
-  */
+
 
   $(HTML_ID_ARTICLE_VOCABULARY_LINK).click(function () {
     UserActivityLogger.log_article_interaction(
