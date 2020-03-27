@@ -1,60 +1,49 @@
 <html>
-  <head>
-    <title>Zeeguu Reader</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <title>Zeeguu Reader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      gtag("config", "UA-89557275-2");
-    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-    <!--FONT LINK-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400&display=swap"
-      rel="stylesheet"
-    />
+    gtag("config", "UA-89557275-2");
+  </script>
 
-    <!-- Include the translation package. -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/dist/css/translation-0.9.353.css') }}"
-    />
-    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
-  </head>
+  <!--FONT LINK-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400&display=swap" rel="stylesheet" />
 
-  <body>
-    <div
-      id="loaderanimation"
-      style="left: 0;
+  <!-- Include the translation package. -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/dist/css/translation-0.9.353.css') }}" />
+  <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
+</head>
+
+<body>
+  <div id="loaderanimation" style="left: 0;
      position: absolute;
      text-align: center;
      color: gray;
      top: 50%;
      width: 100%;
      z-index: 9999;
-     animation: fadein 2s 0s 6 linear alternate;"
-    >
-      Loading article ...
-    </div>
+     animation: fadein 2s 0s 6 linear alternate;">
+    Loading article ...
+  </div>
 
-    <!-- Top bar -->
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header mdl-layout__header--transparent">
-        <!-- {% include "question__problems_with_article.html" %} -->
+  <!-- Top bar -->
+  <div class="articleLayout">
+    <header class="articleHeader">
+      <!-- {% include "question__problems_with_article.html" %} -->
 
-        <div id="header_row" class="toolbar">
-          <!-- <a
+      <div id="header_row" class="toolbar">
+        <!-- <a
             id="back_button"
             {#
             href="{{ url_for('reader_blueprint.articles') }}"
@@ -83,50 +72,54 @@
 
         -->
 
-          <div class="main-tools">
-            <div>
-              <button id="toggle_undo" class="tool">
-                <img
-                  src="{{ url_for('reader_blueprint.static',filename='images/SVGs/undo.svg') }}"
-                  alt="undo a translation"
-                />
-              </button>
-            </div>
-
-            <button
-              class="tool"
-              id="toggle_copy"
-              class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon mdl-button--disabled "
-            >
-              <i class="material-icons">content_copy</i>
+        <div class="main-tools">
+          <div>
+            <button class="tool" id="toggle_translate">
+              <img class="click_translate"
+                src="{{ url_for('reader_blueprint.static',filename='images/SVGs/translate.svg') }}"
+                alt="click and translate" />
+              <span class="tooltiptext">click and translate</span>
             </button>
-
-            <button
-              class="tool"
-              id="toggle_star"
-              class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon "
-            >
-              <i id="star_border" class="material-icons star">star_border</i>
-              <i id="star_fill" class="material-icons star off">star</i>
+            <button class="tool" id="toggle_listen">
+              <img class="click_listen" src=" {{ url_for('reader_blueprint.static',filename='images/SVGs/sound.svg') }}"
+                alt="click and listen" />
+              <span class="tooltiptext">click and listen</span>
+            </button>
+            <button class="tool" id="toggle_undo">
+              <img src="{{ url_for('reader_blueprint.static',filename='images/SVGs/undo.svg') }}"
+                alt="undo a translation" />
+              <span class="tooltiptext">undo translation</span>
             </button>
           </div>
+
+          <!-- 
+          <button class="tool" id="toggle_copy"
+            class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon mdl-button--disabled ">
+            <i class="material-icons">content_copy</i>
+          </button>
+    
+          <button class="tool" id="toggle_star" class="mdl-button mdl-js-button mdl-button--icon mdl-layout-icon ">
+            <i id="star_border" class="material-icons star">star_border</i>
+            <i id="star_fill" class="material-icons star off">star</i>
+          </button>
+          -->
+
         </div>
-      </header>
+      </div>
 
-      <span id="articleID" style="display: none">{{ article_id }}</span>
+    </header>
 
-      <!-- Article content. -->
-      <main class="layout__content">
-        <div
-          id="main_article_content"
-          style="visibility:hidden"
-          class="page-content-container"
-        >
-          <div class="content-container">
-            <div class="page-content">
-              <p class="title translatable">
-                <span id="articleTitle"></span>
-              </p>
+    <span id="articleID" style="display: none">{{ article_id }}</span>
+
+    <!-- Article content. -->
+    <main class="layout__content">
+      <div id="main_article_content" style="visibility:hidden" class="page-content-container">
+        <div class="content-container">
+          <div class="page-content">
+            <p class="title translatable">
+              <span id="articleTitle"></span>
+            </p>
+
 
               <hr class="seperator" />
               <div class="articleDetails">
@@ -151,9 +144,19 @@
               <div id="articleContent" class="translatable"></div>
               <br />
             </div>
+
           </div>
         </div>
+        <div id="like_button">
+          <button id="toggle_like" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+            <i class="material-icons">thumb_up</i>
+          </button>
+        </div>
+      </div>
 
+      <div id="bottom_feedback_div" style="visibility:hidden">
+        <div class="questionnaire-content">
+          {% include 'question__article_difficulty.html' %}
 <div class="finalChoices">
   <button id="enjoyedButton" class="finalChoicesBottons" type="button">Enjoyed reading?</button>
   <button id="reviewButton" class="finalChoicesBottons" type="button">Review Words</button>
@@ -165,13 +168,14 @@
             {% include 'question__article_difficulty.html' %}
           </div>
         </div>
-      </main>
-      <div id="toastmessage" class="mdl-js-snackbar mdl-snackbar">
-        <div class="mdl-snackbar__text"></div>
-        <button class="mdl-snackbar__action" type="button"></button>
       </div>
+    </main>
+    <div id="toastmessage" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
       -->
     </div>
+  </div>
 
     <!-- Menu to change the translation 
     <div id="alterMenuContainer">

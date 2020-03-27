@@ -4,6 +4,27 @@
   font-family: Montserrat;
 }
 
+.articleHeader {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.articleLayout {
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch; }
+
 .layout__content {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -174,16 +195,19 @@ zeeguu tran[chosen]:after {
   box-sizing: border-box;
   align-self: stretch;
   align-items: center;
-  height: 64px;
-  margin: 30px;
+  height: 3.5em;
+  margin-top: 1.5em;
+  margin-right: 2em;
 }
 
 .tool {
-  width: 70px;
-  background-color: #ffbb54;
-  border: 1px solid #ffbb54;
+  width: 55px;
+  height: 55px;
+  background-color: #FFE086;
+  border: 1px solid #FFE086;
   border-radius: 10px;
   margin: 10px;
+  padding: 1px
 }
 
 .main-tools {
@@ -191,21 +215,62 @@ zeeguu tran[chosen]:after {
   justify-content: flex-end;
   margin-left: auto;
 }
-
-#back_button {
+.click_translate{
+  width: 100%;
 }
 
-#read_later_link {
+#toggle_translate:hover {
+  cursor: pointer;
 }
 
-#toggle_undo {
+#toggle_translate.selected {
+  background-color:  #ffbb54;
 }
 
-#toggle_copy {
+#toggle_translate .tooltiptext {
+  right: 12.5em;
 }
 
-#toggle_star {
-  color: rgba(0, 0, 0, 0.26);
+#toggle_listen:hover {
+  cursor: pointer;
+}
+
+#toggle_listen.selected  {
+  background-color:  #ffbb54;
+}
+
+#toggle_listen .tooltiptext {
+  right: 6.5em;
+}
+
+#toggle_undo:hover {
+  cursor: pointer;
+}
+
+#toggle_undo.selected {
+  background-color:  #ffbb54;
+}
+
+#toggle_undo .tooltiptext {
+  right: 0.5em;
+}
+
+.tool:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tool .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  font-size: 13px;
+  background-color: #ffffff;
+  color:#ffbb54;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 0;
+  position: absolute;
+  top: 6em;
+  z-index: 1;
 }
 
 .feedback_question {
@@ -263,11 +328,14 @@ zeeguu tran[chosen]:after {
   bottom: 2em;
 }
 
+
 p.title {
+  margin-top: -1.5em;
   font-size: 27px;
   font-weight: bold;
   line-height: 1.7em;
   text-align: left;
+  padding-bottom: 0em;
 }
 
 p {

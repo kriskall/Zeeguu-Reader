@@ -29,13 +29,27 @@ export default class UndoStack {
         this.stack.push($saved);
     }
 
-
     /** Revert to previous state stored on the stack. */
     undoState() {
-        var $saved = this.stack.pop();
-        if ($saved) {
-            $(HTML_CLASS_PAGECONTENT).remove();
-            $(HTML_CLASS_CONTENTCONTAINER).prepend($saved);    
+        if (this.stack.length === 0) {
+            $("#toggle_undo").removeClass("selected");
+            $("#toggle_translate").addClass("selected");
+        }
+        if (this.stack.length === 1) {
+            $("#toggle_undo").removeClass("selected");
+            $("#toggle_translate").addClass("selected");
+            var $saved = this.stack.pop();
+            if ($saved) {
+                $(HTML_CLASS_PAGECONTENT).remove();
+                $(HTML_CLASS_CONTENTCONTAINER).prepend($saved);
+            }
+        } else {
+            var $saved = this.stack.pop();
+            if ($saved) {
+                $(HTML_CLASS_PAGECONTENT).remove();
+                $(HTML_CLASS_CONTENTCONTAINER).prepend($saved);
+            }
         }
     }
+
 };
