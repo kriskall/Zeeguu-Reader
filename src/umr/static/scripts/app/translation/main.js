@@ -199,6 +199,17 @@ function handle_ENJOYED_READING_click() {
   var modal = document.getElementById("modalEnjoyed");
   modal.style.display = "block";
 
+  var yes = document.getElementsByClassName("modalButton yes")[0];
+  yes.onclick = function () {
+    UserActivityLogger.log_article_interaction(USER_EVENT_LIKE_ARTICLE);
+    modal.style.display = "none";
+  }
+
+  var no = document.getElementsByClassName("modalButton no")[0];
+  no.onclick = function () {
+    UserActivityLogger.log_article_interaction(USER_EVENT_UNLIKE_ARTICLE);
+    modal.style.display = "none";
+  }
 
   var close = document.getElementById("closeEnjoyed");
   close.onclick = function () {
@@ -215,7 +226,6 @@ function handle_ENJOYED_READING_click() {
 function handle_REVIEW_WORDS_click() {
   var modal = document.getElementById("modalReview");
   modal.style.display = "block"
-
 
   var close = document.getElementById("closeReview");
   close.onclick = function () {
