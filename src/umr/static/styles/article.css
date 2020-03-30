@@ -484,6 +484,10 @@ a:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
+#modalReview {
+  padding-top: 6em;
+}
+
 .modalContent {
   border-radius: 1em;
   font-family: Montserrat;
@@ -497,7 +501,7 @@ a:hover {
 
 .modalTitle {
   font-size: 1.5em;
-  padding-top: 2em;
+  padding-top: 1em;
   font-weight: 400;
 }
 
@@ -514,7 +518,7 @@ a:hover {
   color: white;
 }
 
-.modalButton:hover {
+.modalButton:hover {
   cursor: pointer;
 }
 
@@ -525,6 +529,27 @@ a:hover {
   padding-right: 5em;
   padding-bottom: 2em;
   line-height: 2em;
+}
+
+.textEnjoyed {
+  margin-top: -1em;
+  padding-bottom: 20em;
+  line-height: 1.3em;
+  padding-right: 8em;
+  padding-left: 8em;
+}
+
+.reviewBtn {
+  height: 3em;
+  width: 13em;
+  border-radius: 1em;
+  margin-bottom: 1.5em;
+}
+
+.backArticles {
+  background: white;
+  color: #ffbb54;
+  border: 0.15em solid;
 }
 
 .close,
