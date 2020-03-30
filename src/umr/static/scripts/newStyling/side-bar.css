@@ -81,9 +81,6 @@
 
 }
 
-
-
-
 .dropdown {
   position: relative;
   display: block;
@@ -113,12 +110,15 @@
   text-decoration: none;
   display: block;
   font-family: Montserrat;
-  font-size: 1.15em;
+  font-size: 1em;
 }
 
 .dropdown-content  a:hover {
-  background-color: #ffffff;
+ /* background-color:#f1f0f0;*/
   color: #FFBB54;
+  font-weight: 600;
+  border-bottom: #FFBB54 0.5px solid;
+  border-top: #FFBB54 0.5px solid;
 }
 
 .dropdown:hover .dropdown-content {display: block;}
@@ -177,21 +177,66 @@ content:'˄';
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
 
-  .arrow-nav-icon{
-    display:block; 
-    color:white; 
-  }
+ /* .arrow-icon{
+    display: block;
+    color: white;
+    position: absolute;
+    top: 0em;
+ 
+}
+
+  .arrow-none-block{
+    color: #FFBB54;
+    position: absolute;
+    top: -0.4em;
+    left: -1em;
+  } */
   
   .sidenav-mobile{
     display:none; 
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .sidenav a {
     text-align: center;
     float: none;
   }
+
+  .arrow-icon{
+      display: block !important;
+      color: white;
+      position: absolute;
+      right: 0em !important;
+      top: 0em !important;
+  
+  }
+
+  .arrow-none-block{
+    position: absolute;
+    top: 0em;
+    left: -1em;
+  }
+  
+.arrow-nav-icon {
+  display: block;
+  z-index: 32;
+  font-size: 4em;
+  line-height: unset;
+}
+
+.dropdown-content a{
+  text-align: left;
+}
+
+.zeeguuLogo{
+  width: 3em;
+}
+
+.dropdown{
+  top:10%; 
+}
+
 }
 
 /*

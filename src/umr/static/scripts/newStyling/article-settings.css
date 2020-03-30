@@ -286,7 +286,7 @@ button {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
   .options {
     display: none;
   }
@@ -299,7 +299,7 @@ button {
 
 @media screen and (max-width: 390px) {
   .sortingCategories {
-    width: 5em;
+    width: 5.5em;
   }
 }
 

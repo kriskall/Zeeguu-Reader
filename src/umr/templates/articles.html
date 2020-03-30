@@ -36,36 +36,37 @@
   </header>
 
   <nav class="nav-menu">
+
     <a href="javascript:void(0);" class="arrow-icon"  id="arrow-p" onclick="myFunction(this)">
-      <p class="arrow-nav-icon"> ▲</p>
-      
+      <p class="arrow-nav-icon"> ▲</p>  
     </a>
+
     <div class ="sidenav" id="myTopnav">
       <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
         alt="Zeeguu Logo - The Elephant" />
       <div class="dropdown">
         <button class="dropbtn">| Articles <span id="arrow"></span></button>
         <div class="dropdown-content">
-          <a href="/read">| All</a>
-          <a href="/read/bookmarks">| Bookmarks</a>
-          <a href="/read/classroom">| Classroom</a>
+          <a href="/read"> All</a>
+          <a href="/read/bookmarks">Bookmarks</a>
+          <a href="/read/classroom">Classroom</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn">| Words <span id="arrow"></span></button>
         <div class="dropdown-content">
-          <a href="/bookmarks">| History</a>
-          <a href="/starred_bookmarks">| Starred</a>
-          <a href="/learned_bookmarks">| Learned</a>
-          <a href="/top_bookmarks">| Top</a>
+          <a href="/bookmarks">History</a>
+          <a href="/starred_bookmarks">Starred</a>
+          <a href="/learned_bookmarks">Learned</a>
+          <a href="/top_bookmarks">Top</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn">| Exercises <span id="arrow"></span></button>
         <div class="dropdown-content">
-          <a href="#">| Easy</a>
-          <a href="#">| Regular</a>
-          <a href="#">| Ambitious</a>
+          <a href="#">Easy</a>
+          <a href="#">Regular</a>
+          <a href="#">Ambitious</a>
         </div>
       </div>
       <script>

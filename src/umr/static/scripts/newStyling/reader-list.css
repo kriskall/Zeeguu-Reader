@@ -108,7 +108,10 @@ body {
 
 
 /*******MEDIA QUERIES **********/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
+.articleLinkEntry{
+  margin-bottom:2em; 
+}
 .articleLinkTitle{
   padding-right:0em; 
   font-size: 0.9em;
@@ -145,4 +148,24 @@ body {
   float: unset;
   padding-left: 11px;
 }
+.publishingTime {
+  margin-right: 0.78125em;
+  font-size: 0.8em;
+  color: #6d6d6d;
+}
+
+.singleTopicTag{
+  padding: 0.2em 0.9em;
+  font-size: 0.7em; 
+  position: absolute;
+  margin-top: 29px;
+}
+.feedIcon {
+  background-color: white;
+  width: 1.4em;
+  height: 1.4em;
+  margin-right: 0em;
+}
+
+
 }
