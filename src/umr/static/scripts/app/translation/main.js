@@ -180,13 +180,11 @@ function handle_TOGGLE_LISTEN_click() {
 }
 
 function handle_TOGGLE_UNDO_click() {
-  /*
   if (alterMenu.isOpen()) {
     alterMenu.close();
     $(this).removeClass("selected");
     return;
   }
-  */
   $(HTML_ID_TOGGLE_TRANSLATE).removeClass("selected");
   $(HTML_ID_TOGGLE_LISTEN).removeClass("selected");
   $(this).addClass("selected");
@@ -279,15 +277,15 @@ function handle_CONTENT_SCROLL_EVENT() {
 /* Clicking anywhere in the document when the
  * alter menu is open, except for the input field,
  * will close the alter menu. 
+ */
 $(document).click(function (event) {
-    let $target = $(event.target);
-    if (!$target.is('input') && alterMenu.isOpen()) {
-        alterMenu.close();
-    } else if ($target.is('input') && $target.val() === config.TEXT_SUGGESTION) {
-        $target.attr('value', '');
-    }
+  let $target = $(event.target);
+  if (!$target.is('input') && alterMenu.isOpen()) {
+    alterMenu.close();
+  } else if ($target.is('input') && $target.val() === config.TEXT_SUGGESTION) {
+    $target.attr('value', '');
+  }
 });
-*/
 
 /* Listens on keypress 'enter' to set the user suggestion
  * as the chosen translation and sends the user's contribution
