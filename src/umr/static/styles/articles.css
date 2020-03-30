@@ -1,7 +1,6 @@
-*
-{
-  -webkit-backface-visibility:  hidden;
-  -webkit-tap-highlight-color:  transparent;
+* {
+  -webkit-backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mdl-layout__content {
@@ -9,46 +8,39 @@
   overflow-y: overlay;
 }
 
-.is-casting-shadow
-{
+.is-casting-shadow {
   box-shadow: 0em 0em 1em lightgray !important;
 }
 
-.home-button
-{
+.home-button {
   color: #030303 !important;
 }
 
-.mdl-layout__tab-bar
-{
+.mdl-layout__tab-bar {
   background-color: #f7f7f7;
   max-width: 62em !important;
   margin: auto;
   border-radius: 0.3em;
 }
 
-.mdl-layout__tab .material-icons
-{
+.mdl-layout__tab .material-icons {
   vertical-align: middle;
 }
 
-.inbox-icon
-{
+.inbox-icon {
   color: #7c7b74;
 }
 
-.star-icon
-{
+.star-icon {
   color: #7c7b74;
 }
 
 .publishingTime {
   color: #7c7b74;
-  font-size:small;
+  font-size: small;
 }
 
-.articleLinkList
-{
+.articleLinkList {
   list-style-position: inside;
   list-style-type: none;
   padding: 0;
@@ -59,68 +51,56 @@
   cursor: pointer;
 }
 
-.articleLinkEntry + .articleLinkSpacer
-{
+.articleLinkEntry + .articleLinkSpacer {
   padding: 0.3em;
-  box-shadow: 0px -0.5em 1.5em #FFF;
+  box-shadow: 0px -0.5em 1.5em #fff;
 }
 
-.articleLinkEntry
-{
+.articleLinkEntry {
   border-radius: 0.3em;
   background-color: white;
   box-shadow: 0px -0.3em 0.5em #e5e5e5;
   animation: articleLinkShow 0.5s 0s 1 linear;
-  vertical-align:middle;
+  vertical-align: middle;
   width: 100%;
   border-spacing: 10px;
 }
 
-@keyframes articleLinkShow
-{
-  0%
-  {
+@keyframes articleLinkShow {
+  0% {
     opacity: 0;
   }
-  100%
-  {
-     opacity: 1;
+  100% {
+    opacity: 1;
   }
 }
 
-.articleLinkEntry a
-{
-  color:black;
-  text-decoration:none;
+.articleLinkEntry a {
+  color: black;
+  text-decoration: none;
 }
 
-.articleLinkEntry a:visited, .alreadyOpenedArticle a
-{
+.articleLinkEntry a:visited,
+.alreadyOpenedArticle a {
   color: #909090 !important;
 }
 
-.articleLinkHeader
-{
+.articleLinkHeader {
   display: table;
-  vertical-align:middle;
+  vertical-align: middle;
   width: 100%;
   table-layout: fixed;
 }
 
-
-.headerElement
-{
+.headerElement {
   display: table-cell;
 }
 
-
-.articleLinkDifficulty
-{
+.articleLinkDifficulty {
   width: 3em;
 }
 
-.articleLinkDifficultyText
-{
+.articleLinkDifficultyText {
   position: absolute;
   padding: 0.3em;
   width: 3em;
@@ -132,15 +112,13 @@
   z-index: 1;
 }
 
-.wordCount
-{
+.wordCount {
   font-size: x-small;
   color: gray;
-  white-space:nowrap;
+  white-space: nowrap;
 }
 
-.linkLanguageIcon
-{
+.linkLanguageIcon {
   position: absolute;
 
   top: 1.4em;
@@ -148,38 +126,32 @@
   z-index: 2;
 }
 
-.starredFlag
-{
+.starredFlag {
   width: 2em;
 }
 
-.articleLinkImage
-{
+.articleLinkImage {
   width: 2.3em;
   height: 2.3em;
   text-align: center;
   border-radius: 1.5em;
 }
 
-.articleLinkDifficultyText.EASY
-{
-    background: #d3ffb2;
+.articleLinkDifficultyText.EASY {
+  background: #d3ffb2;
 }
 
-.articleLinkDifficultyText.MEDIUM
-{
-    background: #fff9b2;
+.articleLinkDifficultyText.MEDIUM {
+  background: #fff9b2;
 }
 
-.articleLinkDifficultyText.HARD
-{
-    background: #ff7070;
+.articleLinkDifficultyText.HARD {
+  background: #ff7070;
 }
 
-.articleLinkTitle
-{
+.articleLinkTitle {
   font-size: large;
-  border:none;
+  border: none;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
@@ -189,61 +161,54 @@
   width: 100%;
 }
 
-.articleLinkEntry:hover
-{
+.articleLinkEntry:hover {
   box-shadow: 0em 0em 1em grey;
-  border:none;
+  border: none;
 }
 
-.highlightedArticle
-{
+.highlightedArticle {
   background-color: lightblue;
 }
 
-
 .articleLinkTitle::first-letter {
-    font-size: 130%;
+  font-size: 130%;
 }
 
 .articleLinkSummary {
-  margin:auto;
+  margin: auto;
   padding-left: 1em;
   padding-right: 1em;
   max-width: 59em;
   height: 5.5em;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .articleTopics {
-  margin:auto;
+  margin: auto;
   color: #7c7b74;
   padding-left: 1em;
   padding-right: 1em;
   max-width: 59em;
   height: 2.2em;
-  overflow:hidden;
+  overflow: hidden;
 }
 
-.options
-{
+.options {
   padding: 0;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
 }
 
-.mdl-chip
-{
-	max-width: 90%;
+.mdl-chip {
+  max-width: 90%;
 }
 
-.list_item
-{
+.list_item {
   margin-left: 7.5%;
 }
 
-.mdl-chip__text
-{
+.mdl-chip__text {
   max-width: 80%;
   white-space: nowrap;
   overflow: hidden;
@@ -251,33 +216,28 @@
   cursor: default;
 }
 
-a
-{
-   color: black !important;
-   cursor: pointer;
+a {
+  color: black !important;
+  cursor: pointer;
 }
 
-#return_home
-{
-  color: rgba(0,0,0,.26) !important;
+#return_home {
+  color: rgba(0, 0, 0, 0.26) !important;
 }
 
-.mdl-layout__drawer-button
-{
+.mdl-layout__drawer-button {
   color: black !important;
 }
 
-body
-{
+body {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
-
 
 /*
 BEGIN: Moving the drawer to the right
@@ -305,8 +265,7 @@ END: Moving the drawer to the right
 ====================================
 */
 
-.searchNotification
-{
+.searchNotification {
   list-style-position: inside;
   list-style-type: none;
   padding: 0;
@@ -317,10 +276,8 @@ END: Moving the drawer to the right
   cursor: pointer;
 }
 
-.searchText
-{
-  font-size: large;
-  border:none;
+.searchText {
+  border: none;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
@@ -330,11 +287,21 @@ END: Moving the drawer to the right
   width: 97%;
 }
 
-.deleteSearch
-{
+.deleteSearch {
   text-align: center;
   vertical-align: bottom;
   width: 2em;
+  box-shadow: none;
+  all: unset;
+  border: 1px solid #ffbb54;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #ffbb54;
+  font-size: 15px;
+  font-family: Montserrat;
+  font-weight: 400;
+  width: 18px;
+  margin-top: 7px;
 }
 
 /* This changes the order of the SWAL buttons */
