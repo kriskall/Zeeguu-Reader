@@ -3,7 +3,7 @@
 
 
 
-<div class="main-container">
+<div class="main-container" id="main-containerID">
 
 
   <header class="mdl-layout__header mdl-layout__header--transparent">
@@ -35,61 +35,77 @@
     </div>
   </header>
 
-  <nav class="sidenav">
-    <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
-      alt="Zeeguu Logo - The Elephant" />
+  <nav class="nav-menu">
 
+    <a href="javascript:void(0);" class="arrow-icon"  id="arrow-p" onclick="myFunction(this)">
+      <p class="arrow-nav-icon"> ▲</p>  
+    </a>
 
-    <div class="dropdown">
-      <button class="dropbtn">| Articles <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="/read">| All</a>
-        <a href="/read/bookmarks">| Bookmarks</a>
-        <a href="/read/classroom">| Classroom</a>
+    <div class ="sidenav" id="myTopnav">
+      <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+        alt="Zeeguu Logo - The Elephant" />
+      <div class="dropdown">
+        <button class="dropbtn">| Articles <span id="arrow"></span></button>
+        <div class="dropdown-content">
+          <a href="/read"> All</a>
+          <a href="/read/bookmarks">Bookmarks</a>
+          <a href="/read/classroom">Classroom</a>
+        </div>
       </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">| Words <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="/bookmarks">| History</a>
-        <a href="/starred_bookmarks">| Starred</a>
-        <a href="/learned_bookmarks">| Learned</a>
-        <a href="/top_bookmarks">| Top</a>
+      <div class="dropdown">
+        <button class="dropbtn">| Words <span id="arrow"></span></button>
+        <div class="dropdown-content">
+          <a href="/bookmarks">History</a>
+          <a href="/starred_bookmarks">Starred</a>
+          <a href="/learned_bookmarks">Learned</a>
+          <a href="/top_bookmarks">Top</a>
+        </div>
       </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">| Exercises <span id="arrow"></span></button>
-      <div class="dropdown-content">
-        <a href="#">| Easy</a>
-        <a href="#">| Regular</a>
-        <a href="#">| Ambitious</a>
+      <div class="dropdown">
+        <button class="dropbtn">| Exercises <span id="arrow"></span></button>
+        <div class="dropdown-content">
+          <a href="#">Easy</a>
+          <a href="#">Regular</a>
+          <a href="#">Ambitious</a>
+        </div>
       </div>
-    </div>
+      <script>
+        function myFunction(element) {
+          var nav = document.getElementById("myTopnav");
+          var navstyle = nav.style.display; 
+          if (navstyle == 'block') {
+            nav.style.display = 'none';
+           /* document.getElementById("arrow-p").setAttribute("class", "arrow-none-block"); */
+           element.className ='arrow-none-block'; 
+           document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+          } else {
+            nav.style.display ='block'; 
+            element.className ='arrow-icon'; 
+            document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
 
-    <div class="generalNavLinks">
+          }
+        }
+        </script>
 
-      <div class="settingsbtn">
-        <a class="settingsLink">
-          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
-            alt="Click here for general settings" />
-        </a>
-      </div>
-      <div class="settingsbtn">
-        <a class="settingsLink">
-          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/languageSwitch.svg') }}"
-            alt="Click here for general settings" />
-        </a>
-      </div>
+      <div class="generalNavLinks">
 
-      <div class="nav-generalbtn">
-        <a class="generalLinks" href="#">Get in touch</a>
-      </div>
-      <div class="nav-generalbtn">
-        <a class="generalLinks" href="#">Sign Out</a>
-      </div>
+        <div class="settingsbtn">
+          <a class="settingsLink">
+            <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
+              alt="Click here for general settings" />
+          </a>
+        </div>
+        <div class="nav-generalbtn">
+          <a class="generalLinks" href="#">Get in touch</a>
+        </div>
+        <div class="nav-generalbtn">
+          <a class="generalLinks" href="#">Sign Out</a>
+        </div>
 
+      </div>
     </div>
   </nav>
+  
   <div class="widthOfColumn">
     <div class="mdl-layout__drawer mdl-color--amber-A700">
       <nav class="mdl-navigation">
@@ -185,8 +201,13 @@
   </div>
   <div class="widthOfColumn">
     <div class="tagsOfInterests">
+
+      <div class="interestsSettings">
       <button class='closeTagsOfInterests'>X</button>
       <button class='addInterestButton'>Add + </button>
+      </div>
+    </div>
+
     </div>
     <div class="widthOfColumn">
       <div class="tagsOfNonInterests">
@@ -205,10 +226,6 @@
             <br />
             <div id="emptyArticleListImage" class="emptyPage">
               <p> No articles</p>
-            </div>
-            <div class="loader">
-              <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
-                alt="Loading..." />
             </div>
         </section>
         <section class="mdl-layout__tab-panel" id="starred">

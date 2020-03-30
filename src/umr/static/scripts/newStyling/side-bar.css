@@ -50,6 +50,7 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0.5em;
 }
 
 .settingsImg{
@@ -80,14 +81,11 @@
 
 }
 
-
-
-
 .dropdown {
   position: relative;
   display: block;
   bottom: 25%;
-  top: 20%;
+  top: 16%;
 }
 
 .dropbtn span{
@@ -112,12 +110,15 @@
   text-decoration: none;
   display: block;
   font-family: Montserrat;
-  font-size: 1.25em;
+  font-size: 1em;
 }
 
 .dropdown-content  a:hover {
-  background-color: #ffffff;
+ /* background-color:#f1f0f0;*/
   color: #FFBB54;
+  font-weight: 600;
+  border-bottom: #FFBB54 0.5px solid;
+  border-top: #FFBB54 0.5px solid;
 }
 
 .dropdown:hover .dropdown-content {display: block;}
@@ -125,13 +126,120 @@
 .dropdown:hover .dropbtn  {
   background-color:#FFFFFF;
   color: #FFBB54;
+}
 
+.arrow-icon{
+  position: fixed;
+  top: 7em;
+  left: 9.5em;
+  z-index: 3;
+  transform: rotate(-90deg);
+  color: white;
+}
+
+.arrow-icon:hover{
+  color:white;
 }
 
 .dropbtn:hover span:after{
 content:'˄';
 }
 
+.arrow-nav-icon{
+  display: block;
+  z-index: 32;
+  font-size: 4em;
+  margin: 0;
+}
+
+.arrow-none-block{
+  color: #FFBB54;
+  position: fixed;
+  top: 7em;
+  /* right: 91%; */
+  left: -0.3em;
+  /* float: left; */
+  /* z-index: 3; */
+  transform: rotate(90deg);
+}
+
+.arrow-none-block{
+  color: #FFBB54;
+}
+
+
+@media screen and (max-width: 700px) {
+  .sidenav {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+
+ /* .arrow-icon{
+    display: block;
+    color: white;
+    position: absolute;
+    top: 0em;
+ 
+}
+
+  .arrow-none-block{
+    color: #FFBB54;
+    position: absolute;
+    top: -0.4em;
+    left: -1em;
+  } */
+  
+  .sidenav-mobile{
+    display:none; 
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sidenav a {
+    text-align: center;
+    float: none;
+  }
+
+  .arrow-icon{
+      display: block !important;
+      color: white;
+      position: absolute;
+      right: 0em !important;
+      top: 0em !important;
+  
+  }
+
+  .arrow-none-block{
+    position: absolute;
+    top: 0em;
+    left: -1em;
+  }
+  
+.arrow-nav-icon {
+  display: block;
+  z-index: 32;
+  font-size: 4em;
+  line-height: unset;
+}
+
+.dropdown-content a{
+  text-align: left;
+}
+
+.zeeguuLogo{
+  width: 3em;
+}
+
+.dropdown{
+  top:10%; 
+}
+
+}
+
+/*
 
 @media screen and (max-width: 700px) {
   .sidenav {
@@ -150,3 +258,4 @@ content:'˄';
   }
 }
 
+*/

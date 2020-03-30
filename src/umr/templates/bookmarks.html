@@ -58,12 +58,7 @@
           <ul id="articleLinkList" class="articleLinkList"></ul>
           <br />
           <div id="emptyArticleListImage" class="emptyPage">
-            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-              alt="Not subscribed to any feeds..." />
-          </div>
-          <div class="loader">
-            <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
-              alt="Loading..." />
+            <p>You are not subscribed to any feeds </p>
           </div>
         </div>
       </section>
@@ -71,8 +66,7 @@
         <div class="page-content">
           <ul id="starredArticleList" class="articleLinkList"></ul>
           <div id="emptyStarredArticleListImage" class="emptyPage">
-            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-              alt="Not subscribed to any feeds..." />
+            <p> You have not bookmarked any articles yet :(</p>
           </div>
         </div>
       </section>
