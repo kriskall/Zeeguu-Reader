@@ -25,8 +25,6 @@ import "../../../styles/mdl/material.min.css";
 import "../../../styles/article.css";
 import "../../../styles/material-icons.css";
 
-//const USER_EVENT_ENABLE_COPY = "ENABLE COPY";
-//const USER_EVENT_DISABLE_COPY = "DISABLE COPY";
 const USER_EVENT_CHANGE_ORIENTATION = "CHANGE ORIENTATION";
 const USER_EVENT_LIKE_ARTICLE = "LIKE ARTICLE";
 const USER_EVENT_UNLIKE_ARTICLE = "UNLIKE ARTICLE";
@@ -38,12 +36,13 @@ const USER_EVENT_ARTICLE_LOST_FOCUS = "ARTICLE LOST FOCUS";
 const USER_EVENT_SCROLL = "SCROLL";
 const USER_EVENT_FEEDBACK = "USER FEEDBACK";
 
-//const HTML_ID_TOGGLE_COPY = "#toggle_copy";
 const HTML_ID_TOGGLE_LIKE = "#toggle_like";
 const HTML_ID_TOGGLE_UNDO = "#toggle_undo";
 const HTML_ID_TOGGLE_TRANSLATE = "#toggle_translate";
 const HTML_ID_TOGGLE_LISTEN = "#toggle_listen";
 const HTML_ID_TOOGLE_BOOKMARK = "#bookmark_button";
+const HTML_ID_ENJOYED_READING = "#enjoyedButton";
+const HTML_ID_REVIEW_WORDS = "#reviewButton";
 const HTML_ID_ARTICLE_VOCABULARY_LINK = "#bookmarks_for_article_link";
 const CLASS_MDL_BUTTON_DISABLED = "mdl-button--disabled";
 const CLASS_NOSELECT = "noselect";
@@ -80,9 +79,7 @@ const ARTICLE_DIFFICULTY_BUTTON_IDS = [
  * bind all necessary listeners. */
 $(document).ready(function () {
   getArticleInfoAndInitElementsRequiringIt(get_article_id());
-
   UserActivityLogger.log_article_interaction(USER_EVENT_OPENED_ARTICLE);
-
 });
 
 function getArticleInfoAndInitElementsRequiringIt(article_id) {
@@ -117,30 +114,32 @@ function attachInteractionScripts() {
   /* When the user leaves the article, log it as an event. */
   window.onbeforeunload = log_user_leaves_article;
 
-  /* When the copy toggle is switched on,
-   * copying is enabled and translation gets disabled and vice-versa. */
-  // $(HTML_ID_TOGGLE_COPY).click(handle_TOGGLE_COPY_click);
-
   /* When the like button is clicked, set its background color. */
   $(HTML_ID_TOGGLE_LIKE).click(handle_TOGGLE_LIKE_click);
 
+  /* When translate is clicked, user can click on words to translate .
+   * Default option
+   */
+  $(HTML_ID_TOGGLE_TRANSLATE).click(handle_TOGGLE_TRANSLATE_click);
 
-  /* When the undo is clicked, content page is replaced
+  /* When listen is clicked, user can click on words to hear 
+   * pronounciation. 
+   */
+  $(HTML_ID_TOGGLE_LISTEN).click(handle_TOGGLE_LISTEN_click);
+
+  /* When undo is clicked, content page is replaced
    * with previous one in the stack and listeners are re-attached. 
    */
   $(HTML_ID_TOGGLE_UNDO).click(handle_TOGGLE_UNDO_click);
 
-  $(HTML_ID_TOGGLE_LISTEN).click(handle_TOGGLE_LISTEN_click);
+  $(HTML_ID_ENJOYED_READING).click(handle_ENJOYED_READING_click);
 
-  $(HTML_ID_TOGGLE_TRANSLATE).click(handle_TOGGLE_TRANSLATE_click);
+  $(HTML_ID_REVIEW_WORDS).click(handle_REVIEW_WORDS_click);
 
-
-
-  /* Toggle listener for star button. */
+  /* Toggle listener for bookmark button. */
   $(HTML_ID_TOOGLE_BOOKMARK).click(function () {
     bookmarker.toggle();
   });
-
 
   $(HTML_ID_ARTICLE_VOCABULARY_LINK).click(function () {
     UserActivityLogger.log_article_interaction(
@@ -150,18 +149,24 @@ function attachInteractionScripts() {
 
   $(".mdl-layout__content").on("scroll", handle_CONTENT_SCROLL_EVENT);
 
-  $("#back_button").click(handle_back_button);
-
+  /*   
   let difficulty_feedback_handler = handle_difficulty_feebdack_button();
-  ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function (button_id) {
+    ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function (button_id) {
     $(button_id).click(difficulty_feedback_handler);
-  });
+  }); 
+  */
+
 }
 
 function log_user_leaves_article() {
   UserActivityLogger.log_article_interaction(USER_EVENT_EXIT_ARTICLE);
 }
 
+function handle_TOGGLE_TRANSLATE_click() {
+  $(HTML_ID_TOGGLE_UNDO).removeClass("selected");
+  $(HTML_ID_TOGGLE_LISTEN).removeClass("selected");
+  $(this).addClass("selected");
+}
 
 function handle_TOGGLE_LISTEN_click() {
   if ($(this).hasClass("selected")) {
@@ -172,13 +177,6 @@ function handle_TOGGLE_LISTEN_click() {
     $(HTML_ID_TOGGLE_TRANSLATE).removeClass("selected");
     $(this).addClass("selected");
   }
-}
-
-function handle_TOGGLE_TRANSLATE_click() {
-  $(HTML_ID_TOGGLE_UNDO).removeClass("selected");
-  $(HTML_ID_TOGGLE_LISTEN).removeClass("selected");
-  $(this).addClass("selected");
-
 }
 
 function handle_TOGGLE_UNDO_click() {
@@ -197,7 +195,41 @@ function handle_TOGGLE_UNDO_click() {
   attachZeeguuTagListeners();
 }
 
-/**
+function handle_ENJOYED_READING_click() {
+  var modal = document.getElementById("modalEnjoyed");
+  modal.style.display = "block";
+
+
+  var close = document.getElementById("closeEnjoyed");
+  close.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+}
+
+function handle_REVIEW_WORDS_click() {
+  var modal = document.getElementById("modalReview");
+  modal.style.display = "block"
+
+
+  var close = document.getElementById("closeReview");
+  close.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+}
+
+/*
 function handle_TOGGLE_COPY_click() {
   // Selection is disabled -> enable it.
   if ($(this).hasClass(CLASS_MDL_BUTTON_DISABLED)) {
@@ -212,7 +244,6 @@ function handle_TOGGLE_COPY_click() {
 
 function handle_TOGGLE_LIKE_click() {
   $(this).toggleClass(CLASS_MDL_BUTTON_DISABLED);
-
   if ($(this).hasClass(CLASS_MDL_BUTTON_DISABLED)) {
     UserActivityLogger.log_article_interaction(USER_EVENT_UNLIKE_ARTICLE);
   } else {
@@ -222,9 +253,7 @@ function handle_TOGGLE_LIKE_click() {
 
 function handle_CONTENT_SCROLL_EVENT() {
   let _current_time = new Date();
-
   let current_time = _current_time.getTime();
-
   if (previous_time == 0) {
     UserActivityLogger.log_article_interaction(USER_EVENT_SCROLL);
     previous_time = current_time;
@@ -240,7 +269,6 @@ function handle_CONTENT_SCROLL_EVENT() {
 /* Clicking anywhere in the document when the
  * alter menu is open, except for the input field,
  * will close the alter menu. 
- * I, KATRINE, COMMENTED THIS OUT BECAUSE IT WAS OBSTRUCTING MY WORK!
 $(document).click(function (event) {
     let $target = $(event.target);
     if (!$target.is('input') && alterMenu.isOpen()) {
@@ -267,20 +295,17 @@ $(document).keypress(function (event) {
 
       $trans.children(config.HTML_TAG__MORE_ALTERNATIVES).removeClass();
       $trans.children(config.HTML_TAG__SINGLE_ALTERNATIVE).removeClass();
-
       $trans
         .children(config.HTML_TAG__MORE_ALTERNATIVES)
         .addClass("handContributed");
       $trans
         .children(config.HTML_TAG__SINGLE_ALTERNATIVE)
         .addClass("handContributed");
-
       $trans.addClass("contributedAlternativeTran");
       $trans
         .parent()
         .children("orig")
         .addClass("contributedAlternativeOrig");
-
       translator.sendSuggestion($zeeguu);
     }
     alterMenu.close();
@@ -303,12 +328,10 @@ $(window).on("blur", function () {
 });
 
 
-
 function disableToggleCopy() {
   $("p").each(function () {
     $(this).addClass(CLASS_NOSELECT);
   });
-  //$(HTML_ID_TOGGLE_COPY).addClass(CLASS_MDL_BUTTON_DISABLED);
 }
 
 /* Enable selection. 
@@ -326,29 +349,27 @@ function isToggledCopy() {
 }
 */
 
+/*
 function handle_difficulty_feebdack_button() {
   // Returns the handler with the article_id already bound
-
+ 
   function difficulty_feedback_button_clicked_partial(event) {
     ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function (button_id) {
       $(button_id).css("background", "");
     });
-
     $(event.target).css("background", "#b3d4fc");
-
     UserActivityLogger.log_article_interaction(
       USER_EVENT_FEEDBACK,
       event.target.id
     );
-
     // the bottom page link should be visible only once the user
     // has provided feedback
     $("#bottom_page_back_link").show();
   }
-
+ 
   return difficulty_feedback_button_clicked_partial;
 }
-
+ 
 function handle_article_feedback_button() {
   // Returns the handler with the given url bound
   function upload_feedback_answer(event) {
@@ -357,10 +378,10 @@ function handle_article_feedback_button() {
       event.target.id
     );
   }
-
+ 
   return upload_feedback_answer;
 }
-
+ 
 /*
 function handle_read_later_button_click() {
   function set_starred(event) {
@@ -371,15 +392,16 @@ function handle_read_later_button_click() {
     bookmarker.setState(false);
     bookmarker.toggle();
   }
-
+ 
   return set_starred;
 }
-*/
-
+ 
+ 
 function handle_back_button() {
   $("#header_row").hide();
   $("#question_reasons_not_to_finish").show();
 }
+*/
 
 function load_article_info_in_page(article_info) {
   // TITLE
@@ -421,6 +443,8 @@ function make_article_elements_visible() {
   $("#header_row").css("visibility", "visible");
   $("#main_article_content").css("visibility", "visible");
   $("#bottom_feedback_div").css("visibility", "visible");
+  $(HTML_ID_ENJOYED_READING).css("visibility", "visible");
+  $(HTML_ID_REVIEW_WORDS).css("visibility", "visible");
   $("#loaderanimation").hide();
 }
 
@@ -429,9 +453,6 @@ function attachZeeguuTagListeners() {
   /* When a translatable word has been clicked,
    * either try to translate it, speak it, or open an alternative
    * translation window.  */
-
-
-
   $(config.HTML_ZEEGUUTAG).click(function (event) {
     if (alterMenu.isOpen()) return;
     // If listen is selected we pronounce it using the speaker
@@ -473,12 +494,7 @@ function attachZeeguuTagListeners() {
           alterMenu.build($target);
         }
       }
-
-
     }
-
   });
-
-
 
 }

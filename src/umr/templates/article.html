@@ -98,11 +98,33 @@
         </div>
       </div>
 
-
       <div class="finalChoices">
-        <button id="enjoyedButton" class="finalChoicesBottons" type="button">Enjoyed reading?</button>
-        <button id="reviewButton" class="finalChoicesBottons" type="button">Review Words</button>
+        <button id="enjoyedButton" class="finalChoicesBottons" style="visibility:hidden" type="button">Enjoyed
+          reading?</button>
+        <div class="modal" id="modalEnjoyed">
+          <div class="modalContent">
+            <span class="close" id=closeEnjoyed>&times;</span>
+            <h1 class="modalTitle">Did you enjoy reading this article?</h1>
+            <button class="modalButton">Yes</button>
+            <button class="modalButton">No</button>
+            <h2 class="modalText">Help us make Zeeguu even smarter by always letting us know whether you liked reading
+              an
+              article or not.
+            </h2>
+          </div>
+        </div>
+        <button id="reviewButton" class="finalChoicesBottons" style="visibility:hidden" type="button">Review
+          Words</button>
+        <div class="modal" id="modalReview">
+          <div class="modalContent">
+            <span class="close" id=closeReview>&times;</span>
+            <h1>Review Words</h1>
+          </div>
+        </div>
       </div>
+
+
+
     </main>
 </body>
 
