@@ -89,6 +89,10 @@ zeeguu tran {
   text-align: center;
 }
 
+zeeguu tran:hover {
+  color: black;
+}
+
 /*
     the original word decoration; a simple dashed underline highlights
     the fact that we are not sure of the translation; underline becomes
@@ -105,28 +109,20 @@ zeeguu orig {
 green downwards pointing triangle; we used to mark also single alternatives
  but for now there's no marking for them */
 
-zeeguu tran moreAlternatives,
-zeeguu tran singleAlternative {
-  font-size: xx-small;
+zeeguu tran moreAlternatives {
+  font-size: 1em;
   float: right;
-  width: 1.5em;
-  text-align: right;
+  width: 1em;
+  padding-left: 0.5em;
 }
 
 zeeguu tran moreAlternatives {
-  color: #ffe086;
-}
 
-zeeguu tran singleAlternative {
-  color: #ffe086;
 }
 
 zeeguu tran moreAlternatives:after {
-  content: "▼";
-  color: white;
-}
-
-zeeguu tran singleAlternative:after {
+  content: "v";
+  color:  #4f4f4f;
 }
 
 /* once the user has
@@ -141,25 +137,24 @@ zeeguu tran singleAlternative:after {
  */
 .handSelected,
 .handContributed {
-  color: #ffe086;
   width: 1.5em;
-  text-align: right;
+  text-align: center;
 }
 
 .handSelected:after,
 .handContributed:after {
-  visibility: hidden;
+  display: hidden;
   opacity: 0.1;
   transition: visibility 0s 2s, opacity 2s linear;
 }
 
 .handSelected:after {
-  content: " ✓";
+  content: " ";
   color: white;
 }
 
 .handContributed:after {
-  content: "  :)";
+  content: " ";
   color: white;
 }
 
@@ -174,13 +169,11 @@ that made the UI too heavy ... */
 
 .selectedAlternative,
 .contributedAlternativeTran {
-  font-weight: 500;
-  color: black;
 }
 
 .selectedAlternativeOrig,
 .contributedAlternativeOrig {
-  border-bottom: 1px solid #ffbb54;
+ 
 }
 
 zeeguu tran[chosen]:after {
@@ -291,31 +284,36 @@ zeeguu tran[chosen]:after {
   z-index: 1;
   color: white;
   text-align: center;
-  padding: 0px;
   background: #ffe086;
-  border-radius: 2px;
+  top: 3.4em;
+  border-radius: 0.3em;
+  width: 7em;
+  padding: 0.3em;
 }
 
 #altermenu .mdl-button {
   width: 100%;
   height: 100%;
-  display: block;
-  text-transform: none;
+  text-transform: lowercase;
   white-space: normal;
-  border-bottom: 1px solid white;
-  text-align: left;
+  border-bottom: 1px solid #383838;
+  color: #383838;
   line-height: 1em;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 0.3em;  
 }
 
 #altermenu * {
-  font-size: 14px;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 0.9em;
 }
 
 .mdl-textfield__input {
-  color: grey;
+  color: #484848;
+  font-weight: 400;
   text-align: center;
+  border: none;
+  padding-top: 0.5em;
 }
 
 .mdl-layout__header,
@@ -327,7 +325,6 @@ zeeguu tran[chosen]:after {
   border-radius: 3em 3em 3em 3em;
   bottom: 2em;
 }
-
 
 p.title {
   margin-top: -1.5em;

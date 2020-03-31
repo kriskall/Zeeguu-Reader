@@ -4,7 +4,7 @@ import Notifier from '../Notifier';
 import Translator from './Translator';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import {POST_TRANSLATION_SUGGESTION} from '../zeeguuRequests';
+import { POST_TRANSLATION_SUGGESTION } from '../zeeguuRequests';
 
 
 export const HTML_ID_ALTERMENU = '#alterMenu';
@@ -64,8 +64,8 @@ export default class AlterMenu {
             button.textContent = alternative;
             $(button).addClass("mdl-button").addClass("mdl-js-button").addClass("mdl-js-ripple-effect");
             $(HTML_ID_ALTERMENU).append($(button));
-            $(button).click({$tran: $tran, alternative: i}, this._swapPrimaryTranslation);
-            $(button).click({$tran: $tran, alternative: i}, this._sendSwappedTranslation.bind(this));
+            $(button).click({ $tran: $tran, alternative: i }, this._swapPrimaryTranslation);
+            $(button).click({ $tran: $tran, alternative: i }, this._sendSwappedTranslation.bind(this));
         }
         this._appendInputField($tran);
     }
@@ -76,7 +76,7 @@ export default class AlterMenu {
      */
     _sendSwappedTranslation(selectedAlternative) {
         let $tran = selectedAlternative.data.$tran;
-    
+
         let word = $tran.parent().children(config.HTML_ORIGINAL).text();
         let translation = $tran.attr(config.HTML_ATTRIBUTE_TRANSLATION + selectedAlternative.data.alternative);
         let servicename_translation = $tran.attr(config.HTML_ATTRIBUTE_SERVICENAME_TRANSLATION + selectedAlternative.data.alternative)
@@ -87,22 +87,24 @@ export default class AlterMenu {
 
         // Launch Zeeguu request to supply translation suggestion.
         ZeeguuRequests.post(POST_TRANSLATION_SUGGESTION + '/' + this.from_language + '/' + this.to_language,
-                           {word: word, context: context, url: url, title: title, translation: translation, 
-                            selected_from_predefined_choices: selected_from_predefined_choices,
-                            servicename_translation: servicename_translation});
+            {
+                word: word, context: context, url: url, title: title, translation: translation,
+                selected_from_predefined_choices: selected_from_predefined_choices,
+                servicename_translation: servicename_translation
+            });
 
-            // we can update the intensity of the uncertain flag...
+        // we can update the intensity of the uncertain flag...
 
-            $tran.children(config.HTML_TAG__MORE_ALTERNATIVES).removeClass();
-            $tran.children(config.HTML_TAG__SINGLE_ALTERNATIVE).removeClass();
+        $tran.children(config.HTML_TAG__MORE_ALTERNATIVES).removeClass();
+        $tran.children(config.HTML_TAG__SINGLE_ALTERNATIVE).removeClass();
 
-            $tran.children(config.HTML_TAG__MORE_ALTERNATIVES).addClass("handSelected");
-            $tran.children(config.HTML_TAG__SINGLE_ALTERNATIVE).addClass("handSelected");
+        $tran.children(config.HTML_TAG__MORE_ALTERNATIVES).addClass("handSelected");
+        $tran.children(config.HTML_TAG__SINGLE_ALTERNATIVE).addClass("handSelected");
 
-            var d = document.createElement(config.HTML_TAG__MORE_ALTERNATIVES);
+        var d = document.createElement(config.HTML_TAG__MORE_ALTERNATIVES);
 
-            $tran.addClass("selectedAlternative");
-            $tran.parent().children("orig").addClass("contributedAlternativeOrig");
+        $tran.addClass("selectedAlternative");
+        $tran.parent().children("orig").addClass("contributedAlternativeOrig");
 
     }
 
@@ -112,11 +114,11 @@ export default class AlterMenu {
      */
     _appendInputField($tran) {
         let input_field = document.createElement('input');
-        let suggestion  = $tran.attr(config.HTML_ATTRIBUTE_SUGGESTION);
+        let suggestion = $tran.attr(config.HTML_ATTRIBUTE_SUGGESTION);
         var value = (suggestion === '' ? config.TEXT_SUGGESTION : suggestion);
         $(input_field).addClass('mdl-textfield__input');
         $(input_field).attr('type', 'text');
-        $(input_field).attr('id', HTML_ID_USER_ALTERNATIVE);        
+        $(input_field).attr('id', HTML_ID_USER_ALTERNATIVE);
         $(input_field).attr('value', value);
         $(HTML_ID_ALTERMENU).append($(input_field));
     }
@@ -145,11 +147,10 @@ export default class AlterMenu {
         $tran.append($(HTML_ID_ALTERMENU));
         $(HTML_ID_ALTERMENU).css({
             position: "absolute",
-            maxWidth: "24em",
+            maxWidth: "30em",
             display: "inline-block",
-            left: position.left + (tagWidth - menuWidth) / 2 + "px",
-            top: position.top + tagHeight + topScroll + "px"
-        });        
+            left: position.left,
+        });
     }
 
     /**
@@ -168,8 +169,11 @@ export default class AlterMenu {
 
         $(HTML_ID_ALTERMENU).slideUp(function () {
             $(HTML_ID_ALTERMENUCONTAINER).append($(HTML_ID_ALTERMENU));
+
+            $(HTML_ID_ALTERMENU).removeClass("mdl-button");
             this.menuOpen = false;
         }.bind(this));
+
     };
 
     /**
@@ -178,7 +182,7 @@ export default class AlterMenu {
     open() {
         let word = $(HTML_ID_ALTERMENU).parent().parent().children(config.HTML_ORIGINAL).text();
         UserActivityLogger.log_article_interaction(USER_EVENT_OPENED_ALTERMENU, word);
-        
+
         $(HTML_ID_ALTERMENU).slideDown(function () {
             this.menuOpen = true
         }.bind(this));

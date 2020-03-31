@@ -299,7 +299,7 @@ $(document).keypress(function (event) {
       $trans.attr(config.HTML_ATTRIBUTE_CHOSEN, $target.val());
       $trans.attr(config.HTML_ATTRIBUTE_SUGGESTION, $target.val());
 
-      // $trans.children(config.HTML_TAG__MORE_ALTERNATIVES).remove();
+      //$trans.children(config.HTML_TAG__MORE_ALTERNATIVES).remove();
 
       $trans.children(config.HTML_TAG__MORE_ALTERNATIVES).removeClass();
       $trans.children(config.HTML_TAG__SINGLE_ALTERNATIVE).removeClass();
