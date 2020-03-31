@@ -110,7 +110,7 @@ green downwards pointing triangle; we used to mark also single alternatives
  but for now there's no marking for them */
 
 zeeguu tran moreAlternatives {
-  font-size: 1em;
+  font-size: 0.5em;
   float: right;
   width: 1em;
   padding-left: 0.5em;
@@ -121,7 +121,7 @@ zeeguu tran moreAlternatives {
 }
 
 zeeguu tran moreAlternatives:after {
-  content: "v";
+  content: "▼";
   color:  #4f4f4f;
 }
 
