@@ -267,6 +267,11 @@ button {
   float: right;
 }
 
+#searchIcon-LinkID{
+  float:left;
+  display: none;
+}
+
 /******** MEDIA QUERIES ********/
 @media only screen and (max-width: 839px) {
   #search-expandable {
@@ -286,7 +291,41 @@ button {
   }
 }
 
+@media screen and (max-width: 530px){
+  #searchIcon-LinkID{
+    display: block;
+    position: relative;
+    top: 1em;
+  }
+}
+
 @media screen and (max-width: 500px) {
+  #search-expandable{
+    position: relative;
+    left: -18em;
+    top: -2.3em;
+   /* width: 17.8em; */ 
+   width:fit-content; 
+    padding: 0.2em 0.9em;
+    margin-left: 1em;
+  }
+
+  .mdl-chip__action {
+    box-shadow: none;
+    all: unset;
+    border-radius: 1.0625em;
+    padding: 0.2em 0.8em;
+    background-color: #ffbb54;
+    color: #ffffff;
+    font-size: 1em;
+    font-family: Montserrat;
+    font-weight: 400;
+    text-align: center;
+    min-width: 6.25em;
+    margin-top: 0.3em;
+    position: relative;
+    left: 3em;
+}
   .options {
     display: none;
   }

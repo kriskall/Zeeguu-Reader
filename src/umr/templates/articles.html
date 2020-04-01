@@ -37,7 +37,7 @@
 
   <nav class="nav-menu">
 
-    <a href="javascript:void(0);" class="arrow-icon"  id="arrow-p" onclick="myFunction(this)">
+    <a href="javascript:void(0);" class="arrow-icon"  id="arrow-p" onclick="sideBarFunction(this)">
       <p class="arrow-nav-icon"> ▲</p>  
     </a>
 
@@ -70,12 +70,11 @@
         </div>
       </div>
       <script>
-        function myFunction(element) {
+        function sideBarFunction(element) {
           var nav = document.getElementById("myTopnav");
           var navstyle = nav.style.display; 
           if (navstyle == 'block') {
             nav.style.display = 'none';
-           /* document.getElementById("arrow-p").setAttribute("class", "arrow-none-block"); */
            element.className ='arrow-none-block'; 
            document.getElementById('main-containerID').style.cssText = 'margin:0px;';
           } else {
@@ -109,9 +108,31 @@
   <div class="widthOfColumn">
     <div class="mdl-layout__drawer mdl-color--amber-A700">
       <nav class="mdl-navigation">
-        <div class="options">
-          <br /><br /><br />
 
+        <a id="searchIcon-LinkID" onclick="searchIconFunction(this)">
+          <img class="searchIcon" src="{{ url_for('reader_blueprint.static',filename='images/SVGs/searchIcon.svg') }}"
+            alt="search icon" />
+        </a>
+
+        <div class="options" id="optionsID">
+          <br /><br /><br />
+ 
+          <script>
+            function searchIconFunction(element) {
+              var nav = document.getElementById("optionsID");
+              var navstyle = nav.style.display; 
+              if (navstyle == 'inline-flex') {
+                nav.style.display = 'none';
+              // element.className ='arrow-none-block'; 
+               //document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+              } else {
+                nav.style.display ='inline-flex'; 
+                //element.className ='arrow-icon'; 
+               // document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
+    
+              }
+            }
+            </script>
 
           <!----  <span class="mdl-layout-title">
             My Interests
