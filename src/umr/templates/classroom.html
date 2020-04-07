@@ -1,5 +1,4 @@
-{% extends 'articleHeader.html' %}
-{% block header %}
+{% include 'articleHeader.html' %}
 
 <div class="main-container">
   <header class="mdl-layout__header mdl-layout__header--transparent">
@@ -59,10 +58,7 @@
           <!-- List of articles -->
           <ul id="articleLinkList" class="articleLinkList"></ul>
           <br />
-          <div id="emptyArticleListImage" class="emptyPage">
-            <img class="sadEleph" src="{{ url_for('reader_blueprint.static',filename='images/empty.png') }}"
-              alt="Not subscribed to any feeds..." />
-          </div>
+
           <div class="loader">
             <img class="eleph" src="{{ url_for('reader_blueprint.static',filename='images/elephlogo.png') }}"
               alt="Loading..." />
@@ -170,7 +166,7 @@
     </li>
     <div class="articleLinkSpacer"></div>
   </script>
-{% endblock %}
+
 <!-- Dialog windows for adding a source, topic and filter. -->
 {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
 
