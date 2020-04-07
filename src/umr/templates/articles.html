@@ -37,11 +37,11 @@
 
   <nav class="nav-menu">
 
-    <a href="javascript:void(0);" class="arrow-icon"  id="arrow-p" onclick="myFunction(this)">
-      <p class="arrow-nav-icon"> ▲</p>  
+    <a href="javascript:void(0);" class="arrow-icon" id="arrow-p" onclick="myFunction(this)">
+      <p class="arrow-nav-icon"> ▲</p>
     </a>
 
-    <div class ="sidenav" id="myTopnav">
+    <div class="sidenav" id="myTopnav">
       <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
         alt="Zeeguu Logo - The Elephant" />
       <div class="dropdown">
@@ -72,25 +72,25 @@
       <script>
         function myFunction(element) {
           var nav = document.getElementById("myTopnav");
-          var navstyle = nav.style.display; 
+          var navstyle = nav.style.display;
           if (navstyle == 'block') {
             nav.style.display = 'none';
-           /* document.getElementById("arrow-p").setAttribute("class", "arrow-none-block"); */
-           element.className ='arrow-none-block'; 
-           document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+            /* document.getElementById("arrow-p").setAttribute("class", "arrow-none-block"); */
+            element.className = 'arrow-none-block';
+            document.getElementById('main-containerID').style.cssText = 'margin:0px;';
           } else {
-            nav.style.display ='block'; 
-            element.className ='arrow-icon'; 
+            nav.style.display = 'block';
+            element.className = 'arrow-icon';
             document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
 
           }
         }
-        </script>
+      </script>
 
       <div class="generalNavLinks">
 
         <div class="settingsbtn">
-          <a class="settingsLink">
+          <a class="settingsLink" href="/my_settings">
             <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
               alt="Click here for general settings" />
           </a>
@@ -105,7 +105,7 @@
       </div>
     </div>
   </nav>
-  
+
   <div class="widthOfColumn">
     <div class="mdl-layout__drawer mdl-color--amber-A700">
       <nav class="mdl-navigation">
@@ -203,41 +203,41 @@
     <div class="tagsOfInterests">
 
       <div class="interestsSettings">
-      <button class='closeTagsOfInterests'>X</button>
-      <button class='addInterestButton'>Add + </button>
+        <button class='closeTagsOfInterests'>X</button>
+        <button class='addInterestButton'>Add + </button>
       </div>
     </div>
 
-    </div>
-    <div class="widthOfColumn">
-      <div class="tagsOfNonInterests">
-        <div class="interestsSettings">
+  </div>
+  <div class="widthOfColumn">
+    <div class="tagsOfNonInterests">
+      <div class="interestsSettings">
         <button class='closeTagsOfNonInterests'>X</button>
         <button class='addNonInterestButton'>Add + </button>
       </div>
-      </div>
-    </div>
-    <div class="widthOfColumn">
-      <main class="mdl-layout__content">
-        <section class="mdl-layout__tab-panel is-active" id="inbox">
-          <div class="page-content">
-            <!-- Search notification -->
-            <ul id="searchNotification" class="searchNotification"></ul>
-            <!-- List of articles -->
-            <ul id="articleLinkList" class="articleLinkList"></ul>
-            <br />
-            <div id="emptyArticleListImage" class="emptyPage">
-              <p> No articles</p>
-            </div>
-        </section>
-        <section class="mdl-layout__tab-panel" id="starred">
-          <div class="page-content">
-            <ul id="starredArticleList" class="articleLinkList"></ul>
-        </section>
-
-      </main>
     </div>
   </div>
+  <div class="widthOfColumn">
+    <main class="mdl-layout__content">
+      <section class="mdl-layout__tab-panel is-active" id="inbox">
+        <div class="page-content">
+          <!-- Search notification -->
+          <ul id="searchNotification" class="searchNotification"></ul>
+          <!-- List of articles -->
+          <ul id="articleLinkList" class="articleLinkList"></ul>
+          <br />
+          <div id="emptyArticleListImage" class="emptyPage">
+            <p> No articles</p>
+          </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="starred">
+        <div class="page-content">
+          <ul id="starredArticleList" class="articleLinkList"></ul>
+      </section>
+
+    </main>
+  </div>
+</div>
 </div>
 
 <!-- Template for subscribed source items -->
