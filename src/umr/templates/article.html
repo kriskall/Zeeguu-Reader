@@ -135,7 +135,7 @@
     <script id="translatedwords-template" type="text/template">
       <div id="translationID" translationID="{% raw %}{{ id }}{% endraw %}" class="{% raw %}{{ id }}{% endraw %}">
         <span class="word"> 
-          <img id="deleteTrash" class="trash"
+          <img id="{% raw %}{{ id }}{% endraw %}" class="trash"
           src="{{ url_for('reader_blueprint.static',filename='images/SVGs/trash.svg') }}"
           alt="delete word" />
           {% raw %}{{ from }}{% endraw %} - {% raw %}{{ to }}{% endraw %}  </span>
