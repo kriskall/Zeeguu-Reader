@@ -148,8 +148,10 @@ export default class AlterMenu {
         $(HTML_ID_ALTERMENU).css({
             position: "absolute",
             maxWidth: "30em",
+            top: position.top + tagHeight + topScroll + "px",
             display: "inline-block",
             left: position.left,
+            margintop: "1em",
         });
     }
 
