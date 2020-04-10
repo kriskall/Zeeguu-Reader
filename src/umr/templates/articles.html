@@ -1,5 +1,4 @@
-
-{% include  "articleHeader.html "%}
+{% include  "articleHeader.html" %}
 
 <div class="main-container" id="main-containerID">
 
@@ -33,7 +32,7 @@
     </div>
   </header>
 
-  {% include  "sideBar.html "%}
+  {% include  "sideBar.html" %}
 
 
   <div class="widthOfColumn">
@@ -47,23 +46,23 @@
 
         <div class="options" id="optionsID">
           <br /><br /><br />
- 
+
           <script>
             function searchIconFunction(element) {
               var nav = document.getElementById("optionsID");
-              var navstyle = nav.style.display; 
+              var navstyle = nav.style.display;
               if (navstyle == 'inline-flex') {
                 nav.style.display = 'none';
-              // element.className ='arrow-none-block'; 
-               //document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+                // element.className ='arrow-none-block'; 
+                //document.getElementById('main-containerID').style.cssText = 'margin:0px;';
               } else {
-                nav.style.display ='inline-flex'; 
+                nav.style.display = 'inline-flex';
                 //element.className ='arrow-icon'; 
-               // document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
-    
+                // document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
+
               }
             }
-            </script>
+          </script>
 
           <!----  <span class="mdl-layout-title">
             My Interests
@@ -190,8 +189,8 @@
     </main>
   </div>
 
-<!-- Template for subscribed source items -->
-<script id="subscription-template-source" type="text/template">
+  <!-- Template for subscribed source items -->
+  <script id="subscription-template-source" type="text/template">
        <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
     	<a class="mdl-chip__action removeButton">
@@ -200,8 +199,8 @@
     </span>
   </script>
 
-<!-- Template for subscribed topic items -->
-<script id="subscription-template-topic" type="text/template">
+  <!-- Template for subscribed topic items -->
+  <script id="subscription-template-topic" type="text/template">
        <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
     	<a class="mdl-chip__action removeButton">
@@ -210,8 +209,8 @@
     </span>
   </script>
 
-<!-- Template for subscribed search items MODIFIED-->
-<script id="subscription-template-search" type="text/template">
+  <!-- Template for subscribed search items MODIFIED-->
+  <script id="subscription-template-search" type="text/template">
   <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
       <a class="mdl-list__item-secondary-action topic">
@@ -227,8 +226,8 @@
 
 
 
-<!-- Template for subscribed language items -->
-<script id="subscription-template-language" type="text/template">
+  <!-- Template for subscribed language items -->
+  <script id="subscription-template-language" type="text/template">
        <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
     	<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
     	<a class="mdl-chip__action removeButton">
@@ -237,8 +236,8 @@
     </span>
   </script>
 
-<!-- Template for an article link. -->
-<script id="articleLink-template" type="text/template">
+  <!-- Template for an article link. -->
+  <script id="articleLink-template" type="text/template">
   <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
       articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
       <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
@@ -274,7 +273,7 @@
 
 
 
-<script id="search-notification-template" type="text/template">
+  <script id="search-notification-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry search-notification-box">
         <div class="articleLinkHeader">
             <div class="searchText headerElement">
@@ -288,8 +287,8 @@
   </script>
 
 
-<!-- Dialog windows for adding a source, topic and filter. -->
-{% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+  <!-- Dialog windows for adding a source, topic and filter. -->
+  {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
 
 
-</html>
+  </html>
