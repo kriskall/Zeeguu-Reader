@@ -3,6 +3,7 @@
 
 import $ from "jquery";
 import config from "../config";
+import Mustache from "mustache";
 
 import Translator from "./Translator";
 import AlterMenu from "./AlterMenu";
@@ -17,7 +18,7 @@ import {
 } from "./textProcessing";
 import { get_article_id } from "./article_id.js";
 
-import { GET_USER_ARTICLE_INFO } from "../zeeguuRequests";
+import { GET_USER_ARTICLE_INFO, BOOKMARKS_FOR_ARTICLE, DELETE_BOOKMARK } from "../zeeguuRequests";
 import ZeeguuRequests from "../zeeguuRequests";
 
 import "../../../styles/mdl/material.min.js";
@@ -180,13 +181,11 @@ function handle_TOGGLE_LISTEN_click() {
 }
 
 function handle_TOGGLE_UNDO_click() {
-  /*
   if (alterMenu.isOpen()) {
     alterMenu.close();
     $(this).removeClass("selected");
     return;
   }
-  */
   $(HTML_ID_TOGGLE_TRANSLATE).removeClass("selected");
   $(HTML_ID_TOGGLE_LISTEN).removeClass("selected");
   $(this).addClass("selected");
@@ -225,16 +224,44 @@ function handle_ENJOYED_READING_click() {
 
 function handle_REVIEW_WORDS_click() {
   var modal = document.getElementById("modalReview");
-  modal.style.display = "block"
+  modal.style.display = "block";
+
+  var articleId = document.getElementById("articleID").innerText;
+  ZeeguuRequests.post(BOOKMARKS_FOR_ARTICLE + "/" + articleId, {}, function (data) {
+    let template = $("#translatedwords-template").html();
+    for (var i = 0; i < data.bookmarks.length; i++) {
+      let feedOption = $(Mustache.render(template, data.bookmarks[i]));
+      let deleteTrash = $(feedOption.find(".trash"));
+      deleteTrash.click(
+        (function (data, feedOption) {
+          return function () {
+            console.log(feedOption);
+            console.log(data.id);
+            var translationId = data.id;
+            console.log(translationId);
+            ZeeguuRequests.post(DELETE_BOOKMARK + "/" + translationId, {},
+              function (data) {
+                feedOption.fadeOut();
+                return false;
+              }
+            )
+          }
+        })(data.bookmarks[i], feedOption)
+      );
+      $("#wordList").append(feedOption);
+    }
+  });
 
   var close = document.getElementById("closeReview");
   close.onclick = function () {
     modal.style.display = "none";
+    $("#wordList").children().remove();
   }
 
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
+      $("#wordList").children().remove();
     }
   }
 }
@@ -279,15 +306,15 @@ function handle_CONTENT_SCROLL_EVENT() {
 /* Clicking anywhere in the document when the
  * alter menu is open, except for the input field,
  * will close the alter menu. 
+ */
 $(document).click(function (event) {
-    let $target = $(event.target);
-    if (!$target.is('input') && alterMenu.isOpen()) {
-        alterMenu.close();
-    } else if ($target.is('input') && $target.val() === config.TEXT_SUGGESTION) {
-        $target.attr('value', '');
-    }
+  let $target = $(event.target);
+  if (!$target.is('input') && alterMenu.isOpen()) {
+    alterMenu.close();
+  } else if ($target.is('input') && $target.val() === config.TEXT_SUGGESTION) {
+    $target.attr('value', '');
+  }
 });
-*/
 
 /* Listens on keypress 'enter' to set the user suggestion
  * as the chosen translation and sends the user's contribution
@@ -301,7 +328,7 @@ $(document).keypress(function (event) {
       $trans.attr(config.HTML_ATTRIBUTE_CHOSEN, $target.val());
       $trans.attr(config.HTML_ATTRIBUTE_SUGGESTION, $target.val());
 
-      // $trans.children(config.HTML_TAG__MORE_ALTERNATIVES).remove();
+      //$trans.children(config.HTML_TAG__MORE_ALTERNATIVES).remove();
 
       $trans.children(config.HTML_TAG__MORE_ALTERNATIVES).removeClass();
       $trans.children(config.HTML_TAG__SINGLE_ALTERNATIVE).removeClass();

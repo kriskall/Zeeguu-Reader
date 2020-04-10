@@ -155,42 +155,40 @@
     <div class="tagsOfInterests">
 
       <div class="interestsSettings">
-      <button class='closeTagsOfInterests'>X</button>
-      <button class='addInterestButton'>Add + </button>
+        <button class='closeTagsOfInterests'>X</button>
+        <button class='addInterestButton'>Add + </button>
       </div>
     </div>
 
-    </div>
-    <div class="widthOfColumn">
-      <div class="tagsOfNonInterests">
-        <div class="interestsSettings">
+  </div>
+  <div class="widthOfColumn">
+    <div class="tagsOfNonInterests">
+      <div class="interestsSettings">
         <button class='closeTagsOfNonInterests'>X</button>
         <button class='addNonInterestButton'>Add + </button>
       </div>
-      </div>
-    </div>
-    <div class="widthOfColumn">
-      <main class="mdl-layout__content">
-        <section class="mdl-layout__tab-panel is-active" id="inbox">
-          <div class="page-content">
-            <!-- Search notification -->
-            <ul id="searchNotification" class="searchNotification"></ul>
-            <!-- List of articles -->
-            <ul id="articleLinkList" class="articleLinkList"></ul>
-            <br />
-            <div id="emptyArticleListImage" class="emptyPage">
-              <p> No articles</p>
-            </div>
-        </section>
-        <section class="mdl-layout__tab-panel" id="starred">
-          <div class="page-content">
-            <ul id="starredArticleList" class="articleLinkList"></ul>
-        </section>
-
-      </main>
     </div>
   </div>
+  <div class="widthOfColumn">
+    <main class="mdl-layout__content">
+      <section class="mdl-layout__tab-panel is-active" id="inbox">
+        <div class="page-content">
+          <!-- Search notification -->
+          <ul id="searchNotification" class="searchNotification"></ul>
+          <!-- List of articles -->
+          <ul id="articleLinkList" class="articleLinkList"></ul>
+          <br />
+          <div id="emptyArticleListImage" class="emptyPage">
+            <p> No articles</p>
+          </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="starred">
+        <div class="page-content">
+          <ul id="starredArticleList" class="articleLinkList"></ul>
+      </section>
 
+    </main>
+  </div>
 
 <!-- Template for subscribed source items -->
 <script id="subscription-template-source" type="text/template">
@@ -261,8 +259,13 @@
               <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
           </div>
               <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
-              <span class="singleTopicTag">
-              {% raw %}{{articleTopics}}{% endraw %}</span>
+            
+            {% raw %}{{#articleTopics}}{% endraw %}
+            <span class="singleTopicTag">
+              {% raw %}{{topic}}{% endraw %}
+            </span>
+            {% raw %}{{/articleTopics}}{% endraw %}
+            
           </div>
       </a>
   </li>

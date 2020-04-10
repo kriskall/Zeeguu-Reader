@@ -104,8 +104,13 @@
             <div class="articleLinkImage">
               <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
             </div>
+
+            {% raw %}{{#articleTopics}}{% endraw %}
             <span class="singleTopicTag">
-              {% raw %}{{articleTopics}}{% endraw %}</span>
+              {% raw %}{{topic}}{% endraw %}
+            </span>
+            {% raw %}{{/articleTopics}}{% endraw %}
+
           </div>
            <!-- STAR AND THE LIKE BUTTON DISPLAAYED
                     <i style="display:{% raw %}{{ articleLinkDisplayStar }}{% endraw %}"

@@ -155,6 +155,13 @@ $(document).ready(function () {
 
   var countWords = 0;
   $(".wordsSorting").click(function () {
+    if (countLevel == 1 || countLevel == 2) {
+      $("#triangleLevel").removeClass("clicked");
+      if ($("#triangleLevel").hasClass("flip")) {
+        $("#triangleLevel").removeClass("flip");
+      }
+      countLevel = 0;
+    }
     countWords++;
     if (countWords == 1) {
       var elem = $("#articleLinkList")
@@ -166,7 +173,6 @@ $(document).ready(function () {
       var classroomElem = $("#cohortArticleList")
         .find("li")
         .sort(sortLowToHighWords);
-
       $("#articleLinkList").append(elem);
       $("#starredArticleList").append(bookmarkElem);
       $("#cohortArticleList").append(classroomElem);
@@ -183,8 +189,6 @@ $(document).ready(function () {
       var classroomElem = $("#cohortArticleList")
         .find("li")
         .sort(sortHighToLowWords);
-
-
       $("#articleLinkList").append(elem);
       $("#starredArticleList").append(bookmarkElem);
       $("#cohortArticleList").append(classroomElem);
@@ -200,6 +204,13 @@ $(document).ready(function () {
 
   var countLevel = 0;
   $(".levelSorting").click(function () {
+    if (countWords == 1 || countWords == 2) {
+      $("#triangleWords").removeClass("clicked");
+      if ($("#triangleWords").hasClass("flip")) {
+        $("#triangleWords").removeClass("flip");
+      }
+      countWords = 0;
+    }
     countLevel++;
     if (countLevel == 1) {
       var elem = $("#articleLinkList")
@@ -211,14 +222,13 @@ $(document).ready(function () {
       var classroomElem = $("#cohortArticleList")
         .find("li")
         .sort(sortLowToHighLevel);
-
       $("#articleLinkList").append(elem);
       $("#starredArticleList").append(bookmarkElem);
       $("#cohortArticleList").append(classroomElem);
+      $("#triangleLevel").addClass("flip");
       $("#triangleLevel").addClass("clicked");
       console.log("sort level low to high");
     } else if (countLevel == 2) {
-      $("#triangleLevel").addClass("flip");
       var elem = $("#articleLinkList")
         .find("li")
         .sort(sortHighToLowLevel);
@@ -228,10 +238,10 @@ $(document).ready(function () {
       var classroomElem = $("#cohortArticleList")
         .find("li")
         .sort(sortHighToLowLevel);
-        
       $("#articleLinkList").append(elem);
       $("#starredArticleList").append(bookmarkElem);
       $("#cohortArticleList").append(classroomElem);
+      $("#triangleLevel").removeClass("flip");
       console.log("sort level high to low");
     } else if (countLevel == 3) {
       location.reload();

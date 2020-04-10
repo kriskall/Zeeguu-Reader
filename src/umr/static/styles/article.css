@@ -26,6 +26,7 @@
   -webkit-overflow-scrolling: touch; }
 
 .layout__content {
+  position: relative;
   padding-top: 1em;
   padding-bottom: 1em;
   background-color: white;
@@ -44,7 +45,6 @@ zeeguu.loading {
 /* keeps the translation and origin together */
 .origtrans {
   display: inline-block;
-  position: sticky;
   margin: 0;
   line-height: 29px;
 }
@@ -57,7 +57,6 @@ zeeguu:hover {
 }
 
 .origtrans:hover {
-  background-color: white !important;
   border: none;
 }
 
@@ -71,7 +70,6 @@ zeeguu tran {
 
   margin-top: -9px;
   margin-bottom: 0;
-  position: sticky;
 
   padding: 2px;
 
@@ -87,6 +85,10 @@ zeeguu tran {
   color: #4f4f4f;
   text-transform: lowercase;
   text-align: center;
+}
+
+zeeguu tran:hover {
+  color: black;
 }
 
 /*
@@ -105,28 +107,20 @@ zeeguu orig {
 green downwards pointing triangle; we used to mark also single alternatives
  but for now there's no marking for them */
 
-zeeguu tran moreAlternatives,
-zeeguu tran singleAlternative {
-  font-size: xx-small;
+zeeguu tran moreAlternatives {
+  font-size: 0.5em;
   float: right;
-  width: 1.5em;
-  text-align: right;
+  width: 1em;
+  padding-left: 0.5em;
 }
 
 zeeguu tran moreAlternatives {
-  color: #ffe086;
-}
 
-zeeguu tran singleAlternative {
-  color: #ffe086;
 }
 
 zeeguu tran moreAlternatives:after {
   content: "▼";
-  color: white;
-}
-
-zeeguu tran singleAlternative:after {
+  color:  #4f4f4f;
 }
 
 /* once the user has
@@ -141,25 +135,24 @@ zeeguu tran singleAlternative:after {
  */
 .handSelected,
 .handContributed {
-  color: #ffe086;
   width: 1.5em;
-  text-align: right;
+  text-align: center;
 }
 
 .handSelected:after,
 .handContributed:after {
-  visibility: hidden;
+  display: hidden;
   opacity: 0.1;
   transition: visibility 0s 2s, opacity 2s linear;
 }
 
 .handSelected:after {
-  content: " ✓";
+  content: " ";
   color: white;
 }
 
 .handContributed:after {
-  content: "  :)";
+  content: " ";
   color: white;
 }
 
@@ -174,13 +167,11 @@ that made the UI too heavy ... */
 
 .selectedAlternative,
 .contributedAlternativeTran {
-  font-weight: 500;
-  color: black;
 }
 
 .selectedAlternativeOrig,
 .contributedAlternativeOrig {
-  border-bottom: 1px solid #ffbb54;
+ 
 }
 
 zeeguu tran[chosen]:after {
@@ -287,35 +278,38 @@ zeeguu tran[chosen]:after {
 }
 
 #altermenu {
-  display: none;
-  z-index: 1;
   color: white;
   text-align: center;
-  padding: 0px;
   background: #ffe086;
-  border-radius: 2px;
+  border-radius: 0.3em;
+  width: 8em;
+  padding: 0.3em;
+  margin-top: 3.3em;
 }
 
 #altermenu .mdl-button {
   width: 100%;
   height: 100%;
-  display: block;
-  text-transform: none;
+  text-transform: lowercase;
   white-space: normal;
-  border-bottom: 1px solid white;
-  text-align: left;
+  border-bottom: 1px solid #383838;
+  color: #383838;
   line-height: 1em;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 0.3em;  
 }
 
 #altermenu * {
-  font-size: 14px;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 0.9em;
 }
 
 .mdl-textfield__input {
-  color: grey;
+  color: #484848;
+  font-weight: 400;
   text-align: center;
+  border: none;
+  padding-top: 0.5em;
 }
 
 .mdl-layout__header,
@@ -327,7 +321,6 @@ zeeguu tran[chosen]:after {
   border-radius: 3em 3em 3em 3em;
   bottom: 2em;
 }
-
 
 p.title {
   margin-top: -1.5em;
@@ -493,7 +486,7 @@ a:hover {
   font-family: Montserrat;
   text-align: center;
   border: 0.2em solid #ffbb54;
-  background-color: #fefefe;
+  background-color: white;
   margin: auto;
   padding: 0.5em;
   width: 40em;
@@ -533,7 +526,7 @@ a:hover {
 
 .textEnjoyed {
   margin-top: -1em;
-  padding-bottom: 20em;
+  padding-bottom: 0.1em;
   line-height: 1.3em;
   padding-right: 8em;
   padding-left: 8em;
@@ -565,6 +558,54 @@ a:hover {
 
 .close,
 .close:hover {
+  cursor: pointer;
+}
+
+#wordList {
+  width: 36.5em;
+  height: 20em;
+  line-height: 1.8em;
+  font-size: 1em;
+  text-align: left;
+  margin-top: -0.5em;
+  margin-bottom: 1.5em;
+  margin-left: 2em;
+  overflow-y: scroll;
+  word-wrap: break-word;
+}
+
+#wordList::-webkit-scrollbar-track
+{
+	border-radius: 2em;
+	background-color: white;
+}
+
+#wordList::-webkit-scrollbar
+{
+	width: 0.6em;
+	background-color:white;
+}
+
+#wordList::-webkit-scrollbar-thumb
+{
+	border-radius: 2em;
+	background-color: #ffbb54;
+}
+
+
+#translatedwords-template {
+
+}
+
+.word {
+  text-transform: lowercase;
+}
+
+.trash {
+  padding-right: 0.5em;
+}
+
+.trash:hover {
   cursor: pointer;
 }
 

@@ -94,6 +94,10 @@
             </div>
             <div id="articleContent" class="translatable"></div>
             <br />
+            <!-- Menu to change the translation -->
+            <div id="alterMenuContainer">
+              <div id="alterMenu"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -107,7 +111,8 @@
             <h1 class="modalTitle">Did you enjoy reading this article?</h1>
             <button class="modalButton yes">Yes</button>
             <button class="modalButton no">No</button>
-            <h2 class="modalText">Help us make Zeeguu even smarter by always letting us know whether you liked reading
+            <h2 class="modalText">Help us make Zeeguu even smarter by always letting us know whether you
+              liked reading
               an article or not.
             </h2>
           </div>
@@ -118,18 +123,28 @@
           <div class="modalContent">
             <span class="close" id=closeReview>&times;</span>
             <h1 class="modalTitle">Review Words</h1>
-            <h2 class="modalText textEnjoyed">Ensure only to delete the words that you don’t wish to have displayed in
+            <h2 class="modalText textEnjoyed">Ensure only to delete the words that you don’t wish to have
+              displayed in
               your exercises.
             </h2>
+            <div id="wordList"></div>
             <a href="/read"><button class="modalButton reviewBtn backArticles">Back to Articles</button></a>
             <button class="modalButton reviewBtn">Continue to Exercises</button>
           </div>
         </div>
       </div>
-
-
-
     </main>
+  </div>
+    <script id="translatedwords-template" type="text/template">
+      <div id="translationID" translationID="{% raw %}{{ id }}{% endraw %}" class="{% raw %}{{ id }}{% endraw %}">
+        <span class="word"> 
+          <img id="{% raw %}{{ id }}{% endraw %}" class="trash"
+          src="{{ url_for('reader_blueprint.static',filename='images/SVGs/trash.svg') }}"
+          alt="delete word" />
+          {% raw %}{{ from }}{% endraw %} - {% raw %}{{ to }}{% endraw %}  </span>
+      </div>
+    </script>
+
 </body>
 
 </html>
