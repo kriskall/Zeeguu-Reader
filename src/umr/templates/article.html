@@ -94,10 +94,6 @@
             </div>
             <div id="articleContent" class="translatable"></div>
             <br />
-            <!-- Menu to change the translation -->
-            <div id="alterMenuContainer">
-              <div id="alterMenu"></div>
-            </div>
           </div>
         </div>
       </div>
@@ -134,9 +130,9 @@
         </div>
       </div>
     </main>
-  </div>
 
-  <script id="translatedwords-template" type="text/template">
+
+    <script id="translatedwords-template" type="text/template">
       <div id="translationID" translationID="{% raw %}{{ id }}{% endraw %}" class="{% raw %}{{ id }}{% endraw %}">
         <span class="word"> 
           <img id="{% raw %}{{ id }}{% endraw %}" class="trash"
@@ -145,6 +141,14 @@
           {% raw %}{{ from }}{% endraw %} - {% raw %}{{ to }}{% endraw %}  </span>
       </div>
     </script>
+
+    <!-- Menu to change the translation -->
+    <div id="alterMenuContainer">
+      <div id="alterMenu"></div>
+    </div>
+
+  </div>
+
 
 </body>
 

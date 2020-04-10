@@ -304,6 +304,10 @@ zeeguu tran[chosen]:after {
   font-size: 0.9em;
 }
 
+#alterMenuContainer{
+  display: none;
+}
+
 .mdl-textfield__input {
   color: #484848;
   font-weight: 400;
