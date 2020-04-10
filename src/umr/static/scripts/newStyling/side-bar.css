@@ -133,8 +133,8 @@
   top: 7em;
   left: 9.5em;
   z-index: 3;
-  transform: rotate(-90deg);
   color: white;
+  transform: rotate(-90deg);
 }
 
 .arrow-icon:hover{
@@ -177,20 +177,21 @@ content:'˄';
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
 
- /* .arrow-icon{
-    display: block;
-    color: white;
-    position: absolute;
+  .arrow-icon{
+    position: fixed;
     top: 0em;
- 
+    left: -0.5em;
+    z-index: 3;
+    color: white;
+    transform: rotate(90deg);
 }
 
-  .arrow-none-block{
-    color: #FFBB54;
-    position: absolute;
-    top: -0.4em;
-    left: -1em;
-  } */
+.arrow-none-block{
+  top: 0em;
+  position: absolute;
+  left: -0.8em;
+}
+  
   
   .sidenav-mobile{
     display:none; 
@@ -203,13 +204,11 @@ content:'˄';
     float: none;
   }
 
+  /*
   .arrow-icon{
-      display: block !important;
-      color: white;
-      position: absolute;
-      right: 0em !important;
-      top: 0em !important;
-  
+    display: block !important;
+    color: white;
+    position: absolute;  
   }
 
   .arrow-none-block{
@@ -223,7 +222,10 @@ content:'˄';
   z-index: 32;
   font-size: 4em;
   line-height: unset;
-}
+  position: fixed;
+  left: -0.2em;
+  top: 0em;
+} */
 
 .dropdown-content a{
   text-align: left;
@@ -239,6 +241,11 @@ content:'˄';
 
 }
 
+@media screen and (max-width: 450px){
+  arrow-icon{
+    left: -0.8em !important;
+}
+} 
 /*
 
 @media screen and (max-width: 700px) {

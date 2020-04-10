@@ -1,6 +1,6 @@
-{% extends 'articleHeader.html' %}
-{% block header %}
-<div class="main-container">
+{% include  "articleHeader.html "%}
+
+<div class="main-container"  id="main-containerID" >
   <header class="mdl-layout__header mdl-layout__header--transparent">
 
     <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
@@ -28,6 +28,10 @@
       </div>
     </div>
   </header>
+
+  
+  {% include  "sideBar.html "%}
+
   <div class="widthOfColumn">
     <div class="mdl-layout__drawer mdl-color--amber-A700">
       <nav class="mdl-navigation">
@@ -46,7 +50,6 @@
     </div>
   </div>
   <div class="widthOfColumn">
-    <div class="tagsOfTopics"></div>
   </div>
   <div class="widthOfColumn">
     <main class="mdl-layout__content">
@@ -76,18 +79,24 @@
 
 
 
+
+
 <script id="starred-articleLink-template" type="text/template">
-      <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}" articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
+      <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
+         articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
         <a
-          href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
-          <div class="articleLinkHeader">
-            {% raw %}{{ articleLinkTitle }}{% endraw %}
-            <div class="articleLinkDifficulty headerElement">
-              <span class="difficulty-level articleLinkDifficultyText"
-                            > {% raw %}{{articleDifficulty}}{% endraw %} </span>
-              <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
-            </div>
+         href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
+         <div class="articleLinkHeader">
+          <div class="articleLinkTitle headerElement">
+              {% raw %}{{ articleLinkTitle }}{% endraw %}
           </div>
+          <div class="articleLinkDifficulty headerElement">
+              <span class="difficulty-level articleLinkDifficultyText"
+              > {% raw %}{{articleDifficulty}}{% endraw %} </span>
+              <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
+
+          </div>
+      </div>
           <div class="articleLinkSummary">
             {% raw %}{{articleSummary}}{% endraw %}
           </div>
@@ -130,7 +139,6 @@
     </li>
     <div class="articleLinkSpacer"></div>
   </script>
-{% endblock %}
 <!-- Dialog windows for adding a source, topic and filter. -->
 {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
 

@@ -122,8 +122,7 @@ body {
 
 .articleLinkSummary{
   padding-right:0em; 
-  width: 246px;
-  text-align: justify;
+  text-align: left;
 }
 
 .difficulty-level{
