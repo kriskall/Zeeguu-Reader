@@ -3,6 +3,7 @@
 
 import $ from "jquery";
 import config from "../config";
+import Mustache from "mustache";
 
 import Translator from "./Translator";
 import AlterMenu from "./AlterMenu";
@@ -17,7 +18,7 @@ import {
 } from "./textProcessing";
 import { get_article_id } from "./article_id.js";
 
-import { GET_USER_ARTICLE_INFO } from "../zeeguuRequests";
+import { GET_USER_ARTICLE_INFO, BOOKMARKS_FOR_ARTICLE, DELETE_BOOKMARK } from "../zeeguuRequests";
 import ZeeguuRequests from "../zeeguuRequests";
 
 import "../../../styles/mdl/material.min.js";
@@ -223,16 +224,44 @@ function handle_ENJOYED_READING_click() {
 
 function handle_REVIEW_WORDS_click() {
   var modal = document.getElementById("modalReview");
-  modal.style.display = "block"
+  modal.style.display = "block";
+
+  var articleId = document.getElementById("articleID").innerText;
+  ZeeguuRequests.post(BOOKMARKS_FOR_ARTICLE + "/" + articleId, {}, function (data) {
+    let template = $("#translatedwords-template").html();
+    for (var i = 0; i < data.bookmarks.length; i++) {
+      let feedOption = $(Mustache.render(template, data.bookmarks[i]));
+      let deleteTrash = $(feedOption.find(".trash"));
+      deleteTrash.click(
+        (function (data, feedOption) {
+          return function () {
+            console.log(feedOption);
+            console.log(data.id);
+            var translationId = data.id;
+            console.log(translationId);
+            ZeeguuRequests.post(DELETE_BOOKMARK + "/" + translationId, {},
+              function (data) {
+                feedOption.fadeOut();
+                return false;
+              }
+            )
+          }
+        })(data.bookmarks[i], feedOption)
+      );
+      $("#wordList").append(feedOption);
+    }
+  });
 
   var close = document.getElementById("closeReview");
   close.onclick = function () {
     modal.style.display = "none";
+    $("#wordList").children().remove();
   }
 
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
+      $("#wordList").children().remove();
     }
   }
 }

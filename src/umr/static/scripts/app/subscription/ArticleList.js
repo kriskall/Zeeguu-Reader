@@ -5,14 +5,14 @@ import Cache from '../Cache';
 import Notifier from '../Notifier';
 import moment from 'moment';
 import NoFeedTour from './NoFeedTour';
-import {difficultyToColorMapping} from './DifficultyColors'
+import { difficultyToColorMapping } from './DifficultyColors'
 import UserActivityLogger from '../UserActivityLogger';
 import 'loggly-jslogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import {GET_RECOMMENDED_ARTICLES} from '../zeeguuRequests';
-import {SEARCH_ENDPOINT} from '../zeeguuRequests';
-import {FILTER_RENDER} from '../zeeguuRequests';
-import {SEARCH_RENDER} from '../zeeguuRequests';
+import { GET_RECOMMENDED_ARTICLES } from '../zeeguuRequests';
+import { SEARCH_ENDPOINT } from '../zeeguuRequests';
+import { FILTER_RENDER } from '../zeeguuRequests';
+import { SEARCH_RENDER } from '../zeeguuRequests';
 
 const KEY_MAP_FEED_ARTICLE = 'feed_article_map';
 const EVENT_ARTICLES_REQUESTED = 'ARTICLES REQUESTED FROM ZEEGUU';
@@ -142,8 +142,13 @@ export default class ArticleList {
             let articleLink = articleLinks[i];
             var publishedString = moment.utc(articleLink.published).fromNow();
             let difficulty = Math.round(parseFloat(articleLink.metrics.difficulty) * 100) / 10;
-            let topicsText = articleLink.topics.trim().replace(/(^|\s+)/g, "$1#");
-            if (topicsText == "#") topicsText = "";
+            let topicsList = articleLink.topics.trim().split(" ");
+            let topicsListDict = [];
+            for (let i = 0; i < topicsList.length; i++) {
+                if (topicsList[i] != "") {
+                    topicsListDict.push({ "topic": topicsList[i] });
+                }
+            }
 
             // In case we don't have an articleLink url let's point to a fancy letter
             // that matches the initials of the author
@@ -168,7 +173,7 @@ export default class ArticleList {
                 articleDifficultyColor: difficultyToColorMapping(difficulty),
                 articleSummary: $('<p>' + articleLink.summary + '</p>').text(),
                 articleIcon: articleIconURL,
-                articleTopics: topicsText,
+                articleTopics: topicsListDict,
                 wordCount: articleLink.metrics.word_count,
                 alreadyOpenedClass: articleLink.opened ? ALREADY_OPENED_ARTICLE_CLASS : ""
             };

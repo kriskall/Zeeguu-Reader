@@ -486,7 +486,7 @@ a:hover {
   font-family: Montserrat;
   text-align: center;
   border: 0.2em solid #ffbb54;
-  background-color: #fefefe;
+  background-color: white;
   margin: auto;
   padding: 0.5em;
   width: 40em;
@@ -526,7 +526,7 @@ a:hover {
 
 .textEnjoyed {
   margin-top: -1em;
-  padding-bottom: 20em;
+  padding-bottom: 0.1em;
   line-height: 1.3em;
   padding-right: 8em;
   padding-left: 8em;
@@ -558,6 +558,54 @@ a:hover {
 
 .close,
 .close:hover {
+  cursor: pointer;
+}
+
+#wordList {
+  width: 36.5em;
+  height: 20em;
+  line-height: 1.8em;
+  font-size: 1em;
+  text-align: left;
+  margin-top: -0.5em;
+  margin-bottom: 1.5em;
+  margin-left: 2em;
+  overflow-y: scroll;
+  word-wrap: break-word;
+}
+
+#wordList::-webkit-scrollbar-track
+{
+	border-radius: 2em;
+	background-color: white;
+}
+
+#wordList::-webkit-scrollbar
+{
+	width: 0.6em;
+	background-color:white;
+}
+
+#wordList::-webkit-scrollbar-thumb
+{
+	border-radius: 2em;
+	background-color: #ffbb54;
+}
+
+
+#translatedwords-template {
+
+}
+
+.word {
+  text-transform: lowercase;
+}
+
+.trash {
+  padding-right: 0.5em;
+}
+
+.trash:hover {
   cursor: pointer;
 }
 
