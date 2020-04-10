@@ -3,8 +3,8 @@ import Mustache from 'mustache';
 import config from '../config';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import {GET_STARRED_ARTICLES} from '../zeeguuRequests';
-import {POST_UNSTAR_ARTICLE} from '../zeeguuRequests';
+import { GET_STARRED_ARTICLES } from '../zeeguuRequests';
+import { POST_UNSTAR_ARTICLE } from '../zeeguuRequests';
 
 
 const HTML_ID_EMPTY_STARRED_ARTICLE_LIST = '#emptyStarredArticleListImage';
@@ -41,8 +41,14 @@ export default class StarredArticleList {
         for (let i = articleLinks.length - 1; i >= 0; i--) {
             let articleLink = articleLinks[i];
             let difficulty = Math.round(parseFloat(articleLink.metrics.difficulty) * 100) / 10;
-            let topicsText = articleLink.topics.trim().replace(/(^|\s+)/g, "$1#");
-            if (topicsText == "#") topicsText = "";
+            let topicsList = articleLink.topics.trim().split(" ");
+            let topicsListDict = [];
+            for (let i = 0; i < topicsList.length; i++) {
+                if (topicsList[i] != "") {
+                    topicsListDict.push({ "topic": topicsList[i] });
+                }
+            }
+
 
             // In case we don't have an articleLink url let's point to a fancy letter
             // that matches the initials of the author
@@ -55,8 +61,6 @@ export default class StarredArticleList {
                 articleIconURL = "https://img.icons8.com/dusk/2x/" + authorsInitial + ".png";
             }
 
-         
-            
 
             let templateAttributes = {
                 articleLinkID: articleLink.id,
@@ -67,10 +71,10 @@ export default class StarredArticleList {
                 articleLinkDisplayLike: articleLink.liked ? "inline" : "none",
                 articleIcon: articleIconURL,
                 articleDifficulty: difficulty,
-                articleTopics: topicsText,
+                articleTopics: topicsListDict,
                 articleSummary: $('<p>' + articleLink.summary + '</p>').text(),
                 wordCount: articleLink.metrics.word_count
-              
+
 
             };
 
@@ -81,7 +85,7 @@ export default class StarredArticleList {
         }
 
         $(HTML_CLASS_CLEAR).on('click', function () {
-            ZeeguuRequests.post(POST_UNSTAR_ARTICLE, {url: this.dataset.href});
+            ZeeguuRequests.post(POST_UNSTAR_ARTICLE, { url: this.dataset.href });
             $(this).parent().parent().fadeOut(200, function () {
                 let remaining = ($(this).siblings(config.HTML_CLASS_ARTICLELINK_ENTRY)).length;
                 if (remaining === 0)

@@ -309,8 +309,13 @@
               <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
           </div>
               <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
-              <span class="singleTopicTag">
-              {% raw %}{{articleTopics}}{% endraw %}</span>
+            
+            {% raw %}{{#articleTopics}}{% endraw %}
+            <span class="singleTopicTag">
+              {% raw %}{{topic}}{% endraw %}
+            </span>
+            {% raw %}{{/articleTopics}}{% endraw %}
+            
           </div>
       </a>
   </li>

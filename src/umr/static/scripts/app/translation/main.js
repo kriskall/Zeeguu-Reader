@@ -237,17 +237,18 @@ function handle_REVIEW_WORDS_click() {
       deleteTrash.click(
         (function (data, feedOption) {
           return function () {
-            var translationId = document.getElementById("translationID").className;
+            console.log(feedOption);
+            console.log(data.id);
+            var translationId = data.id;
             console.log(translationId);
             ZeeguuRequests.post(DELETE_BOOKMARK + "/" + translationId, {},
               function (data) {
                 feedOption.fadeOut();
-                console.log("post delete?")
                 return false;
               }
             )
           }
-        })(data[i], feedOption)
+        })(data.bookmarks[i], feedOption)
       );
       $("#wordList").append(feedOption);
     }
