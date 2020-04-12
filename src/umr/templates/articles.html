@@ -65,7 +65,16 @@
              function resizeShowOptions() {
                 var w = window.outerWidth;
                 var options = document.getElementById("optionsID");
-                if(w>=600) options.style.display = 'inline-flex'; 
+                var nav = document.getElementById("myTopnav");
+            
+                if(w>=600){ 
+                options.style.display = 'inline-flex'; 
+                }else{
+                  nav.style.display='none'; 
+                  document.getElementById("arrow-p").className ='arrow-none-block'; 
+                }
+              
+
               }
             </script>
 
