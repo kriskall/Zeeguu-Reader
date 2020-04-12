@@ -1,6 +1,7 @@
 {% include  "articleHeader.html" %}
 
-<div class="main-container" id="main-containerID">
+<body onresize="resizeShowOptions()">
+<div class="main-container" id="main-containerID" >
 
 
   <header class="mdl-layout__header mdl-layout__header--transparent">
@@ -49,20 +50,25 @@
 
           <script>
             function searchIconFunction(element) {
-              var nav = document.getElementById("optionsID");
-              var navstyle = nav.style.display;
-              if (navstyle == 'inline-flex') {
-                nav.style.display = 'none';
-                // element.className ='arrow-none-block'; 
-                //document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+              var options = document.getElementById("optionsID");
+              var optionsstyle = options.style.display;
+              if (optionsstyle == 'inline-flex') {
+                options.style.display = 'none';
               } else {
-                nav.style.display = 'inline-flex';
-                //element.className ='arrow-icon'; 
-                // document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
+                options.style.display = 'inline-flex';
 
               }
             }
           </script>
+
+            <script>
+             function resizeShowOptions() {
+                var w = window.outerWidth;
+                var options = document.getElementById("optionsID");
+                if(w>=600) options.style.display = 'inline-flex'; 
+              }
+            </script>
+
 
           <!----  <span class="mdl-layout-title">
             My Interests
@@ -289,6 +295,6 @@
 
   <!-- Dialog windows for adding a source, topic and filter. -->
   {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
-
+</body>
 
   </html>
