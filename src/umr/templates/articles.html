@@ -1,6 +1,6 @@
 {% include  "articleHeader.html" %}
 
-<body onresize="resizeShowOptions()">
+<body onload="resizeShowOptions()" onresize="resizeShowOptions()">
 <div class="main-container" id="main-containerID" >
 
 
@@ -72,11 +72,22 @@
                 }else{
                   nav.style.display='none'; 
                   document.getElementById("arrow-p").className ='arrow-none-block'; 
+                  document.getElementById('main-containerID').style.cssText = 'margin:0px;';
                 }
-              
 
               }
             </script>
+
+   <!---     <script>
+          function onLoadMenu(){
+            var w = window.outerWidth;
+            var options = document.getElementById("optionsID");
+            var nav = document.getElementById("myTopnav");
+            
+            if
+
+          }
+        </script> --> 
 
 
           <!----  <span class="mdl-layout-title">
