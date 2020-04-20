@@ -6,6 +6,7 @@
 
 .select-article,
 h1 {
+  padding-top: 0.3em;
   font-family: Montserrat;
   font-weight: 100;
   font-size: 2.5em;
@@ -19,7 +20,6 @@ h1 {
   justify-content: space-around;
 }
 
-.welcome_personal,
 p {
   font-family: Montserrat;
   font-style: normal;
@@ -83,10 +83,7 @@ a:hover {
     overflow-x: hidden;
     margin:0; 
   }
-  .welcome_personal, p{
-    display:none; 
-  }
-  
+
   .select-article, h1{
     font-size: 1.5em;
     margin-top: 1em;
