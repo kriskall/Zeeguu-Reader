@@ -1,73 +1,71 @@
 <nav class="nav-menu">
 
-    <a href="javascript:void(0);" class="arrow-icon"  id="arrow-p" onclick="sideBarFunction(this)">
-      <p class="arrow-nav-icon"> ▲</p>  
-    </a>
+  <a href="javascript:void(0);" class="arrow-icon" id="arrow-p" onclick="sideBarFunction(this)">
+    <p class="arrow-nav-icon"> ▲</p>
+  </a>
 
-    <div class ="sidenav" id="myTopnav">
-      <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
-        alt="Zeeguu Logo - The Elephant" />
-      <div class="dropdown">
-        <button class="dropbtn">| Articles <span id="arrow"></span></button>
-        <div class="dropdown-content">
-          <a href="/read"> All</a>
-          <a href="/read/bookmarks">Bookmarks</a>
-          <a href="/read/classroom">Classroom</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">| Words <span id="arrow"></span></button>
-        <div class="dropdown-content">
-          <a href="/bookmarks">History</a>
-          <a href="/starred_bookmarks">Starred</a>
-          <a href="/learned_bookmarks">Learned</a>
-          <a href="/top_bookmarks">Top</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">| Exercises <span id="arrow"></span></button>
-        <div class="dropdown-content">
-          <a href="#">Easy</a>
-          <a href="#">Regular</a>
-          <a href="#">Ambitious</a>
-        </div>
-      </div>
-      <script>
-        function sideBarFunction(element) {
-          var nav = document.getElementById("myTopnav");
-          var navstyle = nav.style.display; 
-          if (navstyle == 'block') {
-            nav.style.display = 'none';
-           element.className ='arrow-none-block'; 
-           document.getElementById('main-containerID').style.cssText = 'margin:0px;';
-           
-          } else {
-            nav.style.display ='block'; 
-            element.className ='arrow-icon'; 
-            document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
-            
-          }
-        }
-        </script>
-
-
-      <div class="generalNavLinks">
-
-        <div class="settingsbtn">
-          <a class="settingsLink">
-            <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
-              alt="Click here for general settings" />
-          </a>
-        </div>
-        <div class="nav-generalbtn">
-          <a class="generalLinks" href="#">Get in touch</a>
-        </div>
-        <div class="nav-generalbtn">
-          <a class="generalLinks" href="#">Sign Out</a>
-        </div>
-
+  <div class="sidenav" id="myTopnav">
+    <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+      alt="Zeeguu Logo - The Elephant" />
+    <div class="dropdown">
+      <button class="dropbtn">| Articles <span id="arrow"></span></button>
+      <div class="dropdown-content">
+        <a href="/read"> All</a>
+        <a href="/read/bookmarks">Bookmarks</a>
+        <a href="/read/classroom">Classroom</a>
       </div>
     </div>
-  </nav>
+    <div class="dropdown">
+      <button class="dropbtn">| Words <span id="arrow"></span></button>
+      <div class="dropdown-content">
+        <a href="/bookmarks">Translated</a>
+        <a href="/starred_bookmarks">Starred</a>
+        <a href="/learned_bookmarks">Learned</a>
+        <a href="/top_bookmarks">Top</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">| Exercises <span id="arrow"></span></button>
+      <div class="dropdown-content">
+        <a href="#">Easy</a>
+        <a href="#">Regular</a>
+        <a href="#">Ambitious</a>
+      </div>
+    </div>
+    <script>
+      function sideBarFunction(element) {
+        var nav = document.getElementById("myTopnav");
+        var navstyle = nav.style.display;
+        if (navstyle == 'block') {
+          nav.style.display = 'none';
+          element.className = 'arrow-none-block';
+          document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+
+        } else {
+          nav.style.display = 'block';
+          element.className = 'arrow-icon';
+          document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
+
+        }
+      }
+    </script>
 
 
+    <div class="generalNavLinks">
+
+      <div class="settingsbtn">
+        <a class="settingsLink" href="/my_settings">
+          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
+            alt="Click here for general settings" />
+        </a>
+      </div>
+      <div class="nav-generalbtn">
+        <a class="generalLinks" href="mailto:zeeguu.team@gmail.com">Get in touch</a>
+      </div>
+      <div class="nav-generalbtn">
+        <a class="generalLinks" href="{{ url_for('account.logout') }}">Sign Out</a>
+      </div>
+
+    </div>
+  </div>
+</nav>

@@ -64,6 +64,7 @@ body {
 }
 
 .articleLinkDifficultyText {
+  margin-top: -2em;
   position: absolute;
   padding: 0.3em;
   width: 3em;
@@ -83,11 +84,13 @@ body {
 }
 
 .articleTopics {
+  margin-top: 1em;
   display: flex;
   color: black;
 }
 
 .publishingTime {
+  margin-top: 0.2em;
   margin-right: 0.78125em;
 }
 
@@ -100,6 +103,8 @@ body {
 }
 
 .singleTopicTag {
+  height: 1.2em;
+  margin-left: 0.2em;
   border: solid #ffbb54;
   border-radius: 1.0416666666666667em;
   padding: 0.20833333333333334em 1.3541666666666667em;
