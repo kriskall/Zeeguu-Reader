@@ -78,6 +78,7 @@
   line-height: 1.25em;
   text-align: center;
   color: #FFBB54;
+  text-decoration: none;
 
 }
 
@@ -135,6 +136,7 @@
   z-index: 3;
   color: white;
   transform: rotate(-90deg);
+  text-decoration: none;
 }
 
 .arrow-icon:hover{
@@ -149,7 +151,9 @@ content:'˄';
   display: block;
   z-index: 32;
   font-size: 4em;
+  padding: 0;
   margin: 0;
+  line-height: 0;
 }
 
 .arrow-none-block{
@@ -159,7 +163,7 @@ content:'˄';
   /* right: 91%; */
   left: -0.3em;
   /* float: left; */
-  /* z-index: 3; */
+   z-index: 3; 
   transform: rotate(90deg);
 }
 
@@ -179,7 +183,7 @@ content:'˄';
 
   .arrow-icon{
     position: fixed;
-    top: 0em;
+    top: 4em;
     left: -0.5em;
     z-index: 3;
     color: white;
@@ -187,7 +191,7 @@ content:'˄';
 }
 
 .arrow-none-block{
-  top: 0em;
+  top: 4em;
   position: absolute;
   left: -0.8em;
 }
