@@ -116,6 +116,10 @@ button {
   border-top: 15px solid #ffbb54;
 }
 
+#sortby{
+  display:none; 
+}
+
 .levelLabel,
 .wordLabel {
   text-align: center;
@@ -278,6 +282,10 @@ button {
   display: none;
 }
 
+.sortContainer{
+  display:inherit; 
+}
+
 /******** MEDIA QUERIES ********/
 @media only screen and (max-width: 839px) {
   #search-expandable {
@@ -306,6 +314,9 @@ button {
 }
 
 @media screen and (max-width: 500px) {
+  nav {
+    font-size: 4vw;
+  }
   #search-expandable{
     position: relative;
     left: -18em;
@@ -332,24 +343,97 @@ button {
     position: relative;
     left: 3em;
 }
+
+.containerOptionsSorting{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
   .options {
     display: none;
   }
 
+  .sortContainer{
+    display: inherit;
+    margin-left:auto; 
+    margin-right:auto; 
+  }
+
   .wordsSorting {
+    width: 4em;
+    background: #f1f0f0;
+    margin-right: 2em;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    padding: 0.5em 0em;
+    color: black
+  }
+
+  .sortingCategories {
+    width: 100%;
+    justify-content: center;
+}
+
+.levelSorting{
+  width: 4em;
+  background: #f1f0f0;
+  margin-right: 2em;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  padding: 0.5em 0em;
+  color: black
+}
+
+.wordLabel {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.triangle{
+  display:none; 
+}
+
+ #sortby{
+  font-size: 0.6em;
+  width: fit-content;
+  margin: 0;
+  display:inline-flex; 
+  margin-right:0.5em; 
+}
+
+/*  .wordsSorting {
     padding-left: 1.5em;
     padding-right: 0.75em;
   }
   .sortingCategories{
-    width: 11em;
+    width: 13em;
+  }*/
+}
+/*
+@media screen and (max-width: 430px) {
+  .sortingCategories {
+    width: 9em;
   }
 }
+
+
+@media screen and (max-width: 415px) {
+  .sortingCategories {
+    width: 8em;
+  }
+}
+
 
 @media screen and (max-width: 390px) {
   .sortingCategories {
     width: 5.5em;
   }
+  .articleLinkTitle {
+    width: 186px;
 }
+}*/
 
 /*** SWEEET ALERT ******/
 body.stop-scrolling {
