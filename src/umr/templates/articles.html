@@ -301,11 +301,12 @@
     <script id="search-notification-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry search-notification-box">
         <div class="articleLinkHeader">
+          <div class="innerSearchBox">
             <div class="searchText headerElement">
                 {% raw %}{{ displayText }}{% endraw %}
             </div>
-              <button class='deleteSearch headerElement'>--X</button>
-            
+              <button class='deleteSearch headerElement'>X</button>
+          </div>
         </div>
     </li>
     <div class="articleLinkSpacer"></div>

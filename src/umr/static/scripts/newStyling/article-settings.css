@@ -27,8 +27,13 @@
   cursor: pointer;
 }
 
+.innerSearchBox {
+  display: inline;
+}
+
 .searchText {
   font-family: Montserrat;
+  color: #ffbb54;
   border: none;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -55,7 +60,7 @@ button {
   font-family: Montserrat;
   font-weight: 400;
   width: 18px;
-  margin-top: 7px;
+  margin-left: 10px;
 }
 
 /*Styling for all buttons*/
