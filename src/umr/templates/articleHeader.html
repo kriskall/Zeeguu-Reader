@@ -3,15 +3,15 @@
   <head>
     {% if request.path == '/read/' %}
     <title>Zeeguu-Articles</title>
-    {% elif  request.path == '/read/bookmarks' %}
+    {% elif request.path == '/read/bookmarks' %}
     <title>Zeeguu-Bookmarks</title>
-    {% elif  request.path == '/read/classroom' %}
-    <title> Zeeguu-Classroom </title>
+    {% elif request.path == '/read/classroom' %}
+    <title>Zeeguu-Classroom</title>
     {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    
+
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"
@@ -65,8 +65,15 @@
       href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/article-settings.css') }}"
     />
 
+    <!--CSS for loading NEW-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/loading.css') }}"
+    />
+
     <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
 
     <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
   </head>
-
+</html>
