@@ -1,4 +1,7 @@
 /* Fixed sidenav, full height */
+nav {
+  font-size:14px; 
+}
 .sidenav {
   height: 100%;
   width: 12.5em;
@@ -151,20 +154,19 @@ content:'˄';
   display: block;
   z-index: 32;
   font-size: 4em;
-  padding: 0;
+  padding: 0 !important;
   margin: 0;
-  line-height: 0;
+  line-height: 0 !important;
 }
 
 .arrow-none-block{
   color: #FFBB54;
   position: fixed;
   top: 7em;
-  /* right: 91%; */
-  left: -0.3em;
-  /* float: left; */
-   z-index: 3; 
+  left: 0em;
+   z-index: 1; 
   transform: rotate(90deg);
+  text-decoration: none;
 }
 
 .arrow-none-block{

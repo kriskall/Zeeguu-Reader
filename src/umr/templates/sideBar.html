@@ -36,16 +36,15 @@
       function sideBarFunction(element) {
         var nav = document.getElementById("myTopnav");
         var navstyle = nav.style.display;
-        if (navstyle == 'block') {
-          nav.style.display = 'none';
-          element.className = 'arrow-none-block';
-          document.getElementById('main-containerID').style.cssText = 'margin:0px;';
-
-        } else {
+        if (navstyle == 'none') {
           nav.style.display = 'block';
           element.className = 'arrow-icon';
           document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
-
+        }
+        else {
+          nav.style.display = 'none';
+          element.className = 'arrow-none-block';
+          document.getElementById('main-containerID').style.cssText = 'margin:0px;';
         }
       }
     </script>

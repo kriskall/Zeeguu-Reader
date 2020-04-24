@@ -44,38 +44,11 @@
               alt="search icon" />
           </a>
 
+          <div class="containerOptionsSorting">
           <div class="options" id="optionsID">
             <br /><br /><br />
 
-            <script>
-              function searchIconFunction(element) {
-                var options = document.getElementById("optionsID");
-                var optionsstyle = options.style.display;
-                if (optionsstyle == 'inline-flex') {
-                  options.style.display = 'none';
-                } else {
-                  options.style.display = 'inline-flex';
 
-                }
-              }
-            </script>
-
-            <script>
-              function resizeShowOptions() {
-                var w = window.outerWidth;
-                var options = document.getElementById("optionsID");
-                var nav = document.getElementById("myTopnav");
-
-                if (w >= 600) {
-                  options.style.display = 'inline-flex';
-                } else {
-                  nav.style.display = 'none';
-                  document.getElementById("arrow-p").className = 'arrow-none-block';
-                  document.getElementById('main-containerID').style.cssText = 'margin:0px;';
-                }
-
-              }
-            </script>
 
             <!---     <script>
           function onLoadMenu(){
@@ -162,19 +135,61 @@
             </div>
           </div>
           <!-- Sorting buttons-->
-          <div class="sortingCategories">
-            <div class="wordsSorting">
-              <div class="wordLabel">words</div>
-              <div id="triangleWords" class="triangle"></div>
-            </div>
-            <div class="levelSorting">
-              <div class="levelLabel">level</div>
-              <div id="triangleLevel" class="triangle"></div>
-            </div>
+          <div class="sortingCategories" id="sortingBox">
+            <div class="sortContainer">
+              <p id="sortby"> Sort articles by:</p>
+              <div class="wordsSorting">
+                <div class="wordLabel">words</div>
+                <div id="triangleWords" class="triangle"></div>
+              </div>
+              <div class="levelSorting">
+                <div class="levelLabel">level</div>
+                <div id="triangleLevel" class="triangle"></div>
+              </div>
           </div>
+        </div>
+      </div>
         </nav>
       </div>
     </div>
+
+    
+    <script>
+      function searchIconFunction(element) {
+        var options = document.getElementById("optionsID");
+        var optionsstyle = options.style.display;
+
+        var sortings = document.getElementById("sortingBox")
+        var sortingsstyle = sortings.style.display; 
+        if (optionsstyle == 'inline-flex' && sortingsstyle =='flex' ) {
+          options.style.display = 'none';
+          sortings.style.display = 'none'; 
+        } else {
+          options.style.display = 'inline-flex';
+          sortings.style.display = 'flex'; 
+
+        }
+      }
+    </script>
+
+    <script>
+      function resizeShowOptions() {
+        var w = window.outerWidth;
+        var options = document.getElementById("optionsID");
+        var nav = document.getElementById("myTopnav");
+        var sortings = document.getElementById("sortingBox")
+
+        if (w >= 600) {
+          options.style.display = 'inline-flex';
+          sortings.style.display = 'flex'; 
+        } else {
+          nav.style.display = 'none';
+          document.getElementById("arrow-p").className = 'arrow-none-block';
+          document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+        }
+
+      }
+    </script>
     <div class="widthOfColumn">
       <div class="tagsOfInterests">
 
