@@ -22,7 +22,6 @@ import "../../../styles/mdl/material.min.js";
 import "../../../styles/mdl/material.min.css";
 import "../../../styles/material-icons.css";
 import "../../../styles/login.css";
-//import "../../../styles/loader.css";
 import "../../../styles/articles.css";
 import "../../../styles/addSourceDialog.css";
 import "../../../styles/addTopicDialog.css";
@@ -250,6 +249,8 @@ $(document).ready(function () {
       $(searchExecuted).val("");
       articleList.search(input);
       showSearchNotification(input);
+      //display none for no articles
+      $("#emptyArticleListImage").hide();
     }
   });
 
