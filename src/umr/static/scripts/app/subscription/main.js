@@ -21,7 +21,6 @@ const HTML_ID_SEARCH_NOTIFICATION = ".searchNotification";
 import "../../../styles/mdl/material.min.js";
 import "../../../styles/mdl/material.min.css";
 import "../../../styles/material-icons.css";
-import "../../../styles/loader.css";
 import "../../../styles/login.css";
 import "../../../styles/articles.css";
 import "../../../styles/addSourceDialog.css";
@@ -49,7 +48,6 @@ let nonInterestSubscriber = new NonInterestSubscriber(
 );
 let languageSubscriptionList = new LanguageSubscriptionList();
 let languageSubscriber = new LanguageSubscriber(languageSubscriptionList);
-
 
 document.addEventListener(config.EVENT_SUBSCRIPTION, function () {
   articleList.clear();
@@ -164,9 +162,7 @@ $(document).ready(function () {
     }
     countWords++;
     if (countWords == 1) {
-      var elem = $("#articleLinkList")
-        .find("li")
-        .sort(sortLowToHighWords);
+      var elem = $("#articleLinkList").find("li").sort(sortLowToHighWords);
       var bookmarkElem = $("#starredArticleList")
         .find("li")
         .sort(sortLowToHighWords);
@@ -180,9 +176,7 @@ $(document).ready(function () {
       $("#triangleWords").addClass("clicked");
       console.log("sort low to high");
     } else if (countWords == 2) {
-      var elem = $("#articleLinkList")
-        .find("li")
-        .sort(sortHighToLowWords);
+      var elem = $("#articleLinkList").find("li").sort(sortHighToLowWords);
       var bookmarkElem = $("#starredArticleList")
         .find("li")
         .sort(sortHighToLowWords);
@@ -213,9 +207,7 @@ $(document).ready(function () {
     }
     countLevel++;
     if (countLevel == 1) {
-      var elem = $("#articleLinkList")
-        .find("li")
-        .sort(sortLowToHighLevel);
+      var elem = $("#articleLinkList").find("li").sort(sortLowToHighLevel);
       var bookmarkElem = $("#starredArticleList")
         .find("li")
         .sort(sortLowToHighLevel);
@@ -229,9 +221,7 @@ $(document).ready(function () {
       $("#triangleLevel").addClass("clicked");
       console.log("sort level low to high");
     } else if (countLevel == 2) {
-      var elem = $("#articleLinkList")
-        .find("li")
-        .sort(sortHighToLowLevel);
+      var elem = $("#articleLinkList").find("li").sort(sortHighToLowLevel);
       var bookmarkElem = $("#starredArticleList")
         .find("li")
         .sort(sortHighToLowLevel);
@@ -259,6 +249,8 @@ $(document).ready(function () {
       $(searchExecuted).val("");
       articleList.search(input);
       showSearchNotification(input);
+      //display none for no articles
+      $("#emptyArticleListImage").hide();
     }
   });
 
@@ -316,7 +308,7 @@ function showSearchNotification(input) {
   $(HTML_ID_SEARCH_NOTIFICATION).empty();
 
   let templateAttributes = {
-    displayText: "You searched for : " + input
+    displayText: "You searched for : " + input,
   };
 
   let element = Mustache.render(template, templateAttributes);
@@ -379,9 +371,7 @@ function scrollToView(elem) {
 
 function _select_next_article(highlighted_element, direction_forward) {
   if (highlighted_element[0] == undefined) {
-    $("#articleLinkList")
-      .children(":first")
-      .toggleClass("highlightedArticle");
+    $("#articleLinkList").children(":first").toggleClass("highlightedArticle");
   } else {
     let new_higlight;
 
@@ -410,8 +400,7 @@ function _select_next_article(highlighted_element, direction_forward) {
 }
 
 export function reload_articles_on_drawer_close() {
-
-  $('.subscribeButton').click(function () {
+  $(".subscribeButton").click(function () {
     document.dispatchEvent(new CustomEvent(config.EVENT_SUBSCRIPTION));
     set_keyboard_focus_to_article_list();
   });

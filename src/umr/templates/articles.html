@@ -217,9 +217,27 @@
             <!-- List of articles -->
             <ul id="articleLinkList" class="articleLinkList"></ul>
             <br />
-            <div id="emptyArticleListImage" class="emptyPage">
-              <p> No articles</p>
+            <div id="emptyArticleListImage" class="emptyPage" style="display: none;">
+
+              <div class="icon-search"> 
+                <svg version="1.1" viewBox="0 0 50 50"><g>
+                <g class="notFound">
+                  <circle class="st0" cx="25" cy="25" r="17.1"/>
+                  <line class="st0" x1="53.4" y1="51.6" x2="38.8" y2="36.9"/>
+                </g>
+                </svg>
+              </div>
+              <p> No articles</p> 
+
+
             </div>
+
+            <div class="loader">
+              <div class="circle loading"></div>
+              <p>Loading articles</p>
+            </div>
+              
+          </div>
         </section>
         <section class="mdl-layout__tab-panel" id="starred">
           <div class="page-content">
@@ -316,11 +334,12 @@
     <script id="search-notification-template" type="text/template">
     <li class="fadeoutOnClick articleLinkEntry search-notification-box">
         <div class="articleLinkHeader">
+          <div class="innerSearchBox">
             <div class="searchText headerElement">
                 {% raw %}{{ displayText }}{% endraw %}
             </div>
               <button class='deleteSearch headerElement'>X</button>
-            
+          </div>
         </div>
     </li>
     <div class="articleLinkSpacer"></div>

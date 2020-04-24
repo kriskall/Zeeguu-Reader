@@ -265,45 +265,6 @@ END: Moving the drawer to the right
 ====================================
 */
 
-.searchNotification {
-  list-style-position: inside;
-  list-style-type: none;
-  padding: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 60em;
-  cursor: pointer;
-}
-
-.searchText {
-  border: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  outline: none;
-  width: 97%;
-}
-
-.deleteSearch {
-  text-align: center;
-  vertical-align: bottom;
-  width: 2em;
-  box-shadow: none;
-  all: unset;
-  border: 1px solid #ffbb54;
-  border-radius: 10px;
-  background-color: #ffffff;
-  color: #ffbb54;
-  font-size: 15px;
-  font-family: Montserrat;
-  font-weight: 400;
-  width: 18px;
-  margin-top: 7px;
-}
-
 /* This changes the order of the SWAL buttons */
 .sa-button-container {
   display: -webkit-flex;
