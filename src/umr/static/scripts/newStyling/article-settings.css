@@ -44,8 +44,7 @@
   width: 97%;
 }
 
-.deleteSearch,
-button {
+.deleteSearch {
   all: unset;
   font-family: Montserrat;
   text-align: center;
@@ -166,8 +165,8 @@ button {
   border-top: 15px solid #ffbb54;
 }
 
-#sortby{
-  display:none; 
+#sortby {
+  display: none;
 }
 
 .levelLabel,
@@ -332,8 +331,8 @@ button {
   display: none;
 }
 
-.sortContainer{
-  display:inherit; 
+.sortContainer {
+  display: inherit;
 }
 
 /******** MEDIA QUERIES ********/
@@ -367,7 +366,7 @@ button {
   nav {
     font-size: 4vw;
   }
-  #search-expandable{
+  #search-expandable {
     position: relative;
     left: -18em;
     top: -2.3em;
@@ -394,22 +393,19 @@ button {
     left: 3em;
   }
 
-}
-
-.containerOptionsSorting{
+  .containerOptionsSorting {
     display: inline-flex;
     flex-wrap: wrap;
     width: 100%;
-}
-
-.options {
+  }
+  .options {
     display: none;
   }
 
-  .sortContainer{
+  .sortContainer {
     display: inherit;
-    margin-left:auto; 
-    margin-right:auto; 
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .wordsSorting {
@@ -420,42 +416,73 @@ button {
     text-align: center;
     position: relative;
     padding: 0.5em 0em;
-    color: black
+    color: black;
   }
 
   .sortingCategories {
     width: 100%;
     justify-content: center;
+  }
+
+  .levelSorting {
+    width: 4em;
+    background: #f1f0f0;
+    margin-right: 2em;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    padding: 0.5em 0em;
+    color: black;
+  }
+
+  .wordLabel {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .triangle {
+    display: none;
+  }
+
+  #sortby {
+    font-size: 0.6em;
+    width: fit-content;
+    margin: 0;
+    display: inline-flex;
+    margin-right: 0.5em;
+  }
+
+  /*  .wordsSorting {
+    padding-left: 1.5em;
+    padding-right: 0.75em;
+  }
+  .sortingCategories{
+    width: 13em;
+  }*/
+}
+/*
+@media screen and (max-width: 430px) {
+  .sortingCategories {
+    width: 9em;
+  }
 }
 
-.levelSorting{
-  width: 4em;
-  background: #f1f0f0;
-  margin-right: 2em;
-  border-radius: 8px;
-  text-align: center;
-  position: relative;
-  padding: 0.5em 0em;
-  color: black
+
+@media screen and (max-width: 415px) {
+  .sortingCategories {
+    width: 8em;
+  }
 }
 
-.wordLabel {
-  margin-left: 0;
-  margin-bottom: 0;
-}
 
-.triangle{
-  display:none; 
+@media screen and (max-width: 390px) {
+  .sortingCategories {
+    width: 5.5em;
+  }
+  .articleLinkTitle {
+    width: 186px;
 }
-
- #sortby{
-  font-size: 0.6em;
-  width: fit-content;
-  margin: 0;
-  display:inline-flex; 
-  margin-right:0.5em; 
-}
-
+}*/
 
 /*** SWEEET ALERT ******/
 body.stop-scrolling {
