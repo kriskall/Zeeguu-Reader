@@ -166,6 +166,10 @@ button {
   border-top: 15px solid #ffbb54;
 }
 
+#sortby{
+  display:none; 
+}
+
 .levelLabel,
 .wordLabel {
   text-align: center;
@@ -328,6 +332,10 @@ button {
   display: none;
 }
 
+.sortContainer{
+  display:inherit; 
+}
+
 /******** MEDIA QUERIES ********/
 @media only screen and (max-width: 839px) {
   #search-expandable {
@@ -356,7 +364,10 @@ button {
 }
 
 @media screen and (max-width: 500px) {
-  #search-expandable {
+  nav {
+    font-size: 4vw;
+  }
+  #search-expandable{
     position: relative;
     left: -18em;
     top: -2.3em;
@@ -382,24 +393,69 @@ button {
     position: relative;
     left: 3em;
   }
-  .options {
+
+}
+
+.containerOptionsSorting{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.options {
     display: none;
   }
 
+  .sortContainer{
+    display: inherit;
+    margin-left:auto; 
+    margin-right:auto; 
+  }
+
   .wordsSorting {
-    padding-left: 1.5em;
-    padding-right: 0.75em;
+    width: 4em;
+    background: #f1f0f0;
+    margin-right: 2em;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    padding: 0.5em 0em;
+    color: black
   }
+
   .sortingCategories {
-    width: 11em;
-  }
+    width: 100%;
+    justify-content: center;
 }
 
-@media screen and (max-width: 390px) {
-  .sortingCategories {
-    width: 5.5em;
-  }
+.levelSorting{
+  width: 4em;
+  background: #f1f0f0;
+  margin-right: 2em;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  padding: 0.5em 0em;
+  color: black
 }
+
+.wordLabel {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.triangle{
+  display:none; 
+}
+
+ #sortby{
+  font-size: 0.6em;
+  width: fit-content;
+  margin: 0;
+  display:inline-flex; 
+  margin-right:0.5em; 
+}
+
 
 /*** SWEEET ALERT ******/
 body.stop-scrolling {
