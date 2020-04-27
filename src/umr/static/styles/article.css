@@ -189,16 +189,18 @@ zeeguu tran[chosen]:after {
   height: 3.5em;
   margin-top: 1.5em;
   margin-right: 2em;
+  margin-bottom: 2.5em;
 }
 
 .tool {
   width: 55px;
   height: 55px;
   background-color: #FFE086;
-  border: 1px solid #FFE086;
+  border-style: none;
+  box-shadow: none;
   border-radius: 10px;
   margin: 10px;
-  padding: 1px
+  padding: 1px;
 }
 
 .main-tools {
@@ -393,6 +395,10 @@ a:hover {
   border: none;
   background: none;
   background-color: transparent;
+}
+
+.bookmark_button:hover {
+  cursor: pointer;
 }
 
 .bookmark_icon_done {
@@ -637,6 +643,7 @@ a:hover {
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
+  margin-right: 1em;
   
 }
 
@@ -648,12 +655,12 @@ a:hover {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FFD047; 
+  background:  #ffbb54;
   border-radius: 10px;
   height:2px; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background:#FFD047; 
+  background: #ffbb54; 
 }

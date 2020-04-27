@@ -1,79 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {% if request.path == '/read/' %}
-    <title>Zeeguu-Articles</title>
-    {% elif request.path == '/read/bookmarks' %}
-    <title>Zeeguu-Bookmarks</title>
-    {% elif request.path == '/read/classroom' %}
-    <title>Zeeguu-Classroom</title>
-    {% endif %}
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+<head>
+  {% if request.path == '/read/' %}
+  <title>Zeeguu-Articles</title>
+  {% elif request.path == '/read/bookmarks' %}
+  <title>Zeeguu-Bookmarks</title>
+  {% elif request.path == '/read/classroom' %}
+  <title>Zeeguu-Classroom</title>
+  {% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
 
-      gtag("config", "UA-89557275-2");
-    </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-    <script>
-      var noAvatarURL =
-        "{{url_for('reader_blueprint.static',filename='images/noAvatar.png')}}";
-    </script>
+    gtag("config", "UA-89557275-2");
+  </script>
 
-    <!-- Include the subscription package. -->
+  <script>
+    var noAvatarURL =
+      "{{url_for('reader_blueprint.static',filename='images/noAvatar.png')}}";
+  </script>
 
-    <!--FONT LINK-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <!--CSS for header NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-header.css') }}"
-    />
+  <!-- Include the subscription package. -->
 
-    <!--CSS for side-bar NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/side-bar.css') }}"
-    />
-    <!--CSS for list NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-list.css') }}"
-    />
+  <!--FONT LINK-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+  <!--CSS for header NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-header.css') }}" />
 
-    <!--CSS for article-settings NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/article-settings.css') }}"
-    />
+  <!--CSS for NEW general style-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/style.css') }}" />
 
-    <!--CSS for loading NEW-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/loading.css') }}"
-    />
+  <!--CSS for side-bar NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/side-bar.css') }}" />
+  <!--CSS for list NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-list.css') }}" />
 
-    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
+  <!--CSS for article-settings NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/article-settings.css') }}" />
 
-    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
-  </head>
+  <!--CSS for loading NEW-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/loading.css') }}" />
+
+  <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/subscription-0.9.353.js') }}"></script>
+
+  <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-0.9.353.js') }}"></script>
+</head>
+
 </html>
