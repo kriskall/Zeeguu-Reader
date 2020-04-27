@@ -120,7 +120,7 @@ nav {
 .dropdown-content  a:hover {
  /* background-color:#f1f0f0;*/
   color: #FFBB54;
-  font-weight: 600;
+  font-weight: 400;
   border-bottom: #FFBB54 0.5px solid;
   border-top: #FFBB54 0.5px solid;
 }

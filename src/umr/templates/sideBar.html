@@ -44,12 +44,28 @@
         if (navstyle == 'none') {
           nav.style.display = 'block';
           element.className = 'arrow-icon';
-          document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
+          if (document.getElementById('main-containerID') !== null) {
+            document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
+          }
+          if (document.getElementById('settingsContainer') !== null) {
+            document.getElementById('settingsContainer').style.cssText = 'margin-left:12.5em;';
+          }
+          else {
+            document.getElementById('wordsContainer').style.cssText = 'margin-left:22em;';
+          }
         }
         else {
           nav.style.display = 'none';
           element.className = 'arrow-none-block';
-          document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+          if (document.getElementById('main-containerID') !== null) {
+            document.getElementById('main-containerID').style.cssText = 'margin-left:0px;';
+          }
+          if (document.getElementById('settingsContainer') !== null) {
+            document.getElementById('settingsContainer').style.cssText = 'margin:auto;';
+          }
+          else {
+            document.getElementById('wordsContainer').style.cssText = 'margin-left:16em;';
+          }
         }
       }
     </script>
