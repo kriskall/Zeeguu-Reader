@@ -54,6 +54,11 @@ nav {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.5em;
+  margin-top: -1.5em;
+}
+
+.settingsbtn:hover {
+  cursor: pointer;
 }
 
 .settingsImg{
@@ -179,6 +184,39 @@ content:'˄';
 
 .arrow-none-block{
   color: #FFBB54;
+}
+
+#hidden {
+  display: none;
+}
+
+.hiddenSettingsBox {
+  height: 9em;
+  padding-bottom: 0.5em;
+}
+
+.hiddenOption {
+  background: white;
+  height: 1.5em;
+  margin-left: 2.5em;
+  margin-right: 2.5em;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+  text-align: center;
+}
+
+.hiddenOption:hover {
+  background:#FFBB54;
+}
+
+.hiddenText {
+  line-height: 1.5em;
+  color: #FFBB54;
+}
+
+.hiddenText:hover {
+  cursor: pointer;
+  color: white;
 }
 
 
