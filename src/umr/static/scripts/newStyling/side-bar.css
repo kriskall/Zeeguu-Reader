@@ -212,11 +212,17 @@ content:'˄';
 .hiddenText {
   line-height: 1.5em;
   color: #FFBB54;
+  text-decoration: none;
 }
 
 .hiddenText:hover {
   cursor: pointer;
   color: white;
+}
+
+p {
+margin-block-start: 0;
+margin-block-end: 0;
 }
 
 
