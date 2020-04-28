@@ -63,7 +63,7 @@ nav {
 .nav-generalbtn{
   position: relative;
   width: 8.125em;
-  height: 1.875em;
+  height: 1.7em;
   background: #FFFFFF;
   border-radius: 1.25em;
   margin-left: auto;
@@ -76,7 +76,7 @@ nav {
 .generalLinks{
   font-family: Montserrat;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1em;
   line-height: 1.25em;
   text-align: center;
@@ -120,7 +120,7 @@ nav {
 .dropdown-content  a:hover {
  /* background-color:#f1f0f0;*/
   color: #FFBB54;
-  font-weight: 600;
+  font-weight: 400;
   border-bottom: #FFBB54 0.5px solid;
   border-top: #FFBB54 0.5px solid;
 }
@@ -146,6 +146,10 @@ nav {
   color:white;
 }
 
+.arrow-icon:focus{
+  color:white;
+}
+
 .dropbtn:hover span:after{
 content:'˄';
 }
@@ -167,6 +171,10 @@ content:'˄';
    z-index: 1; 
   transform: rotate(90deg);
   text-decoration: none;
+}
+
+.arrow-none-block:focus {
+  color: #FFBB54;
 }
 
 .arrow-none-block{
