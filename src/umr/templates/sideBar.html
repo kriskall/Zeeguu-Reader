@@ -15,7 +15,7 @@
         alt="Zeeguu Logo - The Elephant" />
     </a>
     <div class="dropdown">
-      <button class="dropbtn">| Articles <span id="arrow"></span></button>
+      <button class="dropbtn" onclick="location.href='/read'">| Articles <span id="arrow"></span></button>
       <div class="dropdown-content">
         <a href="/read"> All</a>
         <a href="/read/bookmarks">Bookmarks</a>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="dropdown">
-      <button class="dropbtn">| Words <span id="arrow"></span></button>
+      <button class="dropbtn" onclick="location.href='/bookmarks'">| Words <span id="arrow"></span></button>
       <div class="dropdown-content">
         <a href="/bookmarks">Translated</a>
         <a href="/starred_bookmarks">Starred</a>
@@ -32,11 +32,11 @@
       </div>
     </div>
     <div class="dropdown">
-      <button class="dropbtn">| Exercises <span id="arrow"></span></button>
+      <button class="dropbtn" onclick="location.href='/practice'">| Exercises <span id="arrow"></span></button>
       <div class="dropdown-content">
-        <a href="#">Easy</a>
-        <a href="#">Regular</a>
-        <a href="#">Ambitious</a>
+        <a href="/practice/#!/practice/plan/0">Easy</a>
+        <a href="/practice/#!/practice/plan/1">Regular</a>
+        <a href="/practice/#!/practice/plan/2">Ambitious</a>
       </div>
     </div>
     <script>
@@ -52,6 +52,10 @@
           if (document.getElementById('settingsContainer') !== null) {
             document.getElementById('settingsContainer').style.cssText = 'margin-left:12.5em;';
           }
+          if (document.getElementById('statsContainerID') !== null) {
+            document.getElementById('statsContainerID').style.cssText = 'margin-left:14em;';
+            document.getElementById('containerStats').style.cssText = 'margin-left:0em;';
+          }
           else {
             document.getElementById('wordsContainer').style.cssText = 'margin-left:22em;';
           }
@@ -65,9 +69,24 @@
           if (document.getElementById('settingsContainer') !== null) {
             document.getElementById('settingsContainer').style.cssText = 'margin:auto;';
           }
+          if (document.getElementById('statsContainerID') !== null) {
+            document.getElementById('statsContainerID').style.cssText = 'margin-left:0em;';
+            document.getElementById('containerStats').style.cssText = 'margin-left:6em;';
+
+          }
           else {
             document.getElementById('wordsContainer').style.cssText = 'margin-left:16em;';
           }
+        }
+      }
+
+      function settingsFunction(element) {
+        var box = document.getElementById("hidden");
+        var boxstyle = box.style.display;
+        if (boxstyle == 'block') {
+          box.style.display = 'none';
+        } else {
+          box.style.display = 'block';
         }
       }
     </script>
@@ -75,8 +94,23 @@
 
     <div class="generalNavLinks">
 
+      <div class="hiddenSettingsBox" id="hidden">
+        <div class="hiddenOption">
+          <a class="hiddenText" href="/my_settings">Settings</a>
+        </div>
+        <div class="hiddenOption">
+          <a class="hiddenText" href="/stats">Statistics</a>
+        </div>
+        <div class="hiddenOption">
+          <a class="hiddenText" href="/teacher-dashboard">Teacher</a>
+        </div>
+        <div class="hiddenOption">
+          <a class="hiddenText">About</a>
+        </div>
+      </div>
+
       <div class="settingsbtn">
-        <a class="settingsLink" href="/my_settings">
+        <a class="settingsLink" onclick="settingsFunction(this)">
           <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
             alt="Click here for general settings" />
         </a>
