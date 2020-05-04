@@ -115,7 +115,8 @@ body {
 /*******MEDIA QUERIES **********/
 @media screen and (max-width: 500px) {
 .articleLinkEntry{
-  margin-bottom:2em; 
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 .articleLinkTitle{
   padding-right:0em; 
@@ -161,10 +162,10 @@ body {
 }
 
 .singleTopicTag{
-  padding: 0.2em 0.9em;
-  font-size: 0.7em; 
-  position: absolute;
-  margin-top: 29px;
+  padding: 0.3em 0.9em;
+  font-size: 11px;
+  margin-top: 0.2em;
+  border: solid 0.15em #ffbb54;
 }
 .feedIcon {
   background-color: white;

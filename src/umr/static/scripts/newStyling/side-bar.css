@@ -97,6 +97,9 @@ nav {
   top: 16%;
 }
 
+.dropdown:hover {
+  cursor: pointer;
+}
 .dropbtn span{
   position: absolute;
   right:50px;
@@ -205,19 +208,20 @@ content:'˄';
   text-align: center;
 }
 
-.hiddenOption:hover {
-  background:#FFBB54;
-}
-
 .hiddenText {
   line-height: 1.5em;
   color: #FFBB54;
   text-decoration: none;
 }
 
-.hiddenText:hover {
+.hiddenOption:hover  {
   cursor: pointer;
-  color: white;
+  background:#FFBB54;
+}
+
+.hiddenOption:hover .hiddenText { 
+  color:white;
+  cursor: pointer;
 }
 
 p {

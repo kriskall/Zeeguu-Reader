@@ -476,7 +476,7 @@ a:hover {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   padding-top: 11em;
   left: 0;
   top: 0px;
