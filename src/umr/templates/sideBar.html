@@ -10,33 +10,33 @@
   </a>
 
   <div class="sidenav" id="myTopnav">
-    <a href="{{ url_for('reader_blueprint.articles')}}">
-      <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+    <a href="/read" rel="external">
+      <img class=" zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
         alt="Zeeguu Logo - The Elephant" />
     </a>
     <div class="dropdown">
       <button class="dropbtn" onclick="location.href='/read'">| Articles <span id="arrow"></span></button>
       <div class="dropdown-content">
-        <a href="/read"> All</a>
-        <a href="/read/bookmarks">Bookmarks</a>
-        <a href="/read/classroom">Classroom</a>
+        <a href="/read" rel="external"> All</a>
+        <a href="/read/bookmarks" rel="external">Bookmarks</a>
+        <a href="/read/classroom" rel="external">Classroom</a>
       </div>
     </div>
     <div class="dropdown">
       <button class="dropbtn" onclick="location.href='/bookmarks'">| Words <span id="arrow"></span></button>
       <div class="dropdown-content">
-        <a href="/bookmarks">Translated</a>
-        <a href="/starred_bookmarks">Starred</a>
-        <a href="/learned_bookmarks">Learned</a>
-        <a href="/top_bookmarks">Top</a>
+        <a href="/bookmarks" rel="external">Translated</a>
+        <a href="/starred_bookmarks" rel="external">Starred</a>
+        <a href="/learned_bookmarks" rel="external">Learned</a>
+        <a href="/top_bookmarks" rel="external">Top</a>
       </div>
     </div>
     <div class="dropdown">
       <button class="dropbtn" onclick="location.href='/practice'">| Exercises <span id="arrow"></span></button>
       <div class="dropdown-content">
-        <a href="/practice/#!/practice/plan/0">Easy</a>
-        <a href="/practice/#!/practice/plan/1">Regular</a>
-        <a href="/practice/#!/practice/plan/2">Ambitious</a>
+        <a href="/practice/#!/practice/plan/0" rel="external">Easy</a>
+        <a href="/practice/#!/practice/plan/1" rel="external">Regular</a>
+        <a href="/practice/#!/practice/plan/2" rel="external">Ambitious</a>
       </div>
     </div>
     <script>
@@ -60,6 +60,9 @@
             document.getElementById('starter-body').style.cssText = 'padding-left:11em;';
             document.getElementById('footnotes').style.cssText = 'padding-left:5em;';
           }
+          if (document.getElementById("ex-module") !== null) {
+            document.getElementById("ex-module").style.cssText = 'margin-left:12.5em;';
+          }
           else {
             document.getElementById('wordsContainer').style.cssText = 'margin-left:22em;';
           }
@@ -81,6 +84,9 @@
             document.getElementById('starter-body').style.cssText = 'padding-left:0em;';
             document.getElementById('footnotes').style.cssText = 'padding-left:0em;';
           }
+          if (document.getElementById("ex-module") !== null) {
+            document.getElementById("ex-module").style.cssText = 'margin-left:0px;';
+          } 
           else {
             document.getElementById('wordsContainer').style.cssText = 'margin-left:16em;';
           }
@@ -103,13 +109,13 @@
 
       <div class="hiddenSettingsBox" id="hidden">
         <div class="hiddenOption">
-          <a class="hiddenText" href="/my_settings">Settings</a>
+          <a class="hiddenText" href="/my_settings" rel="external">Settings</a>
         </div>
         <div class="hiddenOption">
-          <a class="hiddenText" href="/stats">Statistics</a>
+          <a class="hiddenText" href="/stats" rel="external">Statistics</a>
         </div>
         <div class="hiddenOption">
-          <a class="hiddenText" href="/teacher-dashboard">Teacher</a>
+          <a class="hiddenText" href="/teacher-dashboard" rel="external">Teacher</a>
         </div>
         <div class="hiddenOption">
           <a class="hiddenText">About</a>
@@ -123,10 +129,10 @@
         </a>
       </div>
       <div class="nav-generalbtn">
-        <a class="generalLinks" href="mailto:zeeguu.team@gmail.com">Get in touch</a>
+        <a class="generalLinks" href="mailto:zeeguu.team@gmail.com" rel="external">Get in touch</a>
       </div>
       <div class="nav-generalbtn">
-        <a class="generalLinks" href="{{ url_for('account.logout') }}">Sign Out</a>
+        <a class="generalLinks" href="{{ url_for('account.logout') }}" rel="external">Sign Out</a>
       </div>
 
     </div>

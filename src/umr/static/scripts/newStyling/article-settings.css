@@ -46,10 +46,8 @@
 
 .deleteSearch {
   all: unset;
-  font-family: Montserrat;
   text-align: center;
   vertical-align: bottom;
-  width: 2em;
   box-shadow: none;
   border: 1px solid #ffbb54;
   border-radius: 10px;
@@ -59,7 +57,8 @@
   font-family: Montserrat;
   font-weight: 400;
   width: 18px;
-  margin-left: 10px;
+  margin-left: 1em;
+  margin-bottom: 0.2em;
 }
 
 /*Styling for all buttons*/
@@ -202,23 +201,26 @@ button {
   font-size: 1em;
 }
 
-.interests {
+.interests, .noninterest {
   box-shadow: none;
   all: unset;
-  border-radius: 17px;
-  padding: 5px 27px;
-  font-size: 16px;
+  border-radius: 1em;
+  padding: 0.5em 0.5em;
+  font-size: 0.85em;
   font-family: Montserrat;
   font-weight: 400;
   text-align: center;
-  min-width: 100px;
-  margin-bottom: 4px;
-  margin-top: 4px;
-  margin-left: 4px;
-  margin-right: 4px;
+  min-width: 4em;
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  float: left;
+}
+
+.interests {
   background-color: #ffbb54;
   color: white;
-  float: left;
 }
 
 .interests.unsubscribed {
@@ -227,22 +229,8 @@ button {
 }
 
 .noninterest {
-  box-shadow: none;
-  all: unset;
-  border-radius: 17px;
-  padding: 5px 27px;
-  font-size: 16px;
-  font-family: Montserrat;
-  font-weight: 400;
-  text-align: center;
-  min-width: 100px;
-  margin-bottom: 4px;
-  margin-top: 4px;
-  margin-left: 4px;
-  margin-right: 4px;
   background-color: white;
   color: #ffbb54;
-  float: left;
 }
 
 .noninterest.subscribed {
@@ -254,62 +242,30 @@ button {
   margin-top: -0.2em;
 }
 
-.addInterestButton {
+.addInterestButton, .addNonInterestButton {
   box-shadow: none;
   all: unset;
-  border: 0.0625em solid #ffbb54;
-  border-radius: 1.0625em;
-  padding: 0.3125em 1.6875em;
+  border: 0.06em solid #ffbb54;
+  border-radius: 1em;
+  padding: 0.2em 1em;
   background-color: #ffffff;
   color: #ffbb54;
   font-size: 1em;
   font-family: Montserrat;
   font-weight: 400;
   text-align: center;
-  min-width: 3.125em;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  margin-right: 4px;
+  min-width: 3em;
+  margin-top: 0.3em;
+  margin-bottom: 0.2em;
+  margin-right: 0.2em;
   float: right;
 }
 
-.addNonInterestButton {
-  box-shadow: none;
-  all: unset;
-  border: 1px solid #ffbb54;
-  border-radius: 17px;
-  padding: 5px 27px;
-  background-color: #ffffff;
-  color: #ffbb54;
-  font-size: 16px;
-  font-family: Montserrat;
-  font-weight: 400;
-  text-align: center;
-  min-width: 50px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  margin-right: 4px;
-  float: right;
+.addInterestButton:active, .addNonInterestButton:active {
+  border: 0.06em solid #ffbb54;
 }
 
-.closeTagsOfInterests {
-  box-shadow: none;
-  all: unset;
-  border: 0.0625em solid #ffbb54;
-  border-radius: 1em;
-  background-color: #ffffff;
-  color: #ffbb54;
-  font-size: 0.9375em;
-  padding: 0.1em;
-  font-family: Montserrat;
-  font-weight: 400;
-  text-align: center;
-  min-width: 1.25em;
-  margin-top: 0.4375em;
-  float: right;
-}
-
-.closeTagsOfNonInterests {
+.closeTagsOfInterests, .closeTagsOfNonInterests {
   box-shadow: none;
   all: unset;
   border: 0.0625em solid #ffbb54;
@@ -363,14 +319,25 @@ button {
 }
 
 @media screen and (max-width: 500px) {
+
+  .tagsOfInterests, .tagsOfNonInterests {
+    width: 90%;
+    margin-left: 1em;
+  }
+
+  .interestButton {
+    margin-top: 0.7em;
+  }
+
   nav {
     font-size: 4vw;
+    margin-bottom: -1em;
   }
+
   #search-expandable {
     position: relative;
     left: -18em;
-    top: -2.3em;
-    /* width: 17.8em; */
+    top: -1.5em;
     width: fit-content;
     padding: 0.2em 0.9em;
     margin-left: 1em;
@@ -403,16 +370,17 @@ button {
   }
 
   .sortContainer {
-    display: inherit;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 2em;
+    margin-right: 3em;
+    margin-bottom: 1.5em;
   }
 
-  .wordsSorting {
+  .wordsSorting  {
     width: 4em;
+    height: 1em;
     background: #f1f0f0;
-    margin-right: 2em;
-    border-radius: 8px;
+    margin-right: 1em;
+    border-radius: 1em;
     text-align: center;
     position: relative;
     padding: 0.5em 0em;
@@ -426,9 +394,10 @@ button {
 
   .levelSorting {
     width: 4em;
+    height: 1em;
     background: #f1f0f0;
     margin-right: 2em;
-    border-radius: 8px;
+    border-radius: 1em;
     text-align: center;
     position: relative;
     padding: 0.5em 0em;
@@ -438,6 +407,12 @@ button {
   .wordLabel {
     margin-left: 0;
     margin-bottom: 0;
+    line-height: 1.1em;
+  }
+
+  .levelLabel {
+    margin-left: 0em;
+    line-height: 1.1em;
   }
 
   .triangle {
@@ -445,11 +420,11 @@ button {
   }
 
   #sortby {
-    font-size: 0.6em;
+    font-size: 0.7em;
     width: fit-content;
     margin: 0;
+    padding-right: 0.5em;
     display: inline-flex;
-    margin-right: 0.5em;
   }
 
   /*  .wordsSorting {
