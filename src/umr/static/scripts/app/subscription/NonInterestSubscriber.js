@@ -138,8 +138,13 @@ export default class NonInterestSubscriber {
                         }
                     };
                 })(data[i], feedOption, this.nonInterestSubscriptionList)
+
             );
             this._appendNonInerest(template, feedOption);
+            if (i === data.length - 1) {
+                console.log(i);
+                $(ALL_NONINTERESTS).append("<button class='addNonInterestButton'>Add + </button>");
+            }
         }
     }
 

@@ -331,7 +331,6 @@ zeeguu tran[chosen]:after {
 p.title {
   margin-top: -1.5em;
   font-size: 27px;
-  font-weight: bold;
   line-height: 1.7em;
   text-align: left;
   padding-bottom: 0em;
@@ -368,7 +367,7 @@ h6 {
 
 #source {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400
 }
 
 #articleInfo {

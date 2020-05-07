@@ -92,8 +92,8 @@ export default class InterestSubscriber {
       let feedOption = $(Mustache.render(template, data[i]));
       let interest = $(feedOption.find(INTEREST_BUTTON));
       interest.click(
-        (function(data, feedOption, interestSubscriptionList) {
-          return function() {
+        (function (data, feedOption, interestSubscriptionList) {
+          return function () {
             if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
               interestSubscriptionList.follow(data);
               $(interest).removeClass(UNSUBSCRIBED_CLASS);
@@ -107,6 +107,10 @@ export default class InterestSubscriber {
         })(data[i], feedOption, this.interestSubscriptionList)
       );
       this._appendInterest(template, feedOption);
+      if (i === data.length - 1) {
+        console.log(i);
+        $(ALL_INTERESTS).append("<button class='addInterestButton'>Add + </button>");
+      }
     }
   }
 
@@ -122,8 +126,8 @@ export default class InterestSubscriber {
       let feedOption = $(Mustache.render(template, data[i]));
       let interest = $(feedOption.find(INTEREST_BUTTON));
       interest.click(
-        (function(data, feedOption, interestSubscriptionList) {
-          return function() {
+        (function (data, feedOption, interestSubscriptionList) {
+          return function () {
             if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
               interestSubscriptionList.follow(data);
               $(interest).removeClass(UNSUBSCRIBED_CLASS);
@@ -156,9 +160,9 @@ export default class InterestSubscriber {
 
   _addInterest() {
     let addCustomInterest = document.querySelector(ADD_CUSTOM_INTEREST);
-    $(addCustomInterest).click(function() {
+    $(addCustomInterest).click(function () {
       swal.close();
-      setTimeout(function() {
+      setTimeout(function () {
         swal(
           {
             title: "Add a personal interst!",
@@ -171,7 +175,7 @@ export default class InterestSubscriber {
             confirmButtonText: "Add",
             cancelButtonText: "Close"
           },
-          function(input) {
+          function (input) {
             if (input === "" || input === false) {
               return false;
             }
@@ -184,13 +188,13 @@ export default class InterestSubscriber {
 
   _makeCloseable() {
     let closeInterests = document.querySelector(INTERESTS);
-    $(closeInterests).click(function() {
+    $(closeInterests).click(function () {
       document.querySelector(ALL_INTERESTS).style.display = "none";
       location.reload();
     });
 
     let closeInterestsButton = document.querySelector(CLOSE_BUTTON);
-    $(closeInterestsButton).click(function() {
+    $(closeInterestsButton).click(function () {
       document.querySelector(ALL_INTERESTS).style.display = "none";
       location.reload();
     });

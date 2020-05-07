@@ -100,6 +100,7 @@ nav {
 .dropdown:hover {
   cursor: pointer;
 }
+
 .dropbtn span{
   position: absolute;
   right:50px;
@@ -107,6 +108,10 @@ nav {
 
 .dropbtn span:after{
   content:'˅' ;
+}
+
+.dropbtn span:hover {
+  cursor: pointer;
 }
 
 .dropdown-content {
@@ -121,16 +126,17 @@ nav {
   padding: 0.75em 1em;
   text-decoration: none;
   display: block;
+  font-weight: 400;
   font-family: Montserrat;
   font-size: 1em;
 }
 
-.dropdown-content  a:hover {
- /* background-color:#f1f0f0;*/
+.dropdown-content a:hover {
   color: #FFBB54;
   font-weight: 400;
   border-bottom: #FFBB54 0.5px solid;
   border-top: #FFBB54 0.5px solid;
+  cursor: pointer;
 }
 
 .dropdown:hover .dropdown-content {display: block;}
@@ -160,6 +166,10 @@ nav {
 
 .dropbtn:hover span:after{
 content:'˄';
+}
+
+.dropbtn:hover {
+  cursor: pointer;
 }
 
 .arrow-nav-icon{

@@ -31,8 +31,9 @@
 
   <!-- Include the subscription package. -->
 
-  <!--FONT LINK-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link href="{{ url_for('static', filename='fonts/montserrat.css') }}" type="text/css" rel="stylesheet" />
+
   <!--CSS for header NEW-->
   <link rel="stylesheet" type="text/css"
     href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/reader-header.css') }}" />
