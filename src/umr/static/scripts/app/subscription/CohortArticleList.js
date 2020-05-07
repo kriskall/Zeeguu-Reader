@@ -1,8 +1,8 @@
 import $ from "jquery";
 import Mustache from "mustache";
 import config from "../config";
-import moment from 'moment';
-import {difficultyToColorMapping} from './DifficultyColors'
+import moment from "moment";
+import { difficultyToColorMapping } from "./DifficultyColors";
 import UserActivityLogger from "../UserActivityLogger";
 import ZeeguuRequests from "../zeeguuRequests";
 import { GET_COHORT_ARTICLES } from "../zeeguuRequests";
@@ -30,9 +30,14 @@ export default class CohortArticleList {
    * and thus its a bit smelly.
    * @param {Object[]} articleLinks - List containing articles.
    */
+
+  renderNoArticlesICON() {
+    $(HTML_ID_EMPTY_COHORT_ARTICLE_LIST).show();
+  }
+
   _renderArticleLinks(articleLinks) {
     if (articleLinks.length === 0) {
-      $(HTML_ID_EMPTY_COHORT_ARTICLE_LIST).show();
+      setTimeout(this.renderNoArticlesICON, 1000);
       return;
     }
     $(HTML_ID_EMPTY_COHORT_ARTICLE_LIST).hide();
@@ -41,7 +46,8 @@ export default class CohortArticleList {
     for (let i = articleLinks.length - 1; i >= 0; i--) {
       let articleLink = articleLinks[i];
       var publishedString = moment.utc(articleLink.published).fromNow();
-      let difficulty = Math.round(parseFloat(articleLink.metrics.difficulty) * 100) / 10;
+      let difficulty =
+        Math.round(parseFloat(articleLink.metrics.difficulty) * 100) / 10;
       let topicsText = articleLink.topics.trim().replace(/(^|\s+)/g, "$1#");
       if (topicsText == "#") topicsText = "";
 
@@ -54,19 +60,21 @@ export default class CohortArticleList {
         articleLinkLanguage: articleLink.language,
         articleDifficulty: difficulty,
         articleDifficultyColor: difficultyToColorMapping(difficulty),
-        articleSummary: $('<p>' + articleLink.summary + '</p>').text(),
+        articleSummary: $("<p>" + articleLink.summary + "</p>").text(),
         articleIcon: articleLink.feed_image_url,
         articleTopics: topicsText,
         wordCount: articleLink.metrics.word_count,
-        alreadyOpenedClass: articleLink.opened?ALREADY_OPENED_ARTICLE_CLASS:""
-    };
+        alreadyOpenedClass: articleLink.opened
+          ? ALREADY_OPENED_ARTICLE_CLASS
+          : "",
+      };
 
       let element = Mustache.render(template, templateAttributes);
 
       $(HTML_ID_COHORT_ARTICLE_LIST).append(element);
     }
 
-    $(config.HTML_CLASS_ARTICLELINK_FADEOUT).one("click", function(event) {
+    $(config.HTML_CLASS_ARTICLELINK_FADEOUT).one("click", function (event) {
       if (!event.isPropagationStopped()) {
         event.stopPropagation();
 
@@ -77,10 +85,10 @@ export default class CohortArticleList {
           .siblings()
           .animate(
             {
-              opacity: 0.25
+              opacity: 0.25,
             },
             200,
-            function() {
+            function () {
               // Animation complete.
               $(config.HTML_CLASS_PAGECONTENT).fadeOut();
             }
