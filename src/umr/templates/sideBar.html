@@ -1,21 +1,33 @@
 <head>
-  <link rel="stylesheet" type="text/css"
-    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/side-bar.css') }}" />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/side-bar.css') }}"
+  />
 </head>
 
 <nav class="nav-menu">
-
-  <a href="javascript:void(0);" class="arrow-icon" id="arrow-p" onclick="sideBarFunction(this)">
-    <p class="arrow-nav-icon"> ▲</p>
+  <a
+    href="javascript:void(0);"
+    class="arrow-icon"
+    id="arrow-p"
+    onclick="sideBarFunction(this)"
+  >
+    <p class="arrow-nav-icon">▲</p>
   </a>
 
   <div class="sidenav" id="myTopnav">
     <a href="/read" rel="external">
-      <img class=" zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
-        alt="Zeeguu Logo - The Elephant" />
+      <img
+        class="zeeguuLogo"
+        src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+        alt="Zeeguu Logo - The Elephant"
+      />
     </a>
     <div class="dropdown">
-      <button class="dropbtn" onclick="location.href='/read'">| Articles <span id="arrow"></span></button>
+      <button class="dropbtn" onclick="location.href='/read'">
+        | Articles <span id="arrow"></span>
+      </button>
       <div class="dropdown-content">
         <a href="/read" rel="external"> All</a>
         <a href="/read/bookmarks" rel="external">Bookmarks</a>
@@ -23,7 +35,9 @@
       </div>
     </div>
     <div class="dropdown">
-      <button class="dropbtn" onclick="location.href='/bookmarks'">| Words <span id="arrow"></span></button>
+      <button class="dropbtn" onclick="location.href='/bookmarks'">
+        | Words <span id="arrow"></span>
+      </button>
       <div class="dropdown-content">
         <a href="/bookmarks" rel="external">Translated</a>
         <a href="/starred_bookmarks" rel="external">Starred</a>
@@ -32,7 +46,9 @@
       </div>
     </div>
     <div class="dropdown">
-      <button class="dropbtn" onclick="location.href='/practice'">| Exercises <span id="arrow"></span></button>
+      <button class="dropbtn" onclick="location.href='/practice'">
+        | Exercises <span id="arrow"></span>
+      </button>
       <div class="dropdown-content">
         <a href="/practice/#!/practice/plan/0" rel="external">Easy</a>
         <a href="/practice/#!/practice/plan/1" rel="external">Regular</a>
@@ -43,58 +59,82 @@
       function sideBarFunction(element) {
         var nav = document.getElementById("myTopnav");
         var navstyle = nav.style.display;
-        if (navstyle == 'none') {
-          nav.style.display = 'block';
-          element.className = 'arrow-icon';
-          if (document.getElementById('main-containerID') !== null) {
-            document.getElementById('main-containerID').style.cssText = 'margin-left:12.5em;';
+        if (navstyle == "none") {
+          nav.style.display = "block";
+          element.className = "arrow-icon";
+          if (document.getElementById("main-containerID") !== null) {
+            document.getElementById("main-containerID").style.cssText =
+              "margin-left:12.5em;";
           }
-          if (document.getElementById('settingsContainer') !== null) {
-            document.getElementById('settingsContainer').style.cssText = 'margin-left:12.5em;';
+          if (document.getElementById("settingsContainer") !== null) {
+            document.getElementById("settingsContainer").style.cssText =
+              "margin-left:12.5em;";
           }
-          if (document.getElementById('statsContainerID') !== null) {
-            document.getElementById('statsContainerID').style.cssText = 'margin-left:14em;';
-            document.getElementById('containerStats').style.cssText = 'margin-left:0em;';
+          if (document.getElementById("statsContainerID") !== null) {
+            document.getElementById("statsContainerID").style.cssText =
+              "margin-left:14em;";
+            document.getElementById("containerStats").style.cssText =
+              "margin-left:0em;";
           }
-          if (document.getElementById('starter-body') !== null) {
-            document.getElementById('starter-body').style.cssText = 'padding-left:11em;';
-            document.getElementById('footnotes').style.cssText = 'padding-left:5em;';
-          }
-          if (document.getElementById("ex-module") !== null) {
-            document.getElementById("ex-module").style.cssText = 'margin-left:12.5em;';
-          }
-          if (document.getElementById("aboutContainer") !== null) {
-            document.getElementById("aboutContainer").style.cssText = 'margin-left:10em;';
-          }
-          else {
-            document.getElementById('wordsContainer').style.cssText = 'margin-left:3.5em;';
-          }
-        }
-        else {
-          nav.style.display = 'none';
-          element.className = 'arrow-none-block';
-          if (document.getElementById('main-containerID') !== null) {
-            document.getElementById('main-containerID').style.cssText = 'margin-left:0px;';
-          }
-          if (document.getElementById('settingsContainer') !== null) {
-            document.getElementById('settingsContainer').style.cssText = 'margin:auto;';
-          }
-          if (document.getElementById('statsContainerID') !== null) {
-            document.getElementById('statsContainerID').style.cssText = 'margin-left:0em;';
-            document.getElementById('containerStats').style.cssText = 'margin-left:6em;';
-          }
-          if (document.getElementById('starter-body') !== null) {
-            document.getElementById('starter-body').style.cssText = 'padding-left:0em;';
-            document.getElementById('footnotes').style.cssText = 'padding-left:0em;';
+          if (document.getElementById("starter-body") !== null) {
+            document.getElementById("starter-body").style.cssText =
+              "padding-left:11em;";
+            document.getElementById("footnotes").style.cssText =
+              "padding-left:5em;";
           }
           if (document.getElementById("ex-module") !== null) {
-            document.getElementById("ex-module").style.cssText = 'margin-left:0px;';
-          } 
-          if (document.getElementById("aboutContainer") !== null) {
-            document.getElementById("aboutContainer").style.cssText = 'margin-left:1em;';
+            document.getElementById("ex-module").style.cssText =
+              "margin-left:12.5em;";
           }
-          else {
-            document.getElementById('wordsContainer').style.cssText = 'margin-left:0em;';
+          if (document.getElementById("aboutContainer") !== null) {
+            document.getElementById("aboutContainer").style.cssText =
+              "margin-left:10em;";
+          }
+          if (document.getElementById("emptyPage") !== null) {
+            document.getElementById("emptyPage").style.cssText =
+              "margin-left:5em;";
+          } else {
+            document.getElementById("wordsContainer").style.cssText =
+              "margin-left:3.5em;";
+          }
+        } else {
+          nav.style.display = "none";
+          element.className = "arrow-none-block";
+          if (document.getElementById("main-containerID") !== null) {
+            document.getElementById("main-containerID").style.cssText =
+              "margin-left:0px;";
+          }
+          if (document.getElementById("settingsContainer") !== null) {
+            document.getElementById("settingsContainer").style.cssText =
+              "margin:auto;";
+          }
+          if (document.getElementById("statsContainerID") !== null) {
+            document.getElementById("statsContainerID").style.cssText =
+              "margin-left:0em;";
+            document.getElementById("containerStats").style.cssText =
+              "margin-left:6em;";
+          }
+          if (document.getElementById("starter-body") !== null) {
+            document.getElementById("starter-body").style.cssText =
+              "padding-left:0em;";
+            document.getElementById("footnotes").style.cssText =
+              "padding-left:0em;";
+          }
+          if (document.getElementById("ex-module") !== null) {
+            document.getElementById("ex-module").style.cssText =
+              "margin-left:0px;";
+          }
+
+          if (document.getElementById("aboutContainer") !== null) {
+            document.getElementById("aboutContainer").style.cssText =
+              "margin-left:1em;";
+          }
+          if (document.getElementById("emptyPage") !== null) {
+            document.getElementById("emptyPage").style.cssText =
+              "margin-left:0em;";
+          } else {
+            document.getElementById("wordsContainer").style.cssText =
+              "margin-left:0em;";
           }
         }
       }
@@ -102,17 +142,15 @@
       function settingsFunction(element) {
         var box = document.getElementById("hidden");
         var boxstyle = box.style.display;
-        if (boxstyle == 'block') {
-          box.style.display = 'none';
+        if (boxstyle == "block") {
+          box.style.display = "none";
         } else {
-          box.style.display = 'block';
+          box.style.display = "block";
         }
       }
     </script>
 
-
     <div class="generalNavLinks">
-
       <div class="hiddenSettingsBox" id="hidden">
         <div class="hiddenOption">
           <a class="hiddenText" href="/my_settings" rel="external">Settings</a>
@@ -121,7 +159,9 @@
           <a class="hiddenText" href="/stats" rel="external">Statistics</a>
         </div>
         <div class="hiddenOption">
-          <a class="hiddenText" href="/teacher-dashboard" rel="external">Teacher</a>
+          <a class="hiddenText" href="/teacher-dashboard" rel="external"
+            >Teacher</a
+          >
         </div>
         <div class="hiddenOption">
           <a class="hiddenText" href="/about">About</a>
@@ -130,17 +170,29 @@
 
       <div class="settingsbtn">
         <a class="settingsLink" onclick="settingsFunction(this)">
-          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
-            alt="Click here for general settings" />
+          <img
+            class="settingsImg"
+            src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
+            alt="Click here for general settings"
+          />
         </a>
       </div>
       <div class="nav-generalbtn">
-        <a class="generalLinks" href="mailto:zeeguu.team@gmail.com" rel="external">Get in touch</a>
+        <a
+          class="generalLinks"
+          href="mailto:zeeguu.team@gmail.com"
+          rel="external"
+          >Get in touch</a
+        >
       </div>
       <div class="nav-generalbtn">
-        <a class="generalLinks" href="{{ url_for('account.logout') }}" rel="external">Sign Out</a>
+        <a
+          class="generalLinks"
+          href="{{ url_for('account.logout') }}"
+          rel="external"
+          >Sign Out</a
+        >
       </div>
-
     </div>
   </div>
 </nav>
