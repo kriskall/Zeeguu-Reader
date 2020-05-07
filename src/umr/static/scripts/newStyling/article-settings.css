@@ -239,6 +239,12 @@ button {
 }
 
 .interestsSettings {
+  display: flex;
+  width: 8em;
+  height: 4em;
+  flex-direction: column;
+  float: right;
+  justify-content: space-between;
   margin-top: -0.2em;
 }
 
@@ -255,11 +261,10 @@ button {
   font-weight: 400;
   text-align: center;
   min-width: 3em;
-  margin-top: 0.3em;
+  margin-top: 1.1em;
   margin-bottom: 0.2em;
-  margin-right: 0.2em;
-  margin-left: 0.5em;
-  float: left;
+  width: 1em;
+  margin-left: 2.9em;
 }
 
 .addInterestButton:active, .addNonInterestButton:active {
@@ -273,14 +278,13 @@ button {
   border-radius: 1em;
   background-color: #ffffff;
   color: #ffbb54;
-  font-size: 0.9375em;
+  font-size: 1em;
   padding: 0.1em;
-  font-family: Montserrat;
-  font-weight: 400;
-  text-align: center;
-  min-width: 1.25em;
   margin-top: 0.2em;
   float: right;
+  width: 1.2em;
+  height: 1.2em;
+  margin-left: 6.5em;
 }
 
 #searchIcon-LinkID {
