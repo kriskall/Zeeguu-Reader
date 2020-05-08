@@ -91,7 +91,7 @@ button {
   padding-left: 0.5em;
   padding-right: 5px;
   font-family: Montserrat;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 0.875em;
   width: 17.5em;
   height: 1.5em;
@@ -241,7 +241,6 @@ button {
 .interestsSettings {
   display: flex;
   width: 8em;
-  height: 4em;
   flex-direction: column;
   float: right;
   justify-content: space-between;
@@ -306,6 +305,10 @@ button {
 @media only screen and (max-width: 781px) {
   #search-expandable {
     width: 9em;
+  }
+
+  .interestsSettings {
+    height: 7em;
   }
 }
 
