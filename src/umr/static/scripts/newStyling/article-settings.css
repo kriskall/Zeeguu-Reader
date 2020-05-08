@@ -330,6 +330,19 @@ button {
     margin-left: 1em;
   }
 
+  .addInterestButton, .addNonInterestButton {
+    margin-left: -2em;
+  }
+
+  .closeTagsOfInterests, .closeTagsOfNonInterests {
+    margin-left: 1.5em;
+  }
+
+  .interestsSettings {
+    width: 3em;
+    height: 9em;
+  }
+
   .interestButton {
     margin-top: 0.7em;
   }
@@ -431,15 +444,44 @@ button {
     padding-right: 0.5em;
     display: inline-flex;
   }
-
-  /*  .wordsSorting {
-    padding-left: 1.5em;
-    padding-right: 0.75em;
-  }
-  .sortingCategories{
-    width: 13em;
-  }*/
 }
+
+@media screen and (max-width: 320px) {
+
+  .tagsOfInterests, .tagsOfNonInterests {
+    width: 101%;
+    margin-left: -0.5em;
+  }
+ 
+  .interestsSettings {
+    height: 9em;
+  }
+
+  .closeTagsOfInterests, .closeTagsOfNonInterests {
+    margin-left: 1.5em;
+  }
+
+  .addInterestButton, .addNonInterestButton {
+    margin-left: -2em;
+  }
+
+  .articleLinkTitle {
+    width: 190px;
+    font-size: 0.7em;
+  }
+
+  .articleLinkSummary {
+    font-size: 0.7em;
+  }
+
+  .publishingTime {
+    margin-right: 0.3em;
+    font-size: 0.6em;
+    margin-top: 0.5em;
+    margin-left: 0.4em;
+  }
+}
+
 /*
 @media screen and (max-width: 430px) {
   .sortingCategories {
