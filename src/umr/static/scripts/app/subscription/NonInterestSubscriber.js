@@ -141,10 +141,6 @@ export default class NonInterestSubscriber {
 
             );
             this._appendNonInerest(template, feedOption);
-            if (i === data.length - 1) {
-                console.log(i);
-                $(ALL_NONINTERESTS).append("<button class='addNonInterestButton'>Add + </button>");
-            }
         }
     }
 

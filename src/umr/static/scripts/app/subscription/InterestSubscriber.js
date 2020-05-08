@@ -107,10 +107,6 @@ export default class InterestSubscriber {
         })(data[i], feedOption, this.interestSubscriptionList)
       );
       this._appendInterest(template, feedOption);
-      if (i === data.length - 1) {
-        console.log(i);
-        $(ALL_INTERESTS).append("<button class='addInterestButton'>Add + </button>");
-      }
     }
   }
 
