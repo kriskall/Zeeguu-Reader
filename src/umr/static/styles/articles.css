@@ -210,10 +210,15 @@
 
 .mdl-chip__text {
   max-width: 80%;
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
+}
+
+.mdl-chip__text a {
+  color: #ffffff !important;
 }
 
 a {

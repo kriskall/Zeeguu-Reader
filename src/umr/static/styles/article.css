@@ -18,12 +18,13 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+}
 
 .layout__content {
   position: relative;
@@ -115,12 +116,11 @@ zeeguu tran moreAlternatives {
 }
 
 zeeguu tran moreAlternatives {
-
 }
 
 zeeguu tran moreAlternatives:after {
   content: "▼";
-  color:  #4f4f4f;
+  color: #4f4f4f;
 }
 
 /* once the user has
@@ -171,7 +171,6 @@ that made the UI too heavy ... */
 
 .selectedAlternativeOrig,
 .contributedAlternativeOrig {
- 
 }
 
 zeeguu tran[chosen]:after {
@@ -195,7 +194,7 @@ zeeguu tran[chosen]:after {
 .tool {
   width: 55px;
   height: 55px;
-  background-color: #FFE086;
+  background-color: #ffe086;
   border-style: none;
   box-shadow: none;
   border-radius: 10px;
@@ -208,7 +207,7 @@ zeeguu tran[chosen]:after {
   justify-content: flex-end;
   margin-left: auto;
 }
-.click_translate{
+.click_translate {
   width: 100%;
 }
 
@@ -217,7 +216,7 @@ zeeguu tran[chosen]:after {
 }
 
 #toggle_translate.selected {
-  background-color:  #ffbb54;
+  background-color: #ffbb54;
 }
 
 #toggle_translate .tooltiptext {
@@ -228,8 +227,8 @@ zeeguu tran[chosen]:after {
   cursor: pointer;
 }
 
-#toggle_listen.selected  {
-  background-color:  #ffbb54;
+#toggle_listen.selected {
+  background-color: #ffbb54;
 }
 
 #toggle_listen .tooltiptext {
@@ -241,7 +240,7 @@ zeeguu tran[chosen]:after {
 }
 
 #toggle_undo.selected {
-  background-color:  #ffbb54;
+  background-color: #ffbb54;
 }
 
 #toggle_undo .tooltiptext {
@@ -257,7 +256,7 @@ zeeguu tran[chosen]:after {
   width: 120px;
   font-size: 13px;
   background-color: #ffffff;
-  color:#ffbb54;
+  color: #ffbb54;
   text-align: center;
   border-radius: 6px;
   padding: 4px 0;
@@ -297,7 +296,7 @@ zeeguu tran[chosen]:after {
   border-bottom: 1px solid #383838;
   color: #383838;
   line-height: 1em;
-  padding: 0.3em;  
+  padding: 0.3em;
 }
 
 #altermenu * {
@@ -306,7 +305,7 @@ zeeguu tran[chosen]:after {
   font-size: 0.9em;
 }
 
-#alterMenuContainer{
+#alterMenuContainer {
   display: none;
 }
 
@@ -367,7 +366,7 @@ h6 {
 
 #source {
   font-size: 16px;
-  font-weight: 400
+  font-weight: 400;
 }
 
 #articleInfo {
@@ -452,6 +451,7 @@ a:hover {
   width: 180px;
   height: 45px;
   border-color: #ffbb54;
+  border-style: solid;
   border-width: 2px;
   border-radius: 10px;
   font-size: 18px;
@@ -482,8 +482,8 @@ a:hover {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 #modalReview {
@@ -583,27 +583,22 @@ a:hover {
   word-wrap: break-word;
 }
 
-#wordList::-webkit-scrollbar-track
-{
-	border-radius: 2em;
-	background-color: white;
+#wordList::-webkit-scrollbar-track {
+  border-radius: 2em;
+  background-color: white;
 }
 
-#wordList::-webkit-scrollbar
-{
-	width: 0.6em;
-	background-color:white;
+#wordList::-webkit-scrollbar {
+  width: 0.6em;
+  background-color: white;
 }
 
-#wordList::-webkit-scrollbar-thumb
-{
-	border-radius: 2em;
-	background-color: #ffbb54;
+#wordList::-webkit-scrollbar-thumb {
+  border-radius: 2em;
+  background-color: #ffbb54;
 }
-
 
 #translatedwords-template {
-
 }
 
 .word {
@@ -643,23 +638,22 @@ a:hover {
 ::-webkit-scrollbar {
   width: 15px;
   margin-right: 1em;
-  
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background-color: #F4F4F4; 
+  background-color: #f4f4f4;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:  #ffbb54;
+  background: #ffbb54;
   border-radius: 10px;
-  height:2px; 
+  height: 2px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffbb54; 
+  background: #ffbb54;
 }
