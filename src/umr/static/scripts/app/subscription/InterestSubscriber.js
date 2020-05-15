@@ -20,6 +20,7 @@ const INNERTAGS = ".innerTags";
 
 let self;
 
+
 /**
  * Allows the user to add and remove subscriptions.
  */
@@ -86,18 +87,19 @@ export default class InterestSubscriber {
    */
   _loadSubscribedInterests(data) {
     let template = $(HTML_ID_FEED_TEMPLATE).html();
-    this._addUnsubscribedClassName(template);
-    this._removeUnsubscribedClassNameFromCustom(template);
+    //this._addUnsubscribedClassName(template);
+    //this._removeUnsubscribedClassNameFromCustom(template);
     for (let i = 0; i < data.length; i++) {
       let feedOption = $(Mustache.render(template, data[i]));
       let interest = $(feedOption.find(INTEREST_BUTTON));
+      $(interest).addClass("interests");
       interest.click(
         (function (data, feedOption, interestSubscriptionList) {
           return function () {
             if ($(interest).hasClass(UNSUBSCRIBED_CLASS)) {
               interestSubscriptionList.follow(data);
               $(interest).removeClass(UNSUBSCRIBED_CLASS);
-              //console.log("subscribed");
+              console.log("subscribed");
             } else {
               interestSubscriptionList._unfollow(data);
               $(interest).addClass(UNSUBSCRIBED_CLASS);
@@ -118,9 +120,12 @@ export default class InterestSubscriber {
    */
   _loadAvailableInterests(data) {
     let template = $(HTML_ID_FEED_TEMPLATE).html();
+    //this._addUnsubscribedClassName(template);
+    //this._removeUnsubscribedClassNameFromCustom(template);
     for (let i = 0; i < data.length; i++) {
       let feedOption = $(Mustache.render(template, data[i]));
       let interest = $(feedOption.find(INTEREST_BUTTON));
+      $(interest).addClass(UNSUBSCRIBED_CLASS);
       interest.click(
         (function (data, feedOption, interestSubscriptionList) {
           return function () {
