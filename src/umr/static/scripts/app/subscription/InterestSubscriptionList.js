@@ -79,17 +79,6 @@ export default class InterestSubscriptionList {
     _addSubscription(topic) {
         if (this.topicList.has(topic.id))
             return;
-        //let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
-        //let subscription = $(Mustache.render(template, topic));
-        //let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
-        //let _unfollow = this._unfollow.bind(this);
-        //removeButton.click(function (topic) {
-        //    return function () {
-        //        _unfollow(topic);
-        //    };
-        //}(topic));
-        //$(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
-
         this.topicList.set(topic.id, topic);
         this.show_no_topic_message_if_necessary();
     }

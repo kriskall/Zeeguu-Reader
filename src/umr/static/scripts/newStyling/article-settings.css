@@ -68,7 +68,7 @@
   border-radius: 1.0625em;
   padding: 0.3125em 1.6875em;
   background-color: #ffbb54;
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 1em;
   font-family: Montserrat;
   font-weight: 400;
@@ -370,7 +370,7 @@ button {
     border-radius: 1.0625em;
     padding: 0.2em 0.8em;
     background-color: #ffbb54;
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: 1em;
     font-family: Montserrat;
     font-weight: 400;
