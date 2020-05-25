@@ -28,7 +28,7 @@
 
 .layout__content {
   position: relative;
-  padding-top: 1em;
+  padding-top: 0.3em;
   padding-bottom: 1em;
   background-color: white;
   overflow-y: overlay;
@@ -265,6 +265,22 @@ zeeguu tran[chosen]:after {
   z-index: 1;
 }
 
+.bookmark_button:hover .bookmarkText {
+  visibility: visible;
+}
+
+.bookmark_button .bookmarkText {
+  visibility: hidden;
+  font-size: 13px;
+  background-color: #ffffff;
+  color: #ffbb54;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 0;
+  position: absolute;
+  z-index: 1;
+}
+
 .feedback_question {
   font-weight: bold;
   padding-bottom: 1em;
@@ -362,6 +378,7 @@ h6 {
 
 .articleDetails {
   display: flex;
+  height: 5em;
 }
 
 #source {
@@ -656,4 +673,25 @@ a:hover {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #ffbb54;
+}
+
+/******** MEDIA QUERIES ********/
+@media only screen and (max-width: 839px) {
+  .bookmark_button:hover .bookmarkText {
+    visibility: hidden;
+  }
+
+  .tool:hover .tooltiptext {
+    visibility: hidden;
+  }
+}
+
+@media only screen and (max-width: 781px) {
+  .bookmark_button:hover .bookmarkText {
+    visibility: hidden;
+  }
+
+  .tool:hover .tooltiptext {
+    visibility: hidden;
+  }
 }
