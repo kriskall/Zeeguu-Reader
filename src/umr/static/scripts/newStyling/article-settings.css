@@ -201,7 +201,8 @@ button {
   font-size: 1em;
 }
 
-.interests, .noninterest {
+.interests,
+.noninterest {
   box-shadow: none;
   all: unset;
   border-radius: 1em;
@@ -243,10 +244,12 @@ button {
   width: 6.5em;
   float: right;
   justify-content: space-around;
-  margin-top: 3em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 
-.addInterestButton, .addNonInterestButton {
+.addInterestButton,
+.addNonInterestButton {
   box-shadow: none;
   all: unset;
   border: 0.0625em solid #ffbb54;
@@ -259,17 +262,19 @@ button {
   margin-top: 0.1em;
 }
 
-.addInterestButton:active, .addNonInterestButton:active {
+.addInterestButton:active,
+.addNonInterestButton:active {
   border: 0.06em solid #ffbb54;
 }
 
-.closeTagsOfInterests, .closeTagsOfNonInterests {
+.closeTagsOfInterests,
+.closeTagsOfNonInterests {
   box-shadow: none;
   all: unset;
   border: 0.07em solid #ffbb54;
   border-radius: 1em;
   padding: 0.2em 1em;
-  background-color:  #ffbb54;
+  background-color: #ffbb54;
   color: #ffffff;
   font-size: 1em;
   font-family: Montserrat;
@@ -280,9 +285,10 @@ button {
   margin-bottom: 0.2em;
 }
 
-.addInterestButton:hover, .addNonInterestButton:hover {
+.addInterestButton:hover,
+.addNonInterestButton:hover {
   background-color: #ffbb54;
-  color:#ffffff;
+  color: #ffffff;
 }
 
 #searchIcon-LinkID {
@@ -307,7 +313,6 @@ button {
   }
 
   .interestsSettings {
-    
   }
 }
 
@@ -326,14 +331,13 @@ button {
 }
 
 @media screen and (max-width: 500px) {
-
-  .tagsOfInterests, .tagsOfNonInterests {
+  .tagsOfInterests,
+  .tagsOfNonInterests {
     width: 90%;
     margin-left: 1em;
   }
 
   .interestsSettings {
-    margin-top: 6.8em;
   }
 
   .interestButton {
@@ -386,7 +390,7 @@ button {
     margin-bottom: 1.5em;
   }
 
-  .wordsSorting  {
+  .wordsSorting {
     width: 4em;
     height: 1em;
     background: #f1f0f0;
@@ -440,8 +444,8 @@ button {
 }
 
 @media screen and (max-width: 320px) {
-
-  .tagsOfInterests, .tagsOfNonInterests {
+  .tagsOfInterests,
+  .tagsOfNonInterests {
     width: 101%;
     margin-left: -0.5em;
   }
@@ -538,7 +542,7 @@ body.stop-scrolling {
   font-size: 30px;
   text-align: center;
   font-family: Montserrat;
-  font-weight: 600;
+  font-weight: 300;
   text-transform: none;
   position: relative;
 
@@ -549,6 +553,7 @@ body.stop-scrolling {
 }
 .sweet-alert p {
   color: #797979;
+  font-family: Montserrat;
   font-size: 16px;
   text-align: center;
   font-weight: 300;
@@ -584,7 +589,6 @@ body.stop-scrolling {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: #ea7d7d;
   color: white;
   line-height: 24px;
   text-align: center;
@@ -612,7 +616,6 @@ body.stop-scrolling {
   content: "";
   width: 20px;
   height: 6px;
-  background-color: #f06e57;
   border-radius: 3px;
   position: absolute;
   top: 50%;
@@ -638,6 +641,7 @@ body.stop-scrolling {
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid #d7d7d7;
+  font-family: Montserrat;
   height: 43px;
   margin-top: 10px;
   margin-bottom: 17px;
@@ -650,8 +654,8 @@ body.stop-scrolling {
 }
 .sweet-alert input:focus {
   outline: none;
-  box-shadow: 0px 0px 3px #c4e6f5;
-  border: 1px solid #b4dbed;
+  box-shadow: 0px 0px 3px #ffbb54;
+  border: 1px solid #ffbb54;
 }
 .sweet-alert input:focus::-moz-placeholder {
   transition: opacity 0.3s 0.03s ease;
@@ -694,22 +698,22 @@ body.stop-scrolling {
   visibility: hidden;
 }
 .sweet-alert button {
-  background-color: #8cd4f5;
+  background-color: #ffbb54;
+  font-family: Montserrat;
   color: white;
+  width: 120px;
   border: none;
   box-shadow: none;
   font-size: 17px;
   font-weight: 500;
-  -webkit-border-radius: 4px;
-  border-radius: 5px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
   padding: 10px 32px;
   margin: 26px 5px 0 5px;
   cursor: pointer;
 }
 .sweet-alert button:focus {
   outline: none;
-  box-shadow: 0 0 2px rgba(128, 179, 235, 0.5),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 .sweet-alert button:hover {
   background-color: #ffbb52;
@@ -764,7 +768,6 @@ body.stop-scrolling {
   box-sizing: content-box;
 }
 .sweet-alert .sa-icon.sa-error {
-  border-color: #f27474;
 }
 .sweet-alert .sa-icon.sa-error .sa-x-mark {
   position: relative;
@@ -774,7 +777,6 @@ body.stop-scrolling {
   position: absolute;
   height: 5px;
   width: 47px;
-  background-color: #f27474;
   display: block;
   top: 37px;
   border-radius: 2px;
