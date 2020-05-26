@@ -1,5 +1,6 @@
 {% include 'articleHeader.html' %}
 
+<body onload="sideBarLoad()">
 <div class="main-container">
   <header class="mdl-layout__header mdl-layout__header--transparent">
 
@@ -30,6 +31,18 @@
 
   {% include  "sideBar.html" %}
 
+  <script>
+    function sideBarLoad(){
+      var wi = window.outerWidth; 
+      var nav = document.getElementById("myTopnav"); 
+
+      if(wi < 600 ){
+        nav.style.display = 'none';
+        document.getElementById("arrow-p").className = 'arrow-none-block';
+        document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+      }
+    }
+  </script>
   <div class="widthOfColumn">
     <div class="mdl-layout__drawer mdl-color--amber-A700">
       <nav class="mdl-navigation">
@@ -175,5 +188,6 @@
 
 <!-- Dialog windows for adding a source, topic and filter. -->
 {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+</body>
 
 </html>

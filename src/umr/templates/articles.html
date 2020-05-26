@@ -1,6 +1,6 @@
 {% include  "articleHeader.html" %}
 
-<body onload="resizeShowOptions()" onresize="resizeShowOptions()">
+<body onload="sideBarLoad()" onresize="resizeShowOptions()">
   <div class="main-container" id="main-containerID">
 
 
@@ -171,6 +171,20 @@
         }
       }
     </script>
+
+    <script>
+      function sideBarLoad(){
+        var wi = window.outerWidth; 
+        var nav = document.getElementById("myTopnav"); 
+
+        if(wi < 600 ){
+          nav.style.display = 'none';
+          document.getElementById("arrow-p").className = 'arrow-none-block';
+          document.getElementById('main-containerID').style.cssText = 'margin:0px;';
+        }
+      }
+    </script>
+
 
     <script>
       function resizeShowOptions() {

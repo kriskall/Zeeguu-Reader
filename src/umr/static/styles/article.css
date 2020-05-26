@@ -10,6 +10,8 @@
   box-shadow: none;
 }
 
+
+
 .articleLayout {
   margin-left: 12.5em;
   height: 100%;
@@ -19,11 +21,9 @@
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-}
+  -webkit-overflow-scrolling: touch;  
+}  
+
 
 .layout__content {
   position: relative;
@@ -31,7 +31,7 @@
   padding-bottom: 1em;
   background-color: white;
   overflow-y: overlay;
-}
+}  
 
 /*
 .is-casting-shadow {
@@ -644,6 +644,24 @@ a:hover {
   /* Non-prefixed version, currently
                                      supported by Chrome and Opera */
   cursor: pointer;
+}
+
+@media screen and (max-width:500px){
+  .modalContent{
+    width:91vw; 
+    padding:1em 0em; 
+  }
+
+  .modal{
+    z-index: 1000;
+ 
+
+  }
+
+  .articleHeader{
+    z-index: -20 !important; 
+  }
+
 }
 
 @keyframes fadein {
