@@ -46,6 +46,8 @@ export default class Translator {
         let orig = document.createElement(config.HTML_ORIGINAL);
         let tran = document.createElement(config.HTML_TRANSLATED);
 
+        $(tran).addClass("arrow");
+
         $(orig).text(text);
         $(zeeguuTag).addClass("origtrans");
         $(zeeguuTag).addClass(config.CLASS_LOADING);
@@ -76,7 +78,8 @@ export default class Translator {
         let title = $(config.HTML_ID_ARTICLE_TITLE).text();
 
         let orig = document.createElement(config.HTML_ORIGINAL);
-        let tran = document.createElement(config.HTML_TRANSLATED);
+        let tran = document.createElement(config.HTML_TRANSLATED)
+
 
         $(orig).text(text);
         $(zeeguuTag).addClass("origtrans");

@@ -81,7 +81,9 @@ button {
   cursor: pointer;
   margin-right: 0.625em;
   width: 100%;
+  color: white;
 }
+
 
 #search-expandable {
   all: unset;
@@ -221,21 +223,25 @@ button {
 .interests {
   background-color: #ffbb54;
   color: white;
+  -webkit-text-fill-color: white
 }
 
 .interests.unsubscribed {
   background-color: white;
   color: #ffbb54;
+  -webkit-text-fill-color: #ffbb54;
 }
 
 .noninterest {
   background-color: white;
   color: #ffbb54;
+  -webkit-text-fill-color: #ffbb54;
 }
 
 .noninterest.subscribed {
   background-color: #ffbb54;
   color: white;
+  -webkit-text-fill-color: white
 }
 
 .interestsSettings {
@@ -252,11 +258,18 @@ button {
   border: 0.0625em solid #ffbb54;
   border-radius: 100%;
   background-color: #ffffff;
+  -webkit-text-fill-color: #ffbb54;
   color: #ffbb54;
   font-size: 1em;
   width: 1.5em;
   height: 1.5em;
   margin-top: 0.1em;
+}
+
+.addInterestButton:hover, .addNonInterestButton:hover {
+  background-color: #ffbb54;
+  -webkit-text-fill-color: white;
+  color:#ffffff;
 }
 
 .addInterestButton:active, .addNonInterestButton:active {
@@ -270,6 +283,7 @@ button {
   border-radius: 1em;
   padding: 0.2em 1em;
   background-color:  #ffbb54;
+  -webkit-text-fill-color: white;
   color: #ffffff;
   font-size: 1em;
   font-family: Montserrat;
@@ -278,11 +292,6 @@ button {
   min-width: 2em;
   height: 1.2em;
   margin-bottom: 0.2em;
-}
-
-.addInterestButton:hover, .addNonInterestButton:hover {
-  background-color: #ffbb54;
-  color:#ffffff;
 }
 
 #searchIcon-LinkID {
