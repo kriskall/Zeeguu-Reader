@@ -1,5 +1,4 @@
 * {
-  -webkit-backface-visibility: hidden;
   -webkit-tap-highlight-color: transparent;
   font-family: Montserrat;
 }
@@ -116,6 +115,11 @@ zeeguu tran moreAlternatives {
 }
 
 zeeguu tran moreAlternatives {
+}
+
+.arrow {
+  content: "▼";
+  color: #4f4f4f;
 }
 
 zeeguu tran moreAlternatives:after {
@@ -404,8 +408,8 @@ a:hover {
 }
 
 .bookmark_button {
-  width: 30px;
-  height: 30px;
+  width: 3.5em;
+  height: 4em;
   margin-right: 1.5em;
   border: none;
   background: none;
@@ -528,7 +532,7 @@ a:hover {
   font-size: 1.1em;
   margin-left: 1em;
   margin-right: 1em;
-  font-weight: bold;
+  font-weight: 400;
   height: 2.2em;
   width: 6.5em;
   border-radius: 0.5em;

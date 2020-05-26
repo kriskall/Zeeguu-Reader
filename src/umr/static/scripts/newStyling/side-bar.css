@@ -222,6 +222,7 @@ content:'˄';
   line-height: 1.5em;
   color: #FFBB54;
   text-decoration: none;
+  font-weight: 300;
 }
 
 .hiddenOption:hover  {

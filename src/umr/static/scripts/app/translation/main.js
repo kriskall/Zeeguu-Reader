@@ -35,7 +35,6 @@ const USER_EVENT_OPENED_ARTICLE = "OPEN ARTICLE";
 const USER_EVENT_ARTICLE_FOCUS = "ARTICLE FOCUSED";
 const USER_EVENT_ARTICLE_LOST_FOCUS = "ARTICLE LOST FOCUS";
 const USER_EVENT_SCROLL = "SCROLL";
-const USER_EVENT_FEEDBACK = "USER FEEDBACK";
 
 const HTML_ID_TOGGLE_LIKE = "#toggle_like";
 const HTML_ID_TOGGLE_UNDO = "#toggle_undo";
@@ -150,13 +149,6 @@ function attachInteractionScripts() {
 
   $(".mdl-layout__content").on("scroll", handle_CONTENT_SCROLL_EVENT);
 
-  /*   
-  let difficulty_feedback_handler = handle_difficulty_feebdack_button();
-    ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function (button_id) {
-    $(button_id).click(difficulty_feedback_handler);
-  }); 
-  */
-
 }
 
 function log_user_leaves_article() {
@@ -266,19 +258,6 @@ function handle_REVIEW_WORDS_click() {
   }
 }
 
-/*
-function handle_TOGGLE_COPY_click() {
-  // Selection is disabled -> enable it.
-  if ($(this).hasClass(CLASS_MDL_BUTTON_DISABLED)) {
-    enableToggleCopy();
-    UserActivityLogger.log_article_interaction(USER_EVENT_ENABLE_COPY);
-  } else {
-    disableToggleCopy();
-    UserActivityLogger.log_article_interaction(USER_EVENT_DISABLE_COPY);
-  }
-}
-*/
-
 function handle_TOGGLE_LIKE_click() {
   $(this).toggleClass(CLASS_MDL_BUTTON_DISABLED);
   if ($(this).hasClass(CLASS_MDL_BUTTON_DISABLED)) {
@@ -370,75 +349,6 @@ function disableToggleCopy() {
     $(this).addClass(CLASS_NOSELECT);
   });
 }
-
-/* Enable selection. 
-function enableToggleCopy() {
-  $("p").each(function () {
-    $(this).removeClass(CLASS_NOSELECT);
-  });
-  $(HTML_ID_TOGGLE_COPY).removeClass(CLASS_MDL_BUTTON_DISABLED);
-}
-*/
-
-/*
-function isToggledCopy() {
-  return !$(HTML_ID_TOGGLE_COPY).hasClass(CLASS_MDL_BUTTON_DISABLED);
-}
-*/
-
-/*
-function handle_difficulty_feebdack_button() {
-  // Returns the handler with the article_id already bound
- 
-  function difficulty_feedback_button_clicked_partial(event) {
-    ARTICLE_DIFFICULTY_BUTTON_IDS.forEach(function (button_id) {
-      $(button_id).css("background", "");
-    });
-    $(event.target).css("background", "#b3d4fc");
-    UserActivityLogger.log_article_interaction(
-      USER_EVENT_FEEDBACK,
-      event.target.id
-    );
-    // the bottom page link should be visible only once the user
-    // has provided feedback
-    $("#bottom_page_back_link").show();
-  }
- 
-  return difficulty_feedback_button_clicked_partial;
-}
- 
-function handle_article_feedback_button() {
-  // Returns the handler with the given url bound
-  function upload_feedback_answer(event) {
-    UserActivityLogger.log_article_interaction(
-      USER_EVENT_FEEDBACK,
-      event.target.id
-    );
-  }
- 
-  return upload_feedback_answer;
-}
- 
-/*
-function handle_read_later_button_click() {
-  function set_starred(event) {
-    UserActivityLogger.log_article_interaction(
-      USER_EVENT_FEEDBACK,
-      event.target.id
-    );
-    bookmarker.setState(false);
-    bookmarker.toggle();
-  }
- 
-  return set_starred;
-}
- 
- 
-function handle_back_button() {
-  $("#header_row").hide();
-  $("#question_reasons_not_to_finish").show();
-}
-*/
 
 function load_article_info_in_page(article_info) {
   // TITLE
