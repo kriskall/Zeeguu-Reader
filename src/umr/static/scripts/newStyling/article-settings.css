@@ -276,8 +276,6 @@ button {
 }
 
 .addInterestButton:active, .addNonInterestButton:active {
-.addInterestButton:active,
-.addNonInterestButton:active {
   border: 0.06em solid #ffbb54;
 }
 
@@ -310,6 +308,7 @@ button {
   float: left;
   display: none;
 }
+
 
 .sortContainer {
   display: inherit;
