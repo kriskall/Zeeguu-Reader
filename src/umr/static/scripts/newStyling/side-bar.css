@@ -6,7 +6,7 @@ nav {
   height: 100%;
   width: 12.5em;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
   background-color: #FFD047;
@@ -150,7 +150,7 @@ nav {
   position: fixed;
   top: 7em;
   left: 9.5em;
-  z-index: 3;
+  z-index: 11;
   color: white;
   transform: rotate(-90deg);
   text-decoration: none;
@@ -254,7 +254,7 @@ margin-block-end: 0;
     position: fixed;
     top: 4em;
     left: -0.5em;
-    z-index: 3;
+    z-index: 11;
     color: white;
     transform: rotate(90deg);
 }
@@ -276,6 +276,8 @@ margin-block-end: 0;
     text-align: center;
     float: none;
   }
+
+
 
   /*
   .arrow-icon{

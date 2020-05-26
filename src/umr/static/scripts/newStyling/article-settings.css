@@ -342,6 +342,7 @@ button {
     position: relative;
     top: 1em;
   }
+
 }
 
 @media screen and (max-width: 500px) {
@@ -419,6 +420,7 @@ button {
   .sortingCategories {
     width: 100%;
     justify-content: center;
+    display:none; 
   }
 
   .levelSorting {
