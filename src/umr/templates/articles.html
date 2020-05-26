@@ -2,10 +2,7 @@
 
 <body onload="sideBarLoad()" onresize="resizeShowOptions()">
   <div class="main-container" id="main-containerID">
-
-
     <header class="mdl-layout__header mdl-layout__header--transparent">
-
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
         <h1 class="select-article">Select an Article</h1>
         <div class="all__tabs">
@@ -26,7 +23,6 @@
           <div class="row__tab">
             <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
               Classroom</a>
-
           </div>
         </div>
       </div>
@@ -34,60 +30,21 @@
 
     {% include  "sideBar.html" %}
 
-
     <div class="widthOfColumn">
       <div class="mdl-layout__drawer mdl-color--amber-A700">
         <nav class="mdl-navigation">
-
-          <a id="searchIcon-LinkID" onclick="searchIconFunction(this)">
+          <a id="searchIcon-LinkID" onclick="searchIconFunction()">
             <img class="searchIcon" src="{{ url_for('reader_blueprint.static',filename='images/SVGs/searchIcon.svg') }}"
               alt="search icon" />
           </a>
-
           <div class="containerOptionsSorting">
             <div class="options" id="optionsID">
               <br /><br /><br />
 
-
-
-              <!---     <script>
-          function onLoadMenu(){
-            var w = window.outerWidth;
-            var options = document.getElementById("optionsID");
-            var nav = document.getElementById("myTopnav");
-            
-            if
-
-          }
-        </script> -->
-
-
-              <!----  <span class="mdl-layout-title">
-            My Interests
-          </span>
-          <br /> -->
-
-              <!-- List of content currently subscribed to. -->
-              <!--
-          <span
-            class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour"
-          >
-            <span class="mdl-chip__text">Languages</span>
-            <button
-              type="button"
-              class="mdl-chip__action show-language-subscriber"
-            >
-              <i class="material-icons mdl-color-text--amber">add_circle</i>
-            </button>
-          </span>
-          <div id="languagesList"></div>
-
-          <div style="font-size: xx-small">&nbsp;</div> -->
               <div class="interestButton">
                 <span class="mdl-chip mdl-chip--deletable mdl-color--white mdl-color-text--amber tour">
                   <button type="button" class="mdl-chip__action show-topic-subscriber">
                     <span class="mdl-chip__text">Interests</span>
-                    <!--  <i class="material-icons mdl-color-text--amber">add_circle</i>-->
                   </button>
                 </span>
               </div>
@@ -106,35 +63,24 @@
                     <span class="mdl-chip__text">
                       <nobr>Non-Interests</nobr>
                     </span>
-                    <!-- <i class="material-icons mdl-color-text--amber">add_circle</i>-->
                   </button>
                 </span>
               </div>
               <div id="searchesFilterList"></div>
               <div id="topicsFilterList"></div>
-
               <div style="font-size: xx-small">&nbsp;</div>
-
               <br />
-              <!--- <span class="mdl-layout-title">
-            Search
-          </span>-->
               <div class="seachField">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                   <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
-                    <!---   <i class="material-icons">search</i>-->
                   </label>
                   <div class="mdl-textfield__expandable-holder">
                     <input class="mdl-textfield__input" type="text" id="search-expandable"
                       placeholder="Search all articles" />
-                    <!--<label class="mdl-textfield__label" for="search-expandable"
-                >Search...</label
-              >-->
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Sorting buttons-->
             <div class="sortingCategories" id="sortingBox">
               <div class="sortContainer">
                 <p id="sortby"> Sort by:</p>
@@ -152,58 +98,6 @@
         </nav>
       </div>
     </div>
-
-
-    <script>
-      function searchIconFunction(element) {
-        var options = document.getElementById("optionsID");
-        var optionsstyle = options.style.display;
-
-        var sortings = document.getElementById("sortingBox")
-        var sortingsstyle = sortings.style.display;
-        if (optionsstyle == 'inline-flex' && sortingsstyle == 'flex') {
-          options.style.display = 'none';
-          sortings.style.display = 'none';
-        } else {
-          options.style.display = 'inline-flex';
-          sortings.style.display = 'flex';
-
-        }
-      }
-    </script>
-
-    <script>
-      function sideBarLoad(){
-        var wi = window.outerWidth; 
-        var nav = document.getElementById("myTopnav"); 
-
-        if(wi < 600 ){
-          nav.style.display = 'none';
-          document.getElementById("arrow-p").className = 'arrow-none-block';
-          document.getElementById('main-containerID').style.cssText = 'margin:0px;';
-        }
-      }
-    </script>
-
-
-    <script>
-      function resizeShowOptions() {
-        var w = window.outerWidth;
-        var options = document.getElementById("optionsID");
-        var nav = document.getElementById("myTopnav");
-        var sortings = document.getElementById("sortingBox")
-
-        if (w >= 600) {
-          options.style.display = 'inline-flex';
-          sortings.style.display = 'flex';
-        } else {
-          nav.style.display = 'none';
-          document.getElementById("arrow-p").className = 'arrow-none-block';
-          document.getElementById('main-containerID').style.cssText = 'margin:0px;';
-        }
-
-      }
-    </script>
     <div class="widthOfColumn">
       <div class="tagsOfInterests">
         <div class="interestsSettings">
@@ -211,7 +105,6 @@
           <button class='closeTagsOfInterests'>save</button>
         </div>
       </div>
-
     </div>
     <div class="widthOfColumn">
       <div class="tagsOfNonInterests">
@@ -225,13 +118,10 @@
       <main class="mdl-layout__content">
         <section class="mdl-layout__tab-panel is-active" id="inbox">
           <div class="page-content">
-            <!-- Search notification -->
             <ul id="searchNotification" class="searchNotification"></ul>
-            <!-- List of articles -->
             <ul id="articleLinkList" class="articleLinkList"></ul>
             <br />
             <div id="emptyArticleListImage" class="emptyPage" style="display: none;">
-
               <div class="icon-search">
                 <svg version="1.1" viewBox="0 0 50 50">
                   <g>
@@ -242,127 +132,104 @@
                 </svg>
               </div>
               <p> No articles</p>
-
-
             </div>
-
             <div class="loader">
               <div class="circle loading"></div>
               <p>Loading articles</p>
             </div>
-
           </div>
         </section>
         <section class="mdl-layout__tab-panel" id="starred">
           <div class="page-content">
             <ul id="starredArticleList" class="articleLinkList"></ul>
         </section>
-
       </main>
     </div>
 
     <!-- Template for subscribed source items -->
     <script id="subscription-template-source" type="text/template">
-       <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
+      <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+    	  <span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
+    	  <a class="mdl-chip__action removeButton">
+    		  <i class="material-icons">cancel</i>
+    	  </a>
+      </span>
+    </script>
 
     <!-- Template for subscribed topic items -->
     <script id="subscription-template-topic" type="text/template">
-       <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
+      <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+    	  <span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
+    	  <a class="mdl-chip__action removeButton">
+    		  <i class="material-icons">cancel</i>
+      	</a>
+      </span>
+    </script>
 
     <!-- Template for subscribed search items MODIFIED-->
     <script id="subscription-template-search" type="text/template">
-  <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
+      <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
+      <span class="mdl-list__item-primary-content">
       <a class="mdl-list__item-secondary-action topic">
-        <button
-        type="button"
-        class="interests custom"
-        >
-        <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
+        <button type="button" class="interests custom">
+          <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
         </button>
-
-    </a>
-  </div>
-</script>
-
-
+      </a>
+    </div>
+    </script>
 
     <!-- Template for subscribed language items -->
     <script id="subscription-template-language" type="text/template">
-       <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
+      <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
+        <span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
+    	  <a class="mdl-chip__action removeButton">
+    		  <i class="material-icons">cancel</i>
+    	  </a>
+      </span>
+    </script>
 
     <!-- Template for an article link. -->
     <script id="articleLink-template" type="text/template">
-  <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
+      <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
       articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
-      <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
+        <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
           <div class="articleLinkHeader">
-              <div class="articleLinkTitle headerElement">
-                  {% raw %}{{ articleLinkTitle }}{% endraw %}
-              </div>
-              <div class="articleLinkDifficulty headerElement">
-                  <span class="difficulty-level articleLinkDifficultyText"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
-                  <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
-              </div>
+            <div class="articleLinkTitle headerElement">{% raw %}{{ articleLinkTitle }}{% endraw %}</div>
+            <div class="articleLinkDifficulty headerElement">
+              <span class="difficulty-level articleLinkDifficultyText"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
+              <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
+            </div>
           </div>
-          <div class="articleLinkSummary">
-              {% raw %}{{articleSummary}}{% endraw %}
-          </div>
+          <div class="articleLinkSummary">{% raw %}{{articleSummary}}{% endraw %}</div>
           <div class="articleTopics">
             <div class="articleLinkImage">
               <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
-          </div>
-              <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
-            
+            </div>
+            <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
             {% raw %}{{#articleTopics}}{% endraw %}
-            <span class="singleTopicTag">
-              {% raw %}{{topic}}{% endraw %}
-            </span>
+            <span class="singleTopicTag">{% raw %}{{topic}}{% endraw %}</span>
             {% raw %}{{/articleTopics}}{% endraw %}
-            
           </div>
-      </a>
-  </li>
-  <div class="articleLinkSpacer"></div>
-</script>
-
-
+        </a>
+      </li>
+      <div class="articleLinkSpacer"></div>
+    </script>
 
     <script id="search-notification-template" type="text/template">
-    <li class="fadeoutOnClick articleLinkEntry search-notification-box">
+      <li class="fadeoutOnClick articleLinkEntry search-notification-box">
         <div class="articleLinkHeader">
           <div class="innerSearchBox">
-            <div class="searchText headerElement">
-                {% raw %}{{ displayText }}{% endraw %}
-            </div>
-              <button class='deleteSearch headerElement'>X</button>
+            <div class="searchText headerElement"> {% raw %}{{ displayText }}{% endraw %}</div>
+            <button class='deleteSearch headerElement'>X</button>
           </div>
         </div>
-    </li>
-    <div class="articleLinkSpacer"></div>
-  </script>
-
+      </li>
+      <div class="articleLinkSpacer"></div>
+    </script>
 
     <!-- Dialog windows for adding a source, topic and filter. -->
     {% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+
 </body>
 
 </html>

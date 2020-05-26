@@ -89,7 +89,6 @@ function activate_last_used_tab_if_available() {
   if (activeTab) {
     $("a.mdl-layout__tab").removeClass("is-active");
     $("#" + activeTab + "_tab").addClass("is-active");
-
     $(".mdl-layout__tab-panel").removeClass("is-active");
     $("#" + activeTab).addClass("is-active");
   } else {
@@ -151,6 +150,23 @@ $(document).ready(function () {
     nonInterestSubscriber.open();
   });
 
+  // reload articles
+  document.dispatchEvent(new CustomEvent(config.EVENT_SUBSCRIPTION));
+
+  // keyboard navigation
+  set_keyboard_focus_to_article_list();
+
+  let searchExecuted = document.querySelector("#search-expandable");
+  $(searchExecuted).keyup(function (event) {
+    if (event.keyCode === 13) {
+      let input = $(searchExecuted).val();
+      $(searchExecuted).val("");
+      articleList.search(input);
+      showSearchNotification(input);
+      $("#emptyArticleListImage").hide();
+    }
+  });
+
   var countWords = 0;
   $(".wordsSorting").click(function () {
     if (countLevel == 1 || countLevel == 2) {
@@ -162,36 +178,11 @@ $(document).ready(function () {
     }
     countWords++;
     if (countWords == 1) {
-      var elem = $("#articleLinkList").find("li").sort(sortLowToHighWords);
-      var bookmarkElem = $("#starredArticleList")
-        .find("li")
-        .sort(sortLowToHighWords);
-      var classroomElem = $("#cohortArticleList")
-        .find("li")
-        .sort(sortLowToHighWords);
-      $("#articleLinkList").append(elem);
-      $("#starredArticleList").append(bookmarkElem);
-      $("#cohortArticleList").append(classroomElem);
-      $("#triangleWords").addClass("flip");
-      $("#triangleWords").addClass("clicked");
-      console.log("sort low to high");
+      handleOneClickWords();
     } else if (countWords == 2) {
-      var elem = $("#articleLinkList").find("li").sort(sortHighToLowWords);
-      var bookmarkElem = $("#starredArticleList")
-        .find("li")
-        .sort(sortHighToLowWords);
-      var classroomElem = $("#cohortArticleList")
-        .find("li")
-        .sort(sortHighToLowWords);
-      $("#articleLinkList").append(elem);
-      $("#starredArticleList").append(bookmarkElem);
-      $("#cohortArticleList").append(classroomElem);
-      $("#triangleWords").removeClass("flip");
-      console.log("sort high to low");
+      handleTwoClickWords();
     } else if (countWords == 3) {
-      location.reload();
-      $("#triangleWords").removeClass("clicked");
-      console.log("reload words");
+      handleThreeClickWords();
       countWords = 0;
     }
   });
@@ -207,59 +198,83 @@ $(document).ready(function () {
     }
     countLevel++;
     if (countLevel == 1) {
-      var elem = $("#articleLinkList").find("li").sort(sortLowToHighLevel);
-      var bookmarkElem = $("#starredArticleList")
-        .find("li")
-        .sort(sortLowToHighLevel);
-      var classroomElem = $("#cohortArticleList")
-        .find("li")
-        .sort(sortLowToHighLevel);
-      $("#articleLinkList").append(elem);
-      $("#starredArticleList").append(bookmarkElem);
-      $("#cohortArticleList").append(classroomElem);
-      $("#triangleLevel").addClass("flip");
-      $("#triangleLevel").addClass("clicked");
-      console.log("sort level low to high");
+      handleOneClickLevel();
     } else if (countLevel == 2) {
-      var elem = $("#articleLinkList").find("li").sort(sortHighToLowLevel);
-      var bookmarkElem = $("#starredArticleList")
-        .find("li")
-        .sort(sortHighToLowLevel);
-      var classroomElem = $("#cohortArticleList")
-        .find("li")
-        .sort(sortHighToLowLevel);
-      $("#articleLinkList").append(elem);
-      $("#starredArticleList").append(bookmarkElem);
-      $("#cohortArticleList").append(classroomElem);
-      $("#triangleLevel").removeClass("flip");
-      console.log("sort level high to low");
+      handleTwoClickLevel();
     } else if (countLevel == 3) {
-      location.reload();
-      $("#triangleLevel").removeClass("clicked");
-      $("#triangleLevel").removeClass("flip");
-      console.log("reload level");
+      handleThreeClickLevel();
       countLevel = 0;
     }
   });
-
-  let searchExecuted = document.querySelector("#search-expandable");
-  $(searchExecuted).keyup(function (event) {
-    if (event.keyCode === 13) {
-      let input = $(searchExecuted).val();
-      $(searchExecuted).val("");
-      articleList.search(input);
-      showSearchNotification(input);
-      //display none for no articles
-      $("#emptyArticleListImage").hide();
-    }
-  });
-
-  // reload articles
-  document.dispatchEvent(new CustomEvent(config.EVENT_SUBSCRIPTION));
-
-  // keyboard navigation
-  set_keyboard_focus_to_article_list();
 });
+
+function handleOneClickLevel() {
+  var elem = $("#articleLinkList").find("li").sort(sortLowToHighLevel);
+  var bookmarkElem = $("#starredArticleList")
+    .find("li")
+    .sort(sortLowToHighLevel);
+  var classroomElem = $("#cohortArticleList")
+    .find("li")
+    .sort(sortLowToHighLevel);
+  appendLists(elem, bookmarkElem, classroomElem);
+  $("#triangleLevel").addClass("flip");
+  $("#triangleLevel").addClass("clicked");
+}
+
+function handleTwoClickLevel() {
+  var elem = $("#articleLinkList").find("li").sort(sortHighToLowLevel);
+  var bookmarkElem = $("#starredArticleList")
+    .find("li")
+    .sort(sortHighToLowLevel);
+  var classroomElem = $("#cohortArticleList")
+    .find("li")
+    .sort(sortHighToLowLevel);
+  appendLists(elem, bookmarkElem, classroomElem);
+  $("#triangleLevel").removeClass("flip");
+}
+
+function handleThreeClickLevel() {
+  location.reload();
+  $("#triangleLevel").removeClass("clicked");
+  $("#triangleLevel").removeClass("flip");
+}
+
+function handleOneClickWords() {
+  var elem = $("#articleLinkList").find("li").sort(sortLowToHighWords);
+  var bookmarkElem = $("#starredArticleList")
+    .find("li")
+    .sort(sortLowToHighWords);
+  var classroomElem = $("#cohortArticleList")
+    .find("li")
+    .sort(sortLowToHighWords);
+  appendLists(elem, bookmarkElem, classroomElem);
+  $("#triangleWords").addClass("flip");
+  $("#triangleWords").addClass("clicked");
+}
+
+function handleTwoClickWords() {
+  var elem = $("#articleLinkList").find("li").sort(sortHighToLowWords);
+  var bookmarkElem = $("#starredArticleList")
+    .find("li")
+    .sort(sortHighToLowWords);
+  var classroomElem = $("#cohortArticleList")
+    .find("li")
+    .sort(sortHighToLowWords);
+  appendLists(elem, bookmarkElem, classroomElem);
+  $("#triangleWords").removeClass("flip");
+}
+
+function handleThreeClickWords() {
+  location.reload();
+  $("#triangleWords").removeClass("clicked");
+}
+
+
+function appendLists(elem, bookmarkElem, classroomElem) {
+  $("#articleLinkList").append(elem);
+  $("#starredArticleList").append(bookmarkElem);
+  $("#cohortArticleList").append(classroomElem);
+}
 
 function sortLowToHighWords(a, b) {
   var aInt = getIntegerWords(a.className);
@@ -394,7 +409,6 @@ function _select_next_article(highlighted_element, direction_forward) {
 
     new_higlight.toggleClass("highlightedArticle");
     highlighted_element.toggleClass("highlightedArticle");
-
     scrollToView(new_higlight);
   }
 }
