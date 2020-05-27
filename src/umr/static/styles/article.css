@@ -4,10 +4,10 @@
 }
 
 .articleHeader {
-  position: -webkit-sticky;
   position: sticky;
   background-color: transparent;
   box-shadow: none;
+
 }
 
 
@@ -30,7 +30,7 @@
   padding-top: 0.3em;
   padding-bottom: 1em;
   background-color: white;
-  overflow-y: overlay;
+  overflow-y: overlay; 
 }  
 
 /*
@@ -496,7 +496,7 @@ a:hover {
 .modal {
   display: none;
   position: fixed;
-  z-index: 3;
+  z-index: 11;
   padding-top: 11em;
   left: 0;
   top: 0px;
@@ -649,18 +649,35 @@ a:hover {
 @media screen and (max-width:500px){
   .modalContent{
     width:91vw; 
-    padding:1em 0em; 
+    padding:1em 0em;
+    z-index: 100001  !important; 
   }
 
   .modal{
-    z-index: 1000;
- 
-
+    z-index: 100000 !important;
   }
 
-  .articleHeader{
-    z-index: -20 !important; 
+ .modalText{
+   padding: 0em 1em;
+ }
+  .close {
+    margin-right:8px;
   }
+
+  #modalReview{
+    padding-top:1em; 
+  }
+
+  .reviewBtn{
+    height:9vh;
+    width:35vw; 
+  }
+
+  #translationID{
+    width:67vw; 
+  }
+
+
 
 }
 
