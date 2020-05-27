@@ -52,6 +52,7 @@
   border: 1px solid #ffbb54;
   border-radius: 10px;
   background-color: #ffffff;
+  -webkit-text-fill-color: #ffbb54;
   color: #ffbb54;
   font-size: 15px;
   font-family: Montserrat;
@@ -129,12 +130,6 @@ button {
   overflow: auto;
 }
 
-.mdl-dialog__content {
-  display: block;
-  background-color: black;
-  color: white;
-}
-
 /*** SORTING ***/
 .sortingCategories {
   float: right;
@@ -190,10 +185,6 @@ button {
 
 .flip {
   transform: rotate(-180deg);
-}
-
-.material-icons {
-  display: none;
 }
 
 /*** INTERESTS / NON-INTERESTS ******/

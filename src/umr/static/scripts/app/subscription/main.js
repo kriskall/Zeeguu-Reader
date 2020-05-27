@@ -85,7 +85,7 @@ function prepare_tab_interaction(tab_name) {
 function activate_last_used_tab_if_available() {
   var activeTab = localStorage.getItem("activeTab");
   if (activeTab) {
-    $("a.mdl-layout__tab").removeClass("is-active");
+    $("a.headmenuTab").removeClass("is-active");
     $("#" + activeTab + "_tab").addClass("is-active");
     $(".articleTab").removeClass("is-active");
     $("#" + activeTab).addClass("is-active");

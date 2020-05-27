@@ -38,8 +38,6 @@
                 </svg>
               </div>
               <p> You have not bookmarked any articles yet!</p>
-
-
             </div>
           </div>
         </section>
@@ -60,7 +58,6 @@
               <span class="difficulty-level articleLinkDifficultyText"
               > {% raw %}{{articleDifficulty}}{% endraw %} </span>
               <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
-
           </div>
       </div>
           <div class="articleLinkSummary">
@@ -68,20 +65,17 @@
           </div>
           <div class="articleTopics">
             <div class="articleLinkImage">
-              <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon mdl-list__item-avatar"/>
+              <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon"/>
             </div>
-
             {% raw %}{{#articleTopics}}{% endraw %}
             <span class="singleTopicTag">
               {% raw %}{{topic}}{% endraw %}
             </span>
             {% raw %}{{/articleTopics}}{% endraw %}
-
           </div>
         </a>
       </li>
       <div class="articleLinkSpacer"></div>
-
     </script>
 
   <!-- Dialog windows for adding interests or non-interests -->

@@ -23,10 +23,6 @@
   border-radius: 0.3em;
 }
 
-.mdl-layout__tab .material-icons {
-  vertical-align: middle;
-}
-
 .inbox-icon {
   color: #7c7b74;
 }
@@ -230,10 +226,6 @@ a {
   color: rgba(0, 0, 0, 0.26) !important;
 }
 
-.mdl-layout__drawer-button {
-  color: black !important;
-}
-
 body {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -243,32 +235,6 @@ body {
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
-
-/*
-BEGIN: Moving the drawer to the right
-====================================
-cf: https://stackoverflow.com/a/32539822/1200070
-*/
-
-/* ORIGINAL 
-.mdl-layout__drawer-button, .mdl-layout__drawer{
-    left: initial;
-    right: 0;
-}
-
-.mdl-layout__drawer{
-    transform:translateX(250px);
-}
-
-.mdl-layout__header-row {
-    padding-left: 10px;
-}
-*/
-
-/*
-END: Moving the drawer to the right
-====================================
-*/
 
 /* This changes the order of the SWAL buttons */
 .sa-button-container {

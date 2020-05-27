@@ -4,7 +4,6 @@ import UserActivityLogger from "../UserActivityLogger";
 const HTML_ID_EMPTY_ARTICLE_LIST = "#emptyArticleListImage";
 const HTML_CLASS_TOUR = ".tour";
 const HTML_CLASS_NAME_WIGGLE = "wiggle";
-const HTML_CLASS_MDL_BURGER = ".mdl-layout__drawer-button";
 const USER_EVENT_SHOW = "NO-FEED-TOUR SHOWN";
 
 /**
@@ -18,7 +17,6 @@ export default class NoFeedTour {
     UserActivityLogger.log(USER_EVENT_SHOW);
     $(HTML_ID_EMPTY_ARTICLE_LIST).show();
     $(HTML_CLASS_TOUR).addClass(HTML_CLASS_NAME_WIGGLE);
-    $(HTML_CLASS_MDL_BURGER).addClass(HTML_CLASS_NAME_WIGGLE);
   }
 
   /**
@@ -27,7 +25,6 @@ export default class NoFeedTour {
   hide() {
     $(HTML_ID_EMPTY_ARTICLE_LIST).hide();
     $(HTML_CLASS_TOUR).removeClass(HTML_CLASS_NAME_WIGGLE);
-    $(HTML_CLASS_MDL_BURGER).removeClass(HTML_CLASS_NAME_WIGGLE);
   }
 }
 
