@@ -10,7 +10,6 @@ import { SUBSCRIBE_SEARCH_ENDPOINT } from "../zeeguuRequests";
 import { UNSUBSCRIBE_SEARCH_ENDPOINT } from "../zeeguuRequests";
 import { reload_articles_on_drawer_close } from "./main.js";
 
-//const HTML_ID_FEED_TEMPLATE = "#topicAddable-template";
 const HTML_ID_SUBSCRIPTION_LIST = "#searchesList";
 const HTML_ID_SUBSCRIPTION_TEMPLATE = "#subscription-template-search";
 const USER_EVENT_FOLLOWED_FEED = "FOLLOW SEARCH";
@@ -89,8 +88,8 @@ export default class CustomInterestSubscriptionList {
     let remove = $(subscription.find(".interests.custom"));
     let _unfollow = this._unfollow.bind(this);
     remove.click(
-      (function(search) {
-        return function() {
+      (function (search) {
+        return function () {
           _unfollow(search);
           $(remove).fadeOut();
           console.log("removed");
@@ -198,5 +197,5 @@ export default class CustomInterestSubscriptionList {
   /**
    * Fire event to show loader while subscribing / unsubscribing
    */
-  _loading() {}
+  _loading() { }
 }

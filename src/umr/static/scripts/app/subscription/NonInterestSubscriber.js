@@ -5,7 +5,7 @@ import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
 import { GET_AVAILABLE_TOPICS, GET_SUBSCRIBED_FILTERS } from '../zeeguuRequests';
 
-const HTML_ID_FEED_TEMPLATE = '#noninterest-template';
+const HTML_ID_FEED_TEMPLATE = '#noninterests-template';
 const USER_EVENT_OPENED_FEEDSUBSCRIBER = 'OPEN FILTERSUBSCRIBER';
 const NONINTERESTS = ".show-filter-subscriber";
 const INTERESTS = ".show-topic-subscriber";
