@@ -26,6 +26,10 @@
   <!-- Fonts -->
   <link href="{{ url_for('static', filename='fonts/montserrat.css') }}" type="text/css" rel="stylesheet" />
 
+  <!-- Script -->
+  <script type="text/javascript"
+    src="{{ url_for('reader_blueprint.static',filename='scripts/app/helpers/MobileHelpers.js') }}"></script>
+
   <!-- Include the translation package. -->
   <link rel="stylesheet" type="text/css"
     href="{{ url_for('reader_blueprint.static',filename='scripts/dist/css/translation-0.9.353.css') }}" />
@@ -49,7 +53,7 @@
   <!-- Top bar -->
   <div class="articleLayout" id="main-containerID">
     <header class="articleHeader">
-      <div id="header_row" class="toolbar">
+      <div id="toolbarContainer" class="toolbar">
         <div class="main-tools">
           <div>
             <button class="tool" id="toggle_translate">
@@ -124,7 +128,8 @@
       </div>
 
       <div class="finalChoices">
-        <button id="enjoyedButton" class="finalChoicesBottons" style="visibility: hidden;" type="button">
+        <button id="enjoyedButton" class="finalChoicesBottons" onclick="hideToolbar()" style="visibility: hidden;"
+          type="button">
           Enjoyed reading?
         </button>
         <div class="modal" id="modalEnjoyed">
@@ -139,7 +144,8 @@
             </h2>
           </div>
         </div>
-        <button id="reviewButton" class="finalChoicesBottons" style="visibility: hidden;" type="button">
+        <button id="reviewButton" class="finalChoicesBottons" onclick="hideToolbar()" style="visibility: hidden;"
+          type="button">
           Review Words
         </button>
         <div class="modal" id="modalReview">

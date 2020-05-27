@@ -87,7 +87,7 @@ function activate_last_used_tab_if_available() {
   if (activeTab) {
     $("a.mdl-layout__tab").removeClass("is-active");
     $("#" + activeTab + "_tab").addClass("is-active");
-    $(".mdl-layout__tab-panel").removeClass("is-active");
+    $(".articleTab").removeClass("is-active");
     $("#" + activeTab).addClass("is-active");
   } else {
     $("#inbox_tab").addClass("is-active");

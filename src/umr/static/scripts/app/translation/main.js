@@ -122,13 +122,13 @@ function attachInteractionScripts() {
    */
   $(HTML_ID_TOGGLE_TRANSLATE).click(handle_TOGGLE_TRANSLATE_click);
 
-  /* When listen is clicked, user can click on words to hear 
-   * pronounciation. 
+  /* When listen is clicked, user can click on words to hear
+   * pronounciation.
    */
   $(HTML_ID_TOGGLE_LISTEN).click(handle_TOGGLE_LISTEN_click);
 
   /* When undo is clicked, content page is replaced
-   * with previous one in the stack and listeners are re-attached. 
+   * with previous one in the stack and listeners are re-attached.
    */
   $(HTML_ID_TOGGLE_UNDO).click(handle_TOGGLE_UNDO_click);
 
@@ -147,7 +147,7 @@ function attachInteractionScripts() {
     );
   });
 
-  $(".mdl-layout__content").on("scroll", handle_CONTENT_SCROLL_EVENT);
+  $(".articlesMainContainer").on("scroll", handle_CONTENT_SCROLL_EVENT);
 
 }
 
@@ -194,17 +194,23 @@ function handle_ENJOYED_READING_click() {
   yes.onclick = function () {
     UserActivityLogger.log_article_interaction(USER_EVENT_LIKE_ARTICLE);
     modal.style.display = "none";
+    document.getElementById("toolbarContainer").style.display = "flex";
+    document.getElementById("arrow-p").style.display = "block";
   }
 
   var no = document.getElementsByClassName("modalButton no")[0];
   no.onclick = function () {
     UserActivityLogger.log_article_interaction(USER_EVENT_UNLIKE_ARTICLE);
     modal.style.display = "none";
+    document.getElementById("toolbarContainer").style.display = "flex";
+    document.getElementById("arrow-p").style.display = "block";
   }
 
   var close = document.getElementById("closeEnjoyed");
   close.onclick = function () {
     modal.style.display = "none";
+    document.getElementById("toolbarContainer").style.display = "flex";
+    document.getElementById("arrow-p").style.display = "block";
   }
 
   window.onclick = function (event) {
@@ -247,6 +253,8 @@ function handle_REVIEW_WORDS_click() {
   var close = document.getElementById("closeReview");
   close.onclick = function () {
     modal.style.display = "none";
+    document.getElementById("toolbarContainer").style.display = "flex";
+    document.getElementById("arrow-p").style.display = "block";
     $("#wordList").children().remove();
   }
 
@@ -284,7 +292,7 @@ function handle_CONTENT_SCROLL_EVENT() {
 
 /* Clicking anywhere in the document when the
  * alter menu is open, except for the input field,
- * will close the alter menu. 
+ * will close the alter menu.
  */
 $(document).click(function (event) {
   let $target = $(event.target);

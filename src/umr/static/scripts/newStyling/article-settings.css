@@ -1,5 +1,5 @@
 /**** Articles Settings Styling ****/
-.mdl-layout__drawer {
+.searchExecuted {
   display: flex;
   justify-content: center;
   background-color: #ffffff;
@@ -62,7 +62,7 @@
 }
 
 /*Styling for all buttons*/
-.mdl-chip__action {
+.orangeButton {
   box-shadow: none;
   all: unset;
   border-radius: 1.0625em;
@@ -358,9 +358,6 @@ button {
     margin-left: 1em;
   }
 
-  .interestsSettings {
-  }
-
   .interestButton {
     margin-top: 0.7em;
   }
@@ -379,7 +376,7 @@ button {
     margin-left: 1em;
   }
 
-  .mdl-chip__action {
+  .orangeButton {
     box-shadow: none;
     all: unset;
     border-radius: 1.0625em;

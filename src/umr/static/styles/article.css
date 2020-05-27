@@ -330,12 +330,17 @@ zeeguu tran[chosen]:after {
   display: none;
 }
 
-.mdl-textfield__input {
+.searchTextfieldInput {
   color: #484848;
   font-weight: 400;
   text-align: center;
   border: none;
   padding-top: 0.5em;
+}
+
+.matchWidth {
+  width: 100%;
+  background: #ffe086;
 }
 
 .mdl-layout__header,

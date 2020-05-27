@@ -1,33 +1,21 @@
-{% include  "articleHeader.html" %}
+{% include "articleHeader.html" %}
 
 <body onload="sideBarLoad()">
-
   <div class="main-container" id="main-containerID">
-    {% include  "headerMenu.html" %}
-    {% include  "sideBar.html" %}
-
+    {% include "headerMenu.html" %}
+    {% include "sideBar.html" %}
     <div class="widthOfColumn">
-      <div class="mdl-layout__drawer">
-        <nav class="mdl-navigation">
-          <!-- Sorting buttons-->
-          <div class="sortingCategories">
-            <div class="wordsSorting">
-              <div class="wordLabel">words</div>
-              <div id="triangleWords" class="triangle"></div>
-            </div>
-            <div class="levelSorting">
-              <div class="levelLabel">level</div>
-              <div id="triangleLevel" class="triangle"></div>
-            </div>
-          </div>
-        </nav>
-      </div>
+      <nav>
+        <div class="sortingCategories">
+          {% include "sorting.html" %}
+        </div>
+      </nav>
     </div>
     <div class="widthOfColumn">
     </div>
     <div class="widthOfColumn">
-      <main class="mdl-layout__content">
-        <section class="mdl-layout__tab-panel is-active" id="inbox">
+      <main class="articlesMainContainer">
+        <section class="articleTab is-active" id="inbox">
           <div class="page-content">
             <!-- Search notification -->
             <ul id="searchNotification" class="searchNotification"></ul>
@@ -36,12 +24,10 @@
             <br />
           </div>
         </section>
-        <section class="mdl-layout__tab-panel" id="starred">
+        <section class="articleTab" id="starred">
           <div class="page-content">
             <ul id="starredArticleList" class="articleLinkList"></ul>
             <div id="emptyStarredArticleListImage" class="emptyPage">
-
-
               <div class="icon-search">
                 <svg version="1.1" viewBox="0 0 50 50">
                   <g>
