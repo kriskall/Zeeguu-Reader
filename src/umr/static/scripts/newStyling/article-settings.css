@@ -296,6 +296,12 @@ button {
   min-width: 2em;
   height: 1.2em;
   margin-bottom: 0.2em;
+  line-height: 0.5em;
+}
+
+.closeTagsOfInterests:active,
+.closeTagsOfNonInterests:active {
+  border: 0.07em solid #ffbb54 !important;
 }
 
 .addInterestButton:hover,
