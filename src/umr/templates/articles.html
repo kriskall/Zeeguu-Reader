@@ -2,36 +2,11 @@
 
 <body onload="sideBarLoad()" onresize="resizeShowOptions()">
   <div class="main-container" id="main-containerID">
-    <header class="mdl-layout__header mdl-layout__header--transparent">
-      <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
-        <h1 class="select-article">Select an Article</h1>
-        <div class="all__tabs">
-          <div class="row__tab">
-            <a id="inbox_tab" href="/read" class="mdl-layout__tab">
-              Articles</a>
-          </div>
-          <div class="row__bar">
-            <div class="bar"></div>
-          </div>
-          <div class="row__tab">
-            <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
-              Bookmarks</a>
-          </div>
-          <div class="row__bar">
-            <div class="bar"></div>
-          </div>
-          <div class="row__tab">
-            <a id="cohort_tab" href="/read/classroom" class="mdl-layout__tab">
-              Classroom</a>
-          </div>
-        </div>
-      </div>
-    </header>
-
+    {% include  "headerMenu.html" %}
     {% include  "sideBar.html" %}
 
     <div class="widthOfColumn">
-      <div class="mdl-layout__drawer mdl-color--amber-A700">
+      <div class="mdl-layout__drawer">
         <nav class="mdl-navigation">
           <a id="searchIcon-LinkID" onclick="searchIconFunction()">
             <img class="searchIcon" src="{{ url_for('reader_blueprint.static',filename='images/SVGs/searchIcon.svg') }}"
@@ -146,48 +121,6 @@
       </main>
     </div>
 
-    <!-- Template for subscribed source items -->
-    <script id="subscription-template-source" type="text/template">
-      <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	  <span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	  <a class="mdl-chip__action removeButton">
-    		  <i class="material-icons">cancel</i>
-    	  </a>
-      </span>
-    </script>
-
-    <!-- Template for subscribed topic items -->
-    <script id="subscription-template-topic" type="text/template">
-      <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	  <span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	  <a class="mdl-chip__action removeButton">
-    		  <i class="material-icons">cancel</i>
-      	</a>
-      </span>
-    </script>
-
-    <!-- Template for subscribed search items MODIFIED-->
-    <script id="subscription-template-search" type="text/template">
-      <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
-      <span class="mdl-list__item-primary-content">
-      <a class="mdl-list__item-secondary-action topic">
-        <button type="button" class="interests custom">
-          <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
-        </button>
-      </a>
-    </div>
-    </script>
-
-    <!-- Template for subscribed language items -->
-    <script id="subscription-template-language" type="text/template">
-      <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-        <span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
-    	  <a class="mdl-chip__action removeButton">
-    		  <i class="material-icons">cancel</i>
-    	  </a>
-      </span>
-    </script>
-
     <!-- Template for an article link. -->
     <script id="articleLink-template" type="text/template">
       <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
@@ -225,6 +158,18 @@
         </div>
       </li>
       <div class="articleLinkSpacer"></div>
+    </script>
+
+    <!-- Template for custom interests and non-interests -->
+    <script id="subscription-template-search" type="text/template">
+      <div searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+        <a class="mdl-list__item-secondary-action topic">
+          <button type="button" class="interests custom">
+            <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
+          </button>
+        </a>
+      </div>
     </script>
 
     <!-- Dialog windows for adding interests or non-interests -->
