@@ -5,7 +5,7 @@ import UserActivityLogger from "../UserActivityLogger";
 import ZeeguuRequests from "../zeeguuRequests";
 import { GET_AVAILABLE_TOPICS, GET_SUBSCRIBED_TOPICS } from "../zeeguuRequests";
 
-const HTML_ID_FEED_TEMPLATE = "#topicAddable-template";
+const HTML_ID_FEED_TEMPLATE = "#interests-template";
 const USER_EVENT_OPENED_FEEDSUBSCRIBER = "OPEN TOPICSUBSCRIBER";
 const INTERESTS = ".show-topic-subscriber";
 const NON_INTERESTS = ".show-filter-subscriber";
@@ -16,7 +16,6 @@ const INTEREST_BUTTON_HTML = "interests";
 const CUSTOM_INTEREST_BUTTON = "interests custom";
 const ADD_CUSTOM_INTEREST = ".addInterestButton";
 const CLOSE_BUTTON = ".closeTagsOfInterests";
-const INNERTAGS = ".innerTags";
 
 let self;
 

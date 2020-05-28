@@ -23,8 +23,6 @@ import "../../../styles/mdl/material.min.css";
 import "../../../styles/material-icons.css";
 import "../../../styles/login.css";
 import "../../../styles/articles.css";
-import "../../../styles/addSourceDialog.css";
-import "../../../styles/addTopicDialog.css";
 import "../../../styles/sweetalert.css";
 
 /* Script that binds listeners to html events, such that the
@@ -87,9 +85,9 @@ function prepare_tab_interaction(tab_name) {
 function activate_last_used_tab_if_available() {
   var activeTab = localStorage.getItem("activeTab");
   if (activeTab) {
-    $("a.mdl-layout__tab").removeClass("is-active");
+    $("a.headmenuTab").removeClass("is-active");
     $("#" + activeTab + "_tab").addClass("is-active");
-    $(".mdl-layout__tab-panel").removeClass("is-active");
+    $(".articleTab").removeClass("is-active");
     $("#" + activeTab).addClass("is-active");
   } else {
     $("#inbox_tab").addClass("is-active");

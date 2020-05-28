@@ -36,3 +36,14 @@ function resizeShowOptions() {
         document.getElementById('main-containerID').style.cssText = 'margin:0px;';
     }
 }
+
+function hideToolbar() {
+    var w = window.outerWidth;
+    var toolbar = document.getElementById("toolbarContainer");
+    var arrow = document.getElementById("arrow-p");
+
+    if (w <= 600) {
+        toolbar.style.display = 'none';
+        arrow.style.display = 'none';
+    }
+}

@@ -14,11 +14,11 @@ export default class Notifier {
      * Notify the user with the supplied message.
      * @param {string} message - Message to be displayed. 
      */
-    static notify (message) {
+    static notify(message) {
         let snackbar = document.querySelector(HTML_CLASS_SNACKBAR);
         if (lastMessage === message && $(snackbar).hasClass(HTML_CLASS_SNACKBAR_ACTIVE))
             return;
-        snackbar.MaterialSnackbar.showSnackbar({message: message});
+        snackbar.MaterialSnackbar.showSnackbar({ message: message });
         lastMessage = message;
     };
 };

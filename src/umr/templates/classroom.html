@@ -1,150 +1,59 @@
-{% include 'articleHeader.html' %}
+{% include "articleHeader.html" %}
 
 <body onload="sideBarLoad()">
-<div class="main-container">
-  <header class="mdl-layout__header mdl-layout__header--transparent">
-
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect" class="select-article">
-      <h1 class="select-article">Select an Article</h1>
-      <div class="all__tabs">
-        <div class="row__tab">
-          <a id="inbox_tab" href="/read" class="mdl-layout__tab">
-            Articles</a>
-        </div>
-        <div class="row__bar">
-          <div class="bar"></div>
-        </div>
-        <div class="row__tab">
-          <a id="starred_tab" href="/read/bookmarks" class="mdl-layout__tab">
-            Bookmarks</a>
-        </div>
-        <div class="row__bar">
-          <div class="bar"></div>
-        </div>
-        <div class="row__tab">
-          <a id="cohort_tab" href="#" class="mdl-layout__tab">
-            Classroom</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  {% include  "sideBar.html" %}
-
-  <script>
-    function sideBarLoad(){
-      var wi = window.outerWidth; 
-      var nav = document.getElementById("myTopnav"); 
-
-      if(wi < 600 ){
-        nav.style.display = 'none';
-        document.getElementById("arrow-p").className = 'arrow-none-block';
-        document.getElementById('main-containerID').style.cssText = 'margin:0px;';
-      }
-    }
-  </script>
-  <div class="widthOfColumn">
-    <div class="mdl-layout__drawer mdl-color--amber-A700">
-      <nav class="mdl-navigation">
-
-        <!-- Sorting buttons-->
+  <div class="main-container" id="main-containerID">
+    {% include "headerMenu.html" %}
+    {% include "sideBar.html" %}
+    <div class="widthOfColumn">
+      <nav>
         <div class="sortingCategories">
-          <div class="wordsSorting">
-            <div class="wordLabel">words</div>
-            <div id="triangleWords" class="triangle"></div>
-          </div>
-          <div class="levelSorting">
-            <div class="levelLabel">level</div>
-            <div id="triangleLevel" class="triangle"></div>
-          </div>
+          {% include "sorting.html" %}
         </div>
       </nav>
     </div>
-  </div>
-  <div class="widthOfColumn">
-    <div class="tagsOfTopics"></div>
-  </div>
-  <div class="widthOfColumn">
-    <main class="mdl-layout__content">
-      <section class="mdl-layout__tab-panel is-active" id="inbox">
-        <div class="page-content">
-          <!-- Search notification -->
-          <ul id="searchNotification" class="searchNotification"></ul>
-          <!-- List of articles -->
-          <ul id="articleLinkList" class="articleLinkList"></ul>
-          <br />
-      </section>
-      <section class="mdl-layout__tab-panel" id="starred">
-        <div class="page-content">
-          <ul id="starredArticleList" class="articleLinkList"></ul>
-          <div id="emptyStarredArticleListImage" class="emptyPage">
-          </div>
-        </div>
-      </section>
-      <section class="mdl-layout__tab-panel" id="cohort">
-        <div class="page-content">
-          <ul id="cohortArticleList" class="articleLinkList"></ul>
-          <div id="emptyCohortArticleListImage" class="emptyPage">
-            <div class="icon-search">
-              <svg version="1.1" viewBox="0 0 50 50">
-                <g>
-                  <g class="notFound">
-                    <circle class="st0" cx="25" cy="25" r="17.1" />
-                    <line class="st0" x1="53.4" y1="51.6" x2="38.8" y2="36.9" />
-                  </g>
-              </svg>
+    <div class="widthOfColumn">
+      <div class="tagsOfTopics"></div>
+    </div>
+    <div class="widthOfColumn">
+      <main class="articlesMainContainer">
+        <section class="articleTab is-active" id="inbox">
+          <div class="page-content">
+            <!-- Search notification -->
+            <ul id="searchNotification" class="searchNotification"></ul>
+            <!-- List of articles -->
+            <ul id="articleLinkList" class="articleLinkList"></ul>
+            <br />
+        </section>
+        <section class="articleTab" id="starred">
+          <div class="page-content">
+            <ul id="starredArticleList" class="articleLinkList"></ul>
+            <div id="emptyStarredArticleListImage" class="emptyPage">
             </div>
-            <p>There are no articles in your class yet!</p>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+        <section class="articleTab" id="cohort">
+          <div class="page-content">
+            <ul id="cohortArticleList" class="articleLinkList"></ul>
+            <div id="emptyCohortArticleListImage" class="emptyPage">
+              <div class="icon-search">
+                <svg version="1.1" viewBox="0 0 50 50">
+                  <g>
+                    <g class="notFound">
+                      <circle class="st0" cx="25" cy="25" r="17.1" />
+                      <line class="st0" x1="53.4" y1="51.6" x2="38.8" y2="36.9" />
+                    </g>
+                </svg>
+              </div>
+              <p>There are no articles in your class yet!</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   </div>
-</div>
 
-<!-- Template for subscribed source items -->
-<script id="subscription-template-source" type="text/template">
-       <span sourceRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
-
-<!-- Template for subscribed topic items -->
-<script id="subscription-template-topic" type="text/template">
-       <span topicRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ title }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
-
-<!-- Template for subscribed search items -->
-<script id="subscription-template-search" type="text/template">
-       <span searchRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ search }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
-
-<!-- Template for subscribed language items -->
-<script id="subscription-template-language" type="text/template">
-       <span languageRemovableID="{% raw %}{{ id }}{% endraw %}" class="mdl-chip mdl-chip--deletable list_item">
-    	<span class="mdl-chip__text">{% raw %}{{ language }}{% endraw %}</span>
-    	<a class="mdl-chip__action removeButton">
-    		<i class="material-icons">cancel</i>
-    	</a>
-    </span>
-  </script>
-
-
-<!-- Template for a cohort article link. -->
-<script id="cohort-articleLink-template" type="text/template">
+  <!-- Template for a cohort article link. -->
+  <script id="cohort-articleLink-template" type="text/template">
     <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
         articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
         <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
@@ -156,11 +65,9 @@
                     <span class="difficulty-level articleLinkDifficultyText"
                     > {% raw %}{{articleDifficulty}}{% endraw %} </span>
                     <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
-
                 </div>
             </div>
             <div class="articleLinkSummary">
-
                 {% raw %}{{articleSummary}}{% endraw %}
             </div>
             <div class="articleTopics">
@@ -171,23 +78,9 @@
     </li>
     <div class="articleLinkSpacer"></div>
   </script>
-<!--
-<script id="search-notification-template" type="text/template">
-    <li class="fadeoutOnClick articleLinkEntry search-notification-box">
-        <div class="articleLinkHeader">
-            <div class="searchText headerElement">
-                {% raw %}{{ displayText }}{% endraw %}
-            </div>
-            <div class="deleteSearch headerElement">
-                <i class="material-icons">cancel</i>
-            </div>
-        </div>
-    </li>
-    <div class="articleLinkSpacer"></div> 
-  </script> -->
 
-<!-- Dialog windows for adding a source, topic and filter. -->
-{% include 'addSourceDialog.html' %} {% include 'addTopicDialog.html' %}
+  <!-- Dialog windows for adding interests or non-interests -->
+  {% include 'filters.html' %}
 </body>
 
 </html>

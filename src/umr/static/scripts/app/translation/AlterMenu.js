@@ -116,7 +116,7 @@ export default class AlterMenu {
         let input_field = document.createElement('input');
         let suggestion = $tran.attr(config.HTML_ATTRIBUTE_SUGGESTION);
         var value = (suggestion === '' ? config.TEXT_SUGGESTION : suggestion);
-        $(input_field).addClass('mdl-textfield__input');
+        $(input_field).addClass('searchTextfieldInput').addClass("matchWidth");
         $(input_field).attr('type', 'text');
         $(input_field).attr('id', HTML_ID_USER_ALTERNATIVE);
         $(input_field).attr('value', value);
@@ -143,7 +143,7 @@ export default class AlterMenu {
         var tagHeight = $tran.outerHeight();
         var tagWidth = $tran.outerWidth();
         var menuWidth = $(HTML_ID_ALTERMENU).outerWidth();
-        var topScroll = $(".mdl-layout__content").scrollTop();
+        var topScroll = $(".articlesMainContainer").scrollTop();
         $tran.append($(HTML_ID_ALTERMENU));
         $(HTML_ID_ALTERMENU).css({
             position: "absolute",
