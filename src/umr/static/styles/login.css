@@ -14,4 +14,6 @@ div.loginbox
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	background: #ffbb54;
+	font-family: Montserrat;
 }

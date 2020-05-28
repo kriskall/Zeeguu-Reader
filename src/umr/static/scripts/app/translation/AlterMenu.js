@@ -62,7 +62,7 @@ export default class AlterMenu {
             var button = document.createElement('button');
             var alternative = $tran.attr(config.HTML_ATTRIBUTE_TRANSLATION + i);
             button.textContent = alternative;
-            $(button).addClass("mdl-button").addClass("mdl-js-button").addClass("mdl-js-ripple-effect");
+            $(button).addClass("additionalTrans");
             $(HTML_ID_ALTERMENU).append($(button));
             $(button).click({ $tran: $tran, alternative: i }, this._swapPrimaryTranslation);
             $(button).click({ $tran: $tran, alternative: i }, this._sendSwappedTranslation.bind(this));
@@ -172,7 +172,7 @@ export default class AlterMenu {
         $(HTML_ID_ALTERMENU).slideUp(function () {
             $(HTML_ID_ALTERMENUCONTAINER).append($(HTML_ID_ALTERMENU));
 
-            $(HTML_ID_ALTERMENU).removeClass("mdl-button");
+            $(HTML_ID_ALTERMENU).removeClass("additionalTrans");
             this.menuOpen = false;
         }.bind(this));
 

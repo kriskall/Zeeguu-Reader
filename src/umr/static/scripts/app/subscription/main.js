@@ -19,7 +19,7 @@ const HTML_ID_SEARCH_NOTIFCATION_TEMPLATE = "#search-notification-template";
 const HTML_ID_SEARCH_NOTIFICATION = ".searchNotification";
 
 import "../../../styles/mdl/material.min.js";
-import "../../../styles/mdl/material.min.css";
+//import "../../../styles/mdl/material.min.css";
 import "../../../styles/material-icons.css";
 import "../../../styles/login.css";
 import "../../../styles/articles.css";
