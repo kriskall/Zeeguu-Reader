@@ -2,8 +2,6 @@ const webpack = require("webpack"),
   path = require("path"),
   ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-
 var inProduction = process.env.NODE_ENV === "production";
 
 function getVersion() {
@@ -15,6 +13,9 @@ module.exports = {
   entry: {
     subscription: "./src/umr/static/scripts/app/subscription/main.js",
     translation: "./src/umr/static/scripts/app/translation/main.js",
+    mobileHelper: "./src/umr/static/scripts/app/helpers/MobileHelper.js",
+    settings: "./src/umr/static/scripts/app/helpers/Settings.js",
+    sidebar: "./src/umr/static/scripts/app/helpers/Sidebar.js",
   },
   output: {
     path: path.join(__dirname, "./src/umr/static/scripts/dist"),
@@ -38,19 +39,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new ExtractTextPlugin("css/[name]-" + getVersion() + ".css"),
-    new CopyWebpackPlugin([
-      {
-        patterns: [
-          {
-            from: "./src/umr/static/scripts/app/helpers",
-            to: "./src/umr/static/scripts/dist/helpers",
-          },
-        ],
-      },
-    ]),
-  ],
+  plugins: [new ExtractTextPlugin("css/[name]-" + getVersion() + ".css")],
   stats: {
     colors: true,
   },

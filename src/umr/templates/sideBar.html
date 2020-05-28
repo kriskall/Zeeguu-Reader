@@ -1,20 +1,35 @@
 <head>
-  <link rel="stylesheet" type="text/css"
-    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/side-bar.css') }}" />
-  <script type="text/javascript"
-    src="{{ url_for('reader_blueprint.static',filename='scripts/app/helpers/Sidebar.js') }}"></script>
-  <script type="text/javascript"
-    src="{{ url_for('reader_blueprint.static',filename='scripts/app/helpers/Settings.js') }}"></script>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('reader_blueprint.static',filename='scripts/newStyling/side-bar.css') }}"
+  />
+  <script
+    type="text/javascript"
+    src="{{ url_for('reader_blueprint.static',filename='scripts/dist/Sidebar-0.9.353.js') }}"
+  ></script>
+  <script
+    type="text/javascript"
+    src="{{ url_for('reader_blueprint.static',filename='scripts/dist/Settings-0.9.353.js') }}"
+  ></script>
 </head>
 
 <nav class="nav-menu">
-  <a href="javascript:void(0);" class="arrow-icon" id="arrow-p" onclick="sideBarFunction(this);">
+  <a
+    href="javascript:void(0);"
+    class="arrow-icon"
+    id="arrow-p"
+    onclick="sideBarFunction(this);"
+  >
     <p class="arrow-nav-icon">▲</p>
   </a>
   <div class="sidenav" id="myTopnav">
     <a href="/read" rel="external">
-      <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
-        alt="Zeeguu Logo - The Elephant" />
+      <img
+        class="zeeguuLogo"
+        src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+        alt="Zeeguu Logo - The Elephant"
+      />
     </a>
     <div class="dropdown">
       <button class="dropbtn" onclick="location.href='/read'">
@@ -56,7 +71,9 @@
           <a class="hiddenText" href="/stats" rel="external">Statistics</a>
         </div>
         <div class="hiddenOption">
-          <a class="hiddenText" href="/teacher-dashboard" rel="external">Teacher</a>
+          <a class="hiddenText" href="/teacher-dashboard" rel="external"
+            >Teacher</a
+          >
         </div>
         <div class="hiddenOption">
           <a class="hiddenText" href="/about">About</a>
@@ -64,15 +81,28 @@
       </div>
       <div class="settingsbtn">
         <a class="settingsLink" onclick="settingsFunction();">
-          <img class="settingsImg" src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
-            alt="Click here for general settings" />
+          <img
+            class="settingsImg"
+            src="{{ url_for('reader_blueprint.static',filename='images/settingsWheel.svg') }}"
+            alt="Click here for general settings"
+          />
         </a>
       </div>
       <div class="nav-generalbtn">
-        <a class="generalLinks" href="mailto:zeeguu.team@gmail.com" rel="external">Get in touch</a>
+        <a
+          class="generalLinks"
+          href="mailto:zeeguu.team@gmail.com"
+          rel="external"
+          >Get in touch</a
+        >
       </div>
       <div class="nav-generalbtn">
-        <a class="generalLinks" href="{{ url_for('account.logout') }}" rel="external">Sign Out</a>
+        <a
+          class="generalLinks"
+          href="{{ url_for('account.logout') }}"
+          rel="external"
+          >Sign Out</a
+        >
       </div>
     </div>
   </div>
