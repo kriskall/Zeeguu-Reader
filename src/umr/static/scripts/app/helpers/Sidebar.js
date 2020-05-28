@@ -80,7 +80,7 @@ function check7() {
 
 function check8() {
     if (document.getElementById("wordsContainer") !== null) {
-        document.getElementById("wordsContainer").style.cssText = "margin-left:3.5em;";
+        document.getElementById("wordsContainer").style.cssText = "margin-left:7.5em;";
     }
 }
 

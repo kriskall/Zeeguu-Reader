@@ -22,7 +22,7 @@ import { GET_USER_ARTICLE_INFO, BOOKMARKS_FOR_ARTICLE, DELETE_BOOKMARK } from ".
 import ZeeguuRequests from "../zeeguuRequests";
 
 import "../../../styles/mdl/material.min.js";
-import "../../../styles/mdl/material.min.css";
+//import "../../../styles/mdl/material.min.css";
 import "../../../styles/article.css";
 import "../../../styles/material-icons.css";
 
@@ -36,7 +36,6 @@ const USER_EVENT_ARTICLE_FOCUS = "ARTICLE FOCUSED";
 const USER_EVENT_ARTICLE_LOST_FOCUS = "ARTICLE LOST FOCUS";
 const USER_EVENT_SCROLL = "SCROLL";
 
-const HTML_ID_TOGGLE_LIKE = "#toggle_like";
 const HTML_ID_TOGGLE_UNDO = "#toggle_undo";
 const HTML_ID_TOGGLE_TRANSLATE = "#toggle_translate";
 const HTML_ID_TOGGLE_LISTEN = "#toggle_listen";
@@ -44,7 +43,6 @@ const HTML_ID_TOOGLE_BOOKMARK = "#bookmark_button";
 const HTML_ID_ENJOYED_READING = "#enjoyedButton";
 const HTML_ID_REVIEW_WORDS = "#reviewButton";
 const HTML_ID_ARTICLE_VOCABULARY_LINK = "#bookmarks_for_article_link";
-const CLASS_MDL_BUTTON_DISABLED = "mdl-button--disabled";
 const CLASS_NOSELECT = "noselect";
 const ENTER_KEY = 13;
 
@@ -113,9 +111,6 @@ function attachInteractionScripts() {
 
   /* When the user leaves the article, log it as an event. */
   window.onbeforeunload = log_user_leaves_article;
-
-  /* When the like button is clicked, set its background color. */
-  $(HTML_ID_TOGGLE_LIKE).click(handle_TOGGLE_LIKE_click);
 
   /* When translate is clicked, user can click on words to translate .
    * Default option
@@ -266,15 +261,6 @@ function handle_REVIEW_WORDS_click() {
   }
 }
 
-function handle_TOGGLE_LIKE_click() {
-  $(this).toggleClass(CLASS_MDL_BUTTON_DISABLED);
-  if ($(this).hasClass(CLASS_MDL_BUTTON_DISABLED)) {
-    UserActivityLogger.log_article_interaction(USER_EVENT_UNLIKE_ARTICLE);
-  } else {
-    UserActivityLogger.log_article_interaction(USER_EVENT_LIKE_ARTICLE);
-  }
-}
-
 function handle_CONTENT_SCROLL_EVENT() {
   let _current_time = new Date();
   let current_time = _current_time.getTime();
@@ -314,9 +300,7 @@ $(document).keypress(function (event) {
     if ($target.val() !== "") {
       $trans.attr(config.HTML_ATTRIBUTE_CHOSEN, $target.val());
       $trans.attr(config.HTML_ATTRIBUTE_SUGGESTION, $target.val());
-
       //$trans.children(config.HTML_TAG__MORE_ALTERNATIVES).remove();
-
       $trans.children(config.HTML_TAG__MORE_ALTERNATIVES).removeClass();
       $trans.children(config.HTML_TAG__SINGLE_ALTERNATIVE).removeClass();
       $trans
@@ -378,13 +362,7 @@ function load_article_info_in_page(article_info) {
   text = addParagraphs(text);
   $("#articleContent").html(text);
 
-
   bookmarker = new Bookmarker(article_info.starred);
-
-  // LIKED
-  if (!article_info.liked) {
-    $(HTML_ID_TOGGLE_LIKE).addClass(CLASS_MDL_BUTTON_DISABLED);
-  }
 }
 
 function make_article_elements_visible() {

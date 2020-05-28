@@ -10,8 +10,6 @@
 
 }
 
-
-
 .articleLayout {
   margin-left: 12.5em;
   height: 100%;
@@ -23,7 +21,6 @@
   flex-direction: column;
   -webkit-overflow-scrolling: touch;  
 }  
-
 
 .layout__content {
   position: relative;
@@ -309,15 +306,18 @@ zeeguu tran[chosen]:after {
   margin-top: 3.3em;
 }
 
-#altermenu .mdl-button {
+#altermenu .additionalTrans {
   width: 100%;
   height: 100%;
   text-transform: lowercase;
   white-space: normal;
-  border-bottom: 1px solid #383838;
+  border-bottom: 1px solid #383838 !important;
   color: #383838;
   line-height: 1em;
   padding: 0.3em;
+  border: none;
+  cursor: pointer;
+  background: transparent;
 }
 
 #altermenu * {
@@ -341,11 +341,6 @@ zeeguu tran[chosen]:after {
 .matchWidth {
   width: 100%;
   background: #ffe086;
-}
-
-.mdl-layout__header,
-.mdl-layout__drawer-button {
-  color: black;
 }
 
 .mdl-js-snackbar {
