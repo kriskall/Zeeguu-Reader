@@ -13,7 +13,7 @@ module.exports = {
   entry: {
     subscription: "./src/umr/static/scripts/app/subscription/main.js",
     translation: "./src/umr/static/scripts/app/translation/main.js",
-    mobileHelper: "./src/umr/static/scripts/app/helpers/MobileHelper.js",
+    mobileHelper: "./src/umr/static/scripts/app/helpers/MobileHelpers.js",
     settings: "./src/umr/static/scripts/app/helpers/Settings.js",
     sidebar: "./src/umr/static/scripts/app/helpers/Sidebar.js",
   },
