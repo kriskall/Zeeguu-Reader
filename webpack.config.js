@@ -42,8 +42,12 @@ module.exports = {
     new ExtractTextPlugin("css/[name]-" + getVersion() + ".css"),
     new CopyWebpackPlugin([
       {
-        from: "./src/umr/static/scripts/app/helpers",
-        to: "./src/umr/static/scripts/dist/helpers",
+        patterns: [
+          {
+            from: "./src/umr/static/scripts/app/helpers",
+            to: "./src/umr/static/scripts/dist/helpers",
+          },
+        ],
       },
     ]),
   ],
