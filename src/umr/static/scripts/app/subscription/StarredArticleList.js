@@ -93,20 +93,5 @@ export default class StarredArticleList {
                 $(this).remove();
             });
         });
-
-        $(config.HTML_CLASS_ARTICLELINK_FADEOUT).one('click', function (event) {
-            if (!event.isPropagationStopped()) {
-                event.stopPropagation();
-
-                // Animate the click on an article.
-                $(this).parent().parent().siblings().animate({
-                    opacity: 0.25,
-                }, 200, function () {
-                    // Animation complete.
-                    $(config.HTML_CLASS_PAGECONTENT).fadeOut();
-                });
-                UserActivityLogger.log(USER_EVENT_CLICKED_ARTICLE);
-            }
-        });
     }
 }
