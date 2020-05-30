@@ -578,18 +578,17 @@ a:hover {
   border: 0.15em solid;
 }
 
-.close,
 .close {
   color: #ffbb54;
   float: right;
-  font-size: 2em;
+  font-size: 1.5em;
+  width: 1.1em;
   border: 0.07em solid;
   padding-left: 0.05em;
   padding-right: 0.05em;
   border-radius: 1em;
 }
 
-.close,
 .close:hover {
   cursor: pointer;
 }
