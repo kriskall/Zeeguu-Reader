@@ -394,7 +394,7 @@ h6 {
 #articleInfo {
   font-size: 1em;
   text-align: left;
-  margin-left: -1em;
+  margin-left: 0em;
   color: grey;
   font-style: italic;
   font-size: 10px;
@@ -410,13 +410,17 @@ a:hover {
 }
 
 .bookmark_button {
-  width: 3.5em;
+  
   height: 4em;
-  margin-right: 1.5em;
+  margin-right: 0em;
   margin-top: -0.5em;
   border: none;
   background: none;
   background-color: transparent;
+}
+
+.arrow-none-block:hover{
+  color:#FFBB54; 
 }
 
 .bookmark_button:hover {
@@ -671,12 +675,33 @@ a:hover {
   }
 
   .reviewBtn{
-    height:9vh;
-    width:35vw; 
+    height: 8vh;
+    width: 34vw;
   }
 
   #translationID{
     width:67vw; 
+  }
+
+  #wordList{
+    height:36vh; 
+  }
+
+  .finalChoicesBottons{
+    font-size:1em; 
+    width:38vw; 
+    height:9vh; 
+  }
+
+  .modalButton{
+    font-size: 1em;
+  }
+
+  .modalText{
+    font-size:0.8em; 
+  }
+  .page-content{
+    text-align: left;
   }
 
 
